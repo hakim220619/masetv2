@@ -1,0 +1,381 @@
+{
+  "menu": [
+    {
+      "url": "/dashboard/admin",
+      "name": "Home",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "pages-home-admin",
+      "role": "Admin"
+    },
+    {
+      "url": "/dashboard/user",
+      "name": "Home",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "pages-home-user",
+      "role": "User"
+    },
+    {
+      "url": "/dashboard/user",
+      "name": "Home",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "pages-home-su",
+      "role": "Super Admin"
+    },
+    {
+      "url": "broadcast",
+      "icon": "menu-icon tf-icons ti fa-file",
+      "name": "Broadcast",
+      "slug": "broadcast",
+      "role": "Super Admin",
+      "submenu": [
+        {
+          "url": "/broadcast",
+          "name": "Whatsapp",
+          "icon": "menu-icon tf-icons fab fa-whatsapp",
+          "slug": "broadcast-byWhatsapp"
+        },
+        {
+          "url": "/broadcast/aplikasiView",
+          "name": "Announcement",
+          "icon": "menu-icon tf-icons fab fa-whatsapp",
+          "slug": "broadcast-broadcastByAplikasiView"
+        }
+      ]
+    },
+    {
+      "url": "broadcast",
+      "icon": "menu-icon tf-icons ti fa-file",
+      "name": "Broadcast",
+      "slug": "broadcast",
+      "role": "Admin",
+      "submenu": [
+        {
+          "url": "/broadcast",
+          "name": "Whatsapp",
+          "icon": "menu-icon tf-icons fab fa-whatsapp",
+          "slug": "broadcast-byWhatsapp"
+        },
+        {
+          "url": "/broadcast/aplikasiView",
+          "name": "Announcement",
+          "icon": "menu-icon tf-icons fab fa-whatsapp",
+          "slug": "broadcast-broadcastByAplikasiView"
+        }
+      ]
+    },
+    {
+      "url": "masterdataSu",
+      "icon": "menu-icon tf-icons ti ti-folder",
+      "name": "Master data",
+      "slug": "MasterDataSu",
+      "role": "Super Admin",
+      "submenu": [
+        {
+          "url": "/users",
+          "name": "Users",
+          "slug": "MasterDataSu-users-list"
+        },
+        {
+          "url": "/mmlogs",
+          "name": "MmLogs",
+          "slug": "MasterDataSu-setting-mmlogs"
+        },
+        {
+          "url": "/jenis-dokumen-tanah",
+          "name": "Jenis Dokumen Hak Tanah",
+          "slug": "jenis-dokumen-tanah"
+        },
+        {
+          "url": "/options",
+          "name": "Options",
+          "slug": "MasterDataSu-setting-options"
+        }
+      ]
+    },
+    {
+      "url": "setting",
+      "icon": "menu-icon tf-icons ti ti-settings",
+      "name": "Setting",
+      "slug": "setting",
+      "role": "Super Admin",
+      "submenu": [
+        {
+          "url": "/setting/aplikasi",
+          "name": "Aplikasi",
+          "slug": "setting-aplikasi"
+        },
+        {
+          "url": "/setting/roleStructure",
+          "name": "Role Structure",
+          "slug": "setting-role-roleStructureView"
+        },
+        {
+          "url": "/setting/roleAccess",
+          "name": "Role Access",
+          "slug": "setting-role-roleAccessView"
+        },
+        {
+          "url": "/setting/role",
+          "name": "Role",
+          "slug": "setting-role-roleView"
+        }
+      ]
+    },
+    {
+      "url": "object",
+      "icon": "menu-icon tf-icons ti ti-package",
+      "name": "Object",
+      "slug": "Object",
+      "role": "Admin",
+      "submenu": [
+        {
+          "url": "object/bangunan",
+          "name": "Tanah dan Bangunan",
+          "slug": "bangunan"
+        },
+        {
+          "url": "object/tanah_kosong",
+          "name": "Tanah Kosong",
+          "slug": "tanah_kosong"
+        },
+        {
+          "url": "object/retail",
+          "name": "Office/Retai/Aset",
+          "slug": "retail"
+        }
+      ]
+    },
+    {
+      "url": "object",
+      "icon": "menu-icon tf-icons ti ti-package",
+      "name": "Object",
+      "slug": "object",
+      "role": "Super Admin",
+      "submenu": [
+        {
+          "url": "object/lihat_object",
+          "name": "Lihat Object",
+          "slug": "object-lihat_object"
+        },
+        {
+          "url": "object/tambah_object",
+          "name": "Tambah Object",
+          "slug": "object-tambah_object",
+          "submenu": [
+            {
+              "url": "object/bangunan",
+              "name": "Tanah dan Bangunan",
+              "slug": "object-bangunan"
+            },
+            {
+              "url": "object/tanah_kosong",
+              "name": "Tanah Kosong",
+              "slug": "object-tanah_kosong"
+            },
+            {
+              "url": "object/retail",
+              "name": "Office/Retai/Aset",
+              "slug": "object-retail"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "url": "pembanding",
+      "icon": "menu-icon tf-icons ti ti-package",
+      "name": "Pembanding",
+      "slug": "pembanding",
+      "role": "Super Admin",
+      "submenu": [
+        {
+          "url": "pembanding/lihat_pembanding",
+          "name": "Lihat Pembanding",
+          "slug": "pembanding-lihat-pembanding"
+        },
+        {
+          "url": "pembanding/tambah_pembanding",
+          "name": "Tambah Pembanding",
+          "slug": "pembanding-tambah-pembanding",
+          "submenu": [
+            {
+              "url": "pembanding/bangunan",
+              "name": "Pembanding Tanah dan Bangunan",
+              "slug": "pembanding-bangunan"
+            },
+            {
+              "url": "pembanding/tanah_kosong",
+              "name": "Pembanding Tanah Kosong",
+              "slug": "pembanding-tanah-kosong"
+            },
+            {
+              "url": "pembanding/retail",
+              "name": "Pembanding Office/Retai/Aset",
+              "slug": "pembanding-retail"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "url": "/penilai",
+      "name": "Penilai",
+      "icon": "menu-icon tf-icons ti ti-pencil",
+      "slug": "penilai",
+      "role": "Super Admin"
+    },
+    {
+      "url": "object",
+      "icon": "menu-icon tf-icons ti ti-package",
+      "name": "Object",
+      "slug": "object",
+      "role": "User",
+      "submenu": [
+        {
+          "url": "object/lihat_object",
+          "name": "Lihat Object",
+          "slug": "object-lihat_object"
+        },
+        {
+          "url": "object/tambah_object",
+          "name": "Tambah Object",
+          "slug": "object-tambah_object",
+          "submenu": [
+            {
+              "url": "object/bangunan",
+              "name": "Tanah dan Bangunan",
+              "slug": "object-bangunan"
+            },
+            {
+              "url": "object/tanah_kosong",
+              "name": "Tanah Kosong",
+              "slug": "object-tanah_kosong"
+            },
+            {
+              "url": "object/retail",
+              "name": "Office/Retai/Aset",
+              "slug": "object-retail"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "url": "pembanding",
+      "icon": "menu-icon tf-icons ti ti-package",
+      "name": "Pembanding",
+      "slug": "pembanding",
+      "role": "User",
+      "submenu": [
+        {
+          "url": "pembanding/lihat_pembanding",
+          "name": "Lihat Pembanding",
+          "slug": "pembanding-lihat-pembanding"
+        },
+        {
+          "url": "pembanding/tambah_pembanding",
+          "name": "Tambah Pembanding",
+          "slug": "pembanding-tambah-pembanding",
+          "submenu": [
+            {
+              "url": "pembanding/bangunan",
+              "name": "Pembanding Tanah dan Bangunan",
+              "slug": "pembanding-bangunan"
+            },
+            {
+              "url": "pembanding/tanah_kosong",
+              "name": "Pembanding Tanah Kosong",
+              "slug": "pembanding-tanah-kosong"
+            },
+            {
+              "url": "pembanding/retail",
+              "name": "Pembanding Office/Retai/Aset",
+              "slug": "pembanding-retail"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "url": "/penilai",
+      "name": "Penilai",
+      "icon": "menu-icon tf-icons ti ti-pencil",
+      "slug": "penilai",
+      "role": "User",
+      "role_name": "Penilai"
+    },
+    {
+      "url": "/reviewers",
+      "name": "Reviewers",
+      "icon": "menu-icon tf-icons ti ti-pencil",
+      "slug": "reviewers",
+      "role": "Super Admin"
+    },
+    {
+      "url": "/reviewers",
+      "name": "Reviewers",
+      "icon": "menu-icon tf-icons ti ti-pencil",
+      "slug": "reviewers",
+      "role": "User",
+      "role_name": "Penilai"
+    },
+    {
+      "url": "/penilai_public",
+      "name": "Penilai Public",
+      "icon": "menu-icon tf-icons ti ti-pencil",
+      "slug": "penilai_public",
+      "role": "Super Admin"
+    },
+    {
+      "url": "/penilai_public",
+      "name": "Penilai Public",
+      "icon": "menu-icon tf-icons ti ti-pencil",
+      "slug": "penilai_public",
+      "role": "Super Admin",
+      "role_name": "Penilai Public"
+    },
+    {
+      "url": "/laporan",
+      "name": "Laporan",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "laporan",
+      "role": "User"
+    },
+    {
+      "url": "/laporan",
+      "name": "Laporan",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "laporan",
+      "role": "Super Admin"
+    },
+    {
+      "url": "/laporan",
+      "name": "Laporan",
+      "icon": "menu-icon tf-icons ti ti-smart-home",
+      "slug": "laporan",
+      "role": "Admin"
+    },
+    {
+      "url": "masterdata",
+      "icon": "menu-icon tf-icons ti ti-folder",
+      "name": "Master data",
+      "slug": "MasterDataSu",
+      "role": "Admin",
+      "submenu": [
+        {
+          "url": "/users",
+          "name": "Users",
+          "slug": "MasterDataSu-users-list"
+        }
+      ]
+    },
+    {
+      "url": "/penilai",
+      "name": "Penilai",
+      "icon": "menu-icon tf-icons ti ti-pencil",
+      "slug": "penilai",
+      "role": "Admin",
+      "role_name": "Penilai"
+    }
+  ]
+}
