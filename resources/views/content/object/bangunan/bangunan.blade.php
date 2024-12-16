@@ -111,17 +111,7 @@
                                 <small>Enter Step 1.</small>
                             </div>
                             <div class="row g-3">
-                                <div class="col-sm-6">
-                                    <label class="form-label" for="nia">Nomor Induk Asset</label>
-                                    <input type="text" id="nia" name="nia" class="form-control"
-                                        placeholder="A-2022-001" />
-                                </div>
-                                <div class="col-sm-6">
-                                    <label class="form-label" for="nib">Nomor Induk Bangunan</label>
-                                    <input type="text" id="nib" name="nib" class="form-control"
-                                        placeholder="B-2022-001" />
-                                </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="nama_bangunan">Nama Bangunan</label>
                                     <input type="text" id="nama_bangunan" name="nama_bangunan" class="form-control"
                                         placeholder="Bangunan Rumah Tinggal –  PT LPP Agro Nusantara i – Jalan Cendrawasih" />
@@ -137,97 +127,130 @@
                                         placeholder="89.8477748" hidden />
                                     <div id="map" style="height: 400px; width: 100%;"></div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="foto_tampak_depan">Upload Foto Tampak Depan</label>
                                     <input type="file" id="foto_tampak_depan" name="foto_tampak_depan"
                                         class="form-control" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="foto_tampak_sisi_kiri">Upload Foto Tampak Sisi
                                         Kiri</label>
                                     <input type="file" id="foto_tampak_sisi_kiri" name="foto_tampak_sisi_kiri"
                                         class="form-control" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="foto_tampak_sisi_kanan">Upload Foto Tampak Sisi
                                         Kanan</label>
                                     <input type="file" id="foto_tampak_sisi_kanan" name="foto_tampak_sisi_kanan"
                                         class="form-control" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="foto_lainnya">Foto Lainnya (tabel)</label>
                                     <input type="file" id="foto_lainnya" name="foto_lainnya" class="form-control" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="jumlah_lantai">Jumlah Lantai</label>
                                     <input type="text" id="jumlah_lantai" name="jumlah_lantai" class="form-control"
                                         placeholder="2 lantai" />
                                 </div>
-                                <div class="col-sm-6">
-                                    <label class="form-label" for="kontruksi_bangunan">Konstruksi Bangunan</label>
-                                    <input type="text" id="kontruksi_bangunan" name="kontruksi_bangunan"
-                                        class="form-control" placeholder="Permanen" />
-                                </div>
-                                <div class="col-sm-6">
-                                    <label class="form-label" for="kontruksi_lantai">Konstruksi Lantai</label>
-                                    <input type="text" id="kontruksi_lantai" name="kontruksi_lantai"
-                                        class="form-control" placeholder="Rabat Beton" />
-                                </div>
-                                <div class="col-sm-6">
-                                    <label class="form-label" for="kontruksi_dinding">Konstruksi Dinding</label>
-                                    <input type="text" id="kontruksi_dinding" name="kontruksi_dinding"
-                                        class="form-control" placeholder="Bata" />
-                                </div>
-                                <div class="col-sm-6">
+                                <div>
+                                    <label class="form-label" for="kontruksi_bangunan">Kontruksi Bangunan</label>
+                                    <select class="form-select" name="kontruksi_bangunan" id="kontruksi_bangunan" aria-label="Default select example">
+                                      <option value="" selected disabled>Pilih...</option>
+                                      <option value="Permanen">Permanen</option>          
+                                      <option value="Semi Permanen">Semi Permanen</option>          
+                                    </select>
+                                  </div> 
+                                  <div>
+                                    <label class="form-label" for="kontruksi_lantai">Kontruksi Lantai</label>
+                                    <select class="form-select" name="kontruksi_lantai" id="kontruksi_lantai" aria-label="Default select example">
+                                      <option value="" selected >Pilih...</option>
+                                      <option value="Keramik" >Keramik</option>
+                                      <option value="Marmer" >Marmer</option>
+                                      <option value="Ubin" >Ubin</option>
+                                      <option value="Tanah" >Tanah</option>
+                                      <option value="Teraso" >Teraso</option>
+                                      <option value="Granit" >Granit</option>
+                                      <option value="Semen" >Semen</option>
+                                      <option value="Rabat Beton" >Rabat Beton</option>
+                                      <option value="Flooring Kayu" >Flooring Kayu</option>
+                                      <option value="Lainnya" >Semen</option>                   
+                                    </select>
+                                  </div> 
+                                  <div>
+                                    <label class="form-label" for="kontruksi_dinding">Kontruksi Dinding</label>
+                                    <select class="form-select" name="kontruksi_dinding" id="kontruksi_dinding" aria-label="Default select example">
+                                      <option value="" selected disabled>Pilih...</option>
+                                      <option value="Bata" >Bata</option>
+                                      <option value="Batako" >Batako</option>
+                                      <option value="Kaca" >Kaca</option>
+                                      <option value="Beton Ringan" >Beton Ringan</option>
+                                      <option value="Beton" >Beton</option>
+                                      <option value="Lainnya" >Lainnya</option>
+                                   
+                                    </select>
+                                  </div> 
+                                <div>
                                     <label class="form-label" for="kontruksi_atap">Kontruksi Atap</label>
                                     <input type="text" id="kontruksi_atap" name="kontruksi_atap" class="form-control"
                                         placeholder="Galvium" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="kontruksi_pondasi">Kontruksi Pondasi</label>
-                                    <input type="text" id="kontruksi_pondasi" name="kontruksi_pondasi"
-                                        class="form-control" placeholder="Beton Bertulang" />
-                                </div>
-                                <div class="col-sm-6">
+                                    <select class="form-select" name="kontruksi_pondasi" id="kontruksi_pondasi" aria-label="Default select example">
+                                      <option value="" selected disabled>Pilih...</option>
+                                      <option value="Genteng Beton" >Genteng Beton</option>
+                                      <option value="Genteng Baja" >Genteng Baja</option>
+                                      <option value="Genteng Sirap" >Genteng Sirap</option>
+                                      <option value="Genteng Jawa" >Genteng Jawa</option>
+                                      <option value="Asbes" >Asbes</option>
+                                      <option value="Seng" >Seng</option>
+                                      <option value="Dak Beton" >Dak Beton</option>
+                                      <option value="Galvalum" >Galvalum</option>
+                                      <option value="Lainnya" >Lainnya</option>
+                                     
+                                    </select>
+                                  </div> 
+                                <div>
                                     <label class="form-label" for="versi_btb">Versi BTB</label>
                                     <input type="number" id="versi_btb" name="versi_btb" class="form-control"
                                         placeholder="2023" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="tbssb_mappi">Tipikal Bangunan Sesuai Spek BTB
                                         MAPPI</label>
                                     <input type="text" id="tbssb_mappi" name="tbssb_mappi" class="form-control"
                                         placeholder="Rumah Tinggal Sederhana" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="jenis_bangunan_uk">Jenis Bangunan (Umur
                                         Ekonomis)</label>
                                     <input type="text" id="jenis_bangunan_uk" name="jenis_bangunan_uk"
                                         class="form-control" placeholder="Bangunan Rumah Tinggal" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="tipe_rumah_tinggal">Tipe Rumah Tinggal (Umur
                                         Ekonomis)</label>
                                     <input type="text" id="tipe_rumah_tinggal" name="tipe_rumah_tinggal"
                                         class="form-control" placeholder="Bangunan Kelas Menengah" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="jenis_bangunan_il">Jenis Bangunan (Indeks
                                         lantai)</label>
                                     <input type="text" id="jenis_bangunan_il" name="jenis_bangunan_il"
                                         class="form-control" placeholder="Rumah Tinggal Sederhana" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="tahun_dibangun">Tahun Dibangun</label>
                                     <input type="number" id="tahun_dibangun" name="tahun_dibangun" class="form-control"
                                         placeholder="2022" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="tahun_renovasi">Tahun Renovasi</label>
                                     <input type="number" id="tahun_renovasi" name="tahun_renovasi" class="form-control"
                                         placeholder="2023" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <div>
                                         <label class="form-label" for="sumber_info_thn_dibangun">Sumber Informasi Tahun
                                             Dibangun</label>
@@ -242,13 +265,13 @@
                                         <option value="Keterangan lingkungan">Keterangan lingkungan</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="kondisi_bangunan_scr_visual">Kondisi Bangunan Secara
                                         Visual</label>
                                     <input type="text" id="kondisi_bangunan_scr_visual"
                                         name="kondisi_bangunan_scr_visual" class="form-control" placeholder="Baik" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="catatan_khusus_bangunan">Catatan Khusus
                                         Bangunan</label>
                                     <input type="text" id="catatan_khusus_bangunan" name="catatan_khusus_bangunan"
@@ -258,22 +281,22 @@
                                 <div>
                                     <h5>Luas Bangunan Fisik</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="lbf_no_or_nama_lantai">Nomor/Nama Lantai (Area)</label>
                                     <input type="text" id="lbf_no_or_nama_lantai" name="lbf_no_or_nama_lantai"
                                         class="form-control" placeholder="Bangunan Rumah Tinggal 1" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="lbf_faktor_pengali_luas">Faktor Pengali Luas</label>
                                     <input type="number" id="lbf_faktor_pengali_luas" name="lbf_faktor_pengali_luas"
                                         class="form-control" placeholder="1" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="lbf_luas_lantai">Luas Lantai (m2)</label>
                                     <input type="number" id="lbf_luas_lantai" name="lbf_luas_lantai"
                                         class="form-control" placeholder="323" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="luas_bangunan_menurut_imb">Luas Bangunan Menurut
                                         IMB</label>
                                     <input type="number" id="luas_bangunan_menurut_imb" name="luas_bangunan_menurut_imb"
@@ -283,12 +306,12 @@
                                 <div>
                                     <h5>Luas Pintu dan Jendela</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="lpj_nama_area">Nama Area</label>
                                     <input type="text" id="lpj_nama_area" name="lpj_nama_area" class="form-control"
                                         placeholder="Pintu Kayu" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="lpj_luas">Luas (m2)</label>
                                     <input type="number" id="lpj_luas" name="lpj_luas" class="form-control"
                                         placeholder="44" />
@@ -315,12 +338,12 @@
                                 <div>
                                     <h5>Luas Dinding</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="ld_nama_area">Nama Area</label>
                                     <input type="text" id="ld_nama_area" name="ld_nama_area" class="form-control"
                                         placeholder="Luas Dinding Pasang Bata" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="ld_luas">Luas (m2)</label>
                                     <input type="number" id="ld_luas" name="ld_luas" class="form-control"
                                         placeholder="44" />
@@ -329,12 +352,12 @@
                                 <div>
                                     <h5>Luas Rangka Atap Datar</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="lrad_nama_area">Nama Area</label>
                                     <input type="text" id="lrad_nama_area" name="lrad_nama_area" class="form-control"
                                         placeholder="Luas Rangka Atap Datar" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="lrad_luas">Luas (m2)</label>
                                     <input type="number" id="lrad_luas" name="lrad_luas" class="form-control"
                                         placeholder="44" />
@@ -343,12 +366,12 @@
                                 <div>
                                     <h5>Luas Atap Datar</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="lad_nama_area">Nama Area</label>
                                     <input type="text" id="lad_nama_area" name="lad_nama_area" class="form-control"
                                         placeholder="Luas Atap Datar" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="lad_luas">Luas (m2)</label>
                                     <input type="number" id="lad_luas" name="lad_luas" class="form-control"
                                         placeholder="44" />
@@ -357,12 +380,12 @@
                                 <div>
                                     <h5>Tipe Pondasi Eksisting</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="tpe_batu_kali">Batu Kali</label>
                                     <input type="text" id="tpe_batu_kali" name="tpe_batu_kali" class="form-control"
                                         placeholder="Tipe Pondasi Eksisting - Rumah Tinggal Menengah 2 Lantai" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="tpe_bobot_pondasi">Bobot Pondasi Batu Kali (%)</label>
                                     <input type="number" id="tpe_bobot_pondasi" name="tpe_bobot_pondasi"
                                         class="form-control" placeholder="44" />
@@ -371,12 +394,12 @@
                                 <div>
                                     <h5>Tambah Tipe Pondasi Eksisting</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="ttpe_tipe_material">Tipe Material</label>
                                     <input type="text" id="ttpe_tipe_material" name="ttpe_tipe_material"
                                         class="form-control" placeholder="Batu Kali" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="ttpe_bobot">Bobot(%)</label>
                                     <input type="number" id="ttpe_bobot" name="ttpe_bobot" class="form-control"
                                         placeholder="73" />
@@ -385,12 +408,12 @@
                                 <div>
                                     <h5>Tipe Struktur Eksisting</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="tse_beton_bertulang">Beton Bertulang</label>
                                     <input type="text" id="tse_beton_bertulang" name="tse_beton_bertulang"
                                         class="form-control" placeholder="Bobot Struktur Beton Bertulang" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="tse_bobot_struktur_beton_bertulng">Bobot Struktur Beton
                                         Bertulang(%)</label>
                                     <input type="number" id="tse_bobot_struktur_beton_bertulng"
@@ -400,17 +423,17 @@
                                 <div>
                                     <h5>Tambah Tipe Struktur Eksisting</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="ttse_tipe_material">Tipe Material</label>
                                     <input type="text" id="ttse_tipe_material" name="ttse_tipe_material"
                                         class="form-control" placeholder="Baja Profil" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="ttse_bobot">Bobot(%)</label>
                                     <input type="number" id="ttse_bobot" name="ttse_bobot" class="form-control"
                                         placeholder="73" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <div>
                                         <label class="form-label" for="tipe_rangka_atap_eksisting">Tipe Rangka Atap
                                             Eksisting</label>
@@ -430,7 +453,7 @@
                                 <div>
                                     <h5>Tambah Tipe Rangka Atap Existing</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <div>
                                         <label class="form-label" for="ttrae_tipe_material">Tipe Material</label>
                                     </div>
@@ -441,12 +464,12 @@
                                         <option value="False">False</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="ttrae_bobot">Bobot(%)</label>
                                     <input type="number" id="ttrae_bobot" name="ttrae_bobot" class="form-control"
                                         placeholder="73" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <div>
                                         <label class="form-label" for="tipe_penutup_atap_eksisting">Tipe Penutup Atap
                                             Eksisting</label>
@@ -483,12 +506,12 @@
                                 <small>Enter Step 3.</small>
                             </div>
                             <div class="row g-3">
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="bobot_penutup_atap">Bobot Penutup Atap(%)</label>
                                     <input type="number" class="form-control" id="bobot_penutup_atap"
                                         name="bobot_penutup_atap" placeholder="73">
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <div>
                                         <label class="form-label" for="tipe_plafon_eksisting">Tipe Plafon
                                             Eksisting</label>
@@ -507,7 +530,7 @@
                                 <div>
                                     <h5>Tambah Plafon Eksisting</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <div>
                                         <label class="form-label" for="tampe_tipe_material">Tipe Material</label>
                                     </div>
@@ -518,12 +541,12 @@
                                         <option value="False">False</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="tampe_bobot">Bobot(%)</label>
                                     <input type="number" id="tampe_bobot" name="tampe_bobot" class="form-control"
                                         placeholder="73" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <div>
                                         <label class="form-label" for="tipe_dinding_eksisting">Tipe Dinding
                                             Existing</label>
@@ -538,7 +561,7 @@
                                         <option value="Rooster Bata">Rooster Bata</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="tde_bobot">Bobot Dinding(%)</label>
                                     <input type="number" id="tde_bobot" name="tde_bobot" class="form-control"
                                         placeholder="73" />
@@ -547,7 +570,7 @@
                                 <div>
                                     <h5>Tambah Tipe Dinding Existing</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <div>
                                         <label class="form-label" for="ttde_tipe_material">Tipe Material</label>
                                     </div>
@@ -558,12 +581,12 @@
                                         <option value="False">False</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="ttde_bobot">Bobot(%)</label>
                                     <input type="number" id="ttde_bobot" name="ttde_bobot" class="form-control"
                                         placeholder="73" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <div>
                                         <label class="form-label" for="tipe_pelapis_dinding_eksisting">Tipe Pelapis
                                             Dinding Eksisting</label>
@@ -579,7 +602,7 @@
                                         <option value="Dilapis Batu Alam">Dilapis Batu Alam</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="ttde_bobot_pdc">Bobot Pelapis Dinding Cat (Diplester
                                         dan Diaci)</label>
                                     <input type="number" id="ttde_bobot_pdc" name="ttde_bobot_pdc" class="form-control"
@@ -589,7 +612,7 @@
                                 <div>
                                     <h5>Tambah Tipe Pelapis Dinding Existing</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <div>
                                         <label class="form-label" for="ttpde_tipe_material">Tipe Material</label>
                                     </div>
@@ -600,7 +623,7 @@
                                         <option value="False">False</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="ttpde_bobot">Bobot(%)</label>
                                     <input type="number" id="ttpde_bobot" name="ttpde_bobot" class="form-control"
                                         placeholder="73" />
@@ -609,7 +632,7 @@
                                 <div>
                                     <h5>Tipe Pintu & Jendela Eksisting</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <div>
                                         <label class="form-label" for="tipe_pintu_n_jendela_eksisting">Tipe Pintu &
                                             Jendela Eksisting</label>
@@ -649,7 +672,7 @@
                                 <div>
                                     <h5>Tambah Tipe Pintu & Jendela Existing</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <div>
                                         <label class="form-label" for="ttpdje_tipe_material">Tipe Material</label>
                                     </div>
@@ -660,12 +683,12 @@
                                         <option value="False">False</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="ttpdje_bobot">Bobot(%)</label>
                                     <input type="number" id="ttpdje_bobot" name="ttpdje_bobot" class="form-control"
                                         placeholder="73" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <div>
                                         <label class="form-label" for="tipe_lantai_eksisting">Tipe Lantai
                                             Eksisting</label>
@@ -682,7 +705,7 @@
                                         <option value="Papan Kayu">Papan Kayu</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="tle_bobot_lantai">Bobot Lantai(%)</label>
                                     <input type="number" id="tle_bobot_lantai" name="tle_bobot_lantai"
                                         class="form-control" placeholder="73" />
@@ -691,7 +714,7 @@
                                 <div>
                                     <h5>Tambah Tipe Lantai Existing</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <div>
                                         <label class="form-label" for="ttle_tipe_material">Tipe Material</label>
                                     </div>
@@ -702,12 +725,12 @@
                                         <option value="False">False</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="ttle_bobot">Bobot(%)</label>
                                     <input type="number" id="ttle_bobot" name="ttle_bobot" class="form-control"
                                         placeholder="73" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="penggunaan_bangunan_saat_ini">Penggunaan Bangunan Saat
                                         Ini</label>
                                     <input type="text" id="penggunaan_bangunan_saat_ini"
@@ -717,7 +740,7 @@
                                 <div>
                                     <h5>Perlengkapan Bangunan</h5>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <div>
                                         <label class="form-label" for="perlengkapan_bangunan">Perlengkapan
                                             Bangunan</label>
@@ -733,18 +756,18 @@
                                         <option value="Sumur Gali/Pompa">Sumur Gali/Pompa</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="penggunaan_bangunan">Penggunaan Bangunan</label>
                                     <input type="text" id="penggunaan_bangunan" name="penggunaan_bangunan"
                                         class="form-control" placeholder="Rumah Tinggal" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="progress_pembangunan">Progres Pembangunan jika aset
                                         dalam proses (dalam persen)</label>
                                     <input type="number" id="progress_pembangunan" name="progress_pembangunan"
                                         class="form-control" placeholder="73" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div>
                                     <label class="form-label" for="status_data_obyek">Status Data Obyek</label>
                                     <select name="status_data_obyek" id="status_data_obyek" class="form-control">
                                         <option value="">Pilih Status</option>

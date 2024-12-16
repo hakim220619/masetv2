@@ -802,8 +802,8 @@ $configData = Helper::appClasses();
                   </select>
                 </div> 
                 <div>
-                  <label class="form-label" for="kontruksi_pondasi">Kontruksi Pondasi</label>
-                  <select class="form-select" name="kontruksi_pondasi" id="kontruksi_pondasi" aria-label="Default select example">
+                  <label class="form-label" for="kontruksi_atap">Kontruksi atap</label>
+                  <select class="form-select" name="kontruksi_atap" id="kontruksi_atap" aria-label="Default select example">
                     <option value="" selected disabled>Pilih...</option>
                     <option value="Genteng Beton" >Genteng Beton</option>
                     <option value="Genteng Baja" >Genteng Baja</option>
@@ -813,8 +813,19 @@ $configData = Helper::appClasses();
                     <option value="Seng" >Seng</option>
                     <option value="Dak Beton" >Dak Beton</option>
                     <option value="Galvalum" >Galvalum</option>
-                    <option value="Lainnya" >Lainnya</option>
-                   
+                    <option value="Lainnya" >Lainnya</option>                   
+                  </select>
+                </div> 
+                <div>
+                  <label class="form-label" for="kontruksi_pondasi">Kontruksi Pondasi</label>
+                  <select class="form-select" name="kontruksi_pondasi" id="kontruksi_pondasi" aria-label="Default select example">
+                    <option value="" selected disabled>Pilih...</option>
+                    <option value="Beton Bertulang" >Beton Bertulang</option>
+                    <option value="Pasangan Batu Kali" >Pasangan Batu Kali</option>
+                    <option value="Umpak" >Umpak</option>
+                    <option value="Rolag Bata" >Rolag Bata</option>
+                    <option value="Kayu" >Kayu</option>
+                    <option value="Lainnya" >Lainnya</option>                   
                   </select>
                 </div> 
                 <div>
