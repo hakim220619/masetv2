@@ -111,49 +111,91 @@ $configData = Helper::appClasses();
                 <small>Enter Step 1.</small>
               </div>
               <div class="row g-3">
-                <div class="col-sm-6">
-                  <label class="form-label" for="nip">Nomor Induk Pembanding</label>
-                  <input type="text" id="nip" name="nip" class="form-control" placeholder="A-2022-001" />
-                </div>
-                <div class="col-sm-6">
-                  <label class="form-label" for="nib">Nomor Induk Bangunan</label>
-                  <input type="text" id="nib" name="nib" class="form-control" placeholder="B-2022-001" />
-                </div>
-                <div class="col-sm-6">
-                  <label class="form-label" for="nama_tanah_kosong">Nama Tanah Kosong</label>
-                  <input type="text" id="nama_tanah_kosong" name="nama_tanah_kosong" class="form-control" placeholder="A-2022-001" />
-                </div>               
+                <div>
+                  <label class="form-label" for="nama_tanah_kosong">Judul / Nama Tanah Kosong </label>
+                  <input type="text" id="nama_tanah_kosong" name="nama_tanah_kosong" class="form-control"  />
+                </div>   
+                <div>
+                  <label class="form-label" for="nama_kjpp">Nama KJPP</label>
+                  <input type="text" id="nama_kjpp" name="nama_kjpp" class="form-control"  />
+                </div> 
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                  <label class="form-label" for="Lokasi Obyek">Lokasi Obyek</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Provinsi</th>
+                      <th>Kode Pos</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <select class="form-select" name="provinsi" id="provinsi" aria-label="Default select example">
+                          <option value="" selected disabled>Pilih...</option>
+                          <option value="A">A</option>
+                          <option value="B">B</option>
+                        </select> 
+                      </td>
+                      <td><input type="text" id="kode_pos" name="kode_pos" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                      <th>Alamat Lengkap</th>
+                    </tr>     
+                    <tr>                      
+                      <td><textarea class="form-control" id="alamat_lengkap" name="alamat_lengkap"></textarea></td>
+                    </tr> 
+                  </table>
+                </div>  
+                <div>
+                  <label class="form-label" for="keterangan_dasar_nilai">Keterangan Dasar Nilai pada Tabel Analisis</label>
+                  <input type="text" id="keterangan_dasar_nilai" name="keterangan_dasar_nilai" class="form-control" placeholder="indikasi niali liquiditas/nilai investasi/nilai sewa pasar"  />
+                </div>             
                 <div>
                   <label class="form-label" for="alamat">Titik Point</label>
-                  <label class="form-label" for="alamat">Alamat</label>
                   <input type="text" id="alamat" name="alamat" class="form-control" placeholder="jl sukasari kecamatan baleendah bandung" />
                   <div id="map" style="height: 400px; width: 100%;"></div>
                   <input type="text" id="lat" name="lat" class="form-control" placeholder="-8.9897878" hidden />
                   <input type="text" id="long" name="long" class="form-control" placeholder="89.8477748" hidden />
                 </div>
-                <div class="col-sm-6">
+                <div>
                   <label class="form-label" for="foto_tampak_depan">Upload Foto Tampak Depan</label>
                   <input type="file" id="foto_tampak_depan" name="foto_tampak_depan" class="form-control" />
                 </div>
-                <div class="col-sm-6">
+                <div>
                   <label class="form-label" for="foto_tampak_sisi_kiri">Upload Foto Tampak Sisi Kiri</label>
                   <input type="file" id="foto_tampak_sisi_kiri" name="foto_tampak_sisi_kiri" class="form-control"/>
                 </div>
-                <div class="col-sm-6">
+                <div>
                   <label class="form-label" for="foto_tampak_sisi_kanan">Upload Foto Tampak Sisi Kanan</label>
                   <input type="file" id="foto_tampak_sisi_kanan" name="foto_tampak_sisi_kanan" class="form-control" />
                 </div>
-                <div class="col-sm-6">
+                <div>
                   <label class="form-label" for="foto_lainnya">Foto Lainnya (tabel)</label>
                   <input type="file" id="foto_lainnya" name="foto_lainnya" class="form-control" />
                 </div>
-                <div class="col-sm-6">
-                  <label class="form-label" for="nama_narsum">Nama Narasumber</label>
-                  <input type="text" id="nama_narsum" name="nama_narsum" class="form-control" placeholder="Bapak Ahmad Sudani" />
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                  <label class="form-label" for="Nilai Perolehan">Nilai Perolehan / NJOP / PBB</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Tahun</th>
+                      <th>Nilai Perolehan / NJOP (Rp)</th>
+                    </tr>
+                    <tr>
+                      <td><input type="number" id="tahun" name="tahun" class="form-control" /></td>
+                      <td><input type="number" id="nilai_perolehan" name="nilai_perolehan" class="form-control" /></td>
+                    </tr>
+                  </table>
                 </div>
-                <div class="col-sm-6">
-                  <label class="form-label" for="telepon">Telepon</label>
-                  <input type="number" id="telepon" name="telepon" class="form-control" placeholder="087654354243" />
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                  <label class="form-label" for="narasumber">Narasumber</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Nama Narasumber</th>
+                      <th>Telepon</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="nama_narsum" name="nama_narsum" class="form-control" placeholder="Bapak Ahmad Sudani" /></td>
+                      <td><input type="number" id="telepon" name="telepon" class="form-control" placeholder="087654354243" /></td>
+                    </tr>
+                  </table>
                 </div>
                 <div class="col-12 d-flex justify-content-between">
                   <button class="btn btn-label-secondary btn-prev" disabled type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
@@ -171,88 +213,167 @@ $configData = Helper::appClasses();
               </div>
               <div class="row g-3">
                 <hr>
-                <div class="col-sm-6">
+                <div>
                   <label class="form-label" for="jenis_dok_hak_tanah">Jenis Dokumen Hak Tanah</label>
-                  <input type="text" id="jenis_dok_hak_tanah" name="jenis_dok_hak_tanah" class="form-control" placeholder="Hak Guna Bangunan" />
-                </div>
-                <div class="col-sm-6">
-                    <div>
-                        <label class="form-label" for="perutuntukan_kawasan">Peruntukan Kawasan</label>
-                    </div>
-                    <select class="form-select" name="perutuntukan_kawasan" id="perutuntukan_kawasan" aria-label="Default select example">
-                      <option value="" selected disabled>Pilih...</option>
-                      <option value="Zona Lindung">Zona Lindung</option>
-                      <option value="Zona Budi Daya">Zona Budi Daya</option>
-                    </select>
-                </div>                
-                <div class="col-sm-6">
-                  <label class="form-label" for="jenis_data">Jenis Data</label>
-                  <input type="text" id="jenis_data" name="jenis_data" class="form-control" placeholder="Penawaran" />
-                </div>
-                <div class="col-sm-6">
+                  <select name="jenis_dok_hak_tanah" id="jenis_dok_hak_tanah" class="form-select">
+                    <option value="">Pilih..</option>
+                    <option value="Hak Milik">Hak Milik</option>
+                    <option value="Hak Guna Bangunan">Hak Guna Bangunan</option>
+                    <option value="Hak Guna Usaha">Hak Guna Usaha</option>
+                    <option value="Hak Pakai">Hak Pakai</option>
+                    <option value="Hak Milik Satuan Rumah Susun">Hak Milik Satuan Rumah Susun</option>
+                    <option value="Girik">Girik</option>
+                    <option value="Akad Jual Beli">Akad Jual Beli</option>
+                    <option value="Perjanjian Pengikatan Jual Beli">Perjanjian Pengikatan Jual Beli</option>
+                    <option value="Surat Hijau">Surat Hijau</option>
+                  </select>
+              </div>  
+              <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                <label class="form-label" for="perutuntukan_kawasan">Peruntukan Kawasan</label>
+                <table class="table table-borderless">
+                  <tr>
+                    <th>Zona Lindung</th>
+                    <th>Zona Budi Daya</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <select class="form-select" name="zona_lindung" id="zona_lindung" aria-label="Default select example">
+                        <option value="" selected disabled>Pilih...</option>
+                        <option value="Zona Hutan Lindung">Zona Hutan Lindung</option>
+                        <option value="Zona Perlindungan Terhadap Kawasan Dibawahnya">Zona Perlindungan Terhadap Kawasan Dibawahnya</option>
+                        <option value="Zona Perlindungan Setempat">Zona Perlindungan Setempat</option>
+                        <option value="Zona Ruang Terbuka Hijau">Zona Ruang Terbuka Hijau</option>
+                        <option value="Zona Suaka Alam dan Cagar Budaya">Zona Suaka Alam dan Cagar Budaya</option>
+                        <option value="Zona Rawan Bencana Alam">Zona Rawan Bencana Alam</option>
+                        <option value="Zona Lainnya">Zona Lainnya</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="form-select" name="zona_budidaya" id="zona_budidaya" aria-label="Default select example">
+                        <option value="" selected disabled>Pilih...</option>
+                        <option value="Zona Perumahan">Zona Perumahan</option>
+                        <option value="Zona Perdagangan dan Jasa">Zona Perdagangan dan Jasa</option>
+                        <option value="Zona Perkantoran">Zona Perkantoran</option>
+                        <option value="Zona Sarana Pelayanan Umum">Zona Sarana Pelayanan Umum</option>
+                        <option value="Zona Indiustri">Zona Indiustri</option>
+                        <option value="Zona Ruang Terbuka Non Hijau">Zona Ruang Terbuka Non Hijau</option>
+                        <option value="Zona Peruntukan Lainnya">Zona Peruntukan Lainnya</option>
+                        <option value="Zona Peruntukan Khusus">Zona Peruntukan Khusus</option>
+                      </select>
+                    </td>
+                  </tr>
+                </table>
+              </div>               
+              <div>
+                <label class="form-label" for="jenis_data">Jenis Data</label>
+                <select class="form-select" name="jenis_data" id="jenis_data" aria-label="Default select example">
+                  <option value="" selected disabled>Pilih...</option>
+                  <option value="Penawaran">Penawaran</option>
+                  <option value="Transaksi">Transaksi</option>
+                  <option value="Price on Offer">Price on Offer</option>
+                </select>
+              </div>
+                <div>
                   <label class="form-label" for="tgl_penawaran">Tanggal Penawaran / Waktu Transaksi</label>
                   <input type="datetime-local" id="tgl_penawaran" name="tgl_penawaran" class="form-control" />
                 </div>
-                <div class="col-sm-6">
+                <div>
                   <label class="form-label" for="sumber_data">Sumber Data</label>
-                  <input type="text" id="sumber_data" name="sumber_data" class="form-control" placeholder="Penawaran" />
-                </div>
-                <div class="col-sm-6">
+                  <select name="sumber_data" id="sumber_data" class="form-select">
+                    <option value="">Pilih..</option>
+                    <option value="Pemilik">Pemilik</option>
+                    <option value="Perorangan">Perorangan</option>
+                    <option value="Agen">Agen</option>
+                  </select>
+              </div>
+                <div>
                   <label class="form-label" for="luas_tanah">Luas Tanah (m2)</label>
                   <input type="number" id="luas_tanah" name="luas_tanah" class="form-control" placeholder="44" />
                 </div>
-                <div class="col-sm-6">
+                <div>
+                  <label class="form-label" for="luas_tanah_terpotong">Luas Tanah Terpotong (m2)</label>
+                  <input type="number" id="luas_tanah_terpotong" name="luas_tanah_terpotong" class="form-control" placeholder="44" />
+                </div>
+                <div>
                   <label class="form-label" for="harga_penawaran">Harga Penawaran/Transaksi (Rp)</label>
                   <input type="text" id="harga_penawaran" name="harga_penawaran" class="form-control" placeholder="4257000000" />
                 </div>
-                <div class="col-sm-6">
+                <div>
                   <label class="form-label" for="diskon">Diskon (%)</label>
                   <input type="number" id="diskon" name="diskon" class="form-control" placeholder="44" />
                 </div>
-                <div class="col-sm-6">
+                <div>
                   <label class="form-label" for="harga_sewa_per_tahun">Harga Sewa per Tahun (Rp/tahun)</label>
                   <input type="number" id="harga_sewa_per_tahun" name="harga_sewa_per_tahun" class="form-control" placeholder="4257000000" />
                 </div>
-                <hr>    
                 <div>
-                    <h5>Penyesuaian Elemen Perbandingan</h5>
+                  <label class="form-label" for="skrap">Skrap / Nilai Sisa (%)</label>
+                  <input type="number" id="skrap" name="skrap" class="form-control" placeholder="50" />
                 </div>
-                <div class="col-sm-6">
-                    <div>
-                        <label class="form-label" for="pep_pembiayaan">Syarat Pembiayaan Batasan dilakukan pelunasan pembayaran (Kelunakan)</label>
-                    </div>
-                    <select class="form-select" name="pep_pembiayaan" id="pep_pembiayaan" aria-label="Default select example">
-                      <option value="" selected disabled>Pilih...</option>
-                      <option value="Tunai">Tunai</option>
-                      <option value="Non Tunai">Non Tunai</option>
-                    </select>
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                  <label class="form-label" for="penyusutan">Penyusutan</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Kemunduran Fungsi (%)</th>
+                      <th>Penjelasan Kemunduran Fungsi</th>
+                    </tr>
+                    <tr>
+                      <td><input type="number" id="kemunduran_fungsi" name="kemunduran_fungsi" class="form-control" placeholder="0" /></td>
+                      <td><textarea class="form-control" name="penjelasan_kemunduran_fungsi" id="penjelasan_kemunduran_fungsi" cols="30" rows="10"></textarea></td>
+                    </tr>
+                    <tr>
+                      <th>Kemunduran Ekonomis (%)</th>
+                      <th>Penjelasan Kemunduran Ekonomis</th>
+                    </tr>
+                    <tr>
+                      <td><input type="number" id="kemunduran_ekonomis" name="kemunduran_ekonomis" class="form-control" placeholder="0" /></td>
+                      <td><textarea class="form-control" name="penjelasan_kemunduran_ekonomis" id="penjelasan_kemunduran_ekonomis" cols="30" rows="10"></textarea></td>
+                    </tr>
+                    <tr>
+                      <th>Maintenance (%)</th>
+                    </tr>
+                    <tr>
+                      <td><input type="number" id="maintenance" name="maintenance" class="form-control" placeholder="0" /></td>
+                    </tr>
+                  </table>
                 </div>
-                <div class="col-sm-6">
-                    <div>
-                        <label class="form-label" for="pep_penjualan">Kondisi Penjualan Bebas Ikatan, Waktu Pemasaran yang Wajar atau Ketiadaan Kondisi Pemaksa</label>
-                    </div>
-                    <select class="form-select" name="pep_penjualan" id="pep_penjualan" aria-label="Default select example">
-                      <option value="" selected disabled>Pilih...</option>
-                      <option value="Normal">Normal</option>
-                      <option value="Tidak Normal">Tidak Normal</option>
-                    </select>
-                </div>
-                <div class="col-sm-6">
-                    <div>
-                        <label class="form-label" for="pep_pengeluaran">Pengeluaran yang dilakukan segera setelah pembelian Biaya yang harus segera dikeluarkan untuk mengembalikan objek ke fungsi atau peruntukan awal atau seharusnya</label>
-                    </div>
-                    <select class="form-select" name="pep_pengeluaran" id="pep_pengeluaran" aria-label="Default select example">
-                      <option value="" selected disabled>Pilih...</option>
-                      <option value="Ada">Ada</option>
-                      <option value="Tidak Ada">Tidak Ada</option>
-                    </select>
-                </div>
-                <div class="col-sm-6">
-                    <div>
-                        <label class="form-label" for="pep_pasar">Kondisi Pasar Kondisi Ekonomi Saat Terjadi Transaksi atau terbentuknya harga penawaran (Menggunakan Indikator Waktu Penawaran / Transaksi)</label>
-                    </div>
-                    <input type="text" id="pep_pasar" name="pep_pasar" class="form-control" placeholder="Ditawarkan akhir 2023" />
-                </div>                
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                  <label class="form-label" for="penyesuaian_elemen_perbandingan">Penyesuaian Elemen Perbandingan</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Syarat Pembiayaan Batasan dilakukan pelunasan pembayaran (Kelunakan)</th>
+                      <th>Kondisi Penjualan Bebas Ikatan, Waktu Pemasaran yang Wajar atau Ketiadaan Kondisi Pemaksa</th>
+                    </tr>
+                    <tr>
+                      <td>                       
+                        <select name="pep_pembiayaan" id="pep_pembiayaan" class="form-select">
+                          <option value="">Pilih...</option>
+                          <option value="Tunai">Tunai</option>
+                          <option value="Kredit">Kredit</option>
+                          <option value="Bertahap">Bertahap</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select name="pep_penjualan" id="pep_penjualan" class="form-select">
+                          <option value="">Pilih...</option>
+                          <option value="Normal">Normal</option>
+                          <option value="Jual Cepat">Jual Cepat</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Pengeluaran yang dilakukan segera setelah pembelian
+                        Biaya yang harus segera dikeluarkan untuk mengembalikan objek ke fungsi atau peruntukan awal atau seharusnya</th>
+                      <th>Kondisi Pasar
+                        Kondisi Ekonomi Saat Terjadi Transaksi atau terbentuknya harga penawaran (Menggunakan Indikator Waktu Penawaran / Transaksi)
+                        </th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="pep_pengeluaran" name="pep_pengeluaran" class="form-control" placeholder="Tidak Ada" /></td>
+                      <td><input type="text" id="pep_pasar" name="pep_pasar" class="form-control" placeholder="Normal" /></td>
+                    </tr>
+                  </table>
+                </div>               
                                    
                 <div class="col-12 d-flex justify-content-between">
                   <button class="btn btn-label-secondary btn-prev" type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
@@ -269,31 +390,80 @@ $configData = Helper::appClasses();
                 <small>Enter Step 3.</small>
               </div>
               <div class="row g-3">                
-                
-                <div class="col-sm-6">
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                  <label class="form-label" for="penggunaan">Penggunaan</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Koefisien Dasar Bangunan (KDB) (%)</th>
+                      <th>Koefisien Lantai Bangunan (KLB) (kali)</th>
+                    </tr>
+                    <tr>
+                      <td><input type="number" id="kdb" name="kdb" class="form-control"  /></td>
+                      <td><input type="number" id="klb" name="klb" class="form-control"  /></td>
+                    </tr>
+                    <tr>
+                      <th>Garis Sempadan Bangunan (GSB) (meter)</th>
+                      <th>Ketinggian (lantai)</th>
+                    </tr>
+                    <tr>
+                      <td><input type="number" id="gsb" name="gsb" class="form-control" /></td>
+                      <td><input type="number" id="ketinggian" name="ketinggian" class="form-control" /></td>
+                    </tr>
+                  </table>
+                </div>
+                <div>
                     <label class="form-label" for="row_jalan">Row Jalan (m)</label>
                     <input type="number" id="row_jalan" name="row_jalan" class="form-control" placeholder="12" />
                 </div>
-                <div class="col-sm-6">
+                <div>
                     <label class="form-label" for="tipe_jalan">Tipe Jalan</label>
                     <input type="text" id="tipe_jalan" name="tipe_jalan" class="form-control" placeholder="Aspal" />
                 </div>
-                <div class="col-sm-6">
+                <div>
                     <label class="form-label" for="kapasitas_jalan">Kapasitas Jalan</label>
                     <input type="text" id="kapasitas_jalan" name="kapasitas_jalan" class="form-control" placeholder="> 1 Kendaraan Roda 4" />
                 </div>
-                <div class="col-sm-6">
-                    <label class="form-label" for="pengguna_lahan_lingkungan_eksisting">Penggunaan Lahan Lingkungan Eksisting</label>
-                    <input type="text" id="pengguna_lahan_lingkungan_eksisting" name="pengguna_lahan_lingkungan_eksisting" class="form-control" placeholder="Campur" />
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label" for="letak_posisi_obyek">Letak / Posisi Obyek</label>
-                    <input type="text" id="letak_posisi_obyek" name="letak_posisi_obyek" class="form-control" placeholder="Interior" />
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label" for="letak_posisi_aset">Lokasi Aset</label>
-                    <input type="text" id="letak_posisi_aset" name="letak_posisi_aset" class="form-control" placeholder="Tengah" />
-                </div>
+                <div>
+                  <label class="form-label" for="pengguna_lahan_lingkungan_eksisting">Penggunaan Lahan Lingkungan Eksisting</label>
+                  <select name="pengguna_lahan_lingkungan_eksisting" id="pengguna_lahan_lingkungan_eksisting" class="form-select">
+                    <option value="">Pilih...</option>
+                    <option value="Perumahan/Pemukiman">Perumahan/Pemukiman</option>
+                    <option value="Campuran">Campuran</option>
+                  </select>
+              </div>
+              <div>
+                <label class="form-label" for="letak_posisi_obyek">Letak / Posisi Obyek</label>
+                <select name="letak_posisi_obyek" id="letak_posisi_obyek" class="form-select">
+                  <option value="">Pilih...</option>
+                  <option value="Kuldesak">Kuldesak</option>
+                  <option value="Interior">Interior</option>
+                  <option value="Tusuk Sate">Tusuk Sate</option>
+                  <option value="Sudut(Corner)">Sudut(Corner)</option>
+                  <option value="Key">Key</option>
+                  <option value="Flag">Flag</option>
+                </select>
+            </div>
+            <div>
+                <label class="form-label" for="letak_posisi_aset">Lokasi Aset</label>
+                <select name="letak_posisi_aset" id="letak_posisi_aset" class="form-select">
+                  <option value="">Pilih...</option>
+                  <option value="Depan">Depan</option>
+                  <option value="Tengah">Tengah</option>
+                  <option value="Belakang">Belakang</option>
+                </select>
+            </div>
+            <div>
+                <label class="form-label" for="bentuk_tanah">Bentuk Tanah</label>
+                <input type="text" id="bentuk_tanah" name="bentuk_tanah" class="form-control" placeholder="Persegi Panjang" />
+                <select name="letak_posisi_aset" id="letak_posisi_aset" class="form-select">
+                  <option value="">Pilih...</option>
+                  <option value="Beraturan">Beraturan</option>
+                  <option value="Tidak Beraturan">Tidak Beraturan</option>
+                  <option value="Persegi Panjang">Persegi Panjang</option>
+                  <option value="Persegi Empat">Persegi Empat</option>
+                  <option value="Lainnya">Lainnya</option>
+                </select>
+            </div>
                 
                                
                 <div class="col-12 d-flex justify-content-between">
@@ -311,27 +481,27 @@ $configData = Helper::appClasses();
                 <small>Enter Step 4.</small>
               </div>
               <div class="row g-3">
-                <div class="col-sm-6">
-                    <label class="form-label" for="bentuk_tanah">Bentuk Tanah</label>
-                    <input type="text" id="bentuk_tanah" name="bentuk_tanah" class="form-control" placeholder="Persegi Panjang" />
-                </div>
-                <div class="col-sm-6">
+                <div>
                     <label class="form-label" for="lebar_muka_tanah">Lebar Muka Tanah (m)</label>
                     <input type="number" id="lebar_muka_tanah" name="lebar_muka_tanah" class="form-control" placeholder="22" />
                 </div>
-                <div class="col-sm-6">
+                <div>
                     <label class="form-label" for="ketinggian_tanah_dr_muka_jln">Ketinggian Tanah dari Muka Jalan (m)</label>
                     <input type="number" id="ketinggian_tanah_dr_muka_jln" name="ketinggian_tanah_dr_muka_jln" class="form-control" placeholder="0.1" />
                 </div>
-                <div class="col-sm-6">
-                    <label class="form-label" for="topografi">Topografi / Elevasi</label>
-                    <input type="text" id="topografi" name="topografi" class="form-control" placeholder="Rata" />
+                <div>
+                  <label class="form-label" for="topografi">Topografi / Elevasi</label>
+                  <select class="form-select" name="topografi" id="topografi" aria-label="Default select example">
+                    <option value="" selected disabled>Pilih...</option>
+                    <option value="Rata">Rata</option>
+                    <option value="Bergelombang">Bergelombang</option>
+                  </select>
                 </div>
-                <div class="col-sm-6">
+                <div>
                     <label class="form-label" for="tingkat_hunian">Tingkat Hunian (%)</label>
                     <input type="number" id="tingkat_hunian" name="tingkat_hunian" class="form-control" placeholder="70" />
                 </div>
-                <div class="col-sm-6">
+                <div>
                   <div>
                       <label class="form-label" for="kondisi_lingkungan_khusus">Kondisi Lingkungan Khusus</label>
                   </div>
@@ -355,24 +525,146 @@ $configData = Helper::appClasses();
                     <option value="Dekat Saluran Irigasi">Dekat Saluran Irigasi</option>
                   </select>
                 </div>
-                <div class="col-sm-6">
-                  <div>
-                      <label class="form-label" for="gambaran_objek">Gambaran Objek terhadap Wilayah dan Lingkungan</label>
-                  </div>
-                  <select class="form-select" name="gambaran_objek" id="gambaran_objek" aria-label="Default select example">
-                    <option value="" selected disabled>Pilih...</option>
-                    <option value="Jarak dengan CBD (Pusat Ekonomi) dari Pusat Kota. Nama Pusat Kota / Jarak">Jarak dengan CBD (Pusat Ekonomi) dari Pusat Kota. Nama Pusat Kota / Jarak</option>
-                    <option value="Jarak dengan CBD (Pusat Ekonomi) dari Jalan Utama terdekat. Nama Jalan / Jarak">Jarak dengan CBD (Pusat Ekonomi) dari Jalan Utama terdekat. Nama Jalan / Jarak</option>
-                    <option value="Nama Pusat Kota / Jarak Jarak dengan CBD (Pusat Ekonomi) dari Pusat Ekonomi terdekat (Pasar Mall). Nama Pusat Ekonomi / Jarak">Nama Pusat Kota / Jarak Jarak dengan CBD (Pusat Ekonomi) dari Pusat Ekonomi terdekat (Pasar Mall). Nama Pusat Ekonomi / Jarak</option>
-                    <option value="Kondisi Lingkungan Khusus yang mempengaruhi Nilai">Kondisi Lingkungan Khusus yang mempengaruhi Nilai</option>
-                    <option value="Faktor View (Pemandangan) untuk Properti yang faktor view dimungkinkan sangat berpengaruh pada nilai (contoh: apartemen, vila, dll)">Faktor View (Pemandangan) untuk Properti yang faktor view dimungkinkan sangat berpengaruh pada nilai (contoh: apartemen, vila, dll)</option>
-                  </select>
+                <div>
+                  <label class="form-label" for="kondisi_lingkungan_lainnya">Kondisi Lingkungan Lainnya</label>
+                  <input type="text" id="kondisi_lingkungan_lainnya" name="kondisi_lingkungan_lainnya" class="form-control"  />
                 </div>
-                <div class="col-sm-6">
+                <div>
+                  <div>
+                    <label class="form-label" for="keterangan_tambahan_lainnya">Keterangan Lingkungan Lainnya</label>
+                    <textarea class="form-control" name="keterangan_tambahan_lainnya" id="keterangan_tambahan_lainnya" cols="30" rows="10"></textarea>
+                  </div>
+                  <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                    <label class="form-label" for="karakteristik_ekonomi">Karakteristik Ekonomi (Jika objek yang dinilai adalah Properti Komersial)</label>
+                    <table class="table table-borderless">
+                      <tr>
+                        <th>Kualitas Pendapatan</th>
+                        <th>Biaya Operasional</th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <select class="form-select" name="kualitas_pendapatan" id="kualitas_pendapatan" aria-label="Default select example">
+                            <option value="" selected disabled>Pilih...</option>
+                            <option value="Rendah">Rendah</option>
+                            <option value="Sedang">Sedang</option>
+                            <option value="Tinggi">Tinggi</option>
+                          </select>
+                        </td>
+                        <td>
+                          <select class="form-select" name="biaya_operasional" id="biaya_operasional" aria-label="Default select example">
+                            <option value="" selected disabled>Pilih...</option>
+                            <option value="Rendah">Rendah</option>
+                            <option value="Normal">Normal</option>
+                            <option value="Tinggi">Tinggi</option>
+                          </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Ketentuan Sewa</th>
+                        <th>Manajemen</th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <select class="form-select" name="ketentuan_sewa" id="ketentuan_sewa" aria-label="Default select example">
+                            <option value="" selected disabled>Pilih...</option>
+                            <option value="Mudah">Mudah</option>
+                            <option value="Normal">Normal</option>
+                            <option value="Ketat">Ketat</option>
+                          </select>
+                        </td>
+                        <td>
+                          <select class="form-select" name="manajemen" id="manajemen" aria-label="Default select example">
+                            <option value="" selected disabled>Pilih...</option>
+                            <option value="Kecil">Kecil</option>
+                            <option value="Menengah">Menengah</option>
+                            <option value="Besar">Besar</option>
+                          </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Bauran Penyewa</th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <select class="form-select" name="bauran_penyewa" id="bauran_penyewa" aria-label="Default select example">
+                            <option value="" selected disabled>Pilih...</option>
+                            <option value="Terbatas">Terbatas</option>
+                            <option value="Normal">Normal</option>
+                            <option value="Beragam">Besar</option>
+                          </select>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                    <label class="form-label" for="komponen_non_reality">Komponen Non-Realty dalam Penjualan</label>
+                    <table class="table table-borderless">
+                      <tr>
+                        <th>FFE</th>
+                        <th>Mesin</th>
+                      </tr>
+                      <tr>
+                        <td>
+                            <input type="text" id="ffe" name="ffe" class="form-control"  />
+                        </td>
+                        <td>
+                          <input type="text" id="mesin" name="mesin" class="form-control"  />
+                        </td>
+                      </tr>                    
+                    </table>
+                  </div> 
+                  <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                    <label class="form-label" for="gambaran_objek">Gambaran Objek terhadap Wilayah dan Lingkungan</label>
+                    <table class="table table-borderless">
+                      <tr>
+                        <th>Jarak dengan CBD (Pusat Ekonomi) dari Pusat Kota. Nama Pusat Kota / Jarak</th>
+                        <th>Jarak dengan CBD (Pusat Ekonomi) dari Pusat Ekonomi terdekat (Pasar Mall). Nama Pusat Ekonomi / Jarak</th>
+                      </tr>
+                      <tr>
+                        <td>
+                            <input type="text" id="nama_pusat_kota" name="nama_pusat_kota" class="form-control" placeholder="Nama Pusat Kota/Jarak"  />
+                        </td>
+                        <td>
+                          <input type="text" id="nama_pusat_ekonomi" name="nama_pusat_ekonomi" class="form-control" placeholder="Nama Pusat Ekonomi/Jarak"  />
+                        </td>
+                      </tr>                    
+                      <tr>
+                        <th>Jarak dengan CBD (Pusat Ekonomi) dari Jalan Utama terdekat. Nama Jalan / Jarak</th>
+                        <th>Kondisi Lingkungan Khusus yang mempengaruhi Nilai</th>
+                      </tr>
+                      <tr>
+                        <td>
+                            <input type="text" id="nama_jalan" name="nama_jalan" class="form-control" placeholder="Nama Jalan/Jarak"  />
+                        </td>
+                        <td>
+                          <input type="text" id="kondisi_lingkungan" name="kondisi_lingkungan" class="form-control" />
+                        </td>
+                      </tr>                    
+                      <tr>
+                        <th>Faktor View (Pemandangan) untuk Properti yang faktor view dimungkinkan sangat berpengaruh pada nilai (contoh: apartemen, vila, dll)
+                        </th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input type="text" id="faktor_view" name="faktor_view" class="form-control" />
+                        </td>
+                      </tr>                    
+                    </table>
+                  </div>
+                  <div>
+                    <label class="form-label" for="keterangan_jarak">Keterangan jarak dengan BCA terdekat (jika BCA)</label>
+                    <input type="text" id="keterangan_jarak" name="keterangan_jarak" class="form-control" placeholder="+- 1,4 KM (Bank BCA KCU Purwodadi)" />                
+                  </div>  
+                  <div>
                     <label class="form-label" for="pengguanan_tnh_saat_ini">Pengguanaan Tanah Saat Ini</label>
                     <input type="text" id="pengguanan_tnh_saat_ini" name="pengguanan_tnh_saat_ini" class="form-control" placeholder="Tanah Pekarangan" />
                 </div>
-              <div class="col-sm-6">
+                  <div>
+                    <label class="form-label" for="pemberi_tugas">Pemberi Tugas</label>
+                    <input type="text" id="pemberi_tugas" name="pemberi_tugas" class="form-control" placeholder="Bank Mandiri" />                
+                  </div>  
+                
+              <div>
                 <label class="form-label" for="status_data_pembanding">Status Data Pembanding</label>
                 <select name="status_data_pembanding" id="status_data_pembanding" class="form-control">
                   <option value="">Pilih Status</option>

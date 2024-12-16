@@ -81,11 +81,6 @@
           "slug": "MasterDataSu-setting-mmlogs"
         },
         {
-          "url": "/jenis-dokumen-tanah",
-          "name": "Jenis Dokumen Hak Tanah",
-          "slug": "jenis-dokumen-tanah"
-        },
-        {
           "url": "/options",
           "name": "Options",
           "slug": "MasterDataSu-setting-options"
@@ -132,16 +127,6 @@
           "url": "object/bangunan",
           "name": "Tanah dan Bangunan",
           "slug": "bangunan"
-        },
-        {
-          "url": "object/tanah_kosong",
-          "name": "Tanah Kosong",
-          "slug": "tanah_kosong"
-        },
-        {
-          "url": "object/retail",
-          "name": "Office/Retai/Aset",
-          "slug": "retail"
         }
       ]
     },
