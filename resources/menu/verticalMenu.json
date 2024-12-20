@@ -149,18 +149,13 @@
           "submenu": [
             {
               "url": "object/bangunan",
-              "name": "Tanah dan Bangunan",
+              "name": "Bangunan",
               "slug": "object-bangunan"
             },
             {
               "url": "object/tanah_kosong",
-              "name": "Tanah Kosong",
+              "name": "Kendaraan",
               "slug": "object-tanah_kosong"
-            },
-            {
-              "url": "object/retail",
-              "name": "Office/Retai/Aset",
-              "slug": "object-retail"
             }
           ]
         }
