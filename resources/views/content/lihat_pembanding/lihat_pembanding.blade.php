@@ -26,123 +26,170 @@
 @section('content')
 
     <div class="row g-4 mb-4">
-        <div class="col-sm-6 col-xl-4" onclick="nextToPage(1)">
-            <div class="card" id="tdb">
-                <div class="card-body">
-                    <div class="d-flex align-items-start justify-content-between">
-                        <div class="content-left">
-                            <span>Tanah dan Bangunan</span>
-                            <div class="d-flex align-items-center my-2">
-                                <span class="mb-0 me-2" style="font-size: 20px;">{{ $pembanding_bangunan }}</span>
-                                {{-- <p class="text-success mb-0">(+29%)</p> --}}
-                            </div>
-                            <p class="mb-0">Total</p>
-                        </div>
-                        <div class="avatar">
-                            <span class="avatar-initial rounded bg-label-primary">
-                                <i class="ti ti-home ti-sm"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+        <div class="card">
+            <div class="card-header">
+                <h3>Cari Data Pembanding</h3>
             </div>
-        </div>
-        <div class="col-sm-6 col-xl-4" onclick="nextToPage(2)">
-            <div class="card" id="tk">
-                <div class="card-body">
-                    <div class="d-flex align-items-start justify-content-between">
-                        <div class="content-left">
-                            <span>Tanah Kosong</span>
-                            <div class="d-flex align-items-center my-2">
-                                <span class="mb-0 me-2" style="font-size: 20px;">{{ $pembanding_tanah_kosong }}</span>
-                                {{-- <p class="text-success mb-0">(+42%)</p> --}}
+            <div class="card-body">
+                <div class="mb-3">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="mb-2">
+                                <label for="jenis_properti">Jenis Properti</label>
                             </div>
-                            <p class="mb-0">Total</p>
-                        </div>
-                        <div class="avatar">
-                            <span class="avatar-initial rounded bg-label-warning">
-                                <i class="ti ti-home-exclamation ti-sm"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-xl-4" onclick="nextToPage(3)">
-            <div class="card" id="re">
-                <div class="card-body">
-                    <div class="d-flex align-items-start justify-content-between">
-                        <div class="content-left">
-                            <span>Office/Retai/Aset</span>
-                            <div class="d-flex align-items-center my-2">
-                                <span class="mb-0 me-2" style="font-size: 20px;">{{ $pembanding_retail }}</span>
-                                {{-- <p class="text-success mb-0">(+18%)</p> --}}
+                            <div class="d-flex flex-wrap">
+                                <div class="form-check me-3">
+                                    <input type="checkbox" class="form-check-input" id="tanah_bangunan" name="tanah_bangunan">
+                                    <label class="form-check-label" for="tanah_bangunan">Tanah Bangunan</label>
+                                </div>
+                                <div class="form-check me-3">
+                                    <input type="checkbox" class="form-check-input" id="tanah_kosong" name="tanah_kosong">
+                                    <label class="form-check-label" for="tanah_kosong">Tanah Kosong</label>
+                                </div>
+                                <div class="form-check me-3">
+                                    <input type="checkbox" class="form-check-input" id="office_retail" name="office_retail">
+                                    <label class="form-check-label" for="office_retail">Office/Retail/Unit Apartemen</label>
+                                </div>
+                                <div class="form-check me-3">
+                                    <input type="checkbox" class="form-check-input" id="ruko" name="ruko">
+                                    <label class="form-check-label" for="ruko">Ruko</label>
+                                </div>
                             </div>
-                            <p class="mb-0">Total</p>
                         </div>
-                        <div class="avatar">
-                            <span class="avatar-initial rounded bg-label-danger">
-                                <i class="ti ti-home-check ti-sm"></i>
-                            </span>
+                        <div class="row mb-3">
+                            <div class="mb-2">
+                                <label for="hak_kepemilikan">Hak Kepemilikan</label>
+                            </div>
+                            <div class="d-flex flex-wrap">
+                                <div class="form-check me-3">
+                                    <input type="checkbox" class="form-check-input" id="shm" name="shm">
+                                    <label class="form-check-label" for="shm">SHM</label>
+                                </div>
+                                <div class="form-check me-3">
+                                    <input type="checkbox" class="form-check-input" id="hgu" name="hgu">
+                                    <label class="form-check-label" for="hgu">HGB</label>
+                                </div>
+                                <div class="form-check me-3">
+                                    <input type="checkbox" class="form-check-input" id="hak_pakai" name="hak_pakai">
+                                    <label class="form-check-label" for="hak_pakai">Hak Pakai</label>
+                                </div>
+                                <div class="form-check me-3">
+                                    <input type="checkbox" class="form-check-input" id="hmsrs" name="hmsrs">
+                                    <label class="form-check-label" for="hmsrs">HMSRS</label>
+                                </div>
+                                <div class="form-check me-3">
+                                    <input type="checkbox" class="form-check-input" id="girik" name="girik">
+                                    <label class="form-check-label" for="girik">Girik</label>
+                                </div>
+                                <div class="form-check me-3">
+                                    <input type="checkbox" class="form-check-input" id="ajb" name="ajb">
+                                    <label class="form-check-label" for="ajb">AJB</label>
+                                </div>
+                                <div class="form-check me-3">
+                                    <input type="checkbox" class="form-check-input" id="ppjb" name="ppjb">
+                                    <label class="form-check-label" for="ppjb">PPJB</label>
+                                </div>
+                                <div class="form-check me-3">
+                                    <input type="checkbox" class="form-check-input" id="surat_hijau" name="surat_hijau">
+                                    <label class="form-check-label" for="surat_hijau">Surat Hijau</label>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <div class="row mb-3">
+                            <div class="mb-2">
+                                <label for="jenis_data">Jenis Data</label>
+                            </div>
+                            <div class="d-flex flex-wrap">
+                                <div class="form-check me-3">
+                                    <input type="checkbox" class="form-check-input" id="penawaran" name="penawaran">
+                                    <label class="form-check-label" for="penawaran">Penawaran</label>
+                                </div>
+                                <div class="form-check me-3">
+                                    <input type="checkbox" class="form-check-input" id="transaksi" name="transaksi">
+                                    <label class="form-check-label" for="transaksi">Transaksi</label>
+                                </div>
+                                <div class="form-check me-3">
+                                    <input type="checkbox" class="form-check-input" id="price_on_offer" name="price_on_offer">
+                                    <label class="form-check-label" for="price_on_offer">Price on Offer</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="mb-2">
+                                <label for="tahun">Tahun</label>
+                            </div>
+                            <div class="d-flex flex-wrap">
+                                <?php
+                                $startYear = 2018; // Tahun awal
+                                $currentYear = date('Y'); // Tahun saat ini
+                        
+                                for ($year = $currentYear; $year >= $startYear; $year--) {
+                                    echo '
+                                    <div class="form-check me-3">
+                                        <input type="checkbox" class="form-check-input" id="t_' . $year . '" name="t_' . $year . '">
+                                        <label class="form-check-label" for="t_' . $year . '">' . $year . '</label>
+                                    </div>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="mb-2">
+                                <label for="status_data">Status Data</label>
+                            </div>
+                            <div class="d-flex flex-wrap">
+                                <div class="form-check me-3">
+                                    <input type="radio" class="form-check-input" id="lengkap" name="lengkap">
+                                    <label class="form-check-label" for="lengkap">Lengkap</label>
+                                </div>
+                                <div class="form-check me-3">
+                                    <input type="radio" class="form-check-input" id="tidak_lengkap" name="tidak_lengkap">
+                                    <label class="form-check-label" for="tidak_lengkap">Tidak Lengkap</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="mb-2">
+                                <label for="status_data">Status Data</label>
+                            </div>
+                            <div class="d-flex flex-wrap">
+                                <div class="me-3">
+                                    <label for="row_jalan">Row Jalan (m)</label>
+                                    <input type="text" class="form-control" name="row_jalan" id="row_jalan">
+                                </div>
+                                <div class="me-3">
+                                    <label for="radius">Radius</label>
+                                    <select class="form-select" aria-label="radius" name="radius" id="radius">
+                                        <option selected>Pilih...</option>
+                                        <?php
+                                        for ($i = 1; $i <= 20; $i++) {
+                                            echo '<option value="' . $i . '">' . $i . ' KM</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Cari</button>
+                    </form>      
                 </div>
+                <div class="mb-3">
+                    <form action="">
+                        <div class="mb-3">
+                            <label for="lokasi" class="form-label">Lokasi</label>
+                            <input type="text" class="form-control" id="lokasi" placeholder="Sleman, Daerah Istimewa Yogyakarta, Indonesia">
+                        </div>    
+                        <div id="peta"></div>    
+                    </form>                  
+                </div>       
             </div>
-        </div>
+        </div>                   
     </div>
-    <div class="row">
-        <div id="showObjectView"></div>
-    </div>
-    <script>
-        function nextToPage(param) {
-            console.log(param);
-            if (param == 1) {
-                $.ajax({
-                    type: 'GET',
-                    url: '/pembanding/bangunanView',
-                    success: function(data) {
-                        $('#showObjectView').html(data);
-                        $('#tdb').addClass('text-white bg-primary');
-                        $('.tdb1').addClass('text-white');
-                        $('#tk').removeClass('text-white bg-primary');
-                        $('#re').removeClass('text-white bg-primary');
-                        // $('.tk1').addClass('text-dark');
-                    }
-                });
-            }
 
-
-            if (param == 2) {
-                // $('#tdb1').addClass('text-dark');
-                $.ajax({
-                    type: 'GET',
-                    url: '/pembanding/tanahKosongView',
-                    success: function(data) {
-                        $('#showObjectView').html(data);
-
-                        $('#tk').addClass('text-white bg-primary');
-                        $('#tdb').removeClass('text-white bg-primary');
-                        $('#re').removeClass('text-white bg-primary');
-                        $('#tk1').addClass('text-white');
-
-
-                    }
-                });
-            }
-            if (param == 3) {
-                $.ajax({
-                    type: 'GET',
-                    url: '/pembanding/retailView',
-                    success: function(data) {
-                        $('#showObjectView').html(data);
-                        $('#re').addClass('text-white bg-primary');
-                        $('#tdb').removeClass('text-white bg-primary');
-                        $('#tk').removeClass('text-white bg-primary');
-
-                    }
-                });
-            }
-
-        }
-    </script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
 @endsection
+

@@ -170,7 +170,7 @@
       "submenu": [
         {
           "url": "pembanding/lihat_pembanding",
-          "name": "Lihat Pembanding",
+          "name": "Semua Data",
           "slug": "pembanding-lihat-pembanding"
         },
         {
