@@ -247,3 +247,6 @@ Route::middleware(['auth'])->group(function () {
     // Jenis Dokumen Hak Tanah
     Route::get('/jenis-dokumen-tanah', [Jenis_dokumen_tanah::class, 'index'])->name('index');
 });
+
+Route::get('/load-form', 'FormController@loadForm')->name('load.form');
+

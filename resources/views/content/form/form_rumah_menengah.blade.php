@@ -1425,10 +1425,6 @@
                 return areaItem;
             }
 
-
-
-
-
             // Logika umum untuk tipe lainnya
             if (type === 'pintu-jendela') {
                 nameNama = 'nama_pintu_jendela[]';
