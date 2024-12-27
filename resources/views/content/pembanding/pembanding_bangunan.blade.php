@@ -31,85 +31,76 @@ $configData = Helper::appClasses();
 @section('content')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css" />
+
+<style>
+
+  .form-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+  }
+  #canvasContainer {
+      flex: 2;
+      border: 1px solid #ccc;
+      position: relative;
+  }
+  canvas {
+      width: 100%;
+      height: 500px;
+  }
+  .controls {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+  }
+  .controls button {
+      margin: 5px;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 14px;
+  }
+  .controls button:hover {
+      background-color: #0056b3;
+  }
+  .input-section {
+      flex: 1;
+      max-width: 400px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+  .input-section label {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+  }
+  .input-section input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+  }
+</style>
+
 <h4>Data Pembanding – Tanah dan Bangunan</h4>
   <!-- Default -->
   <div class="row">  
     <!-- Default Icons Wizard -->
     <div class="col-12 mb-4">
-      <div class="bs-stepper wizard-icons wizard-icons-example mt-2">
-        <div class="bs-stepper-header">
-          <div class="step" data-target="#account-details">
-            <button type="button" class="step-trigger">
-              <span class="bs-stepper-icon">
-                <svg viewBox="0 0 54 54">
-                  <use xlink:href="{{asset('assets/svg/icons/form-wizard-account.svg#wizardAccount')}}"></use>
-                </svg>
-              </span>
-              <span class="bs-stepper-label">Step 1</span>
-            </button>
-          </div>
-          <div class="line">
-            <i class="ti ti-chevron-right"></i>
-          </div>
-          <div class="step" data-target="#personal-info">
-            <button type="button" class="step-trigger">
-              <span class="bs-stepper-icon">
-                <svg viewBox="0 0 58 54">
-                  <use xlink:href="{{asset('assets/svg/icons/form-wizard-personal.svg#wizardPersonal')}}"></use>
-                </svg>
-              </span>
-              <span class="bs-stepper-label">Step 2</span>
-            </button>
-          </div>
-          <div class="line">
-            <i class="ti ti-chevron-right"></i>
-          </div>
-          <div class="step" data-target="#address">
-            <button type="button" class="step-trigger">
-              <span class="bs-stepper-icon">
-                <svg viewBox="0 0 54 54">
-                  <use xlink:href="{{asset('assets/svg/icons/form-wizard-address.svg#wizardAddress')}}"></use>
-                </svg>
-              </span>
-              <span class="bs-stepper-label">Step 3</span>
-            </button>
-          </div>
-          <div class="line">
-            <i class="ti ti-chevron-right"></i>
-          </div>
-          <div class="step" data-target="#social-links">
-            <button type="button" class="step-trigger">
-              <span class="bs-stepper-icon">
-                <svg viewBox="0 0 54 54">
-                  <use xlink:href="{{asset('assets/svg/icons/form-wizard-social-link.svg#wizardSocialLink')}}"></use>
-                </svg>
-              </span>
-              <span class="bs-stepper-label">Step 4</span>
-            </button>
-          </div>
-          <div class="line">
-            <i class="ti ti-chevron-right"></i>
-          </div>
-          <div class="step" data-target="#review-submit">
-            <button type="button" class="step-trigger">
-              <span class="bs-stepper-icon">
-                <svg viewBox="0 0 54 54">
-                  <use xlink:href="{{asset('assets/svg/icons/form-wizard-submit.svg#wizardSubmit')}}"></use>
-                </svg>
-              </span>
-              <span class="bs-stepper-label">Review & Submit</span>
-            </button>
-          </div>
-        </div>
-        <div class="bs-stepper-content">
+      <div class="wizard-icons wizard-icons-example mt-2">
+        
+        <div class="content">
           <form method="POST" action="{{ route('add_pembanding_bangunan') }}" enctype="multipart/form-data">
             <!-- Account Details -->
             @csrf
             <div id="account-details" class="content">
-              <div class="content-header mb-3">
-                <h6 class="mb-0">Step 1</h6>
-                <small>Enter Step 1.</small>
-              </div>
               <div class="row g-3">
                 <div>
                   <label class="form-label" for="nama_tanah_n_bangunan">Nama Tanah dan Bangunan</label>
@@ -146,16 +137,16 @@ $configData = Helper::appClasses();
                 </div>   
                 <div>
                   <label class="form-label" for="jenis_properti">Jenis Properti</label>
-                  <input type="text" id="jenis_properti" name="jenis_properti" class="form-control" placeholder="Contoh : Rumah Tinggal, Ruko, dll" />
+                  <input type="text" id="id_jenis_properti" name="jenis_properti" class="form-control" placeholder="Contoh : Rumah Tinggal, Ruko, dll" />
                 </div> 
                 <div>
                   <label class="form-label" for="jenis_bangunan">Jenis Bangunan</label> <br>
-                  <input type="radio" id="jenis_bangunan" name="jenis_bangunan" class="form-check-input" />
+                  <input type="checkbox" id="id_jenis_bangunan" name="jenis_bangunan" onchange="toggleKeteranganField()" >
                   <label class="form-check-label" for="jenis_bangunan">
                     Ruko/Rukan
                   </label>
                 </div> 
-                <div>
+                <div id="keteranganField">
                   <label class="form-label" for="kpt_tabel_analisis_ruko">Keterangan Peruntukan Tanah pada Tabel Analisis Ruko</label>
                   <input type="text" id="kpt_tabel_analisis_ruko" name="kpt_tabel_analisis_ruko" class="form-control" placeholder="Berperuntukan Ruko" />
                 </div> 
@@ -183,22 +174,53 @@ $configData = Helper::appClasses();
                   <label class="form-label" for="foto_tampak_sisi_kanan">Upload Foto Tampak Sisi Kanan</label>
                   <input type="file" id="foto_tampak_sisi_kanan" name="foto_tampak_sisi_kanan" class="form-control" />
                 </div>
-                <div>
-                  <label class="form-label" for="foto_lainnya">Foto Lainnya (tabel)</label>
-                  <input type="file" id="foto_lainnya" name="foto_lainnya" class="form-control" />
-                </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
-                  <label class="form-label" for="Nilai Perolehan">Nilai Perolehan / NJOP / PBB</label>
-                  <table class="table table-borderless">
-                    <tr>
-                      <th>Tahun</th>
-                      <th>Nilai Perolehan / NJOP (Rp)</th>
-                    </tr>
-                    <tr>
-                      <td><input type="number" id="tahun" name="tahun" class="form-control" /></td>
-                      <td><input type="number" id="nilai_perolehan" name="nilai_perolehan" class="form-control" /></td>
-                    </tr>
+                  <label class="form-label" for="Foto Lainnya">Foto Lainnya</label>
+                  <table class="table table-bordered" id="fotoLainnyaTable">
+                      <thead>
+                          <tr>
+                              <th>#</th>
+                              <th>Judul Foto</th>
+                              <th>Upload Foto</th>
+                              <th>Aksi</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td class="row-number-foto">1</td>
+                              <td><input type="text" name="judul_foto[]" class="form-control" /></td>
+                              <td><input type="file" id="foto_lainnya" name="foto_lainnya[]" class="form-control" accept="image/*" /></td>
+                              <td>
+                                  <button type="button" class="btn btn-success btn-sm btn-action" onclick="addFotoRow()">+</button>
+                                  <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeFotoRow(this)">-</button>
+                              </td>
+                          </tr>
+                      </tbody>
                   </table>
+              </div>
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                    <label class="form-label" for="Nilai Perolehan">Nilai Perolehan / NJOP / PBB</label>
+                    <table class="table table-bordered" id="njopTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Tahun</th>
+                                <th>Nilai Perolehan / NJOP (Rp)</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="row-number">1</td>
+                                <td><input type="number" name="tahun[]" class="form-control" /></td>
+                                <td><input type="number" name="nilai_perolehan[]" class="form-control" /></td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-sm btn-action" onclick="addRow()">+</button>
+                                    <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeRow(this)">-</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="narasumber">Narasumber</label>
@@ -230,20 +252,10 @@ $configData = Helper::appClasses();
                     </select>
                 </div>
                 </div>
-                <div class="col-12 d-flex justify-content-between">
-                  <button class="btn btn-label-secondary btn-prev" disabled type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
-                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                  </button>
-                  <button class="btn btn-primary btn-next" type="button"> <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span> <i class="ti ti-arrow-right"></i></button>
-                </div>
               </div>
             </div>
             <!-- Personal Info -->
             <div id="personal-info" class="content">
-              <div class="content-header mb-3">
-                <h6 class="mb-0">Step 2</h6>
-                <small>Enter Step 2.</small>
-              </div>
               <div class="row g-3">
                 <hr>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
@@ -471,25 +483,15 @@ $configData = Helper::appClasses();
                     <option value="Tengah">Tengah</option>
                     <option value="Belakang">Belakang</option>
                   </select>
-                </div>                                   
-                <div class="col-12 d-flex justify-content-between">
-                  <button class="btn btn-label-secondary btn-prev" type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
-                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                  </button>
-                  <button class="btn btn-primary btn-next" type="button"> <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span> <i class="ti ti-arrow-right"></i></button>
-                </div>
+                </div>  
               </div>
             </div>
             <!-- Address -->
             <div id="address" class="content">
-              <div class="content-header mb-3">
-                <h6 class="mb-0">Step 3</h6>
-                <small>Enter Step 3.</small>
-              </div>
+           
               <div class="row g-3">
                 <div>
                   <label class="form-label" for="bentuk_tanah">Bentuk Tanah</label>
-                  <input type="text" id="bentuk_tanah" name="bentuk_tanah" class="form-control" placeholder="Persegi Panjang" />
                   <select name="letak_posisi_aset" id="letak_posisi_aset" class="form-select">
                     <option value="">Pilih...</option>
                     <option value="Beraturan">Beraturan</option>
@@ -543,7 +545,7 @@ $configData = Helper::appClasses();
                     <option value="Lainnya">Lainnya</option>
                   </select>
                 </div>
-                <div>
+                <div id="lainnyaInputContainer" style="display: none;">
                   <label class="form-label" for="kondisi_lingkungan_lainnya">Kondisi Lingkungan Lainnya</label>
                   <input type="text" id="kondisi_lingkungan_lainnya" name="kondisi_lingkungan_lainnya" class="form-control" />
                 </div>
@@ -643,28 +645,7 @@ $configData = Helper::appClasses();
                         </td>
                     </tr>                             
                   </table>
-                </div> 
-                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
-                  <label class="form-label" for="kmpn_dlm_penjualan">Komponen Non-Realty dalam Penjualan</label>
-                  <table class="table table-borderless">
-                    <tr>
-                      <th>
-                        FFE                     
-                      </th>
-                      <th>
-                        Biaya Operasional
-                      </th>
-                    </tr>
-                    <tr>            
-                        <td>
-                          <input type="text" id="ffe" name="ffe" class="form-control" />
-                        </td>
-                        <td>
-                          <input type="text" id="biaya_operasional" name="biaya_operasional" class="form-control" />
-                        </td>
-                    </tr>                             
-                  </table>
-                </div> 
+                </div>                 
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="gambaran_object_thd_lingkungan">Gambaran Objek terhadap Wilayah dan Lingkungan</label>
                   <table class="table table-borderless">
@@ -729,22 +710,11 @@ $configData = Helper::appClasses();
                     <option value="Tidak Bertingkat">Tidak Bertingkat</option>
                   </select>
                 </div>                 
-                                           
-                               
-                <div class="col-12 d-flex justify-content-between">
-                  <button class="btn btn-label-secondary btn-prev" type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
-                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                  </button>
-                  <button class="btn btn-primary btn-next" type="button"> <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span> <i class="ti ti-arrow-right"></i></button>
-                </div>
+              
               </div>
             </div>
             <!-- Social Links -->
-            <div id="social-links" class="content">
-              <div class="content-header mb-3">
-                <h6 class="mb-0">Step 4</h6>
-                <small>Enter Step 4.</small>
-              </div>
+            <div id="social-links" class="content">           
               <div class="row g-3">
 
                 <div>
@@ -849,13 +819,193 @@ $configData = Helper::appClasses();
                 <div>
                   <label class="form-label" for="tipikal_bangunan">Tipikal Bangunan Sesuai Spek BTB MAPPI</label>
                   <select class="form-select" name="tipikal_bangunan" id="tipikal_bangunan" aria-label="Default select example">
-                    <option value="" selected disabled>Pilih...</option>
+                    <option value="" selected>- Select -</option>
                     <option value="Rumah Tinggal Sederhana 1 Lantai">Rumah Tinggal Sederhana 1 Lantai</option>
                     <option value="Rumah Tinggal Menengah 2 Lantai">Rumah Tinggal Menengah 2 Lantai</option>
                     <option value="Rumah Tinggal Mewah 2 Lantai">Rumah Tinggal Mewah 2 Lantai</option>
-                 
+                    <option value="Bangunan Perkebunan (Semi Permanen) 1 Lantai">Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
+                    <option value="Bangunan Gudang 1 Lantai">Bangunan Gudang 1 Lantai</option>
+                    <option value="Bangunan Gedung Bertingkat Rendah 3 Lantai (<5 Lantai)">Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt;5 Lantai)</option>
+                    <option value="Bangunan Gedung Bertingkat Sedang 8 Lantai + 1 Basement (5-8 Lantai)">Bangunan Gedung Bertingkat Sedang 8 Lantai + 1 Basement (5-8 Lantai)</option>
+                    <option value="Bangunan Gedung Bertingkat Tinggi 16 Lantai + 2 Basement (>8 Lantai)">Bangunan Gedung Bertingkat Tinggi 16 Lantai + 2 Basement (&gt;8 Lantai)</option>
+                    <option value="Bangunan Mall 4 Lantai + 1 Basement">Bangunan Mall 4 Lantai + 1 Basement</option>
+                    <option value="Bangunan Hotel 8 Lantai">Bangunan Hotel 8 Lantai</option>
+                    <option value="Bangunan Apartemen 14 Lantai + 2 Semi Basement">Bangunan Apartemen 14 Lantai + 2 Semi Basement</option>
                   </select>
                 </div> 
+
+                {{-- Rumah Tinggal Sederhana 1 Lantai --}}
+                <div>
+                  <div class="mt-2">
+                    <label for="jenis_bangunan" class="form-label">Jenis Bangunan (Umur Ekonomis)</label><br>
+                    <small><i>Pilih jenis bangunan yg sesuai untuk menentukan umur ekonomis bangunan.</i></small>
+                    <select class="form-select" name="jenis_bangunan" id="jenis_bangunan">
+                        <option value="" selected>- Select -</option>
+                        <option value="Bangunan Rumah Tinggal">Bangunan Rumah Tinggal</option>
+                        <option value="Bangunan Rumah Susun">Bangunan Rumah Susun</option>
+                        <option value="Pusat Perbelanjaan">Pusat Perbelanjaan</option>
+                        <option value="Bangunan Kantor">Bangunan Kantor</option>
+                        <option value="Bangunan Gedung Pemerintah">Bangunan Gedung Pemerintah</option>
+                        <option value="Bangunan Hotel/Motel">Bangunan Hotel/Motel</option>
+                        <option value="Bangunan Industri dan Gudang">Bangunan Industri dan Gudang</option>
+                        <option value="Bangunan di Kawasan Perkebunan">Bangunan di Kawasan Perkebunan</option>
+                    </select>
+                  </div>
+                  <div class="mt-2">
+                    <label for="jenis_bangunan_indeks" class="form-label">Jenis Bangunan (Indeks Lantai)</label><br>
+                    <small><i>Pilih jenis bangunan yg sesuai untuk menentukan indeks lantai MAPPI.</i></small>
+                    <select class="form-select" name="jenis_bangunan_indeks" id="jenis_bangunan_indeks">
+                        <option value="" selected>- Select -</option>
+                        <option value="Rumah Tinggal Sederhana">Rumah Tinggal Sederhana</option>
+                        <option value="Rumah Tinggal Menengah">Rumah Tinggal Menengah</option>
+                        <option value="Rumah Tinggal Mewah">Rumah Tinggal Mewah</option>
+                        <option value="Bangunan Gedung Bertingkat Low Rise (<5 Lantai)">Bangunan Gedung Bertingkat Low Rise (&lt;5 Lantai)</option>
+                        <option value="Bangunan Gedung Bertingkat Mid Rise (<9 Lantai)">Bangunan Gedung Bertingkat Mid Rise (&lt;9 Lantai)</option>
+                        <option value="Bangunan Gedung Bertingkat High Rise (>8 Lantai)">Bangunan Gedung Bertingkat High Rise (&gt;8 Lantai)</option>
+                    </select>                    
+                  </div>
+                  <div class="mt-2">
+                    <label for="tahun_dibangun" class="form-label">Tahun Dibangun</label>
+                    <select class="form-select" name="tahun_dibangun" id="tahun_dibangun">
+                        <option value="" selected>- Select -</option>
+                        <?php
+                        $startYear = 1900;
+                        $currentYear = date('Y'); // Mendapatkan tahun saat ini
+                        $endYear = $currentYear + 6; // 6 tahun ke depan
+                    
+                        // Loop untuk menghasilkan opsi tahun
+                        for ($year = $startYear; $year <= $endYear; $year++) {
+                            echo "<option value=\"$year\">$year</option>";
+                        }
+                        ?>
+                    </select>
+                  </div>
+                  <div class="mt-2">
+                    <label for="tahun_renovasi" class="form-label">Tahun Renovasi</label>
+                    <select class="form-select" name="tahun_renovasi" id="tahun_renovasi">
+                        <option value="" selected>- Select -</option>
+                        <?php
+                        $startYear = 1900;
+                        $currentYear = date('Y'); // Mendapatkan tahun saat ini
+                        $endYear = $currentYear + 6; // 6 tahun ke depan
+                    
+                        // Loop untuk menghasilkan opsi tahun
+                        for ($year = $startYear; $year <= $endYear; $year++) {
+                            echo "<option value=\"$year\">$year</option>";
+                        }
+                        ?>
+                    </select>
+                  </div>
+                  <div class="mt-2">
+                    <label for="kondisi_bangunan" class="form-label">Kondisi Bangunan Secara Visual</label>
+                    <select class="form-select" name="kondisi_bangunan" id="kondisi_bangunan">
+                        <option value="" selected>- Select -</option>
+                        <option value="Rusak">Rusak</option>
+                        <option value="Kurang Baik">Kurang Baik</option>
+                        <option value="Cukup">Cukup</option>
+                        <option value="Baik">Baik</option>
+                        <option value="Baik Sekali">Baik Sekali</option>
+                        <option value="Baru">Baru</option>
+                    </select>
+                  </div>
+                  <div class="mt-2">
+
+                    <label>Luas Bangunan Fisik</label>
+                    <div class="form-container">
+                        <!-- Canvas Section -->
+                        <div id="canvasContainer">
+                            <canvas id="drawingCanvas" width="1000" height="500"></canvas>
+                        </div>
+                
+                        <!-- Input Section -->
+                        <div class="input-section">
+                            <label for="line_length">Panjang Garis (meter):</label>
+                            <input type="number" id="line_length" placeholder="Masukkan panjang garis" value="5">
+                
+                            <label for="angle">Derajat:</label>
+                            <input type="number" id="angle" placeholder="Masukkan derajat" value="0">
+                
+                            <label for="polygon_area">Luas (m²):</label>
+                            <input type="text" id="polygon_area" placeholder="Luas otomatis" readonly>
+                
+                            <button id="clearLastLineButton" type="button">Hapus Garis Terakhir</button>
+                        </div>
+                    </div>
+                
+                    <!-- Controls -->
+                    <div class="controls">
+                        <button type="button" onclick="move('up')">Atas</button>
+                        <button type="button" onclick="move('left')">Kiri</button>
+                        <button type="button" onclick="move('right')">Kanan</button>
+                        <button type="button" onclick="move('down')">Bawah</button>
+                    </div>
+
+                  </div>
+                  <div class="mt-2">
+                    <label for="lb_trpotong" class="form-label">Luas Bangunan Terpotong (m2)</label>
+                    <input type="text" class="form-control" name="lb_trpotong" id="lb_trpotong">
+                  </div>
+                  <div class="mt-2">
+                    <label for="luas_dasar_bangunan_jika_ruko" class="form-label">Luas Dasar Bangunan jika Ruko (m2)</label>
+                    <input type="text" class="form-control" name="luas_dasar_bangunan_jika_ruko" id="luas_dasar_bangunan_jika_ruko">
+                  </div>
+                  <div class="mt-2">
+                      <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                        <label class="form-label" for="luas_pintu_jendela">Luas Pintu dan Jendela</label>
+                        <table class="table table-bordered" id="luas_pintu_jendela">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nama Area</th>
+                                    <th>Luas (m2)</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="row-number">1</td>
+                                    <td><input type="text" name="nama_area_pintu_jendela[]" class="form-control" /></td>
+                                    <td><input type="number" name="luas_area_pintu_jendela[]" class="form-control" /></td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-sm btn-action" onclick="addRow()">+</button>
+                                        <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeRow(this)">-</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="mt-2">
+                      <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                        <label class="form-label" for="luas_dinding">Luas Dinding</label>
+                        <table class="table table-bordered" id="luas_dinding">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nama Area</th>
+                                    <th>Luas Kotor(m2)</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="row-number">1</td>
+                                    <td><input type="text" name="nama_area_dinding[]" class="form-control" /></td>
+                                    <td><input type="number" name="luas_area_dinding[]" class="form-control" /></td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-sm btn-action" onclick="addRow()">+</button>
+                                        <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeRow(this)">-</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+                </div>
+
+
+
+
                 <div>
                   <label class="form-label" for="pengguaan_bangunan_saat_ini">Penggunaan Bangunan Saat Ini</label>
                   <input type="text" id="pengguaan_bangunan_saat_ini" name="pengguaan_bangunan_saat_ini" class="form-control" />
@@ -890,593 +1040,111 @@ $configData = Helper::appClasses();
                 <div>
                   <label class="form-label" for="pemberi_tugas">Pemberi Tugas</label><br>
                   <small><i>Formulir tambahan untuk melengkapi Laporan kepada Pemberi Tugas.</i></small>
-                  <select class="form-select" name="pemberi_tugas" id="pemberi_tugas" aria-label="Default select example">
-                    <option value="" selected disabled>Pilih...</option>
-                    <option value="Bank Mandiri" >Bank Mandiri</option>
-                 
+                  <select class="form-select" name="pemberi_tugas" id="pemberi_tugas" aria-label="Default select example" onchange="toggleMandiriForm()">
+                    <option value="" selected>Pilih...</option>
+                    <option value="Bank Mandiri" >Bank Mandiri</option>                 
                   </select>
                 </div> 
+                <div id="formMandiriContainer" style="background-color: rgb(244, 241, 241); display: none;" class="p-3 rounded">
+                  <label class="form-label" for="form_isi_mandiri">Form Isian Bank Mandiri</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>
+                        Jenis Aset                     
+                      </th>
+                      <th>
+                        Peruntukan / Zoning
+                      </th>
+                    </tr>
+                    <tr>            
+                        <td>
+                          <select name="jenis_aset" id="jenis_aset" class="form-select" onchange="toggleJenisAsetInput()">
+                            <option value="">Pilih...</option>
+                            <option value="Campuran">Campuran</option>
+                            <option value="Gedung Apartemen">Gedung Apartemen</option>
+                            <option value="Gedung Kantor">Gedung Kantor</option>
+                            <option value="Gudang">Gudang</option>
+                            <option value="Hotel">Hotel</option>
+                            <option value="Kios">Kios</option>
+                            <option value="Los Kerja/Bengkel/Workshop">Los Kerja/Bengkel/Workshop</option>
+                            <option value="Pabrik">Pabrik</option>
+                            <option value="Penginapan">Penginapan</option>
+                            <option value="Ruang Kantor">Ruang Kantor</option>
+                            <option value="Ruang Usaha">Ruang Usaha</option>
+                            <option value="Ruko/Rukan">Ruko/Rukan</option>
+                            <option value="Rumah Tinggal">Rumah Tinggal</option>
+                            <option value="Rumah Walet">Rumah Walet</option>
+                            <option value="Tanah Kosong">Tanah Kosong</option>
+                            <option value="Tempat Ibadah">Tempat Ibadah</option>
+                            <option value="Toko">Toko</option>
+                            <option value="Unit Apartemen">Unit Apartemen</option>
+                            <option value="Kantor & Pabrik">Kantor & Pabrik</option>
+                            <option value="Lainnya">Lainnya</option>
+                          </select>
+                        </td>
+                        <td>
+                          <select name="peruntukan" id="peruntukan" class="form-select">
+                            <option value="">Pilih...</option>
+                            <option value="Belum Ditentukan">Belum Ditentukan</option>
+                            <option value="Campuran/Peralihan">Campuran/Peralihan</option>
+                            <option value="Industri/Pergudangan">Industri/Pergudangan</option>
+                            <option value="Perdagangan dan Jasa Komersial">Perdagangan dan Jasa Komersial</option>
+                            <option value="Perumahan">Perumahan</option>
+                            <option value="Pertanian">Pertanian</option>
+                            <option value="Sarana Kesehatan">Sarana Kesehatan</option>
+                            <option value="Sarana Pemerintah">Sarana Pemerintah</option>
+                            <option value="Sarana Pendidikan">Sarana Pendidikan</option>
+                            <option value="Fasilitas Umum">Fasilitas Umum</option>
+                            <option value="Pemukiman Perkotaan">Pemukiman Perkotaan</option>
+                          </select>
+                        </td>
+                    </tr>  
+                    <tr id="jenis_aset_lainnya_row" style="display: none;">
+                      <th>
+                        Jenis Aset Campuran / Lainnya                    
+                      </th>
+                    </tr> 
+                    <tr id="jenis_aset_lainnya_input_row" style="display: none;">
+                      <td>
+                        <input type="text" name="jenis_aset" id="jenis_aset" class="form-control">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>
+                        Topografi                    
+                      </th>
+                      <th>
+                        Jabatan (Status) Narasumber
+                      </th>
+                    </tr>
+                    <tr>            
+                        <td>
+                          <select name="topografi" id="topografi" class="form-select">
+                            <option value="">Pilih...</option>
+                            <option value="Datar">Datar</option>
+                            <option value="Miring">Miring</option>
+                            <option value="Berbukit">Berbukit</option>
+                            <option value="Terasering">Terasering</option>
+                          </select>
+                        </td>
+                        <td>
+                            <input type="text" name="jabatan_narasumber" id="jabatan_narasumber" class="form-control">
+                        </td>
+                    </tr>                           
+                  </table>
+                </div>   
                 <div>
                   <label class="form-label" for="status_data_pembanding">Status Data Pembanding</label>
                   <select class="form-select" name="status_data_pembanding" id="status_data_pembanding" aria-label="Default select example">
                     <option value="" selected disabled>Pilih...</option>
                     <option value="Lengkap" >Lengkap</option>
-                    <option value="Tidak Lengkap" >Tidak Lengkap</option>
-                 
+                    <option value="Tidak Lengkap" >Tidak Lengkap</option>                 
                   </select>
-                </div>
-
-              
-                <div class="col-12 d-flex justify-content-between">
-                  <button class="btn btn-label-secondary btn-prev" type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
-                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                  </button>
-                  <button type="button" class="btn btn-primary btn-next" id="btn-review"> <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span> <i class="ti ti-arrow-right"></i></button>
                 </div>
               </div>
             </div>
-            <!-- Review -->
-            <div id="review-submit" class="content">
-  
-              <p class="fw-medium mb-2">Step 1</p>
-              <table class="table table-borderless">
-                  <tr>
-                    <td style="font-weight: 800">Nomor Induk Pembanding</td>
-                    <td>:</td>
-                    <td><span id="review-nip"></span></td>
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Nomor Induk Bangunan</td>
-                    <td>:</td>
-                    <td><span id="review-nib"></span></td>
-                  </tr>   
-                  <tr>
-                    <td style="font-weight: 800">Nama Tanah dan Bangunan</td>
-                    <td>:</td>
-                    <td><span id="review-nama_tanah_n_bangunan"></span></td>
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Foto Tampak Depan</td>
-                    <td>:</td>
-                    <td><img id="review-foto_tampak_depan" src="" height="150" width="150" alt="Foto Tampak Depan" style="max-width: 100%; height: auto;"/></td>
-                  </tr>               
-                  <tr>
-                    <td style="font-weight: 800">Alamat</td>
-                    <td>:</td>
-                    <td><span id="review-alamat"></span></td>
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Koordinat</td>
-                    <td>:</td>
-                    <td><span id="review-lat"></span>,<span id="review-long"></span></td>
-                  </tr>
-                  
-                  
-                  <tr>
-                    <td style="font-weight: 800">Foto Tampak Sisi Kiri</td>
-                    <td>:</td>
-                    <td><img id="review-foto_tampak_sisi_kiri" src="" height="150" width="150" alt="Foto Sisi Kiri" style="max-width: 100%; height: auto;"/></td>
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Foto Tampak Sisi Kanan</td>
-                    <td>:</td>
-                    <td><img id="review-foto_tampak_sisi_kanan" src="" height="150" width="150" alt="Foto Sisi Kanan" style="max-width: 100%; height: auto;"/></td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: 800">Foto Lainnya</td>
-                    <td>:</td>
-                    <td><img id="review-foto_lainnya" src="" height="150" width="150" alt="Foto Lainnya" style="max-width: 100%; height: auto;"/></td>
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Nama Narasumber</td>
-                    <td>:</td>
-                    <td><span id="review-nama_narsum"></span></td>                    
-                  </tr>
-                  <tr>
-                    <td style="font-weight: 800">Telepon</td>
-                    <td>:</td>
-                    <td><span id="review-telepon"></span></td>                  
-                  </tr>
-              </table>
-              <hr>
-              <p class="fw-medium mb-2">Step 2</p>
-              <table class="table table-borderless">
-                <tr>
-                  <td style="font-weight: 800">Jenis Dokumen Hak Tanah</td>
-                  <td>:</td>
-                  <td><span id="review-jenis_dok_hak_tanah"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Peruntukan Kawasan</td>
-                  <td>:</td>
-                  <td><span id="review-perutuntukan_kawasan"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Jenis Data</td>
-                  <td>:</td>
-                  <td><span id="review-jenis_data"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Tanggal Penawaran / Waktu Transaksi</td>
-                  <td>:</td>
-                  <td><span id="review-tgl_penawaran"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Sumber Data</td>
-                  <td>:</td>
-                  <td><span id="review-sumber_data"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Luas Tanah (m2)</td>
-                  <td>:</td>
-                  <td><span id="review-luas_tanah"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Harga Penawaran/Transaksi (Rp)</td>
-                  <td>:</td>
-                  <td><span id="review-harga_penawaran"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Diskon (%)</td>
-                  <td>:</td>
-                  <td><span id="review-diskon"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Harga Sewa per Tahun (Rp/tahun)</td>
-                  <td>:</td>
-                  <td><span id="review-harga_sewa_per_tahun"></span></td>                     
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Penyesuaian Elemen Perbandingan</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Syarat Pembiayaan Batasan dilakukan pelunasan pembayaran (Kelunakan)</td>
-                  <td>:</td>
-                  <td><span id="review-pep_pembiayaan"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Kondisi Penjualan Bebas Ikatan, Waktu Pemasaran yang Wajar atau Ketiadaan Kondisi Pemaksa</td>
-                  <td>:</td>
-                  <td><span id="review-pep_penjualan"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Pengeluaran yang dilakukan segera setelah pembelian Biaya yang harus segera dikeluarkan untuk mengembalikan objek ke fungsi atau peruntukan awal atau seharusnya</td>
-                  <td>:</td>
-                  <td><span id="review-pep_pengeluaran"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Kondisi Pasar Kondisi Ekonomi Saat Terjadi Transaksi atau terbentuknya harga penawaran (Menggunakan Indikator Waktu Penawaran / Transaksi)</td>
-                  <td>:</td>
-                  <td><span id="review-pep_pasar"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Row Jalan (m)</td>
-                  <td>:</td>
-                  <td><span id="review-row_jalan"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Tipe Jalan</td>
-                  <td>:</td>
-                  <td><span id="review-tipe_jalan"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Kapasitas Jalan</td>
-                  <td>:</td>
-                  <td><span id="review-kapasitas_jalan"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Penggunaan Lahan Lingkungan Eksisting</td>
-                  <td>:</td>
-                  <td><span id="review-pengguna_lahan_lingkungan_eksisting"></span></td>  
-                  <td></td>
-                  <td></td> 
-                  <td style="font-weight: 800">Letak / Posisi Obyek</td>
-                  <td>:</td>
-                  <td><span id="review-letak_posisi_obyek"></span></td>                               
-                </tr>                
-                <tr>
-                  <td style="font-weight: 800">Lokasi Aset</td>
-                  <td>:</td>
-                  <td><span id="review-letak_posisi_aset"></span></td>  
-                  <td></td>
-                  <td></td> 
-                  <td style="font-weight: 800">Bentuk Tanah</td>
-                  <td>:</td>
-                  <td><span id="review-bentuk_tanah"></span></td>                               
-                </tr>                
-                <tr>
-                  <td style="font-weight: 800">Lebar Muka Tanah (m)</td>
-                  <td>:</td>
-                  <td><span id="review-lebar_muka_tanah"></span></td>  
-                  <td></td>
-                  <td></td> 
-                  <td style="font-weight: 800">Ketinggian Tanah dari Muka Jalan (m)</td>
-                  <td>:</td>
-                  <td><span id="review-ketinggian_tanah_dr_muka_jln"></span></td>                               
-                </tr>                
-                <tr>
-                  <td style="font-weight: 800">Topografi / Elevasi</td>
-                  <td>:</td>
-                  <td><span id="review-topografi"></span></td>  
-                  <td></td>
-                  <td></td> 
-                  <td style="font-weight: 800">Tingkat Hunian (%)</td>
-                  <td>:</td>
-                  <td><span id="review-tingkat_hunian"></span></td>                               
-                </tr>                
-                <tr>
-                  <td style="font-weight: 800">Kondisi Lingkungan Khusus</td>
-                  <td>:</td>
-                  <td><span id="review-kondisi_lingkungan_khusus"></span></td>  
-                  <td></td>
-                  <td></td> 
-                  <td style="font-weight: 800">Gambaran Objek terhadap Wilayah dan Lingkungan</td>
-                  <td>:</td>
-                  <td><span id="review-gambaran_objek"></span></td>                               
-                </tr>                
-                <tr>
-                  <td style="font-weight: 800">Bentuk Bangunan</td>
-                  <td>:</td>
-                  <td><span id="review-bentuk_bangunan"></span></td>  
-                  <td></td>
-                  <td></td> 
-                  <td style="font-weight: 800">Jumlah Lantai</td>
-                  <td>:</td>
-                  <td><span id="review-jumlah_lantai"></span></td>                               
-                </tr>                
-                <tr>
-                  <td style="font-weight: 800">Konstruksi Bangunan</td>
-                  <td>:</td>
-                  <td><span id="review-kontruksi_bangunan"></span></td>  
-                  <td></td>
-                  <td></td> 
-                  <td style="font-weight: 800">Konstruksi Lantai</td>
-                  <td>:</td>
-                  <td><span id="review-kontruksi_lantai"></span></td>                               
-                </tr>                
-                <tr>
-                  <td style="font-weight: 800">Konstruksi Dinding</td>
-                  <td>:</td>
-                  <td><span id="review-kontruksi_dinding"></span></td>  
-                  <td></td>
-                  <td></td> 
-                  <td style="font-weight: 800">Konstruksi Atap</td>
-                  <td>:</td>
-                  <td><span id="review-kontruksi_atap"></span></td>                               
-                </tr>                
-                <tr>
-                  <td style="font-weight: 800">Konstruksi Pondasi</td>
-                  <td>:</td>
-                  <td><span id="review-kontruksi_pondasi"></span></td>  
-                  <td></td>
-                  <td></td> 
-                  <td style="font-weight: 800">Versi BTB</td>
-                  <td>:</td>
-                  <td><span id="review-versi_btb"></span></td>                               
-                </tr>                
-                <tr>
-                  <td style="font-weight: 800">Tipikal Bangunan Sesuai Spek BTB MAPPI</td>
-                  <td>:</td>
-                  <td><span id="review-tipikal_bangunan"></span></td>  
-                  <td></td>
-                  <td></td> 
-                  <td style="font-weight: 800">Tahun Dibangun</td>
-                  <td>:</td>
-                  <td><span id="review-tahun_dibangun"></span></td>                               
-                </tr>                
-              </table>
-              <hr>
-              <p class="fw-medium mb-2">Step 3</p>
-              <table class="table table-borderless">
-                <tr>
-                  <td style="font-weight: 800">Sumber Informasi Tahun Dibangun</td>
-                  <td>:</td>
-                  <td><span id="review-sumber_info_thn_dibangun"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Tahun Renovasi</td>
-                  <td>:</td>
-                  <td><span id="review-tahun_renovasi"></span></td>                    
-                </tr>               
-                <tr>
-                  <td style="font-weight: 800">Kondisi Bangunan Secara Visual</td>
-                  <td>:</td>
-                  <td><span id="review-kondisi_bangunan_scr_visual"></span></td>                                      
-                </tr>               
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Luas Bangunan Fisik</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Nomor/Nama Lantai (Area)</td>
-                  <td>:</td>
-                  <td><span id="review-lbf_no_or_nama_lantai"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Faktor Pengali Luas</td>
-                  <td>:</td>
-                  <td><span id="review-lbf_faktor_pengali_luas"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Luas Lantai (m2)</td>
-                  <td>:</td>
-                  <td><span id="review-lbf_luas_lantai"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Luas Bangunan Menurut IMB</td>
-                  <td>:</td>
-                  <td><span id="review-luas_bangunan_menurut_imb"></span></td>                    
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Luas Pintu dan Jendela</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Nama Area</td>
-                  <td>:</td>
-                  <td><span id="review-lpj_nama_area"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Luas (m2)</td>
-                  <td>:</td>
-                  <td><span id="review-lpj_luas"></span></td>                    
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Luas Dinding</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Nama Area</td>
-                  <td>:</td>
-                  <td><span id="review-ld_nama_area"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Luas (m2)</td>
-                  <td>:</td>
-                  <td><span id="review-ld_luas"></span></td>                    
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Luas Rangka Atap Datar</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Nama Area</td>
-                  <td>:</td>
-                  <td><span id="review-lrad_nama_area"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Luas (m2)</td>
-                  <td>:</td>
-                  <td><span id="review-lrad_luas"></span></td>                    
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Luas Atap Datar</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Nama Area</td>
-                  <td>:</td>
-                  <td><span id="review-lad_nama_area"></span></td> 
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Luas (m2)</td>
-                  <td>:</td>
-                  <td><span id="review-lad_luas"></span></td>                   
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Tipe Pondasi Eksisting</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Batu Kali</td>
-                  <td>:</td>
-                  <td><span id="review-tpe_batu_kali"></span></td> 
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Bobot Pondasi Batu Kali (%)</td>
-                  <td>:</td>
-                  <td><span id="review-tpe_bobot_pondasi"></span></td>                   
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Tambah Tipe Pondasi Eksisting</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Tipe Material</td>
-                  <td>:</td>
-                  <td><span id="review-ttpe_tipe_material"></span></td> 
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Bobot(%)</td>
-                  <td>:</td>
-                  <td><span id="review-ttpe_bobot"></span></td>                   
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Tipe Struktur Eksisting</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Beton Bertulang</td>
-                  <td>:</td>
-                  <td><span id="review-tse_beton_bertulang"></span></td> 
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Bobot Struktur Beton Bertulang(%)</td>
-                  <td>:</td>
-                  <td><span id="review-tse_bobot_struktur_beton_bertulng"></span></td>                   
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Tambah Tipe Struktur Eksisting</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Tipe Material</td>
-                  <td>:</td>
-                  <td><span id="review-ttse_tipe_material"></span></td> 
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Bobot(%)</td>
-                  <td>:</td>
-                  <td><span id="review-ttse_bobot"></span></td>                   
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Tipe Rangka Atap Eksisting</td>
-                  <td>:</td>
-                  <td><span id="review-tipe_rangka_atap_eksisting"></span></td>                 
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Tambah Tipe Rangka Atap Existing</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Tipe Material</td>
-                  <td>:</td>
-                  <td><span id="review-ttrae_tipe_material"></span></td> 
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Bobot(%)</td>
-                  <td>:</td>
-                  <td><span id="review-ttrae_bobot"></span></td>                   
-                </tr>
-              </table>
-              <hr>
-              <p class="fw-medium mb-2">Step 4</p>
-              <table class="table table-borderless">
-                <tr>
-                  <td style="font-weight: 800">Tipe Penutup Atap Eksisting</td>
-                  <td>:</td>
-                  <td><span id="review-tipe_penutup_atap_eksisting"></span></td>    
-                  <td></td>
-                  <td></td>  
-                  <td style="font-weight: 800">Bobot Penutup Atap(%)</td>
-                  <td>:</td>
-                  <td><span id="review-bobot_penutup_atap"></span></td>               
-                </tr>
-                <tr>                                   
-                  <td style="font-weight: 800">Tipe Plafon Eksisting</td>
-                  <td>:</td>
-                  <td><span id="review-tipe_plafon_eksisting"></span></td>             
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Tambah Plafon Eksisting</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Tipe Material</td>
-                  <td>:</td>
-                  <td><span id="review-tampe_tipe_material"></span></td>    
-                  <td></td>
-                  <td></td>  
-                  <td style="font-weight: 800">Bobot(%)</td>
-                  <td>:</td>
-                  <td><span id="review-tampe_bobot"></span></td>               
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Tipe Dinding Existing</td>
-                  <td>:</td>
-                  <td><span id="review-tipe_dinding_eksisting"></span></td>    
-                  <td></td>
-                  <td></td>  
-                  <td style="font-weight: 800">Bobot Dinding(%)</td>
-                  <td>:</td>
-                  <td><span id="review-tde_bobot"></span></td>               
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Tambah Tipe Dinding Existing</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Tipe Material</td>
-                  <td>:</td>
-                  <td><span id="review-ttde_tipe_material"></span></td>    
-                  <td></td>
-                  <td></td>  
-                  <td style="font-weight: 800">Bobot(%)</td>
-                  <td>:</td>
-                  <td><span id="review-ttde_bobot"></span></td>               
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Tipe Pelapis Dinding Eksisting</td>
-                  <td>:</td>
-                  <td><span id="review-tipe_pelapis_dinding_eksisting"></span></td>    
-                  <td></td>
-                  <td></td>  
-                  <td style="font-weight: 800">Bobot Pelapis Dinding Cat (Diplester dan Diaci)</td>
-                  <td>:</td>
-                  <td><span id="review-ttde_bobot_pdc"></span></td>               
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Tambah Tipe Pelapis Dinding Existing</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Tipe Material</td>
-                  <td>:</td>
-                  <td><span id="review-ttpde_tipe_material"></span></td>    
-                  <td></td>
-                  <td></td>  
-                  <td style="font-weight: 800">Bobot(%)</td>
-                  <td>:</td>
-                  <td><span id="review-ttpde_bobot"></span></td>               
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Tipe Pintu & Jendela Eksisting</td>
-                  <td>:</td>
-                  <td><span id="review-tipe_pintu_n_jendela_eksisting"></span></td>                
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Tambah Tipe Pintu & Jendela Existing</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Tipe Material</td>
-                  <td>:</td>
-                  <td><span id="review-ttpdje_tipe_material"></span></td>    
-                  <td></td>
-                  <td></td>  
-                  <td style="font-weight: 800">Bobot(%)</td>
-                  <td>:</td>
-                  <td><span id="review-ttpdje_bobot"></span></td>               
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Tipe Lantai Eksisting</td>
-                  <td>:</td>
-                  <td><span id="review-tipe_lantai_eksisting"></span></td>    
-                  <td></td>
-                  <td></td>  
-                  <td style="font-weight: 800">Bobot Lantai(%)</td>
-                  <td>:</td>
-                  <td><span id="review-tle_bobot_lantai"></span></td>               
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Tambah Tipe Lantai Existing</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Tipe Material</td>
-                  <td>:</td>
-                  <td><span id="review-ttle_tipe_material"></span></td>    
-                  <td></td>
-                  <td></td>  
-                  <td style="font-weight: 800">Bobot(%)</td>
-                  <td>:</td>
-                  <td><span id="review-ttle_bobot"></span></td>               
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Perlengkapan Bangunan</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Perlengkapan Bangunan</td>
-                  <td>:</td>
-                  <td><span id="review-perlengkapan_bangunan"></span></td>    
-                  <td></td>
-                  <td></td>  
-                  <td style="font-weight: 800">Penggunaan Bangunan</td>
-                  <td>:</td>
-                  <td><span id="review-penggunaan_bangunan"></span></td>               
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Kondisi Bangunan</td>
-                  <td>:</td>
-                  <td><span id="review-kondisi_bangunan"></span></td>    
-                  <td></td>
-                  <td></td>  
-                  <td style="font-weight: 800">Status Data Pembanding</td>
-                  <td>:</td>
-                  <td><span id="review-status_data_pembanding"></span></td>               
-                </tr>
-              </table>
-              <div class="col-12 d-flex justify-content-between">
-                <button class="btn btn-label-secondary btn-prev" type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
-                  <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                </button>
-                <button class="btn btn-success btn-submit" type="submit">Submit</button>
-              </div>
+            <div>
+              <button class="btn btn-success btn-submit mt-2" type="submit">Submit</button>
             </div>
           </form>
         </div>
@@ -1485,152 +1153,7 @@ $configData = Helper::appClasses();
     <!-- /Default Icons Wizard -->
   </div>
   
-<script>
-  document.querySelector('#btn-review').addEventListener('click', function() {
-    // Step 1
-    document.getElementById('review-nip').innerHTML = document.getElementById('nip').value    
-    document.getElementById('review-nib').innerHTML = document.getElementById('nib').value    
-    document.getElementById('review-nama_tanah_n_bangunan').innerHTML = document.getElementById('nama_tanah_n_bangunan').value    
-    document.getElementById('review-alamat').innerHTML = document.getElementById('alamat').value    
-    document.getElementById('review-lat').innerHTML = document.getElementById('lat').value    
-    document.getElementById('review-long').innerHTML = document.getElementById('long').value    
-    const foto_tampak_depan = document.getElementById('foto_tampak_depan');
-        if (foto_tampak_depan.files && foto_tampak_depan.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            document.getElementById('review-foto_tampak_depan').src = e.target.result;
-          }
-          reader.readAsDataURL(foto_tampak_depan.files[0]);
-        } else {
-          document.getElementById('review-foto_tampak_depan').src = '';
-        }
-
-    const foto_tampak_sisi_kiri = document.getElementById('foto_tampak_sisi_kiri');
-        if (foto_tampak_sisi_kiri.files && foto_tampak_sisi_kiri.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            document.getElementById('review-foto_tampak_sisi_kiri').src = e.target.result;
-          }
-          reader.readAsDataURL(foto_tampak_sisi_kiri.files[0]);
-        } else {
-          document.getElementById('review-foto_tampak_sisi_kiri').src = '';
-        }
-    const foto_tampak_sisi_kanan = document.getElementById('foto_tampak_sisi_kanan');
-        if (foto_tampak_sisi_kanan.files && foto_tampak_sisi_kanan.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            document.getElementById('review-foto_tampak_sisi_kanan').src = e.target.result;
-          }
-          reader.readAsDataURL(foto_tampak_sisi_kanan.files[0]);
-        } else {
-          document.getElementById('review-foto_tampak_sisi_kanan').src = '';
-        }
-    const foto_lainnya = document.getElementById('foto_lainnya');
-        if (foto_lainnya.files && foto_lainnya.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            document.getElementById('review-foto_lainnya').src = e.target.result;
-          }
-          reader.readAsDataURL(foto_lainnya.files[0]);
-        } else {
-          document.getElementById('review-foto_lainnya').src = '';
-        }
-    document.getElementById('review-nama_narsum').innerHTML = document.getElementById('nama_narsum').value
-    document.getElementById('review-telepon').innerHTML = document.getElementById('telepon').value
-    document.getElementById('review-jenis_dok_hak_tanah').innerHTML = document.getElementById('jenis_dok_hak_tanah').value
-    document.getElementById('review-perutuntukan_kawasan').innerHTML = document.getElementById('perutuntukan_kawasan').value
-    document.getElementById('review-jenis_data').innerHTML = document.getElementById('jenis_data').value
-    document.getElementById('review-tgl_penawaran').innerHTML = document.getElementById('tgl_penawaran').value
-    document.getElementById('review-sumber_data').innerHTML = document.getElementById('sumber_data').value
-    document.getElementById('review-luas_tanah').innerHTML = document.getElementById('luas_tanah').value
-    document.getElementById('review-harga_penawaran').innerHTML = document.getElementById('harga_penawaran').value
-    document.getElementById('review-harga_sewa_per_tahun').innerHTML = document.getElementById('harga_sewa_per_tahun').value
-    document.getElementById('review-diskon').innerHTML = document.getElementById('diskon').value
-    document.getElementById('review-pep_pembiayaan').innerHTML = document.getElementById('pep_pembiayaan').value
-    document.getElementById('review-pep_penjualan').innerHTML = document.getElementById('pep_penjualan').value
-    document.getElementById('review-pep_pengeluaran').innerHTML = document.getElementById('pep_pengeluaran').value
-    document.getElementById('review-letak_posisi_aset').innerHTML = document.getElementById('letak_posisi_aset').value
-    document.getElementById('review-pep_pasar').innerHTML = document.getElementById('pep_pasar').value
-    document.getElementById('review-bentuk_bangunan').innerHTML = document.getElementById('bentuk_bangunan').value
-    document.getElementById('review-row_jalan').innerHTML = document.getElementById('row_jalan').value
-    document.getElementById('review-tipe_jalan').innerHTML = document.getElementById('tipe_jalan').value
-    document.getElementById('review-kapasitas_jalan').innerHTML = document.getElementById('kapasitas_jalan').value
-    document.getElementById('review-pengguna_lahan_lingkungan_eksisting').innerHTML = document.getElementById('pengguna_lahan_lingkungan_eksisting').value
-    document.getElementById('review-letak_posisi_obyek').innerHTML = document.getElementById('letak_posisi_obyek').value
-    document.getElementById('review-letak_posisi_aset').innerHTML = document.getElementById('letak_posisi_aset').value
-    document.getElementById('review-bentuk_tanah').innerHTML = document.getElementById('bentuk_tanah').value
-    document.getElementById('review-lebar_muka_tanah').innerHTML = document.getElementById('lebar_muka_tanah').value
-    // Step 2
-    document.getElementById('review-ketinggian_tanah_dr_muka_jln').innerHTML = document.getElementById('ketinggian_tanah_dr_muka_jln').value
-    document.getElementById('review-topografi').innerHTML = document.getElementById('topografi').value
-    document.getElementById('review-tingkat_hunian').innerHTML = document.getElementById('tingkat_hunian').value 
-    document.getElementById('review-kondisi_lingkungan_khusus').innerHTML = document.getElementById('kondisi_lingkungan_khusus').value
-    document.getElementById('review-gambaran_objek').innerHTML = document.getElementById('gambaran_objek').value
-    document.getElementById('review-bentuk_bangunan').innerHTML = document.getElementById('bentuk_bangunan').value
-    document.getElementById('review-jumlah_lantai').innerHTML = document.getElementById('jumlah_lantai').value
-    document.getElementById('review-kontruksi_bangunan').innerHTML = document.getElementById('kontruksi_bangunan').value
-    document.getElementById('review-kontruksi_lantai').innerHTML = document.getElementById('kontruksi_lantai').value
-    document.getElementById('review-kontruksi_dinding').innerHTML = document.getElementById('kontruksi_dinding').value
-    document.getElementById('review-kontruksi_atap').innerHTML = document.getElementById('kontruksi_atap').value
-    document.getElementById('review-kontruksi_pondasi').innerHTML = document.getElementById('kontruksi_pondasi').value
-    document.getElementById('review-versi_btb').innerHTML = document.getElementById('versi_btb').value
-    document.getElementById('review-tipikal_bangunan').innerHTML = document.getElementById('tipikal_bangunan').value
-    document.getElementById('review-tahun_dibangun').innerHTML = document.getElementById('tahun_dibangun').value
-    document.getElementById('review-sumber_info_thn_dibangun').innerHTML = document.getElementById('sumber_info_thn_dibangun').value
-    document.getElementById('review-tahun_renovasi').innerHTML = document.getElementById('tahun_renovasi').value
-    document.getElementById('review-kondisi_bangunan_scr_visual').innerHTML = document.getElementById('kondisi_bangunan_scr_visual').value
-    // Step 3
-    document.getElementById('review-lbf_no_or_nama_lantai').innerHTML = document.getElementById('lbf_no_or_nama_lantai').value
-    document.getElementById('review-lbf_faktor_pengali_luas').innerHTML = document.getElementById('lbf_faktor_pengali_luas').value
-    document.getElementById('review-lbf_luas_lantai').innerHTML = document.getElementById('lbf_luas_lantai').value
-    document.getElementById('review-luas_bangunan_menurut_imb').innerHTML = document.getElementById('luas_bangunan_menurut_imb').value
-    document.getElementById('review-lpj_nama_area').innerHTML = document.getElementById('lpj_nama_area').value
-    document.getElementById('review-lpj_luas').innerHTML = document.getElementById('lpj_luas').value
-    document.getElementById('review-ld_nama_area').innerHTML = document.getElementById('ld_nama_area').value
-    document.getElementById('review-ld_luas').innerHTML = document.getElementById('ld_luas').value
-    document.getElementById('review-lrad_nama_area').innerHTML = document.getElementById('lrad_nama_area').value
-    document.getElementById('review-lrad_luas').innerHTML = document.getElementById('lrad_luas').value
-    document.getElementById('review-lad_nama_area').innerHTML = document.getElementById('lad_nama_area').value
-    document.getElementById('review-lad_luas').innerHTML = document.getElementById('lad_luas').value
-    document.getElementById('review-tpe_batu_kali').innerHTML = document.getElementById('tpe_batu_kali').value
-    // Step 4
-    document.getElementById('review-tpe_bobot_pondasi').innerHTML = document.getElementById('tpe_bobot_pondasi').value
-    document.getElementById('review-ttpe_tipe_material').innerHTML = document.getElementById('ttpe_tipe_material').value
-    document.getElementById('review-ttpe_bobot').innerHTML = document.getElementById('ttpe_bobot').value
-    document.getElementById('review-tse_beton_bertulang').innerHTML = document.getElementById('tse_beton_bertulang').value
-    document.getElementById('review-tse_bobot_struktur_beton_bertulng').innerHTML = document.getElementById('tse_bobot_struktur_beton_bertulng').value
-    document.getElementById('review-ttse_tipe_material').innerHTML = document.getElementById('ttse_tipe_material').value
-    document.getElementById('review-ttse_bobot').innerHTML = document.getElementById('ttse_bobot').value
-    document.getElementById('review-tipe_rangka_atap_eksisting').innerHTML = document.getElementById('tipe_rangka_atap_eksisting').value
-  
-    document.getElementById('review-ttrae_tipe_material').innerHTML = document.getElementById('ttrae_tipe_material').value
-    document.getElementById('review-ttrae_bobot').innerHTML = document.getElementById('ttrae_bobot').value
-    document.getElementById('review-tipe_penutup_atap_eksisting').innerHTML = document.getElementById('tipe_penutup_atap_eksisting').value
-    document.getElementById('review-bobot_penutup_atap').innerHTML = document.getElementById('bobot_penutup_atap').value
-    document.getElementById('review-tipe_plafon_eksisting').innerHTML = document.getElementById('tipe_plafon_eksisting').value
-    document.getElementById('review-tampe_bobot').innerHTML = document.getElementById('tampe_bobot').value
-    document.getElementById('review-tampe_tipe_material').innerHTML = document.getElementById('tampe_tipe_material').value
-    document.getElementById('review-tipe_dinding_eksisting').innerHTML = document.getElementById('tipe_dinding_eksisting').value
-    document.getElementById('review-tde_bobot').innerHTML = document.getElementById('tde_bobot').value
-    document.getElementById('review-ttde_bobot').innerHTML = document.getElementById('ttde_bobot').value
-    document.getElementById('review-tipe_pelapis_dinding_eksisting').innerHTML = document.getElementById('tipe_pelapis_dinding_eksisting').value
-    document.getElementById('review-ttde_bobot_pdc').innerHTML = document.getElementById('ttde_bobot_pdc').value
-    document.getElementById('review-ttde_tipe_material').innerHTML = document.getElementById('ttde_tipe_material').value
-    document.getElementById('review-ttpde_tipe_material').innerHTML = document.getElementById('ttpde_tipe_material').value
-    document.getElementById('review-ttpde_bobot').innerHTML = document.getElementById('ttpde_bobot').value
-    document.getElementById('review-ttpdje_tipe_material').innerHTML = document.getElementById('ttpdje_tipe_material').value
-    document.getElementById('review-ttpdje_bobot').innerHTML = document.getElementById('ttpdje_bobot').value
-    document.getElementById('review-tipe_lantai_eksisting').innerHTML = document.getElementById('tipe_lantai_eksisting').value
-    document.getElementById('review-tle_bobot_lantai').innerHTML = document.getElementById('tle_bobot_lantai').value
-    document.getElementById('review-ttle_tipe_material').innerHTML = document.getElementById('ttle_tipe_material').value
-    document.getElementById('review-ttle_bobot').innerHTML = document.getElementById('ttle_bobot').value
-    document.getElementById('review-tipe_pintu_n_jendela_eksisting').innerHTML = document.getElementById('tipe_pintu_n_jendela_eksisting').value
-    document.getElementById('review-perlengkapan_bangunan').innerHTML = document.getElementById('perlengkapan_bangunan').value
-    document.getElementById('review-penggunaan_bangunan').innerHTML = document.getElementById('penggunaan_bangunan').value
-    document.getElementById('review-kondisi_bangunan').innerHTML = document.getElementById('kondisi_bangunan').value
-    document.getElementById('review-status_data_pembanding').innerHTML = document.getElementById('status_data_pembanding').value      
-  });
-</script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="crossorigin=""></script>
 <script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
 <script>
@@ -1678,5 +1201,331 @@ $configData = Helper::appClasses();
   map.invalidateSize();
 });
 </script>
+<script>
+  keteranganField.style.display = 'none';
+  function toggleKeteranganField() {
+      const checkbox = document.getElementById('id_jenis_bangunan');
+      const keteranganField = document.getElementById('keteranganField');
+      
+      if (checkbox.checked) {
+          keteranganField.style.display = 'block'; // Tampilkan field
+      } else {
+          keteranganField.style.display = 'none'; // Sembunyikan field
+      }
+  }
+</script>
+<script>
+  function addRow() {
+      const table = document.getElementById('njopTable').getElementsByTagName('tbody')[0];
+      const newRow = table.insertRow();
+      const rowCount = table.rows.length;
+
+      newRow.innerHTML = `
+          <td class="row-number">${rowCount}</td>
+          <td><input type="number" name="tahun[]" class="form-control" /></td>
+          <td><input type="number" name="nilai_perolehan[]" class="form-control" /></td>
+          <td>
+              <button type="button" class="btn btn-success btn-sm btn-action" onclick="addRow()">+</button>
+              <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeRow(this)">-</button>
+          </td>
+      `;
+      updateRowNumbers();
+  }
+
+  function removeRow(button) {
+      const table = document.getElementById('njopTable').getElementsByTagName('tbody')[0];
+      if (table.rows.length > 1) {
+          const row = button.parentNode.parentNode;
+          table.deleteRow(row.rowIndex - 1); // Adjust for header row
+          updateRowNumbers();
+      }
+  }
+
+  function updateRowNumbers() {
+      const rows = document.querySelectorAll('#njopTable .row-number');
+      rows.forEach((cell, index) => {
+          cell.textContent = index + 1;
+      });
+  }
+</script>
+
+<script>
+  // Menambahkan baris baru ke tabel Foto Lainnya
+  function addFotoRow() {
+      const table = document.getElementById('fotoLainnyaTable').getElementsByTagName('tbody')[0];
+      const newRow = table.insertRow();
+      const rowCount = table.rows.length;
+
+      newRow.innerHTML = `
+          <td class="row-number-foto">${rowCount}</td>
+          <td><input type="text" name="judul_foto[]" class="form-control" /></td>
+          <td><input type="file" id="foto_lainnya" name="foto_lainnya[]" class="form-control" accept="image/*" /></td>
+          <td>
+              <button type="button" class="btn btn-success btn-sm btn-action" onclick="addFotoRow()">+</button>
+              <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeFotoRow(this)">-</button>
+          </td>
+      `;
+      updateFotoRowNumbers();
+  }
+
+  // Menghapus baris dari tabel Foto Lainnya
+  function removeFotoRow(button) {
+      const table = document.getElementById('fotoLainnyaTable').getElementsByTagName('tbody')[0];
+      if (table.rows.length > 1) {
+          const row = button.parentNode.parentNode;
+          table.deleteRow(row.rowIndex - 1); // Menyesuaikan indeks untuk header
+          updateFotoRowNumbers();
+      }
+  }
+
+  // Memperbarui nomor urut di tabel Foto Lainnya
+  function updateFotoRowNumbers() {
+      const rows = document.querySelectorAll('#fotoLainnyaTable .row-number-foto');
+      rows.forEach((cell, index) => {
+          cell.textContent = index + 1;
+      });
+  }
+</script>
+<script>
+  $(document).ready(function () {
+      // Inisialisasi Select2
+      $('#kondisi_lingkungan_khusus').select2();
+
+      // Event listener untuk memantau perubahan pilihan
+      $('#kondisi_lingkungan_khusus').on('change', function () {
+          const selectedValues = $(this).val(); // Mendapatkan nilai yang dipilih sebagai array
+          if (selectedValues && selectedValues.includes('Lainnya')) {
+              $('#lainnyaInputContainer').show(); // Tampilkan input "Keterangan Tambahan Lainnya"
+          } else {
+              $('#lainnyaInputContainer').hide(); // Sembunyikan input
+          }
+      });
+  });
+</script>
+<script>
+  function toggleJenisAsetInput() {
+      const jenisAsetSelect = document.getElementById('jenis_aset');
+      const jenisAsetLainnyaRow = document.getElementById('jenis_aset_lainnya_row');
+      const jenisAsetLainnyaInputRow = document.getElementById('jenis_aset_lainnya_input_row');
+
+      if (jenisAsetSelect.value === 'Lainnya') {
+          jenisAsetLainnyaRow.style.display = 'table-row';
+          jenisAsetLainnyaInputRow.style.display = 'table-row';
+      } else {
+          jenisAsetLainnyaRow.style.display = 'none';
+          jenisAsetLainnyaInputRow.style.display = 'none';
+      }
+  }
+</script>
+<script>
+  // Fungsi untuk menampilkan atau menyembunyikan Form Isian Bank Mandiri
+  function toggleMandiriForm() {
+      const pemberiTugasSelect = document.getElementById('pemberi_tugas');
+      const formMandiriContainer = document.getElementById('formMandiriContainer');
+
+      if (pemberiTugasSelect.value === "Bank Mandiri") {
+          formMandiriContainer.style.display = 'block'; // Tampilkan Form Isian Bank Mandiri
+      } else {
+          formMandiriContainer.style.display = 'none'; // Sembunyikan Form Isian Bank Mandiri
+      }
+  }
+
+</script>
+
+<script>
+  const canvas = document.getElementById('drawingCanvas');
+  const ctx = canvas.getContext('2d');
+
+  let currentX = canvas.width / 2;
+  let currentY = canvas.height / 2;
+  const scale = 20; // 1 meter = 20px
+  const points = []; // Store points for polygon
+  const lines = []; // Store lines for undo functionality
+
+  // Fungsi untuk menggambar titik awal
+  function drawPoint(x, y) {
+      ctx.beginPath();
+      ctx.arc(x, y, 3, 0, 2 * Math.PI);
+      ctx.fillStyle = 'red';
+      ctx.fill();
+  }
+
+  // Gambar titik awal
+  drawPoint(currentX, currentY);
+
+  // Fungsi untuk menggambar garis
+  function drawLine(x1, y1, x2, y2, length) {
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.strokeStyle = 'blue';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Menambahkan panjang garis di atasnya
+      const midX = (x1 + x2) / 2;
+      const midY = (y1 + y2) / 2;
+      ctx.fillStyle = 'black';
+      ctx.font = '12px Arial';
+      ctx.fillText(`${length.toFixed(2)} m`, midX, midY - 5);
+  }
+
+  // Fungsi untuk menghitung luas poligon
+  function calculatePolygonArea(points) {
+      let area = 0;
+      const n = points.length;
+      for (let i = 0; i < n; i++) {
+          const x1 = points[i].x;
+          const y1 = points[i].y;
+          const x2 = points[(i + 1) % n].x;
+          const y2 = points[(i + 1) % n].y;
+          area += (x1 * y2 - x2 * y1);
+      }
+      return Math.abs(area / 2) / (scale * scale); // Convert from px² to m²
+  }
+
+  // Fungsi untuk memindahkan garis ke arah tertentu
+  function move(direction) {
+      const length = parseFloat(document.getElementById('line_length').value) || 0;
+      const angle = parseFloat(document.getElementById('angle').value) || 0;
+      const radians = (angle * Math.PI) / 180; // Konversi derajat ke radian
+      const pixelLength = length * scale; // Konversi meter ke pixel
+
+      let newX = currentX;
+      let newY = currentY;
+
+      if (direction === 'up') {
+          newX += pixelLength * Math.sin(radians);
+          newY -= pixelLength * Math.cos(radians);
+      } else if (direction === 'down') {
+          newX -= pixelLength * Math.sin(radians);
+          newY += pixelLength * Math.cos(radians);
+      } else if (direction === 'left') {
+          newX -= pixelLength * Math.cos(radians);
+          newY -= pixelLength * Math.sin(radians);
+      } else if (direction === 'right') {
+          newX += pixelLength * Math.cos(radians);
+          newY += pixelLength * Math.sin(radians);
+      }
+
+      drawLine(currentX, currentY, newX, newY, length);
+      lines.push({ x1: currentX, y1: currentY, x2: newX, y2: newY });
+      points.push({ x: newX, y: newY });
+      currentX = newX;
+      currentY = newY;
+
+      // Gambar titik di posisi baru
+      drawPoint(currentX, currentY);
+
+      // Hitung luas jika poligon memiliki lebih dari 2 titik
+      if (points.length > 2) {
+          const area = calculatePolygonArea(points);
+          document.getElementById('polygon_area').value = area.toFixed(2);
+      }
+  }
+
+  // Fungsi untuk menghapus garis terakhir
+  document.getElementById('clearLastLineButton').addEventListener('click', () => {
+      if (lines.length > 0) {
+          lines.pop();
+          points.pop();
+          if (points.length > 0) {
+              currentX = points[points.length - 1].x;
+              currentY = points[points.length - 1].y;
+          } else {
+              currentX = canvas.width / 2;
+              currentY = canvas.height / 2;
+          }
+          redrawCanvas();
+      }
+  });
+
+  // Fungsi untuk menggambar ulang canvas
+  function redrawCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawPoint(canvas.width / 2, canvas.height / 2);
+
+      for (const line of lines) {
+          drawLine(line.x1, line.y1, line.x2, line.y2, Math.hypot(line.x2 - line.x1, line.y2 - line.y1) / scale);
+      }
+
+      // Hitung luas jika poligon memiliki lebih dari 2 titik
+      if (points.length > 2) {
+          const area = calculatePolygonArea(points);
+          document.getElementById('polygon_area').value = area.toFixed(2);
+      } else {
+          document.getElementById('polygon_area').value = '';
+      }
+  }
+</script>
+<script>
+  function addRow() {
+      const table = document.getElementById('luas_pintu_jendela').getElementsByTagName('tbody')[0];
+      const newRow = table.insertRow();
+      const rowCount = table.rows.length;
+
+      newRow.innerHTML = `
+          <td class="row-number">${rowCount}</td>
+          <td><input type="number" name="tahun[]" class="form-control" /></td>
+          <td><input type="number" name="nilai_perolehan[]" class="form-control" /></td>
+          <td>
+              <button type="button" class="btn btn-success btn-sm btn-action" onclick="addRow()">+</button>
+              <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeRow(this)">-</button>
+          </td>
+      `;
+      updateRowNumbers();
+  }
+
+  function removeRow(button) {
+      const table = document.getElementById('luas_pintu_jendela').getElementsByTagName('tbody')[0];
+      if (table.rows.length > 1) {
+          const row = button.parentNode.parentNode;
+          table.deleteRow(row.rowIndex - 1); // Adjust for header row
+          updateRowNumbers();
+      }
+  }
+
+  function updateRowNumbers() {
+      const rows = document.querySelectorAll('#luas_pintu_jendela .row-number');
+      rows.forEach((cell, index) => {
+          cell.textContent = index + 1;
+      });
+  }
+</script>
+<script>
+  function addRow() {
+      const table = document.getElementById('luas_dinding').getElementsByTagName('tbody')[0];
+      const newRow = table.insertRow();
+      const rowCount = table.rows.length;
+
+      newRow.innerHTML = `
+          <td class="row-number">${rowCount}</td>
+          <td><input type="number" name="tahun[]" class="form-control" /></td>
+          <td><input type="number" name="nilai_perolehan[]" class="form-control" /></td>
+          <td>
+              <button type="button" class="btn btn-success btn-sm btn-action" onclick="addRow()">+</button>
+              <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeRow(this)">-</button>
+          </td>
+      `;
+      updateRowNumbers();
+  }
+
+  function removeRow(button) {
+      const table = document.getElementById('luas_dinding').getElementsByTagName('tbody')[0];
+      if (table.rows.length > 1) {
+          const row = button.parentNode.parentNode;
+          table.deleteRow(row.rowIndex - 1); // Adjust for header row
+          updateRowNumbers();
+      }
+  }
+
+  function updateRowNumbers() {
+      const rows = document.querySelectorAll('#luas_dinding .row-number');
+      rows.forEach((cell, index) => {
+          cell.textContent = index + 1;
+      });
+  }
+</script>
+
 
 @endsection

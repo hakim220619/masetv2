@@ -36,80 +36,13 @@ $configData = Helper::appClasses();
   <div class="row">  
     <!-- Default Icons Wizard -->
     <div class="col-12 mb-4">
-      <div class="bs-stepper wizard-icons wizard-icons-example mt-2">
-        <div class="bs-stepper-header">
-          <div class="step" data-target="#account-details">
-            <button type="button" class="step-trigger">
-              <span class="bs-stepper-icon">
-                <svg viewBox="0 0 54 54">
-                  <use xlink:href="{{asset('assets/svg/icons/form-wizard-account.svg#wizardAccount')}}"></use>
-                </svg>
-              </span>
-              <span class="bs-stepper-label">Step 1</span>
-            </button>
-          </div>
-          <div class="line">
-            <i class="ti ti-chevron-right"></i>
-          </div>
-          <div class="step" data-target="#personal-info">
-            <button type="button" class="step-trigger">
-              <span class="bs-stepper-icon">
-                <svg viewBox="0 0 58 54">
-                  <use xlink:href="{{asset('assets/svg/icons/form-wizard-personal.svg#wizardPersonal')}}"></use>
-                </svg>
-              </span>
-              <span class="bs-stepper-label">Step 2</span>
-            </button>
-          </div>
-          <div class="line">
-            <i class="ti ti-chevron-right"></i>
-          </div>
-          <div class="step" data-target="#address">
-            <button type="button" class="step-trigger">
-              <span class="bs-stepper-icon">
-                <svg viewBox="0 0 54 54">
-                  <use xlink:href="{{asset('assets/svg/icons/form-wizard-address.svg#wizardAddress')}}"></use>
-                </svg>
-              </span>
-              <span class="bs-stepper-label">Step 3</span>
-            </button>
-          </div>
-          <div class="line">
-            <i class="ti ti-chevron-right"></i>
-          </div>
-          <div class="step" data-target="#social-links">
-            <button type="button" class="step-trigger">
-              <span class="bs-stepper-icon">
-                <svg viewBox="0 0 54 54">
-                  <use xlink:href="{{asset('assets/svg/icons/form-wizard-social-link.svg#wizardSocialLink')}}"></use>
-                </svg>
-              </span>
-              <span class="bs-stepper-label">Step 4</span>
-            </button>
-          </div>
-          <div class="line">
-            <i class="ti ti-chevron-right"></i>
-          </div>
-          <div class="step" data-target="#review-submit">
-            <button type="button" class="step-trigger">
-              <span class="bs-stepper-icon">
-                <svg viewBox="0 0 54 54">
-                  <use xlink:href="{{asset('assets/svg/icons/form-wizard-submit.svg#wizardSubmit')}}"></use>
-                </svg>
-              </span>
-              <span class="bs-stepper-label">Review & Submit</span>
-            </button>
-          </div>
-        </div>
-        <div class="bs-stepper-content">
+      <div class="wizard-icons wizard-icons-example mt-2">
+        
+        <div class="content">
           <form method="POST" action="{{ route('add_pembanding_tanah_kosong') }}" enctype="multipart/form-data">
             <!-- Account Details -->
             @csrf
             <div id="account-details" class="content">
-              <div class="content-header mb-3">
-                <h6 class="mb-0">Step 1</h6>
-                <small>Enter Step 1.</small>
-              </div>
               <div class="row g-3">
                 <div>
                   <label class="form-label" for="nama_tanah_kosong">Judul / Nama Tanah Kosong </label>
@@ -197,20 +130,10 @@ $configData = Helper::appClasses();
                     </tr>
                   </table>
                 </div>
-                <div class="col-12 d-flex justify-content-between">
-                  <button class="btn btn-label-secondary btn-prev" disabled type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
-                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                  </button>
-                  <button class="btn btn-primary btn-next" type="button"> <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span> <i class="ti ti-arrow-right"></i></button>
-                </div>
               </div>
             </div>
             <!-- Personal Info -->
-            <div id="personal-info" class="content">
-              <div class="content-header mb-3">
-                <h6 class="mb-0">Step 2</h6>
-                <small>Enter Step 2.</small>
-              </div>
+            <div id="personal-info" class="content">            
               <div class="row g-3">
                 <hr>
                 <div>
@@ -373,22 +296,11 @@ $configData = Helper::appClasses();
                       <td><input type="text" id="pep_pasar" name="pep_pasar" class="form-control" placeholder="Normal" /></td>
                     </tr>
                   </table>
-                </div>               
-                                   
-                <div class="col-12 d-flex justify-content-between">
-                  <button class="btn btn-label-secondary btn-prev" type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
-                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                  </button>
-                  <button class="btn btn-primary btn-next" type="button"> <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span> <i class="ti ti-arrow-right"></i></button>
-                </div>
+                </div>                
               </div>
             </div>
             <!-- Address -->
             <div id="address" class="content">
-              <div class="content-header mb-3">
-                <h6 class="mb-0">Step 3</h6>
-                <small>Enter Step 3.</small>
-              </div>
               <div class="row g-3">                
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="penggunaan">Penggunaan</label>
@@ -464,22 +376,9 @@ $configData = Helper::appClasses();
                   <option value="Lainnya">Lainnya</option>
                 </select>
             </div>
-                
-                               
-                <div class="col-12 d-flex justify-content-between">
-                  <button class="btn btn-label-secondary btn-prev" type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
-                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                  </button>
-                  <button class="btn btn-primary btn-next" type="button"> <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span> <i class="ti ti-arrow-right"></i></button>
-                </div>
-              </div>
             </div>
             <!-- Social Links -->
             <div id="social-links" class="content">
-              <div class="content-header mb-3">
-                <h6 class="mb-0">Step 4</h6>
-                <small>Enter Step 4.</small>
-              </div>
               <div class="row g-3">
                 <div>
                     <label class="form-label" for="lebar_muka_tanah">Lebar Muka Tanah (m)</label>
@@ -663,249 +562,106 @@ $configData = Helper::appClasses();
                     <label class="form-label" for="pemberi_tugas">Pemberi Tugas</label>
                     <input type="text" id="pemberi_tugas" name="pemberi_tugas" class="form-control" placeholder="Bank Mandiri" />                
                   </div>  
-                
-              <div>
-                <label class="form-label" for="status_data_pembanding">Status Data Pembanding</label>
-                <select name="status_data_pembanding" id="status_data_pembanding" class="form-control">
-                  <option value="">Pilih Status</option>
-                  <option value="Lengkap">Lengkap</option>
-                  <option value="Tidak lengkap">Tidak Lengkap</option>
-                </select>
-              </div> 
-                <div class="col-12 d-flex justify-content-between">
-                  <button class="btn btn-label-secondary btn-prev" type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
-                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                  </button>
-                  <button type="button" class="btn btn-primary btn-next" id="btn-review"> <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span> <i class="ti ti-arrow-right"></i></button>
-                </div>
-              </div>
+                  <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                    <label class="form-label" for="form_isi_mandiri">Form Isian Bank Mandiri</label>
+                    <table class="table table-borderless">
+                      <tr>
+                        <th>
+                          Jenis Aset                     
+                        </th>
+                        <th>
+                          Peruntukan / Zoning
+                        </th>
+                      </tr>
+                      <tr>            
+                          <td>
+                            <select name="jenis_aset" id="jenis_aset" class="form-select">
+                              <option value="">Pilih...</option>
+                              <option value="Campuran">Campuran</option>
+                              <option value="Gedung Apartemen">Gedung Apartemen</option>
+                              <option value="Gedung Kantor">Gedung Kantor</option>
+                              <option value="Gudang">Gudang</option>
+                              <option value="Hotel">Hotel</option>
+                              <option value="Kios">Kios</option>
+                              <option value="Los Kerja/Bengkel/Workshop">Los Kerja/Bengkel/Workshop</option>
+                              <option value="Pabrik">Pabrik</option>
+                              <option value="Penginapan">Penginapan</option>
+                              <option value="Ruang Kantor">Ruang Kantor</option>
+                              <option value="Ruang Usaha">Ruang Usaha</option>
+                              <option value="Ruko/Rukan">Ruko/Rukan</option>
+                              <option value="Rumah Tinggal">Rumah Tinggal</option>
+                              <option value="Rumah Walet">Rumah Walet</option>
+                              <option value="Tanah Kosong">Tanah Kosong</option>
+                              <option value="Tempat Ibadah">Tempat Ibadah</option>
+                              <option value="Toko">Toko</option>
+                              <option value="Unit Apartemen">Unit Apartemen</option>
+                              <option value="Kantor & Pabrik">Kantor & Pabrik</option>
+                              <option value="Lainnya">Lainnya</option>
+                            </select>
+                          </td>
+                          <td>
+                            <select name="peruntukan" id="peruntukan" class="form-select">
+                              <option value="">Pilih...</option>
+                              <option value="Belum Ditentukan">Belum Ditentukan</option>
+                              <option value="Campuran/Peralihan">Campuran/Peralihan</option>
+                              <option value="Industri/Pergudangan">Industri/Pergudangan</option>
+                              <option value="Perdagangan dan Jasa Komersial">Perdagangan dan Jasa Komersial</option>
+                              <option value="Perumahan">Perumahan</option>
+                              <option value="Pertanian">Pertanian</option>
+                              <option value="Sarana Kesehatan">Sarana Kesehatan</option>
+                              <option value="Sarana Pemerintah">Sarana Pemerintah</option>
+                              <option value="Sarana Pendidikan">Sarana Pendidikan</option>
+                              <option value="Fasilitas Umum">Fasilitas Umum</option>
+                              <option value="Pemukiman Perkotaan">Pemukiman Perkotaan</option>
+                            </select>
+                          </td>
+                      </tr>  
+                      <tr>
+                        <th>
+                          Jenis Aset Campuran / Lainnya                    
+                        </th>
+                      </tr> 
+                      <tr>
+                        <td>
+                          <input type="text" name="jenis_aset" id="jenis_aset" class="form-control">
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          Topografi                    
+                        </th>
+                        <th>
+                          Jabatan (Status) Narasumber
+                        </th>
+                      </tr>
+                      <tr>            
+                          <td>
+                            <select name="topografi" id="topografi" class="form-select">
+                              <option value="">Pilih...</option>
+                              <option value="Datar">Datar</option>
+                              <option value="Miring">Miring</option>
+                              <option value="Berbukit">Berbukit</option>
+                              <option value="Terasering">Terasering</option>
+                            </select>
+                          </td>
+                          <td>
+                              <input type="text" name="jabatan_narasumber" id="jabatan_narasumber" class="form-control">
+                          </td>
+                      </tr>                           
+                    </table>
+                  </div>                 
+                <div>
+                  <label class="form-label" for="status_data_pembanding">Status Data Pembanding</label>
+                  <select name="status_data_pembanding" id="status_data_pembanding" class="form-control">
+                    <option value="">Pilih Status</option>
+                    <option value="Lengkap">Lengkap</option>
+                    <option value="Tidak lengkap">Tidak Lengkap</option>
+                  </select>
+              </div>     
             </div>
-            <!-- Review -->
-            <div id="review-submit" class="content">
-  
-              <p class="fw-medium mb-2">Step 1</p>
-              <table class="table table-borderless">
-                  <tr>
-                    <td style="font-weight: 800">Nomor Induk Pembanding</td>
-                    <td>:</td>
-                    <td><span id="review-nip"></span></td>
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Nomor Induk Bangunan</td>
-                    <td>:</td>
-                    <td><span id="review-nib"></span></td>
-                  </tr>   
-                  <tr>
-                    <td style="font-weight: 800">Nama Tanah Kosong</td>
-                    <td>:</td>
-                    <td><span id="review-nama_tanah_kosong"></span></td>
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Foto Tampak Depan</td>
-                    <td>:</td>
-                    <td><img id="review-foto_tampak_depan" src="" height="150" width="150" alt="Foto Tampak Depan" style="max-width: 100%; height: auto;"/></td>
-                  </tr>               
-                  <tr>
-                    <td style="font-weight: 800">Alamat</td>
-                    <td>:</td>
-                    <td><span id="review-alamat"></span></td>
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Koordinat</td>
-                    <td>:</td>
-                    <td><span id="review-lat"></span>,<span id="review-long"></span></td>
-                  </tr>
-                  
-                  
-                  <tr>
-                    <td style="font-weight: 800">Foto Tampak Sisi Kiri</td>
-                    <td>:</td>
-                    <td><img id="review-foto_tampak_sisi_kiri" src="" height="150" width="150" alt="Foto Sisi Kiri" style="max-width: 100%; height: auto;"/></td>
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Foto Tampak Sisi Kanan</td>
-                    <td>:</td>
-                    <td><img id="review-foto_tampak_sisi_kanan" src="" height="150" width="150" alt="Foto Sisi Kanan" style="max-width: 100%; height: auto;"/></td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: 800">Foto Lainnya</td>
-                    <td>:</td>
-                    <td><img id="review-foto_lainnya" src="" height="150" width="150" alt="Foto Lainnya" style="max-width: 100%; height: auto;"/></td>
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Nama Narasumber</td>
-                    <td>:</td>
-                    <td><span id="review-nama_narsum"></span></td>                    
-                  </tr>
-                  <tr>
-                    <td style="font-weight: 800">Telepon</td>
-                    <td>:</td>
-                    <td><span id="review-telepon"></span></td>                  
-                  </tr>
-              </table>
-              <hr>
-              <p class="fw-medium mb-2">Step 2</p>
-              <table class="table table-borderless">
-                <tr>
-                  <td style="font-weight: 800">Jenis Dokumen Hak Tanah</td>
-                  <td>:</td>
-                  <td><span id="review-jenis_dok_hak_tanah"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Peruntukan Kawasan</td>
-                  <td>:</td>
-                  <td><span id="review-perutuntukan_kawasan"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Jenis Data</td>
-                  <td>:</td>
-                  <td><span id="review-jenis_data"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Tanggal Penawaran / Waktu Transaksi</td>
-                  <td>:</td>
-                  <td><span id="review-tgl_penawaran"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Sumber Data</td>
-                  <td>:</td>
-                  <td><span id="review-sumber_data"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Luas Tanah (m2)</td>
-                  <td>:</td>
-                  <td><span id="review-luas_tanah"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Harga Penawaran/Transaksi (Rp)</td>
-                  <td>:</td>
-                  <td><span id="review-harga_penawaran"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Diskon (%)</td>
-                  <td>:</td>
-                  <td><span id="review-diskon"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Harga Sewa per Tahun (Rp/tahun)</td>
-                  <td>:</td>
-                  <td><span id="review-harga_sewa_per_tahun"></span></td>                     
-                </tr>
-                <tr>
-                  <td colspan="8" class="fs-5 fw-bold">Penyesuaian Elemen Perbandingan</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Syarat Pembiayaan Batasan dilakukan pelunasan pembayaran (Kelunakan)</td>
-                  <td>:</td>
-                  <td><span id="review-pep_pembiayaan"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Kondisi Penjualan Bebas Ikatan, Waktu Pemasaran yang Wajar atau Ketiadaan Kondisi Pemaksa</td>
-                  <td>:</td>
-                  <td><span id="review-pep_penjualan"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Pengeluaran yang dilakukan segera setelah pembelian Biaya yang harus segera dikeluarkan untuk mengembalikan objek ke fungsi atau peruntukan awal atau seharusnya</td>
-                  <td>:</td>
-                  <td><span id="review-pep_pengeluaran"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Kondisi Pasar Kondisi Ekonomi Saat Terjadi Transaksi atau terbentuknya harga penawaran (Menggunakan Indikator Waktu Penawaran / Transaksi)</td>
-                  <td>:</td>
-                  <td><span id="review-pep_pasar"></span></td>                    
-                </tr> 
-              </table>
-              <hr>
-              <p class="fw-medium mb-2">Step 3</p>
-              <table class="table table-borderless">                
-                <tr>
-                    <td style="font-weight: 800">Row Jalan (m)</td>
-                    <td>:</td>
-                    <td><span id="review-row_jalan"></span></td>                    
-                  </tr>
-                  <tr>
-                    <td style="font-weight: 800">Tipe Jalan</td>
-                    <td>:</td>
-                    <td><span id="review-tipe_jalan"></span></td>                    
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Kapasitas Jalan</td>
-                    <td>:</td>
-                    <td><span id="review-kapasitas_jalan"></span></td>                    
-                  </tr>
-                  <tr>
-                    <td style="font-weight: 800">Penggunaan Lahan Lingkungan Eksisting</td>
-                    <td>:</td>
-                    <td><span id="review-pengguna_lahan_lingkungan_eksisting"></span></td>  
-                    <td></td>
-                    <td></td> 
-                    <td style="font-weight: 800">Letak / Posisi Obyek</td>
-                    <td>:</td>
-                    <td><span id="review-letak_posisi_obyek"></span></td>                               
-                  </tr>                
-                  <tr>
-                    <td style="font-weight: 800">Lokasi Aset</td>
-                    <td>:</td>
-                    <td><span id="review-letak_posisi_aset"></span></td>  
-                    <td></td>
-                    <td></td> 
-                    <td style="font-weight: 800">Bentuk Tanah</td>
-                    <td>:</td>
-                    <td><span id="review-bentuk_tanah"></span></td>                               
-                  </tr>                
-                  
-              </table>
-              <hr>
-              <p class="fw-medium mb-2">Step 4</p>
-              <table class="table table-borderless">
-                <tr>
-                    <td style="font-weight: 800">Lebar Muka Tanah (m)</td>
-                    <td>:</td>
-                    <td><span id="review-lebar_muka_tanah"></span></td>  
-                    <td></td>
-                    <td></td> 
-                    <td style="font-weight: 800">Ketinggian Tanah dari Muka Jalan (m)</td>
-                    <td>:</td>
-                    <td><span id="review-ketinggian_tanah_dr_muka_jln"></span></td>                               
-                  </tr>                
-                  <tr>
-                    <td style="font-weight: 800">Topografi / Elevasi</td>
-                    <td>:</td>
-                    <td><span id="review-topografi"></span></td>  
-                    <td></td>
-                    <td></td> 
-                    <td style="font-weight: 800">Tingkat Hunian (%)</td>
-                    <td>:</td>
-                    <td><span id="review-tingkat_hunian"></span></td>                               
-                  </tr>                
-                  <tr>
-                    <td style="font-weight: 800">Kondisi Lingkungan Khusus</td>
-                    <td>:</td>
-                    <td><span id="review-kondisi_lingkungan_khusus"></span></td>  
-                    <td></td>
-                    <td></td> 
-                    <td style="font-weight: 800">Gambaran Objek terhadap Wilayah dan Lingkungan</td>
-                    <td>:</td>
-                    <td><span id="review-gambaran_objek"></span></td>                               
-                  </tr> 
-                <tr>
-                  <td style="font-weight: 800">Pengguanaan Tanah Saat Ini</td>
-                  <td>:</td>
-                  <td><span id="review-pengguanan_tnh_saat_ini"></span></td>    
-                  <td></td>
-                  <td></td>  
-                  <td style="font-weight: 800">Status Data Pembanding</td>
-                  <td>:</td>
-                  <td><span id="review-status_data_pembanding"></span></td>               
-                </tr>
-              </table>
-              <div class="col-12 d-flex justify-content-between">
-                <button class="btn btn-label-secondary btn-prev" type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
-                  <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                </button>
-                <button class="btn btn-success btn-submit" type="submit">Submit</button>
-              </div>
-            </div>
+            <!-- Review -->            
+             
+            <button class="btn btn-success btn-submit" type="submit">Submit</button>
           </form>
         </div>
       </div>
