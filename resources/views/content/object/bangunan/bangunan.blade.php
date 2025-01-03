@@ -196,6 +196,14 @@ $configData = Helper::appClasses();
                     <option value="rumah_sederhana">Rumah Tinggal Sederhana 1 Lantai</option>
                     <option value="rumah_menengah">Rumah Tinggal Menengah 2 Lantai</option>
                     <option value="rumah_mewah">Rumah Tinggal Mewah 2 Lantai</option>
+                    <option value="400">Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
+                    <option value="500">Bangunan Gudang 1 Lantai</option>
+                    <option value="600">Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt;5 Lantai)</option>
+                    <option value="700">Bangunan Gedung Bertingkat Sedang 8 Lantai + 1 Basement (5-8 Lantai)</option>
+                    <option value="800">Bangunan Gedung Bertingkat Tinggi 16 Lantai + 2 Basement (&gt;8 Lantai)</option>
+                    <option value="900">Bangunan Mall 4 Lantai + 1 Basement</option>
+                    <option value="1000">Bangunan Hotel 8 Lantai</option>
+                    <option value="1100">Bangunan Apartemen 14 Lantai + 2 Semi Basement</option>
                     <!-- More options... -->
                 </select>
             </div>
@@ -226,6 +234,9 @@ $configData = Helper::appClasses();
                             break;
                         case 'rumah_mewah':
                             document.getElementById('form-rumah-mewah').style.display = 'block';
+                            break;
+                        case '400':
+                            document.getElementById('400').style.display = 'block';
                             break;
                         default:
                             // Tidak ada yang dipilih, semua tetap disembunyikan
@@ -273,6 +284,12 @@ $configData = Helper::appClasses();
                 </style>
 
 
+                <div id="form-rumah-mewah" style=" margin-top: 20px; display: none;">
+                    <p>asdadasd</p>
+                </div>
+                <div id="400" style=" margin-top: 20px; display: none;">
+                    <p>4000</p>
+                </div>
                 <div id="form-rumah-sederhana" style=" margin-top: 20px; display: none;">
                     <div class="form-group" style="margin-top: 20px;">
                         <label for="jenis_bangunan" style="font-weight: bold;">Jenis Bangunan (Umur Ekonomis)</label>
