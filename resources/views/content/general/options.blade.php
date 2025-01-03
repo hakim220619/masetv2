@@ -48,7 +48,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addHeaderModalOptLabel">Add Header</h5>
+                    <h5 class="modal-title" id="addHeaderModalOptLabel">Add Options</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -57,6 +57,11 @@
                         <div class="form-group">
                             <label for="modalOption" class="form-label">Option</label>
                             <input type="text" class="form-control" id="modalOption" name="option"
+                                placeholder="Masukkan Option" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="modalOptionValue" class="form-label">Option Value</label>
+                            <input type="text" class="form-control" id="modalOptionValue" name="value"
                                 placeholder="Masukkan Option" required>
                         </div>
                         <div class="form-group">
@@ -85,254 +90,283 @@
             <table id="masterTable" class="dt-row-grouping table">
                 <thead>
                     <tr>
-                        <th>Label Header</th>
+                        <th style="width: 200px;">Label Header</th>
                         <th>Label Options</th>
+                        <th>Label Value</th>
                         <th>Type</th>
                         <th>State</th>
                         <th>Created</th>
-                        <th>Action</th>
+                        <th style="width: 200px;">Action</th>
                     </tr>
                 </thead>
+
+
                 <tbody>
-                    @foreach ($dataOptions as $a)
-                        @if ($a->type == 'Header')
-                            <tr class="group-header" style="background: #e1e1e1;">
-                                <th>{{ $a->label_header }}</th>
-                                <th></th>
-                                <th></th>
-                                <th>
-                                    @if ($a->state === 'ON')
-                                        <span class="badge bg-info">ON</span>
-                                    @else
-                                        <span class="badge bg-warning">OFF</span>
-                                    @endif
-                                </th>
-                                <th></th>
-                                <th>
-                                    <button class="btn btn-sm btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#editHeaderModal{{ $a->label_header }}">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
+                    @php
+                        $groupedOptions = collect($dataOptions)->sortByDesc('created_at')->groupBy('label_header');
+                    @endphp
+                    @foreach ($groupedOptions as $header => $options)
+                        @php
+                            $idSafeHeader = str_replace([' ', '(', ')'], '_', $header ?? 'default_id');
 
-                                    <button class="btn btn-sm  btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#addHeaderModalOpt{{ $a->label_header }}">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
+                        @endphp
 
-                                    <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#deleteHeaderModal{{ $a->label_header }}">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </th>
-                            </tr>
+                        <!-- Header Row -->
+                        <tr class="group-header" style="background: #e1e1e1;">
+                            <th>{{ $header }}</th>
 
-                            <!-- Edit Header Modal -->
-                            <div class="modal fade" id="editHeaderModal{{ $a->label_header }}" tabindex="-1" role="dialog"
-                                aria-labelledby="editHeaderModalLabel{{ $a->label_header }}" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="editHeaderModalLabel{{ $a->label_header }}">Edit
-                                                Header</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form id="editHeaderForm{{ $a->label_header }}">
-                                                @csrf
-                                                <div class="form-group">
-                                                    <label for="editHeaderInput{{ $a->label_header }}"
-                                                        class="form-label">Header</label>
-                                                    <input type="text" class="form-control"
-                                                        id="editHeaderInput{{ $a->label_header }}" name="header"
-                                                        value="{{ $a->label_header }}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="editStateSelect{{ $a->label_header }}"
-                                                        class="form-label">State</label>
-                                                    <select class="form-control"
-                                                        id="editStateSelect{{ $a->label_header }}" name="state">
-                                                        <option value="ON"
-                                                            @if ($a->state == 'ON') selected @endif>ON</option>
-                                                        <option value="OFF"
-                                                            @if ($a->state == 'OFF') selected @endif>OFF</option>
-                                                    </select>
-                                                </div>
-                                                <input type="hidden" name="id" value="{{ $a->id }}">
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary"
-                                                onclick="submitEditHeaderForm('{{ $a->label_header }}')">Save
-                                                changes</button>
-                                        </div>
+                            <th colspan="2"></th>
+                            <td>Header</td>
+                            <td>
+                                @if ($options->first()->state === 'ON')
+                                    <span class="badge bg-info">ON</span>
+                                @else
+                                    <span class="badge bg-warning">OFF</span>
+                                @endif
+                            </td>
+                            <td>{{ $options->first()->created_at }}</td>
+
+                            <th>
+                                <button class="btn btn-sm btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#editHeaderModal{{ $idSafeHeader }}">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#addHeaderModalOpt{{ $idSafeHeader }}">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#deleteHeaderModal{{ str_replace(' ', '_', $header) }}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </th>
+                        </tr>
+                        <!-- Edit Header Modal -->
+                        <div class="modal fade" id="editHeaderModal{{ $idSafeHeader }}" tabindex="-1" role="dialog"
+                            aria-labelledby="editHeaderModalLabel{{ $idSafeHeader }}" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editHeaderModalLabel{{ $idSafeHeader }}">
+                                            Edit
+                                            Header</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="editHeaderForm{{ $idSafeHeader }}">
+                                            @csrf
+                                            <div class="form-group">
+                                                <label for="editHeaderInput{{ $header }}"
+                                                    class="form-label">Header</label>
+                                                <input type="text" class="form-control"
+                                                    id="editHeaderInput{{ $header }}" name="header"
+                                                    value="{{ $header }}" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="editStateSelect{{ $header }}"
+                                                    class="form-label">State</label>
+                                                <select class="form-control" id="editStateSelect{{ $header }}"
+                                                    name="state">
+                                                    <option value="ON"
+                                                        @if ($options->first()->state == 'ON') selected @endif>ON</option>
+                                                    <option value="OFF"
+                                                        @if ($options->first()->state == 'OFF') selected @endif>OFF</option>
+                                                </select>
+                                            </div>
+                                            <input type="hidden" name="id" value="{{ $options->first()->id }}">
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary"
+                                            onclick="submitEditHeaderForm('{{ $idSafeHeader }}')">Save
+                                            changes</button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Delete Header Modal -->
-                            <div class="modal fade" id="deleteHeaderModal{{ $a->label_header }}" tabindex="-1"
-                                role="dialog" aria-labelledby="deleteHeaderModalLabel{{ $a->label_header }}"
-                                aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="deleteHeaderModalLabel{{ $a->label_header }}">
-                                                Confirm Delete Header</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure you want to delete the header "{{ $a->label_header }}" and all its
-                                            associated options?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-danger"
-                                                onclick="deleteHeader('{{ $a->label_header }}')">Delete</button>
-                                        </div>
+                        <!-- Delete Header Modal -->
+                        <div class="modal fade" id="deleteHeaderModal{{ $header }}" tabindex="-1" role="dialog"
+                            aria-labelledby="deleteHeaderModalLabel{{ $header }}" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteHeaderModalLabel{{ $header }}">
+                                            Confirm Delete Header</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete the header "{{ $header }}" and all its
+                                        associated options?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-danger"
+                                            onclick="deleteHeader('{{ $header }}')">Delete</button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="modal fade" id="addHeaderModalOpt{{ $idSafeHeader }}" tabindex="-1" role="dialog"
+                            aria-labelledby="addHeaderModalOptLabel" aria-hidden="true">
 
-                            <div class="modal fade" id="addHeaderModalOpt{{ $a->label_header }}" tabindex="-1"
-                                role="dialog" aria-labelledby="addHeaderModalOptLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="addHeaderModalOptLabel">Add Header</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="/options/saveOptions" method="POST"
-                                                enctype="multipart/form-data">
-                                                @csrf
-                                                <div class="form-group">
-                                                    <label for="modalOption" class="form-label">Option</label>
-                                                    <input type="text" class="form-control" id="modalOptionOpt"
-                                                        name="option" placeholder="Masukkan Option" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="modalState" class="form-label">State</label>
-                                                    <select class="form-control" id="modalStateOpt" name="state">
-                                                        <option value="ON">ON</option>
-                                                        <option value="OFF">OFF</option>
-                                                    </select>
-                                                </div>
-                                                <input type="hidden" id="modalIdOpt" value="{{ $a->label_header }}"
-                                                    name="id">
-                                                <div class="modal-footer">
-                                                    <button type="reset" class="btn btn-label-secondary"
-                                                        data-bs-dismiss="modal" aria-label="Close">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                            </form>
-                                        </div>
+
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="addHeaderModalOptLabel">Add Options</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/options/saveOptions" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="form-group">
+                                                <label for="modalOption" class="form-label">Option Label</label>
+                                                <input type="text" class="form-control" id="modalOptionOpt"
+                                                    name="option" placeholder="Masukkan Option" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="modalOptionValue" class="form-label">Option Value</label>
+                                                <input type="text" class="form-control" id="modalOptionValue"
+                                                    name="value" placeholder="Masukkan Option" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="modalState" class="form-label">State</label>
+                                                <select class="form-control" id="modalStateOpt" name="state">
+                                                    <option value="ON">ON</option>
+                                                    <option value="OFF">OFF</option>
+                                                </select>
+                                            </div>
+                                            <input type="hidden" id="modalIdOpt" value="{{ $header }}"
+                                                name="id">
+                                            <div class="modal-footer">
+                                                <button type="reset" class="btn btn-label-secondary"
+                                                    data-bs-dismiss="modal" aria-label="Close">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        @else
-                            <tr>
-                                <td></td>
-                                <td>{{ $a->label_option }}</td>
-                                <td>{{ $a->type }}</td>
-                                <th>
-                                    @if ($a->state === 'ON')
-                                        <span class="badge bg-info">ON</span>
-                                    @else
-                                        <span class="badge bg-warning">OFF</span>
-                                    @endif
-                                </th>
-                                <td>{{ $a->created_at }}</td>
-                                <td>
-                                    <a href="javascript:;" class="btn btn-sm btn-icon item-edit" data-bs-toggle="modal"
-                                        data-bs-target="#editOptionModal{{ $a->id }}">
-                                        <i class="text-primary ti ti-pencil"></i>
-                                    </a>
-                                    <a href="javascript:;" class="btn btn-sm btn-icon item-delete" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal{{ $a->id }}">
-                                        <i class="text-danger ti ti-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                        </div>
 
-                            <!-- Edit Option Modal -->
-                            <div class="modal fade" id="editOptionModal{{ $a->id }}" tabindex="-1"
-                                role="dialog" aria-labelledby="editOptionModalLabel{{ $a->id }}"
-                                aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="editOptionModalLabel{{ $a->id }}">Edit
-                                                Option</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form id="editOptionForm{{ $a->id }}">
-                                                @csrf
-                                                <div class="form-group">
-                                                    <label for="editOptionInput{{ $a->id }}"
-                                                        class="form-label">Option</label>
-                                                    <input type="text" class="form-control"
-                                                        id="editOptionInput{{ $a->id }}" name="option"
-                                                        value="{{ $a->label_option }}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="editStateSelect{{ $a->id }}"
-                                                        class="form-label">State</label>
-                                                    <select class="form-control" id="editStateSelect{{ $a->id }}"
-                                                        name="state">
-                                                        <option value="ON"
-                                                            @if ($a->state == 'ON') selected @endif>ON</option>
-                                                        <option value="OFF"
-                                                            @if ($a->state == 'OFF') selected @endif>OFF</option>
-                                                    </select>
-                                                </div>
-                                                <input type="hidden" name="id" value="{{ $a->id }}">
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary"
-                                                onclick="submitEditOptionForm('{{ $a->id }}')">Save
-                                                changes</button>
+                        <!-- Option Rows -->
+                        @foreach ($options as $option)
+                            @if ($option->type == 'Options')
+                                <tr>
+                                    <td></td>
+                                    <td>{{ $option->label_option }}</td>
+                                    <td>{{ $option->label_value }}</td>
+                                    <td>{{ $option->type }}</td>
+                                    <td>
+                                        @if ($option->state === 'ON')
+                                            <span class="badge bg-info">ON</span>
+                                        @else
+                                            <span class="badge bg-warning">OFF</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $option->created_at }}</td>
+                                    <td>
+                                        <a href="javascript:;" class="btn btn-sm btn-icon item-edit"
+                                            data-bs-toggle="modal" data-bs-target="#editOptionModal{{ $option->id }}">
+                                            <i class="text-primary ti ti-pencil"></i>
+                                        </a>
+                                        <a href="javascript:;" class="btn btn-sm btn-icon item-delete"
+                                            data-bs-toggle="modal" data-bs-target="#deleteModal{{ $option->id }}">
+                                            <i class="text-danger ti ti-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <div class="modal fade" id="editOptionModal{{ $option->id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="editOptionModalLabel{{ $option->id }}"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editOptionModalLabel{{ $option->id }}">Edit
+                                                    Option</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="editOptionForm{{ $option->id }}">
+                                                    @csrf
+                                                    <div class="form-group">
+                                                        <label for="editOptionInput{{ $option->id }}"
+                                                            class="form-label">Option</label>
+                                                        <input type="text" class="form-control"
+                                                            id="editOptionInput{{ $option->id }}" name="option"
+                                                            value="{{ $option->label_option }}" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="editOptionInput{{ $option->id }}"
+                                                            class="form-label">Value</label>
+                                                        <input type="text" class="form-control"
+                                                            id="editOptionInput{{ $option->id }}" name="value"
+                                                            value="{{ $option->label_value }}" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="editStateSelect{{ $option->id }}"
+                                                            class="form-label">State</label>
+                                                        <select class="form-control"
+                                                            id="editStateSelect{{ $option->id }}" name="state">
+                                                            <option value="ON"
+                                                                @if ($option->state == 'ON') selected @endif>ON
+                                                            </option>
+                                                            <option value="OFF"
+                                                                @if ($option->state == 'OFF') selected @endif>OFF
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <input type="hidden" name="id" value="{{ $option->id }}">
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="submitEditOptionForm('{{ $option->id }}')">Save
+                                                    changes</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Delete Modal -->
-                            <div class="modal fade" id="deleteModal{{ $a->id }}" tabindex="-1" role="dialog"
-                                aria-labelledby="deleteModalLabel{{ $a->id }}" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="deleteModalLabel{{ $a->id }}">Confirm
-                                                Delete</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Are you sure you want to delete this item?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-danger"
-                                                onclick="deleteItem({{ $a->id }})">Delete</button>
+
+                                <div class="modal fade" id="deleteModal{{ $option->id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="deleteModalLabel{{ $option->id }}"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel{{ $option->id }}">Confirm
+                                                    Delete</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to delete this option?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancel</button>
+                                                <button type="button" class="btn btn-danger"
+                                                    onclick="deleteItem('{{ $option->id }}')">Delete</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endif
+                            @endif
+                        @endforeach
                     @endforeach
                 </tbody>
+
             </table>
         </div>
     </div>

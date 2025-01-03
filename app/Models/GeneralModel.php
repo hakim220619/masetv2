@@ -76,7 +76,7 @@ class GeneralModel extends Model
     }
     public static function listDataOptions()
     {
-        $data = DB::select("SELECT * FROM master_data WHERE 1=1 ORDER BY label_header, label_option ASC");
+        $data = DB::select("SELECT * FROM master_data WHERE 1=1 ORDER BY label_header, created_at, label_option ASC");
         return $data;
     }
     public static function saveHeaderOptions($request)
@@ -97,15 +97,16 @@ class GeneralModel extends Model
                 'uid' => $getUid->uid,
                 'label_header' => $getUid->label_header,
                 'label_option' => $request['option'],
+                'label_value' => $request['value'],
                 'type' => 'Options',
                 'state' => $request['state'],
                 'created_at' => now(),
             ]);
         }
     }
-    public static function editHeader($request, $label)
+    public static function editHeader($request,)
     {
-        DB::table('master_data')->where('label_header', $label)->update([
+        DB::table('master_data')->where('label_header', $request['header'])->update([
             'label_header' => $request['header'],
             'state' => $request['state']
         ]);
@@ -114,6 +115,8 @@ class GeneralModel extends Model
     {
         DB::table('master_data')->where('id', $id)->update([
             'label_option' => $request['option'],
+            'label_value' => $request['value'],
+
             'state' => $request['state']
         ]);
     }
