@@ -1,15 +1,15 @@
 <style>
-    .area-lainnya-container {
+    .area-lainnya-container-rumah-sederhana {
         border: 1px solid #dee2e6;
         padding: 10px;
         border-radius: 5px;
     }
 
-    .area-lainnya-container .form-group {
+    .area-lainnya-container-rumah-sederhana .form-group {
         margin-bottom: 0;
     }
 
-    .area-lainnya-container label {
+    .area-lainnya-container-rumah-sederhana label {
         font-weight: bold;
     }
 
@@ -34,7 +34,7 @@
 </style>
 
 
-<div id="form-rumah-sederhana" style=" margin-top: 20px; display: none;">
+<div id="form-rumah-sederhana" style=" margin-top: 20px;">
     <div class="form-group" style="margin-top: 20px;">
         <label for="jenis_bangunan" style="font-weight: bold;">Jenis Bangunan (Umur Ekonomis)</label>
         <br>
@@ -106,7 +106,7 @@
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Luas Pintu dan Jendela</b></label><br>
         <small class="form-text text-muted">Masukkan luas pintu dan jendela yang ada.</small>
-        <div class="area-lainnya-container" data-type="pintu-jendela">
+        <div class="area-lainnya-container-rumah-sederhana" data-type="pintu-jendela">
             <div class="area-item d-flex align-items-center mb-2">
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Nama Area</label>
@@ -124,14 +124,14 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link" data-type="pintu-jendela">Tambah Area</button>
+        <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana" data-type="pintu-jendela">Tambah Area</button>
     </div>
 
     <!-- Luas Dinding -->
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Luas Dinding</b></label><br>
         <small class="form-text text-muted">Masukkan luas dinding kotor belum dikurangi luas pintu dan jendela.</small>
-        <div class="area-lainnya-container" data-type="dinding">
+        <div class="area-lainnya-container-rumah-sederhana" data-type="dinding">
             <div class="area-item d-flex align-items-center mb-2">
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Nama Area</label>
@@ -149,13 +149,13 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link" data-type="dinding">Tambah Area</button>
+        <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana" data-type="dinding">Tambah Area</button>
     </div>
     <!-- Luas Rangka Atap Datar -->
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Luas Rangka Atap Datar</b></label><br>
         <small class="form-text text-muted">Masukkan luas rangka atap datar.</small>
-        <div class="area-lainnya-container" data-type="atap-datar">
+        <div class="area-lainnya-container-rumah-sederhana" data-type="atap-datar">
             <div class="area-item d-flex align-items-center mb-2">
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Nama Area</label>
@@ -173,14 +173,14 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link" data-type="atap-datar">Tambah Area</button>
+        <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana" data-type="atap-datar">Tambah Area</button>
     </div>
 
     <!-- Luas Atap Datar -->
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Luas Atap Datar</b></label><br>
         <small class="form-text text-muted">Masukkan luas atap datar.</small>
-        <div class="area-lainnya-container" data-type="atap-datar-2">
+        <div class="area-lainnya-container-rumah-sederhana" data-type="atap-datar-2">
             <div class="area-item d-flex align-items-center mb-2">
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Nama Area</label>
@@ -198,11 +198,11 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link" data-type="atap-datar-2">Tambah Area</button>
+        <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana" data-type="atap-datar-2">Tambah Area</button>
     </div>
     <!-- Tipe Pondasi Existing -->
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><b>Tipe Pondasi Eksisting - {{ $tipe_spek }}</b></label>
+        <label><b>Tipe Pondasi Eksisting - Rumah Tinggal Sederhana 1 Lantai</b></label>
         <div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Batu Kali" id="pondasi_batu_kali" onchange="toggleBobotInput(this, 'bobot_pondasi_batu_kali')">
@@ -217,7 +217,7 @@
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Tambah Tipe Pondasi Eksisting</b></label><br>
         <div id="pondasi-container" style="display: none;">
-            <div class="area-lainnya-container" data-type="pondasi">
+            <div class="area-lainnya-container-rumah-sederhana" data-type="pondasi">
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
@@ -225,7 +225,7 @@
                             <option value="">- Select -</option>
                             <option value="Tapak Beton dan Batu Kali - Rumah Tinggal Mewah 2 Lantai">Tapak Beton dan Batu Kali - Rumah Tinggal Mewah 2 Lantai</option>
                             <option value="Tapak Beton dan Batu Kali - Rumah Tinggal Menengah 2 Lantai">Tapak Beton dan Batu Kali - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="Batu Kali - {{ $tipe_spek }}">Batu Kali - {{ $tipe_spek }}</option>
+                            <option value="Batu Kali - Rumah Tinggal Sederhana 1 Lantai">Batu Kali - Rumah Tinggal Sederhana 1 Lantai</option>
                             <option value="Rollag Bata - Bangunan Perkebunan (Semi Permanen) 1 Lantai">Rollag Bata - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="Tapak Beton dan Batu Kali - Bangunan Gudang 1 Lantai">Tapak Beton dan Batu Kali - Bangunan Gudang 1 Lantai</option>
                             <option value="Tapak Beton dan Batu Kali - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)">Tapak Beton dan Batu Kali - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)</option>
@@ -244,7 +244,7 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link" data-type="pondasi">Tambah Tipe Pondasi Existing</button>
+            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana" data-type="pondasi">Tambah Tipe Pondasi Existing</button>
 
         </div>
         <button type="button" class="btn btn-primary btn-sm mt-2" id="show-pondasi-btn">Tambah Tipe Pondasi Existing</button>
@@ -253,7 +253,7 @@
     </div>
     <!-- Tipe Struktur Existing -->
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><b>Tipe Struktur Eksisting - {{ $tipe_spek }}</b></label>
+        <label><b>Tipe Struktur Eksisting - Rumah Tinggal Sederhana 1 Lantai</b></label>
         <div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Beton Bertulang" id="struktur_beton_bertulang" onchange="toggleBobotInput(this, 'bobot_struktur_beton_bertulang')">
@@ -269,7 +269,7 @@
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Tambah Tipe Struktur Eksisting</b></label><br>
         <div id="struktur-container" style="display: none;">
-            <div class="area-lainnya-container" data-type="struktur">
+            <div class="area-lainnya-container-rumah-sederhana" data-type="struktur">
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
@@ -277,7 +277,7 @@
                             <option value="">- Select -</option>
                             <option value="Beton Bertulang - Rumah Tinggal Mewah 2 Lantai">Beton Bertulang - Rumah Tinggal Mewah 2 Lantai</option>
                             <option value="Beton Bertulang - Rumah Tinggal Menengah 2 Lantai">Beton Bertulang - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="Beton Bertulang - {{ $tipe_spek }}">Beton Bertulang - {{ $tipe_spek }}</option>
+                            <option value="Beton Bertulang - Rumah Tinggal Sederhana 1 Lantai">Beton Bertulang - Rumah Tinggal Sederhana 1 Lantai</option>
                             <option value="Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai">Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="Baja Profil - Bangunan Gudang 1 Lantai">Baja Profil - Bangunan Gudang 1 Lantai</option>
                             <option value="Beton Bertulang - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)">Beton Bertulang - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)</option>
@@ -295,14 +295,14 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link" data-type="struktur">Tambah Tipe Struktur Existing</button>
+            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana" data-type="struktur">Tambah Tipe Struktur Existing</button>
         </div>
         <button type="button" class="btn btn-primary btn-sm mt-2" id="show-struktur-btn">Tambah Tipe Struktur Existing</button>
     </div>
 
     <!-- Tipe Rangka Atap Existing -->
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><b>Tipe Rangka Atap Eksisting - {{ $tipe_spek }}</b></label>
+        <label><b>Tipe Rangka Atap Eksisting - Rumah Tinggal Sederhana 1 Lantai</b></label>
         <div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Dak Beton (Jika Pakai Balok)" id="atap_dak_beton">
@@ -357,7 +357,7 @@
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Tipe Rangka Atap Existing</b></label><br>
         <div id="rangka-atap-container" style="display: none;">
-            <div class="area-lainnya-container" data-type="rangka-atap">
+            <div class="area-lainnya-container-rumah-sederhana" data-type="rangka-atap">
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
@@ -373,11 +373,11 @@
                             <option value="118737_0.5569">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="155172_0.5569">Baja Ringan (Atap Genteng) - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="127639_0.5569">Baja Ringan (Atap Asbes, Seng dll) - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="124221_1">Dak Beton (Jika Pakai Balok) - {{ $tipe_spek }}</option>
-                            <option value="252610_1">Kayu (Atap Genteng) - {{ $tipe_spek }}</option>
-                            <option value="147623_1">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - {{ $tipe_spek }}</option>
-                            <option value="214587_1">Baja Ringan (Atap Genteng) - {{ $tipe_spek }}</option>
-                            <option value="173204_1">Baja Ringan (Atap Asbes, Seng dll) - {{ $tipe_spek }}</option>
+                            <option value="124221_1">Dak Beton (Jika Pakai Balok) - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="252610_1">Kayu (Atap Genteng) - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="147623_1">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="214587_1">Baja Ringan (Atap Genteng) - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="173204_1">Baja Ringan (Atap Asbes, Seng dll) - Rumah Tinggal Sederhana 1 Lantai</option>
                             <option value="78577_1">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="339006_1">Profil Baja - Bangunan Gudang 1 Lantai</option>
                             <option value="112308_0.335">Dak Beton (Jika Pakai Balok) - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
@@ -399,13 +399,13 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link" data-type="rangka-atap">Tambah Tipe Rangka Atap Existing</button>
+            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana" data-type="rangka-atap">Tambah Tipe Rangka Atap Existing</button>
         </div>
         <button type="button" class="btn btn-primary btn-sm mt-2" id="show-rangka-atap-btn">Tambah Tipe Rangka Atap Existing</button>
     </div>
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Penutup Atap Eksisting - {{ $tipe_spek }}</strong></label><br>
+        <label><strong>Tipe Penutup Atap Eksisting - Rumah Tinggal Sederhana 1 Lantai</strong></label><br>
         <input type="checkbox" id="asbes" name="tipe_atap" value="Asbes" class="form-check-input">
         <label for="asbes" class="form-check-label">Asbes</label><br>
 
@@ -484,7 +484,7 @@
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Tambah Tipe Penutup Atap Existing</b></label><br>
         <div id="penutup-atap-existing-container" style="display: none;">
-            <div class="area-lainnya-container" data-type="penutup-atap-existing">
+            <div class="area-lainnya-container-rumah-sederhana" data-type="penutup-atap-existing">
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
@@ -514,15 +514,15 @@
                             <option value="243334_0.5569">Sirap - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="75361_0.5569">Spandek - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="172827_0.5569">PVC - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="117667_1">Asbes - {{ $tipe_spek }}</option>
-                            <option value="304700_1">Dak Beton - {{ $tipe_spek }}</option>
-                            <option value="234491_1">Fibreglass - {{ $tipe_spek }}</option>
-                            <option value="156035_1">Genteng Tanah Liat - {{ $tipe_spek }}</option>
-                            <option value="200470_1">Genteng Beton - {{ $tipe_spek }}</option>
-                            <option value="202741_1">Genteng Metal - {{ $tipe_spek }}</option>
-                            <option value="130168_1">Seng Gelombang - {{ $tipe_spek }}</option>
-                            <option value="124692_1">Spandek - {{ $tipe_spek }}</option>
-                            <option value="205773_1">PVC - {{ $tipe_spek }}</option>
+                            <option value="117667_1">Asbes - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="304700_1">Dak Beton - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="234491_1">Fibreglass - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="156035_1">Genteng Tanah Liat - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="200470_1">Genteng Beton - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="202741_1">Genteng Metal - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="130168_1">Seng Gelombang - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="124692_1">Spandek - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="205773_1">PVC - Rumah Tinggal Sederhana 1 Lantai</option>
                             <option value="118887_1">Asbes - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="124275_1">Seng Gelombang - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="91072_1">Asbes - Bangunan Gudang 1 Lantai</option>
@@ -555,12 +555,12 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link" data-type="penutup-atap-existing">Tambah Tipe Rangka Atap Existing</button>
+            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana" data-type="penutup-atap-existing">Tambah Tipe Rangka Atap Existing</button>
         </div>
         <button type="button" class="btn btn-primary btn-sm mt-2" id="show-penutup-atap-existing-btn">Tambah Tipe Rangka Atap Existing</button>
     </div>
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Penutup Atap Eksisting - {{ $tipe_spek }}</strong></label><br>
+        <label><strong>Tipe Penutup Atap Eksisting - Rumah Tinggal Sederhana 1 Lantai</strong></label><br>
         <input type="checkbox" id="batako" class="form-check-input">
         <label for="batako" class="form-check-label">Batako</label><br>
         <input type="checkbox" id="bata-merah" class="form-check-input">
@@ -604,7 +604,7 @@
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Tambah Tipe Dinding Existing</b></label><br>
         <div id="tipe-dinding-existing-container" style="display: none;">
-            <div class="area-lainnya-container" data-type="tipe-dinding-existing">
+            <div class="area-lainnya-container-rumah-sederhana" data-type="tipe-dinding-existing">
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
@@ -619,11 +619,11 @@
                             <option value="252700_2.143">Bata Ringan - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="289328_2.143">Partisi Gypsumboard 2 Muka - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="703318_2.143">Rooster Bata - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="153906_2.169">Batako - {{ $tipe_spek }}</option>
-                            <option value="190474_2.169">Bata Merah - {{ $tipe_spek }}</option>
-                            <option value="207182_2.169">Bata Ringan - {{ $tipe_spek }}</option>
-                            <option value="260248_2.169">Partisi Gypsumboard 2 Muka - {{ $tipe_spek }}</option>
-                            <option value="605463_2.169">Rooster Bata - {{ $tipe_spek }}</option>
+                            <option value="153906_2.169">Batako - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="190474_2.169">Bata Merah - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="207182_2.169">Bata Ringan - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="260248_2.169">Partisi Gypsumboard 2 Muka - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="605463_2.169">Rooster Bata - Rumah Tinggal Sederhana 1 Lantai</option>
                             <option value="336877_1.481">Papan dan Partisi Triplek Dicat - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="113213_1.249">Batako - Bangunan Gudang 1 Lantai</option>
                             <option value="142562_1.249">Bata Merah - Bangunan Gudang 1 Lantai</option>
@@ -647,14 +647,14 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link" data-type="tipe-dinding-existing">Tambah Tipe Rangka Atap Existing</button>
+            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana" data-type="tipe-dinding-existing">Tambah Tipe Rangka Atap Existing</button>
         </div>
         <button type="button" class="btn btn-primary btn-sm mt-2" id="show-tipe-dinding-existing-btn">Tambah Tipe Rangka Atap Existing</button>
     </div>
 
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Pelapis Dinding Eksisting - {{ $tipe_spek }}</strong></label><br>
+        <label><strong>Tipe Pelapis Dinding Eksisting - Rumah Tinggal Sederhana 1 Lantai</strong></label><br>
         <input type="checkbox" id="cat" class="form-check-input">
         <label for="cat" class="form-check-label">Dilapis Cat (Diplester dan Diaci)</label><br>
         <input type="checkbox" id="keramik" class="form-check-input">
@@ -697,7 +697,7 @@
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Tambah Tipe Pelapis Dinding Existing</b></label><br>
         <div id="tipe-pelapis-dinding-existing-container" style="display: none;">
-            <div class="area-lainnya-container" data-type="tipe-pelapis-dinding-existing">
+            <div class="area-lainnya-container-rumah-sederhana" data-type="tipe-pelapis-dinding-existing">
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
@@ -719,11 +719,11 @@
                             <option value="881996_2.143">Dilapis Wallpaper - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="2312115_2.143">Dilapis Mozaik - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="1070661_2.143">Dilapis Batu Alam - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="332768_2.169">Dilapis Cat (Diplester dan Diaci) - {{ $tipe_spek }}</option>
-                            <option value="782252_2.169">Dilapis Keramik - {{ $tipe_spek }}</option>
-                            <option value="642040_2.169">Dilapis Wallpaper - {{ $tipe_spek }}</option>
-                            <option value="1828812_2.169">Dilapis Mozaik - {{ $tipe_spek }}</option>
-                            <option value="856559_2.169">Dilapis Batu Alam - {{ $tipe_spek }}</option>
+                            <option value="332768_2.169">Dilapis Cat (Diplester dan Diaci) - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="782252_2.169">Dilapis Keramik - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="642040_2.169">Dilapis Wallpaper - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="1828812_2.169">Dilapis Mozaik - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="856559_2.169">Dilapis Batu Alam - Rumah Tinggal Sederhana 1 Lantai</option>
                             <option value="194807_1.249">Dilapis Cat (Diplester dan Diaci) - Bangunan Gudang 1 Lantai</option>
                             <option value="345190_1.577">Dilapis Cat (Diplester dan Diaci) - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
                             <option value="909393_1.577">Dilapis Keramik - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
@@ -744,14 +744,14 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link" data-type="tipe-pelapis-dinding-existing">Tambah Tipe Rangka Atap Existing</button>
+            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana" data-type="tipe-pelapis-dinding-existing">Tambah Tipe Rangka Atap Existing</button>
         </div>
         <button type="button" class="btn btn-primary btn-sm mt-2" id="show-tipe-pelapis-dinding-existing-btn">Tambah Tipe Rangka Atap Existing</button>
     </div>
 
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Pintu & Jendela Eksisting - {{ $tipe_spek }}</strong></label><br>
+        <label><strong>Tipe Pintu & Jendela Eksisting - Rumah Tinggal Sederhana 1 Lantai</strong></label><br>
         <input type="checkbox" id="pintu-kayu-panil" class="form-check-input">
         <label for="pintu-kayu-panil" class="form-check-label">Pintu Kayu Panil</label><br>
         <input type="checkbox" id="pintu-kayu-dobel" class="form-check-input">
@@ -801,7 +801,7 @@
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Tambah Tipe Pintu & Jendela Existing</b></label><br>
         <div id="tipe-pintu-jendela-existing-container" style="display: none;">
-            <div class="area-lainnya-container" data-type="tipe-pintu-jendela-existing">
+            <div class="area-lainnya-container-rumah-sederhana" data-type="tipe-pintu-jendela-existing">
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
@@ -829,12 +829,12 @@
                             <option value="290195_0.218">Pintu Garasi Besi - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="152079_0.218">Jendela Kaca Stopsol 8 mm Rangka Curtain Wall - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="130977_0.218">Jendela Kaca Tempered Frameless - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="305534_0.327">Pintu Kayu Panil - {{ $tipe_spek }}</option>
-                            <option value="236730_0.327">Pintu Kayu Dobel Triplek/ HPL - {{ $tipe_spek }}</option>
-                            <option value="311178_0.327">Pintu Kaca Rk Aluminium - {{ $tipe_spek }}</option>
-                            <option value="265053_0.327">Jendela Kaca Rk Kayu - {{ $tipe_spek }}</option>
-                            <option value="316582_0.327">Jendela Kaca Rk Aluminium - {{ $tipe_spek }}</option>
-                            <option value="65494_0.327">Pintu KM UPVC/PVC - {{ $tipe_spek }}</option>
+                            <option value="305534_0.327">Pintu Kayu Panil - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="236730_0.327">Pintu Kayu Dobel Triplek/ HPL - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="311178_0.327">Pintu Kaca Rk Aluminium - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="265053_0.327">Jendela Kaca Rk Kayu - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="316582_0.327">Jendela Kaca Rk Aluminium - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="65494_0.327">Pintu KM UPVC/PVC - Rumah Tinggal Sederhana 1 Lantai</option>
                             <option value="71764_0.276">Jendela Kaca Rk Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="74470_0.057">Pintu Besi - Bangunan Gudang 1 Lantai</option>
                             <option value="191060_0.126">Pintu Kayu Panil - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
@@ -861,13 +861,13 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link" data-type="tipe-pintu-jendela-existing">Tambah Tipe Rangka Atap Existing</button>
+            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana" data-type="tipe-pintu-jendela-existing">Tambah Tipe Rangka Atap Existing</button>
         </div>
         <button type="button" class="btn btn-primary btn-sm mt-2" id="show-tipe-pintu-jendela-existing-btn">Tambah Tipe Rangka Atap Existing</button>
     </div>
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Lantai Eksisting - {{ $tipe_spek }}</strong></label><br>
+        <label><strong>Tipe Lantai Eksisting - Rumah Tinggal Sederhana 1 Lantai</strong></label><br>
         <input type="checkbox" id="granit-homogenous-tile" class="form-check-input">
         <label for="granit-homogenous-tile" class="form-check-label">Granit/Homogenous Tile</label><br>
         <input type="checkbox" id="karpet" class="form-check-input">
@@ -925,7 +925,7 @@
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Tambah Tipe Lantai Existing</b></label><br>
         <div id="tipe-lantai-existing-container" style="display: none;">
-            <div class="area-lainnya-container" data-type="tipe-lantai-existing">
+            <div class="area-lainnya-container-rumah-sederhana" data-type="tipe-lantai-existing">
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
@@ -953,13 +953,13 @@
                             <option value="481344_0">Teraso - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="351650_0">Vynil - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="115239_0">Papan Kayu - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="260164_0">Granit/Homogenous Tile - {{ $tipe_spek }}</option>
-                            <option value="173280_0">Karpet - {{ $tipe_spek }}</option>
-                            <option value="176287_0">Keramik - {{ $tipe_spek }}</option>
-                            <option value="66156_0">Rabat Beton (Semen Ekspose) - {{ $tipe_spek }}</option>
-                            <option value="21388_0">Teraso - {{ $tipe_spek }}</option>
-                            <option value="229269_0">Vynil - {{ $tipe_spek }}</option>
-                            <option value="102937_0">Papan Kayu - {{ $tipe_spek }}</option>
+                            <option value="260164_0">Granit/Homogenous Tile - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="173280_0">Karpet - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="176287_0">Keramik - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="66156_0">Rabat Beton (Semen Ekspose) - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="21388_0">Teraso - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="229269_0">Vynil - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="102937_0">Papan Kayu - Rumah Tinggal Sederhana 1 Lantai</option>
                             <option value="150353_0">Keramik - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="43454_0">Rabat Beton (Semen Ekspose) - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="79155_0">Papan Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
@@ -989,7 +989,7 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link" data-type="tipe-lantai-existing">Tambah Tipe Rangka Atap Existing</button>
+            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana" data-type="tipe-lantai-existing">Tambah Tipe Rangka Atap Existing</button>
         </div>
         <button type="button" class="btn btn-primary btn-sm mt-2" id="show-tipe-lantai-existing-btn">Tambah Tipe Rangka Atap Existing</button>
     </div>
@@ -1026,7 +1026,7 @@
                 <option value="">- Select -</option>
                 <option value="Tapak Beton dan Batu Kali - Rumah Tinggal Mewah 2 Lantai">Tapak Beton dan Batu Kali - Rumah Tinggal Mewah 2 Lantai</option>
                 <option value="Tapak Beton dan Batu Kali - Rumah Tinggal Menengah 2 Lantai">Tapak Beton dan Batu Kali - Rumah Tinggal Menengah 2 Lantai</option>
-                <option value="Batu Kali - {{ $tipe_spek }}">Batu Kali - {{ $tipe_spek }}</option>
+                <option value="Batu Kali - Rumah Tinggal Sederhana 1 Lantai">Batu Kali - Rumah Tinggal Sederhana 1 Lantai</option>
                 <option value="Rollag Bata - Bangunan Perkebunan (Semi Permanen) 1 Lantai">Rollag Bata - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                 <option value="Tapak Beton dan Batu Kali - Bangunan Gudang 1 Lantai">Tapak Beton dan Batu Kali - Bangunan Gudang 1 Lantai</option>
                 <option value="Tapak Beton dan Batu Kali - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)">Tapak Beton dan Batu Kali - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)</option>
@@ -1056,7 +1056,7 @@
             <option value="">- Select -</option>
             <option value="Beton Bertulang - Rumah Tinggal Mewah 2 Lantai">Beton Bertulang - Rumah Tinggal Mewah 2 Lantai</option>
             <option value="Beton Bertulang - Rumah Tinggal Menengah 2 Lantai">Beton Bertulang - Rumah Tinggal Menengah 2 Lantai</option>
-            <option value="Beton Bertulang - {{ $tipe_spek }}">Beton Bertulang - {{ $tipe_spek }}</option>
+            <option value="Beton Bertulang - Rumah Tinggal Sederhana 1 Lantai">Beton Bertulang - Rumah Tinggal Sederhana 1 Lantai</option>
             <option value="Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai">Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
             <option value="Baja Profil - Bangunan Gudang 1 Lantai">Baja Profil - Bangunan Gudang 1 Lantai</option>
             <option value="Beton Bertulang - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)">Beton Bertulang - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
@@ -1094,10 +1094,10 @@
             <option value="Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Rumah Tinggal Menengah 2 Lantai">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="Baja Ringan (Atap Genteng) - Rumah Tinggal Menengah 2 Lantai">Baja Ringan (Atap Genteng) - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="Baja Ringan (Atap Asbes, Seng dll) - Rumah Tinggal Menengah 2 Lantai">Baja Ringan (Atap Asbes, Seng dll) - Rumah Tinggal Menengah 2 Lantai</option>
-            <option value="Kayu (Atap Genteng) - {{ $tipe_spek }}">Kayu (Atap Genteng) - {{ $tipe_spek }}</option>
-            <option value="Kayu (Atap Asbes, Seng dll, Tanpa Reng) - {{ $tipe_spek }}">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - {{ $tipe_spek }}</option>
-            <option value="Baja Ringan (Atap Genteng) - {{ $tipe_spek }}">Baja Ringan (Atap Genteng) - {{ $tipe_spek }}</option>
-            <option value="Baja Ringan (Atap Asbes, Seng dll) - {{ $tipe_spek }}">Baja Ringan (Atap Asbes, Seng dll) - {{ $tipe_spek }}</option>
+            <option value="Kayu (Atap Genteng) - Rumah Tinggal Sederhana 1 Lantai">Kayu (Atap Genteng) - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Rumah Tinggal Sederhana 1 Lantai">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="Baja Ringan (Atap Genteng) - Rumah Tinggal Sederhana 1 Lantai">Baja Ringan (Atap Genteng) - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="Baja Ringan (Atap Asbes, Seng dll) - Rumah Tinggal Sederhana 1 Lantai">Baja Ringan (Atap Asbes, Seng dll) - Rumah Tinggal Sederhana 1 Lantai</option>
             <option value="Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Bangunan Perkebunan (Semi Permanen) 1 Lantai">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
             <option value="Profil Baja - Bangunan Gudang 1 Lantai">Profil Baja - Bangunan Gudang 1 Lantai</option>
             <option value="Kayu (Atap Genteng) - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)">Kayu (Atap Genteng) - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
@@ -1152,15 +1152,15 @@
                             <option value="243334_0.5569">Sirap - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="75361_0.5569">Spandek - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="172827_0.5569">PVC - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="117667_1">Asbes - {{ $tipe_spek }}</option>
-                            <option value="304700_1">Dak Beton - {{ $tipe_spek }}</option>
-                            <option value="234491_1">Fibreglass - {{ $tipe_spek }}</option>
-                            <option value="156035_1">Genteng Tanah Liat - {{ $tipe_spek }}</option>
-                            <option value="200470_1">Genteng Beton - {{ $tipe_spek }}</option>
-                            <option value="202741_1">Genteng Metal - {{ $tipe_spek }}</option>
-                            <option value="130168_1">Seng Gelombang - {{ $tipe_spek }}</option>
-                            <option value="124692_1">Spandek - {{ $tipe_spek }}</option>
-                            <option value="205773_1">PVC - {{ $tipe_spek }}</option>
+                            <option value="117667_1">Asbes - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="304700_1">Dak Beton - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="234491_1">Fibreglass - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="156035_1">Genteng Tanah Liat - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="200470_1">Genteng Beton - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="202741_1">Genteng Metal - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="130168_1">Seng Gelombang - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="124692_1">Spandek - Rumah Tinggal Sederhana 1 Lantai</option>
+                            <option value="205773_1">PVC - Rumah Tinggal Sederhana 1 Lantai</option>
                             <option value="118887_1">Asbes - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="124275_1">Seng Gelombang - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="91072_1">Asbes - Bangunan Gudang 1 Lantai</option>
@@ -1213,11 +1213,11 @@
             <option value="252700_2.143">Bata Ringan - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="289328_2.143">Partisi Gypsumboard 2 Muka - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="703318_2.143">Rooster Bata - Rumah Tinggal Menengah 2 Lantai</option>
-            <option value="153906_2.169">Batako - {{ $tipe_spek }}</option>
-            <option value="190474_2.169">Bata Merah - {{ $tipe_spek }}</option>
-            <option value="207182_2.169">Bata Ringan - {{ $tipe_spek }}</option>
-            <option value="260248_2.169">Partisi Gypsumboard 2 Muka - {{ $tipe_spek }}</option>
-            <option value="605463_2.169">Rooster Bata - {{ $tipe_spek }}</option>
+            <option value="153906_2.169">Batako - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="190474_2.169">Bata Merah - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="207182_2.169">Bata Ringan - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="260248_2.169">Partisi Gypsumboard 2 Muka - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="605463_2.169">Rooster Bata - Rumah Tinggal Sederhana 1 Lantai</option>
             <option value="336877_1.481">Papan dan Partisi Triplek Dicat - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
             <option value="113213_1.249">Batako - Bangunan Gudang 1 Lantai</option>
             <option value="142562_1.249">Bata Merah - Bangunan Gudang 1 Lantai</option>
@@ -1267,11 +1267,11 @@
             <option value="881996_2.143">Dilapis Wallpaper - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="2312115_2.143">Dilapis Mozaik - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="1070661_2.143">Dilapis Batu Alam - Rumah Tinggal Menengah 2 Lantai</option>
-            <option value="332768_2.169">Dilapis Cat (Diplester dan Diaci) - {{ $tipe_spek }}</option>
-            <option value="782252_2.169">Dilapis Keramik - {{ $tipe_spek }}</option>
-            <option value="642040_2.169">Dilapis Wallpaper - {{ $tipe_spek }}</option>
-            <option value="1828812_2.169">Dilapis Mozaik - {{ $tipe_spek }}</option>
-            <option value="856559_2.169">Dilapis Batu Alam - {{ $tipe_spek }}</option>
+            <option value="332768_2.169">Dilapis Cat (Diplester dan Diaci) - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="782252_2.169">Dilapis Keramik - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="642040_2.169">Dilapis Wallpaper - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="1828812_2.169">Dilapis Mozaik - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="856559_2.169">Dilapis Batu Alam - Rumah Tinggal Sederhana 1 Lantai</option>
             <option value="194807_1.249">Dilapis Cat (Diplester dan Diaci) - Bangunan Gudang 1 Lantai</option>
             <option value="345190_1.577">Dilapis Cat (Diplester dan Diaci) - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
             <option value="909393_1.577">Dilapis Keramik - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
@@ -1324,13 +1324,13 @@
             <option value="481344_0">Teraso - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="351650_0">Vynil - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="115239_0">Papan Kayu - Rumah Tinggal Menengah 2 Lantai</option>
-            <option value="260164_0">Granit/Homogenous Tile - {{ $tipe_spek }}</option>
-            <option value="173280_0">Karpet - {{ $tipe_spek }}</option>
-            <option value="176287_0">Keramik - {{ $tipe_spek }}</option>
-            <option value="66156_0">Rabat Beton (Semen Ekspose) - {{ $tipe_spek }}</option>
-            <option value="21388_0">Teraso - {{ $tipe_spek }}</option>
-            <option value="229269_0">Vynil - {{ $tipe_spek }}</option>
-            <option value="102937_0">Papan Kayu - {{ $tipe_spek }}</option>
+            <option value="260164_0">Granit/Homogenous Tile - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="173280_0">Karpet - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="176287_0">Keramik - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="66156_0">Rabat Beton (Semen Ekspose) - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="21388_0">Teraso - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="229269_0">Vynil - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="102937_0">Papan Kayu - Rumah Tinggal Sederhana 1 Lantai</option>
             <option value="150353_0">Keramik - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
             <option value="43454_0">Rabat Beton (Semen Ekspose) - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
             <option value="79155_0">Papan Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
@@ -1392,12 +1392,12 @@
             <option value="290195_0.218">Pintu Garasi Besi - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="152079_0.218">Jendela Kaca Stopsol 8 mm Rangka Curtain Wall - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="130977_0.218">Jendela Kaca Tempered Frameless - Rumah Tinggal Menengah 2 Lantai</option>
-            <option value="305534_0.327">Pintu Kayu Panil - {{ $tipe_spek }}</option>
-            <option value="236730_0.327">Pintu Kayu Dobel Triplek/ HPL - {{ $tipe_spek }}</option>
-            <option value="311178_0.327">Pintu Kaca Rk Aluminium - {{ $tipe_spek }}</option>
-            <option value="265053_0.327">Jendela Kaca Rk Kayu - {{ $tipe_spek }}</option>
-            <option value="316582_0.327">Jendela Kaca Rk Aluminium - {{ $tipe_spek }}</option>
-            <option value="65494_0.327">Pintu KM UPVC/PVC - {{ $tipe_spek }}</option>
+            <option value="305534_0.327">Pintu Kayu Panil - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="236730_0.327">Pintu Kayu Dobel Triplek/ HPL - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="311178_0.327">Pintu Kaca Rk Aluminium - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="265053_0.327">Jendela Kaca Rk Kayu - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="316582_0.327">Jendela Kaca Rk Aluminium - Rumah Tinggal Sederhana 1 Lantai</option>
+            <option value="65494_0.327">Pintu KM UPVC/PVC - Rumah Tinggal Sederhana 1 Lantai</option>
             <option value="71764_0.276">Jendela Kaca Rk Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
             <option value="74470_0.057">Pintu Besi - Bangunan Gudang 1 Lantai</option>
             <option value="191060_0.126">Pintu Kayu Panil - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
@@ -1465,18 +1465,18 @@
 
 
         // Menangani klik pada tombol "Tambah Area"
-        document.querySelectorAll('.add-area-link').forEach(function(button) {
+        document.querySelectorAll('.add-area-link-rumah-sederhana').forEach(function(button) {
             button.addEventListener('click', function(e) {
                 e.preventDefault();
                 const type = this.getAttribute('data-type');
-                const areaContainer = document.querySelector(`.area-lainnya-container[data-type="${type}"]`);
+                const areaContainer = document.querySelector(`.area-lainnya-container-rumah-sederhana[data-type="${type}"]`);
                 const newAreaItem = createAreaItem(type);
                 areaContainer.appendChild(newAreaItem);
             });
         });
 
         // Event delegation untuk tombol add dan remove dalam masing-masing container
-        document.querySelectorAll('.area-lainnya-container').forEach(function(container) {
+        document.querySelectorAll('.area-lainnya-container-rumah-sederhana').forEach(function(container) {
             container.addEventListener('click', function(e) {
                 if (e.target.classList.contains('add-area-btn')) {
                     e.preventDefault();
@@ -1516,7 +1516,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         const pondasiContainer = document.getElementById('pondasi-container');
         const showPondasiBtn = document.getElementById('show-pondasi-btn');
-        const addPondasiBtn = document.querySelector('.add-area-link[data-type="pondasi"]');
+        const addPondasiBtn = document.querySelector('.add-area-link-rumah-sederhana[data-type="pondasi"]');
 
         // Awal hanya tombol show yang terlihat
         addPondasiBtn.style.display = 'none';
@@ -1537,7 +1537,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         const strukturContainer = document.getElementById('struktur-container');
         const showStrukturBtn = document.getElementById('show-struktur-btn');
-        const addStrukturBtn = document.querySelector('.add-area-link[data-type="struktur"]');
+        const addStrukturBtn = document.querySelector('.add-area-link-rumah-sederhana[data-type="struktur"]');
 
         // Awal hanya tombol show yang terlihat
         addStrukturBtn.style.display = 'none';
@@ -1556,7 +1556,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         const rangkaAtapContainer = document.getElementById('rangka-atap-container');
         const showRangkaAtapBtn = document.getElementById('show-rangka-atap-btn');
-        const addRangkaAtapBtn = document.querySelector('.add-area-link[data-type="rangka-atap"]');
+        const addRangkaAtapBtn = document.querySelector('.add-area-link-rumah-sederhana[data-type="rangka-atap"]');
 
         // Awal hanya tombol show yang terlihat
         addRangkaAtapBtn.style.display = 'none';
@@ -1574,7 +1574,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         const rangkaAtapContainer = document.getElementById('penutup-atap-existing-container');
         const showRangkaAtapBtn = document.getElementById('show-penutup-atap-existing-btn');
-        const addRangkaAtapBtn = document.querySelector('.add-area-link[data-type="penutup-atap-existing"]');
+        const addRangkaAtapBtn = document.querySelector('.add-area-link-rumah-sederhana[data-type="penutup-atap-existing"]');
 
         // Awal hanya tombol show yang terlihat
         addRangkaAtapBtn.style.display = 'none';
@@ -1592,7 +1592,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         const rangkaAtapContainer = document.getElementById('tipe-dinding-existing-container');
         const showRangkaAtapBtn = document.getElementById('show-tipe-dinding-existing-btn');
-        const addRangkaAtapBtn = document.querySelector('.add-area-link[data-type="tipe-dinding-existing"]');
+        const addRangkaAtapBtn = document.querySelector('.add-area-link-rumah-sederhana[data-type="tipe-dinding-existing"]');
 
         // Awal hanya tombol show yang terlihat
         addRangkaAtapBtn.style.display = 'none';
@@ -1610,7 +1610,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         const rangkaAtapContainer = document.getElementById('tipe-pelapis-dinding-existing-container');
         const showRangkaAtapBtn = document.getElementById('show-tipe-pelapis-dinding-existing-btn');
-        const addRangkaAtapBtn = document.querySelector('.add-area-link[data-type="tipe-pelapis-dinding-existing"]');
+        const addRangkaAtapBtn = document.querySelector('.add-area-link-rumah-sederhana[data-type="tipe-pelapis-dinding-existing"]');
 
         // Awal hanya tombol show yang terlihat
         addRangkaAtapBtn.style.display = 'none';
@@ -1628,7 +1628,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         const rangkaAtapContainer = document.getElementById('tipe-lantai-existing-container');
         const showRangkaAtapBtn = document.getElementById('show-tipe-lantai-existing-btn');
-        const addRangkaAtapBtn = document.querySelector('.add-area-link[data-type="tipe-lantai-existing"]');
+        const addRangkaAtapBtn = document.querySelector('.add-area-link-rumah-sederhana[data-type="tipe-lantai-existing"]');
 
         // Awal hanya tombol show yang terlihat
         addRangkaAtapBtn.style.display = 'none';
@@ -1646,7 +1646,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         const rangkaAtapContainer = document.getElementById('tipe-pintu-jendela-existing-container');
         const showRangkaAtapBtn = document.getElementById('show-tipe-pintu-jendela-existing-btn');
-        const addRangkaAtapBtn = document.querySelector('.add-area-link[data-type="tipe-pintu-jendela-existing"]');
+        const addRangkaAtapBtn = document.querySelector('.add-area-link-rumah-sederhana[data-type="tipe-pintu-jendela-existing"]');
 
         // Awal hanya tombol show yang terlihat
         addRangkaAtapBtn.style.display = 'none';

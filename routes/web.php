@@ -248,5 +248,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/jenis-dokumen-tanah', [Jenis_dokumen_tanah::class, 'index'])->name('index');
 });
 
-Route::get('/load-form', 'FormController@loadForm')->name('load.form');
+Route::get('/load-form/{type}', function ($type) {
+    $viewName = match ($type) {
+        'rumah_sederhana' => 'content.form.form_rumah_sederhana',
+        'rumah_menengah' => 'content.form.form_rumah_menengah',
+        'rumah_mewah' => 'content.form.form_rumah_mewah',
+        default => null,
+    };
 
+    if ($viewName && view()->exists($viewName)) {
+        return view($viewName)->render();
+    }
+
+    return response()->json(['error' => 'Form not found'], 404);
+});

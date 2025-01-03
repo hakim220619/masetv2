@@ -202,7 +202,7 @@
     </div>
     <!-- Tipe Pondasi Existing -->
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><b>Tipe Pondasi Eksisting - {{ $tipe_spek }}</b></label>
+        <label><b>Tipe Pondasi Eksisting - Rumah Tinggal Menengah 2 Lantai</b></label>
         <div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Batu Kali" id="pondasi_batu_kali" onchange="toggleBobotInput(this, 'bobot_pondasi_batu_kali')">
@@ -225,7 +225,7 @@
                             <option value="">- Select -</option>
                             <option value="Tapak Beton dan Batu Kali - Rumah Tinggal Mewah 2 Lantai">Tapak Beton dan Batu Kali - Rumah Tinggal Mewah 2 Lantai</option>
                             <option value="Tapak Beton dan Batu Kali - Rumah Tinggal Menengah 2 Lantai">Tapak Beton dan Batu Kali - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="Batu Kali - {{ $tipe_spek }}">Batu Kali - {{ $tipe_spek }}</option>
+                            <option value="Batu Kali - Rumah Tinggal Menengah 2 Lantai">Batu Kali - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="Rollag Bata - Bangunan Perkebunan (Semi Permanen) 1 Lantai">Rollag Bata - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="Tapak Beton dan Batu Kali - Bangunan Gudang 1 Lantai">Tapak Beton dan Batu Kali - Bangunan Gudang 1 Lantai</option>
                             <option value="Tapak Beton dan Batu Kali - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)">Tapak Beton dan Batu Kali - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)</option>
@@ -253,7 +253,7 @@
     </div>
     <!-- Tipe Struktur Existing -->
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><b>Tipe Struktur Eksisting - {{ $tipe_spek }}</b></label>
+        <label><b>Tipe Struktur Eksisting - Rumah Tinggal Menengah 2 Lantai</b></label>
         <div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Beton Bertulang" id="struktur_beton_bertulang" onchange="toggleBobotInput(this, 'bobot_struktur_beton_bertulang')">
@@ -277,7 +277,7 @@
                             <option value="">- Select -</option>
                             <option value="Beton Bertulang - Rumah Tinggal Mewah 2 Lantai">Beton Bertulang - Rumah Tinggal Mewah 2 Lantai</option>
                             <option value="Beton Bertulang - Rumah Tinggal Menengah 2 Lantai">Beton Bertulang - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="Beton Bertulang - {{ $tipe_spek }}">Beton Bertulang - {{ $tipe_spek }}</option>
+                            <option value="Beton Bertulang - Rumah Tinggal Menengah 2 Lantai">Beton Bertulang - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai">Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="Baja Profil - Bangunan Gudang 1 Lantai">Baja Profil - Bangunan Gudang 1 Lantai</option>
                             <option value="Beton Bertulang - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)">Beton Bertulang - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)</option>
@@ -302,7 +302,7 @@
 
     <!-- Tipe Rangka Atap Existing -->
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><b>Tipe Rangka Atap Eksisting - {{ $tipe_spek }}</b></label>
+        <label><b>Tipe Rangka Atap Eksisting - Rumah Tinggal Menengah 2 Lantai</b></label>
         <div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Dak Beton (Jika Pakai Balok)" id="atap_dak_beton">
@@ -373,11 +373,11 @@
                             <option value="118737_0.5569">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="155172_0.5569">Baja Ringan (Atap Genteng) - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="127639_0.5569">Baja Ringan (Atap Asbes, Seng dll) - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="124221_1">Dak Beton (Jika Pakai Balok) - {{ $tipe_spek }}</option>
-                            <option value="252610_1">Kayu (Atap Genteng) - {{ $tipe_spek }}</option>
-                            <option value="147623_1">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - {{ $tipe_spek }}</option>
-                            <option value="214587_1">Baja Ringan (Atap Genteng) - {{ $tipe_spek }}</option>
-                            <option value="173204_1">Baja Ringan (Atap Asbes, Seng dll) - {{ $tipe_spek }}</option>
+                            <option value="124221_1">Dak Beton (Jika Pakai Balok) - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="252610_1">Kayu (Atap Genteng) - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="147623_1">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="214587_1">Baja Ringan (Atap Genteng) - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="173204_1">Baja Ringan (Atap Asbes, Seng dll) - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="78577_1">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="339006_1">Profil Baja - Bangunan Gudang 1 Lantai</option>
                             <option value="112308_0.335">Dak Beton (Jika Pakai Balok) - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
@@ -405,7 +405,7 @@
     </div>
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Penutup Atap Eksisting - {{ $tipe_spek }}</strong></label><br>
+        <label><strong>Tipe Penutup Atap Eksisting - Rumah Tinggal Menengah 2 Lantai</strong></label><br>
         <input type="checkbox" id="asbes" name="tipe_atap" value="Asbes" class="form-check-input">
         <label for="asbes" class="form-check-label">Asbes</label><br>
 
@@ -514,15 +514,15 @@
                             <option value="243334_0.5569">Sirap - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="75361_0.5569">Spandek - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="172827_0.5569">PVC - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="117667_1">Asbes - {{ $tipe_spek }}</option>
-                            <option value="304700_1">Dak Beton - {{ $tipe_spek }}</option>
-                            <option value="234491_1">Fibreglass - {{ $tipe_spek }}</option>
-                            <option value="156035_1">Genteng Tanah Liat - {{ $tipe_spek }}</option>
-                            <option value="200470_1">Genteng Beton - {{ $tipe_spek }}</option>
-                            <option value="202741_1">Genteng Metal - {{ $tipe_spek }}</option>
-                            <option value="130168_1">Seng Gelombang - {{ $tipe_spek }}</option>
-                            <option value="124692_1">Spandek - {{ $tipe_spek }}</option>
-                            <option value="205773_1">PVC - {{ $tipe_spek }}</option>
+                            <option value="117667_1">Asbes - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="304700_1">Dak Beton - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="234491_1">Fibreglass - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="156035_1">Genteng Tanah Liat - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="200470_1">Genteng Beton - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="202741_1">Genteng Metal - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="130168_1">Seng Gelombang - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="124692_1">Spandek - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="205773_1">PVC - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="118887_1">Asbes - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="124275_1">Seng Gelombang - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="91072_1">Asbes - Bangunan Gudang 1 Lantai</option>
@@ -560,7 +560,7 @@
         <button type="button" class="btn btn-primary btn-sm mt-2" id="show-penutup-atap-existing-btn">Tambah Tipe Rangka Atap Existing</button>
     </div>
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Penutup Atap Eksisting - {{ $tipe_spek }}</strong></label><br>
+        <label><strong>Tipe Penutup Atap Eksisting - Rumah Tinggal Menengah 2 Lantai</strong></label><br>
         <input type="checkbox" id="batako" class="form-check-input">
         <label for="batako" class="form-check-label">Batako</label><br>
         <input type="checkbox" id="bata-merah" class="form-check-input">
@@ -619,11 +619,11 @@
                             <option value="252700_2.143">Bata Ringan - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="289328_2.143">Partisi Gypsumboard 2 Muka - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="703318_2.143">Rooster Bata - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="153906_2.169">Batako - {{ $tipe_spek }}</option>
-                            <option value="190474_2.169">Bata Merah - {{ $tipe_spek }}</option>
-                            <option value="207182_2.169">Bata Ringan - {{ $tipe_spek }}</option>
-                            <option value="260248_2.169">Partisi Gypsumboard 2 Muka - {{ $tipe_spek }}</option>
-                            <option value="605463_2.169">Rooster Bata - {{ $tipe_spek }}</option>
+                            <option value="153906_2.169">Batako - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="190474_2.169">Bata Merah - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="207182_2.169">Bata Ringan - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="260248_2.169">Partisi Gypsumboard 2 Muka - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="605463_2.169">Rooster Bata - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="336877_1.481">Papan dan Partisi Triplek Dicat - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="113213_1.249">Batako - Bangunan Gudang 1 Lantai</option>
                             <option value="142562_1.249">Bata Merah - Bangunan Gudang 1 Lantai</option>
@@ -654,7 +654,7 @@
 
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Pelapis Dinding Eksisting - {{ $tipe_spek }}</strong></label><br>
+        <label><strong>Tipe Pelapis Dinding Eksisting - Rumah Tinggal Menengah 2 Lantai</strong></label><br>
         <input type="checkbox" id="cat" class="form-check-input">
         <label for="cat" class="form-check-label">Dilapis Cat (Diplester dan Diaci)</label><br>
         <input type="checkbox" id="keramik" class="form-check-input">
@@ -719,11 +719,11 @@
                             <option value="881996_2.143">Dilapis Wallpaper - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="2312115_2.143">Dilapis Mozaik - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="1070661_2.143">Dilapis Batu Alam - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="332768_2.169">Dilapis Cat (Diplester dan Diaci) - {{ $tipe_spek }}</option>
-                            <option value="782252_2.169">Dilapis Keramik - {{ $tipe_spek }}</option>
-                            <option value="642040_2.169">Dilapis Wallpaper - {{ $tipe_spek }}</option>
-                            <option value="1828812_2.169">Dilapis Mozaik - {{ $tipe_spek }}</option>
-                            <option value="856559_2.169">Dilapis Batu Alam - {{ $tipe_spek }}</option>
+                            <option value="332768_2.169">Dilapis Cat (Diplester dan Diaci) - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="782252_2.169">Dilapis Keramik - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="642040_2.169">Dilapis Wallpaper - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="1828812_2.169">Dilapis Mozaik - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="856559_2.169">Dilapis Batu Alam - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="194807_1.249">Dilapis Cat (Diplester dan Diaci) - Bangunan Gudang 1 Lantai</option>
                             <option value="345190_1.577">Dilapis Cat (Diplester dan Diaci) - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
                             <option value="909393_1.577">Dilapis Keramik - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
@@ -751,7 +751,7 @@
 
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Pintu & Jendela Eksisting - {{ $tipe_spek }}</strong></label><br>
+        <label><strong>Tipe Pintu & Jendela Eksisting - Rumah Tinggal Menengah 2 Lantai</strong></label><br>
         <input type="checkbox" id="pintu-kayu-panil" class="form-check-input">
         <label for="pintu-kayu-panil" class="form-check-label">Pintu Kayu Panil</label><br>
         <input type="checkbox" id="pintu-kayu-dobel" class="form-check-input">
@@ -829,12 +829,12 @@
                             <option value="290195_0.218">Pintu Garasi Besi - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="152079_0.218">Jendela Kaca Stopsol 8 mm Rangka Curtain Wall - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="130977_0.218">Jendela Kaca Tempered Frameless - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="305534_0.327">Pintu Kayu Panil - {{ $tipe_spek }}</option>
-                            <option value="236730_0.327">Pintu Kayu Dobel Triplek/ HPL - {{ $tipe_spek }}</option>
-                            <option value="311178_0.327">Pintu Kaca Rk Aluminium - {{ $tipe_spek }}</option>
-                            <option value="265053_0.327">Jendela Kaca Rk Kayu - {{ $tipe_spek }}</option>
-                            <option value="316582_0.327">Jendela Kaca Rk Aluminium - {{ $tipe_spek }}</option>
-                            <option value="65494_0.327">Pintu KM UPVC/PVC - {{ $tipe_spek }}</option>
+                            <option value="305534_0.327">Pintu Kayu Panil - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="236730_0.327">Pintu Kayu Dobel Triplek/ HPL - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="311178_0.327">Pintu Kaca Rk Aluminium - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="265053_0.327">Jendela Kaca Rk Kayu - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="316582_0.327">Jendela Kaca Rk Aluminium - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="65494_0.327">Pintu KM UPVC/PVC - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="71764_0.276">Jendela Kaca Rk Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="74470_0.057">Pintu Besi - Bangunan Gudang 1 Lantai</option>
                             <option value="191060_0.126">Pintu Kayu Panil - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
@@ -867,7 +867,7 @@
     </div>
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Lantai Eksisting - {{ $tipe_spek }}</strong></label><br>
+        <label><strong>Tipe Lantai Eksisting - Rumah Tinggal Menengah 2 Lantai</strong></label><br>
         <input type="checkbox" id="granit-homogenous-tile" class="form-check-input">
         <label for="granit-homogenous-tile" class="form-check-label">Granit/Homogenous Tile</label><br>
         <input type="checkbox" id="karpet" class="form-check-input">
@@ -953,13 +953,13 @@
                             <option value="481344_0">Teraso - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="351650_0">Vynil - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="115239_0">Papan Kayu - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="260164_0">Granit/Homogenous Tile - {{ $tipe_spek }}</option>
-                            <option value="173280_0">Karpet - {{ $tipe_spek }}</option>
-                            <option value="176287_0">Keramik - {{ $tipe_spek }}</option>
-                            <option value="66156_0">Rabat Beton (Semen Ekspose) - {{ $tipe_spek }}</option>
-                            <option value="21388_0">Teraso - {{ $tipe_spek }}</option>
-                            <option value="229269_0">Vynil - {{ $tipe_spek }}</option>
-                            <option value="102937_0">Papan Kayu - {{ $tipe_spek }}</option>
+                            <option value="260164_0">Granit/Homogenous Tile - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="173280_0">Karpet - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="176287_0">Keramik - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="66156_0">Rabat Beton (Semen Ekspose) - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="21388_0">Teraso - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="229269_0">Vynil - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="102937_0">Papan Kayu - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="150353_0">Keramik - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="43454_0">Rabat Beton (Semen Ekspose) - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="79155_0">Papan Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
@@ -1026,7 +1026,7 @@
                 <option value="">- Select -</option>
                 <option value="Tapak Beton dan Batu Kali - Rumah Tinggal Mewah 2 Lantai">Tapak Beton dan Batu Kali - Rumah Tinggal Mewah 2 Lantai</option>
                 <option value="Tapak Beton dan Batu Kali - Rumah Tinggal Menengah 2 Lantai">Tapak Beton dan Batu Kali - Rumah Tinggal Menengah 2 Lantai</option>
-                <option value="Batu Kali - {{ $tipe_spek }}">Batu Kali - {{ $tipe_spek }}</option>
+                <option value="Batu Kali - Rumah Tinggal Menengah 2 Lantai">Batu Kali - Rumah Tinggal Menengah 2 Lantai</option>
                 <option value="Rollag Bata - Bangunan Perkebunan (Semi Permanen) 1 Lantai">Rollag Bata - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                 <option value="Tapak Beton dan Batu Kali - Bangunan Gudang 1 Lantai">Tapak Beton dan Batu Kali - Bangunan Gudang 1 Lantai</option>
                 <option value="Tapak Beton dan Batu Kali - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)">Tapak Beton dan Batu Kali - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)</option>
@@ -1056,7 +1056,7 @@
             <option value="">- Select -</option>
             <option value="Beton Bertulang - Rumah Tinggal Mewah 2 Lantai">Beton Bertulang - Rumah Tinggal Mewah 2 Lantai</option>
             <option value="Beton Bertulang - Rumah Tinggal Menengah 2 Lantai">Beton Bertulang - Rumah Tinggal Menengah 2 Lantai</option>
-            <option value="Beton Bertulang - {{ $tipe_spek }}">Beton Bertulang - {{ $tipe_spek }}</option>
+            <option value="Beton Bertulang - Rumah Tinggal Menengah 2 Lantai">Beton Bertulang - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai">Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
             <option value="Baja Profil - Bangunan Gudang 1 Lantai">Baja Profil - Bangunan Gudang 1 Lantai</option>
             <option value="Beton Bertulang - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)">Beton Bertulang - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
@@ -1094,10 +1094,10 @@
             <option value="Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Rumah Tinggal Menengah 2 Lantai">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="Baja Ringan (Atap Genteng) - Rumah Tinggal Menengah 2 Lantai">Baja Ringan (Atap Genteng) - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="Baja Ringan (Atap Asbes, Seng dll) - Rumah Tinggal Menengah 2 Lantai">Baja Ringan (Atap Asbes, Seng dll) - Rumah Tinggal Menengah 2 Lantai</option>
-            <option value="Kayu (Atap Genteng) - {{ $tipe_spek }}">Kayu (Atap Genteng) - {{ $tipe_spek }}</option>
-            <option value="Kayu (Atap Asbes, Seng dll, Tanpa Reng) - {{ $tipe_spek }}">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - {{ $tipe_spek }}</option>
-            <option value="Baja Ringan (Atap Genteng) - {{ $tipe_spek }}">Baja Ringan (Atap Genteng) - {{ $tipe_spek }}</option>
-            <option value="Baja Ringan (Atap Asbes, Seng dll) - {{ $tipe_spek }}">Baja Ringan (Atap Asbes, Seng dll) - {{ $tipe_spek }}</option>
+            <option value="Kayu (Atap Genteng) - Rumah Tinggal Menengah 2 Lantai">Kayu (Atap Genteng) - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Rumah Tinggal Menengah 2 Lantai">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="Baja Ringan (Atap Genteng) - Rumah Tinggal Menengah 2 Lantai">Baja Ringan (Atap Genteng) - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="Baja Ringan (Atap Asbes, Seng dll) - Rumah Tinggal Menengah 2 Lantai">Baja Ringan (Atap Asbes, Seng dll) - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Bangunan Perkebunan (Semi Permanen) 1 Lantai">Kayu (Atap Asbes, Seng dll, Tanpa Reng) - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
             <option value="Profil Baja - Bangunan Gudang 1 Lantai">Profil Baja - Bangunan Gudang 1 Lantai</option>
             <option value="Kayu (Atap Genteng) - Bangunan Gedung Bertingkat Rendah 3 Lantai (< 5 Lantai)">Kayu (Atap Genteng) - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
@@ -1152,15 +1152,15 @@
                             <option value="243334_0.5569">Sirap - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="75361_0.5569">Spandek - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="172827_0.5569">PVC - Rumah Tinggal Menengah 2 Lantai</option>
-                            <option value="117667_1">Asbes - {{ $tipe_spek }}</option>
-                            <option value="304700_1">Dak Beton - {{ $tipe_spek }}</option>
-                            <option value="234491_1">Fibreglass - {{ $tipe_spek }}</option>
-                            <option value="156035_1">Genteng Tanah Liat - {{ $tipe_spek }}</option>
-                            <option value="200470_1">Genteng Beton - {{ $tipe_spek }}</option>
-                            <option value="202741_1">Genteng Metal - {{ $tipe_spek }}</option>
-                            <option value="130168_1">Seng Gelombang - {{ $tipe_spek }}</option>
-                            <option value="124692_1">Spandek - {{ $tipe_spek }}</option>
-                            <option value="205773_1">PVC - {{ $tipe_spek }}</option>
+                            <option value="117667_1">Asbes - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="304700_1">Dak Beton - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="234491_1">Fibreglass - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="156035_1">Genteng Tanah Liat - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="200470_1">Genteng Beton - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="202741_1">Genteng Metal - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="130168_1">Seng Gelombang - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="124692_1">Spandek - Rumah Tinggal Menengah 2 Lantai</option>
+                            <option value="205773_1">PVC - Rumah Tinggal Menengah 2 Lantai</option>
                             <option value="118887_1">Asbes - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="124275_1">Seng Gelombang - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                             <option value="91072_1">Asbes - Bangunan Gudang 1 Lantai</option>
@@ -1213,11 +1213,11 @@
             <option value="252700_2.143">Bata Ringan - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="289328_2.143">Partisi Gypsumboard 2 Muka - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="703318_2.143">Rooster Bata - Rumah Tinggal Menengah 2 Lantai</option>
-            <option value="153906_2.169">Batako - {{ $tipe_spek }}</option>
-            <option value="190474_2.169">Bata Merah - {{ $tipe_spek }}</option>
-            <option value="207182_2.169">Bata Ringan - {{ $tipe_spek }}</option>
-            <option value="260248_2.169">Partisi Gypsumboard 2 Muka - {{ $tipe_spek }}</option>
-            <option value="605463_2.169">Rooster Bata - {{ $tipe_spek }}</option>
+            <option value="153906_2.169">Batako - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="190474_2.169">Bata Merah - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="207182_2.169">Bata Ringan - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="260248_2.169">Partisi Gypsumboard 2 Muka - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="605463_2.169">Rooster Bata - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="336877_1.481">Papan dan Partisi Triplek Dicat - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
             <option value="113213_1.249">Batako - Bangunan Gudang 1 Lantai</option>
             <option value="142562_1.249">Bata Merah - Bangunan Gudang 1 Lantai</option>
@@ -1267,11 +1267,11 @@
             <option value="881996_2.143">Dilapis Wallpaper - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="2312115_2.143">Dilapis Mozaik - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="1070661_2.143">Dilapis Batu Alam - Rumah Tinggal Menengah 2 Lantai</option>
-            <option value="332768_2.169">Dilapis Cat (Diplester dan Diaci) - {{ $tipe_spek }}</option>
-            <option value="782252_2.169">Dilapis Keramik - {{ $tipe_spek }}</option>
-            <option value="642040_2.169">Dilapis Wallpaper - {{ $tipe_spek }}</option>
-            <option value="1828812_2.169">Dilapis Mozaik - {{ $tipe_spek }}</option>
-            <option value="856559_2.169">Dilapis Batu Alam - {{ $tipe_spek }}</option>
+            <option value="332768_2.169">Dilapis Cat (Diplester dan Diaci) - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="782252_2.169">Dilapis Keramik - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="642040_2.169">Dilapis Wallpaper - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="1828812_2.169">Dilapis Mozaik - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="856559_2.169">Dilapis Batu Alam - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="194807_1.249">Dilapis Cat (Diplester dan Diaci) - Bangunan Gudang 1 Lantai</option>
             <option value="345190_1.577">Dilapis Cat (Diplester dan Diaci) - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
             <option value="909393_1.577">Dilapis Keramik - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
@@ -1324,13 +1324,13 @@
             <option value="481344_0">Teraso - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="351650_0">Vynil - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="115239_0">Papan Kayu - Rumah Tinggal Menengah 2 Lantai</option>
-            <option value="260164_0">Granit/Homogenous Tile - {{ $tipe_spek }}</option>
-            <option value="173280_0">Karpet - {{ $tipe_spek }}</option>
-            <option value="176287_0">Keramik - {{ $tipe_spek }}</option>
-            <option value="66156_0">Rabat Beton (Semen Ekspose) - {{ $tipe_spek }}</option>
-            <option value="21388_0">Teraso - {{ $tipe_spek }}</option>
-            <option value="229269_0">Vynil - {{ $tipe_spek }}</option>
-            <option value="102937_0">Papan Kayu - {{ $tipe_spek }}</option>
+            <option value="260164_0">Granit/Homogenous Tile - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="173280_0">Karpet - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="176287_0">Keramik - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="66156_0">Rabat Beton (Semen Ekspose) - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="21388_0">Teraso - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="229269_0">Vynil - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="102937_0">Papan Kayu - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="150353_0">Keramik - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
             <option value="43454_0">Rabat Beton (Semen Ekspose) - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
             <option value="79155_0">Papan Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
@@ -1392,12 +1392,12 @@
             <option value="290195_0.218">Pintu Garasi Besi - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="152079_0.218">Jendela Kaca Stopsol 8 mm Rangka Curtain Wall - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="130977_0.218">Jendela Kaca Tempered Frameless - Rumah Tinggal Menengah 2 Lantai</option>
-            <option value="305534_0.327">Pintu Kayu Panil - {{ $tipe_spek }}</option>
-            <option value="236730_0.327">Pintu Kayu Dobel Triplek/ HPL - {{ $tipe_spek }}</option>
-            <option value="311178_0.327">Pintu Kaca Rk Aluminium - {{ $tipe_spek }}</option>
-            <option value="265053_0.327">Jendela Kaca Rk Kayu - {{ $tipe_spek }}</option>
-            <option value="316582_0.327">Jendela Kaca Rk Aluminium - {{ $tipe_spek }}</option>
-            <option value="65494_0.327">Pintu KM UPVC/PVC - {{ $tipe_spek }}</option>
+            <option value="305534_0.327">Pintu Kayu Panil - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="236730_0.327">Pintu Kayu Dobel Triplek/ HPL - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="311178_0.327">Pintu Kaca Rk Aluminium - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="265053_0.327">Jendela Kaca Rk Kayu - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="316582_0.327">Jendela Kaca Rk Aluminium - Rumah Tinggal Menengah 2 Lantai</option>
+            <option value="65494_0.327">Pintu KM UPVC/PVC - Rumah Tinggal Menengah 2 Lantai</option>
             <option value="71764_0.276">Jendela Kaca Rk Kayu - Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
             <option value="74470_0.057">Pintu Besi - Bangunan Gudang 1 Lantai</option>
             <option value="191060_0.126">Pintu Kayu Panil - Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt; 5 Lantai)</option>
