@@ -247,9 +247,10 @@ class GeneralController extends Controller
         GeneralModel::saveOptions($request);
         return redirect()->back();
     }
-    function editHeader(Request $request, $labelHeader)
+    function editHeader(Request $request)
     {
-        GeneralModel::editHeader($request, $labelHeader);
+
+        GeneralModel::editHeader($request);
         return response()->json([
             'success' => true,
             'message' => 'Data'
