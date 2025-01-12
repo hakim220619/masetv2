@@ -240,34 +240,6 @@
 
                 <script>
                     // Fungsi untuk menangani perubahan dropdown
-                    // document.getElementById('tipe_spek').addEventListener('change', function() {
-                    //     const selectedValue = this.value;
-
-                    //     // Sembunyikan semua form terlebih dahulu
-                    //     document.querySelectorAll('#dynamic-content > div').forEach(function(form) {
-                    //         form.style.display = 'none'; // Pastikan semua form disembunyikan
-                    //     });
-
-                    //     // Tampilkan form sesuai pilihan dan sembunyikan yang lain
-                    //     switch (selectedValue) {
-                    //         case 'rumah_sederhana':
-                    //             document.getElementById('form-rumah-sederhana').style.display = 'block';
-                    //             break;
-                    //         case 'rumah_menengah':
-                    //             document.getElementById('form-rumah-menengah').style.display = 'block';
-                    //             break;
-                    //         case 'rumah_mewah':
-                    //             document.getElementById('form-rumah-mewah').style.display = 'block';
-                    //             break;
-                    //         case '400':
-                    //             document.getElementById('400').style.display = 'block';
-                    //             break;
-                    //         default:
-                    //             // Tidak ada yang dipilih, semua tetap disembunyikan
-                    //             break;
-                    //     }
-                    // });
-
                     document.getElementById('tipe_spek').addEventListener('change', function() {
                         const selectedValue = this.value;
 
@@ -311,12 +283,55 @@
                         }
                     });
 
-                    // Pilih secara otomatis "rumah_menengah" dan panggil event change
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const dropdown = document.getElementById('tipe_spek');
-                        dropdown.value = '700'; // Set nilai dropdown ke rumah_menengah
-                        dropdown.dispatchEvent(new Event('change')); // Panggil event change
-                    });
+                    // document.getElementById('tipe_spek').addEventListener('change', function() {
+                    //     const selectedValue = this.value;
+
+                    //     // Sembunyikan semua form terlebih dahulu
+                    //     document.querySelectorAll('#dynamic-content > div').forEach(function(form) {
+                    //         form.style.display = 'none'; // Pastikan semua form disembunyikan
+                    //     });
+
+                    //     // Tampilkan form sesuai pilihan dan sembunyikan yang lain
+                    //     switch (selectedValue) {
+                    //         case 'rumah_sederhana':
+                    //             document.getElementById('form-rumah-sederhana').style.display = 'block';
+                    //             break;
+                    //         case 'rumah_menengah':
+                    //             document.getElementById('form-rumah-menengah').style.display = 'block';
+                    //             break;
+                    //         case 'rumah_mewah':
+                    //             document.getElementById('form-rumah-mewah').style.display = 'block';
+                    //             break;
+                    //         case '700':
+                    //             document.getElementById('700').style.display = 'block';
+                    //             break;
+                    //         case '800':
+                    //             document.getElementById('800').style.display = 'block';
+                    //             break;
+                    //         case '900':
+                    //             document.getElementById('900').style.display = 'block';
+                    //             break;
+                    //         case '1000':
+                    //             document.getElementById('1000').style.display = 'block';
+                    //             break;
+                    //         case '1100':
+                    //             document.getElementById('1100').style.display = 'block';
+                    //             break;
+                    //         case '400':
+                    //             document.getElementById('400').style.display = 'block';
+                    //             break;
+                    //         default:
+                    //             // Tidak ada yang dipilih, semua tetap disembunyikan
+                    //             break;
+                    //     }
+                    // });
+
+                    // // Pilih secara otomatis "rumah_menengah" dan panggil event change
+                    // document.addEventListener('DOMContentLoaded', function() {
+                    //     const dropdown = document.getElementById('tipe_spek');
+                    //     dropdown.value = '700'; // Set nilai dropdown ke rumah_menengah
+                    //     dropdown.dispatchEvent(new Event('change')); // Panggil event change
+                    // });
                 </script>
 
 
