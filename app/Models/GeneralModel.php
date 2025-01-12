@@ -81,13 +81,26 @@ class GeneralModel extends Model
     }
     public static function saveHeaderOptions($request)
     {
-        DB::table('master_data')->insert([
-            'uid' => 'Hdr' . date('Ymdhms'),
-            'label_header' => $request['header'],
-            'type' => 'Header',
-            'state' => $request['state'],
-            'created_at' => now(),
-        ]);
+        // Check if label_header already exists
+        $existingHeader = DB::table('master_data')
+            ->where('label_header', $request['header'])
+            ->first();
+
+        if ($existingHeader) {
+            // If the label_header exists, update the 'total' field
+            DB::table('master_data')
+                ->where('label_header', $request['header'])
+                ->increment('total', 1); // Increment total by 1 (or any other logic)
+        } else {
+            // If the label_header does not exist, insert a new record
+            DB::table('master_data')->insert([
+                'uid' => 'Hdr' . date('Ymdhms'),
+                'label_header' => $request['header'],
+                'type' => 'Header',
+                'state' => $request['state'],
+                'created_at' => now(),
+            ]);
+        }
     }
     public static function saveOptions($request)
     {
