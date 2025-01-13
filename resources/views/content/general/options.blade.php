@@ -375,8 +375,6 @@
         function saveHeaderData() {
             const header = $('#headerHdr').val();
             const state = $('#stateHdr').val();
-            console.log(header);
-            console.log(state);
 
             fetch('/options/saveHeaderOptions', {
                     method: 'POST',
@@ -389,12 +387,18 @@
                         state: state
                     })
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (response.status === 500) {
+                        // Handle server error specifically (status 500)
+                        alert('Header already exists.');
+                        throw new Error('Header already exists.');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     if (data.success == true) {
+                        $('#headerHdr').val('')
                         location.reload() // Reload the table data after successful save
-                    } else {
-                        alert('Failed to save data. Please try again.');
                     }
                 })
                 .catch(error => {
