@@ -151,6 +151,11 @@
               "url": "object/bangunan",
               "name": "Bangunan",
               "slug": "object-bangunan"
+            },
+            {
+              "url": "object/kendaraan",
+              "name": "Kendaraan",
+              "slug": "kendaraan"
             }
           ]
         }
