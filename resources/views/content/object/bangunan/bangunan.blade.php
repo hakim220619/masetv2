@@ -215,9 +215,9 @@
                             class="text-danger">*</span></label>
                     <select id="tipe_spek" name="tipe_spek" class="form-select" required>
                         <option value="" selected>- Select -</option>
-                        <option value="rumah_sederhana">Rumah Tinggal Sederhana 1 Lantai</option>
-                        <option value="rumah_menengah">Rumah Tinggal Menengah 2 Lantai</option>
-                        <option value="rumah_mewah">Rumah Tinggal Mewah 2 Lantai</option>
+                        <option value="100">Rumah Tinggal Sederhana 1 Lantai</option>
+                        <option value="200">Rumah Tinggal Menengah 2 Lantai</option>
+                        <option value="300">Rumah Tinggal Mewah 2 Lantai</option>
                         <option value="400">Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
                         <option value="500">Bangunan Gudang 1 Lantai</option>
                         <option value="600">Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt;5 Lantai)</option>
@@ -250,14 +250,23 @@
 
                         // Tampilkan form sesuai pilihan dan sembunyikan yang lain
                         switch (selectedValue) {
-                            case 'rumah_sederhana':
-                                document.getElementById('form-rumah-sederhana').style.display = 'block';
+                            case '100':
+                                document.getElementById('100').style.display = 'block';
                                 break;
-                            case 'rumah_menengah':
-                                document.getElementById('form-rumah-menengah').style.display = 'block';
+                            case '200':
+                                document.getElementById('200').style.display = 'block';
                                 break;
-                            case 'rumah_mewah':
-                                document.getElementById('form-rumah-mewah').style.display = 'block';
+                            case '300':
+                                document.getElementById('300').style.display = 'block';
+                                break;
+                            case '400':
+                                document.getElementById('400').style.display = 'block';
+                                break;
+                            case '500':
+                                document.getElementById('500').style.display = 'block';
+                                break;
+                            case '600':
+                                document.getElementById('600').style.display = 'block';
                                 break;
                             case '700':
                                 document.getElementById('700').style.display = 'block';
@@ -273,9 +282,6 @@
                                 break;
                             case '1100':
                                 document.getElementById('1100').style.display = 'block';
-                                break;
-                            case '400':
-                                document.getElementById('400').style.display = 'block';
                                 break;
                             default:
                                 // Tidak ada yang dipilih, semua tetap disembunyikan
@@ -293,14 +299,23 @@
 
                     //     // Tampilkan form sesuai pilihan dan sembunyikan yang lain
                     //     switch (selectedValue) {
-                    //         case 'rumah_sederhana':
-                    //             document.getElementById('form-rumah-sederhana').style.display = 'block';
+                    //         case '100':
+                    //             document.getElementById('100').style.display = 'block';
                     //             break;
-                    //         case 'rumah_menengah':
-                    //             document.getElementById('form-rumah-menengah').style.display = 'block';
+                    //         case '200':
+                    //             document.getElementById('200').style.display = 'block';
                     //             break;
-                    //         case 'rumah_mewah':
-                    //             document.getElementById('form-rumah-mewah').style.display = 'block';
+                    //         case '300':
+                    //             document.getElementById('300').style.display = 'block';
+                    //             break;
+                    //         case '400':
+                    //             document.getElementById('400').style.display = 'block';
+                    //             break;
+                    //         case '500':
+                    //             document.getElementById('500').style.display = 'block';
+                    //             break;
+                    //         case '600':
+                    //             document.getElementById('600').style.display = 'block';
                     //             break;
                     //         case '700':
                     //             document.getElementById('700').style.display = 'block';
@@ -317,9 +332,6 @@
                     //         case '1100':
                     //             document.getElementById('1100').style.display = 'block';
                     //             break;
-                    //         case '400':
-                    //             document.getElementById('400').style.display = 'block';
-                    //             break;
                     //         default:
                     //             // Tidak ada yang dipilih, semua tetap disembunyikan
                     //             break;
@@ -329,7 +341,7 @@
                     // // Pilih secara otomatis "rumah_menengah" dan panggil event change
                     // document.addEventListener('DOMContentLoaded', function() {
                     //     const dropdown = document.getElementById('tipe_spek');
-                    //     dropdown.value = '700'; // Set nilai dropdown ke rumah_menengah
+                    //     dropdown.value = '600'; // Set nilai dropdown ke rumah_menengah
                     //     dropdown.dispatchEvent(new Event('change')); // Panggil event change
                     // });
                 </script>
@@ -338,9 +350,12 @@
                 <div id="dynamic-content">
                     <!-- Rumah Sederhana -->
 
-
-                    @include('content.form.form_rumah_sederhana')
-                    @include('content.form.form_rumah_menengah')
+                    @include('content.form.100')
+                    @include('content.form.200')
+                    @include('content.form.300')
+                    @include('content.form.400')
+                    @include('content.form.500')
+                    @include('content.form.600')
                     @include('content.form.700')
                     @include('content.form.800')
                     @include('content.form.900')

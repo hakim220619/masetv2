@@ -14,6 +14,7 @@ use App\Http\Controllers\Broadcast\BroadcastController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\General\GeneralController;
 use App\Http\Controllers\Jenis_dokumen_tanah\Jenis_dokumen_tanah;
+use App\Http\Controllers\Kendaraan\KendaraanController;
 use App\Http\Controllers\Lihat_pembanding\Lihat_pembandingController;
 use App\Http\Controllers\Object\ObjectController;
 use App\Http\Controllers\Pembanding_bangunan\PembandingBangunanController;
@@ -151,6 +152,9 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/object/acceptSurveyor/{id}', [BangunanController::class, 'acceptSurveyor'])->name('acceptSurveyor');
+
+    //Kendaraan
+    Route::get('/object/kendaraan', [KendaraanController::class, 'kendaraan'])->name('object-kendaraan');
 
 
     //Tanah Kosong
