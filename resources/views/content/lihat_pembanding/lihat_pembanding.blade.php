@@ -145,13 +145,17 @@ $configData = Helper::appClasses();
                             </div>
                             <div class="d-flex flex-wrap">
                                 <div class="form-check me-3">
-                                    <input type="radio" class="form-check-input" id="lengkap" name="lengkap">
-                                    <label class="form-check-label" for="lengkap">Lengkap</label>
-                                </div>
-                                <div class="form-check me-3">
-                                    <input type="radio" class="form-check-input" id="tidak_lengkap" name="tidak_lengkap">
-                                    <label class="form-check-label" for="tidak_lengkap">Tidak Lengkap</label>
-                                </div>
+                                    <input class="form-check-input" type="radio" name="lengkap" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                      Lengkap
+                                    </label>
+                                  </div>
+                                  <div class="form-check me-3">
+                                    <input class="form-check-input" type="radio" name="lengkap" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                      tidak Lengkap
+                                    </label>
+                                  </div>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -214,7 +218,7 @@ $configData = Helper::appClasses();
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                            </tr>
+                            </tr>      
                           </tbody>
                     </table>    
                 </div>

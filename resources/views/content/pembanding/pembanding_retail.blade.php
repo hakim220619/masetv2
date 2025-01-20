@@ -35,89 +35,21 @@ $configData = Helper::appClasses();
   <!-- Default -->
   <div class="row">  
     <!-- Default Icons Wizard -->
-    <div class="col-12 mb-4">
-      <div class="bs-stepper wizard-icons wizard-icons-example mt-2">
-        <div class="bs-stepper-header">
-          <div class="step" data-target="#account-details">
-            <button type="button" class="step-trigger">
-              <span class="bs-stepper-icon">
-                <svg viewBox="0 0 54 54">
-                  <use xlink:href="{{asset('assets/svg/icons/form-wizard-account.svg#wizardAccount')}}"></use>
-                </svg>
-              </span>
-              <span class="bs-stepper-label">Step 1</span>
-            </button>
-          </div>
-          <div class="line">
-            <i class="ti ti-chevron-right"></i>
-          </div>
-          <div class="step" data-target="#personal-info">
-            <button type="button" class="step-trigger">
-              <span class="bs-stepper-icon">
-                <svg viewBox="0 0 58 54">
-                  <use xlink:href="{{asset('assets/svg/icons/form-wizard-personal.svg#wizardPersonal')}}"></use>
-                </svg>
-              </span>
-              <span class="bs-stepper-label">Step 2</span>
-            </button>
-          </div>
-          <div class="line">
-            <i class="ti ti-chevron-right"></i>
-          </div>
-          <div class="step" data-target="#address">
-            <button type="button" class="step-trigger">
-              <span class="bs-stepper-icon">
-                <svg viewBox="0 0 54 54">
-                  <use xlink:href="{{asset('assets/svg/icons/form-wizard-address.svg#wizardAddress')}}"></use>
-                </svg>
-              </span>
-              <span class="bs-stepper-label">Step 3</span>
-            </button>
-          </div>
-          <div class="line">
-            <i class="ti ti-chevron-right"></i>
-          </div>
-          <div class="step" data-target="#social-links">
-            <button type="button" class="step-trigger">
-              <span class="bs-stepper-icon">
-                <svg viewBox="0 0 54 54">
-                  <use xlink:href="{{asset('assets/svg/icons/form-wizard-social-link.svg#wizardSocialLink')}}"></use>
-                </svg>
-              </span>
-              <span class="bs-stepper-label">Step 4</span>
-            </button>
-          </div>
-          <div class="line">
-            <i class="ti ti-chevron-right"></i>
-          </div>
-          <div class="step" data-target="#review-submit">
-            <button type="button" class="step-trigger">
-              <span class="bs-stepper-icon">
-                <svg viewBox="0 0 54 54">
-                  <use xlink:href="{{asset('assets/svg/icons/form-wizard-submit.svg#wizardSubmit')}}"></use>
-                </svg>
-              </span>
-              <span class="bs-stepper-label">Review & Submit</span>
-            </button>
-          </div>
-        </div>
+    <div class="col-12 mb-4">        
         <div class="bs-stepper-content">
           <form method="POST" action="{{ route('add_pembanding_retail') }}" enctype="multipart/form-data">
             <!-- Account Details -->
             @csrf
             <div id="account-details" class="content">
-              <div class="content-header mb-3">
-                <h6 class="mb-0">Step 1</h6>
-                <small>Enter Step 1.</small>
-              </div>
+           
               <div class="row g-3">                
                 <div>
                   <label class="form-label" for="nama_retail">Nama Office/ Retail/ Apartemen</label>
                   <input type="text" id="nama_retail" name="nama_retail" class="form-control" placeholder="Retail Space - Lippo Plaza Jogja (Lantai 1) - Jl. Laksda Adisucipto No.32-34, Demangan, Kec. Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta" />
                 </div>               
                 <div>
-                  <label class="form-label" for="nama_kjpp">Nama KJPP</label>
-                  <input type="text" id="nama_kjpp" name="nama_kjpp" class="form-control"  />
+                  <label class="form-label" for="nama_entitas">Nama Entitas</label>
+                  <input type="text" id="nama_entitas" name="nama_entitas" class="form-control"  />
                 </div>  
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="Lokasi Obyek">Lokasi Obyek</label>
@@ -153,49 +85,70 @@ $configData = Helper::appClasses();
                   <input type="text" id="lat" name="lat" class="form-control" placeholder="-8.9897878" hidden />
                   <input type="text" id="long" name="long" class="form-control" placeholder="89.8477748" hidden />
                 </div>
-                <div class="col-sm-6">
+                <div>
                   <label class="form-label" for="foto_tampak_depan">Upload Foto Tampak Depan</label>
                   <input type="file" id="foto_tampak_depan" name="foto_tampak_depan" class="form-control" />
                 </div>
-                <div class="col-sm-6">
+                <div>
                   <label class="form-label" for="foto_tampak_sisi_kiri">Upload Foto Tampak Sisi Kiri</label>
                   <input type="file" id="foto_tampak_sisi_kiri" name="foto_tampak_sisi_kiri" class="form-control"/>
                 </div>
-                <div class="col-sm-6">
+                <div>
                   <label class="form-label" for="foto_tampak_sisi_kanan">Upload Foto Tampak Sisi Kanan</label>
                   <input type="file" id="foto_tampak_sisi_kanan" name="foto_tampak_sisi_kanan" class="form-control" />
                 </div>
-                <div class="col-sm-6">
-                  <label class="form-label" for="foto_lainnya">Foto Lainnya (tabel)</label>
-                  <input type="file" id="foto_lainnya" name="foto_lainnya" class="form-control" />
-                </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
-                  <label class="form-label" for="Nilai Perolehan">Nilai Perolehan / NJOP / PBB</label>
-                  <table class="table table-borderless">
-                    <tr>
-                      <th>Tahun</th>
-                      <th>Nilai Perolehan / NJOP (Rp)</th>
-                    </tr>
-                    <tr>
-                      <td><input type="number" id="tahun" name="tahun" class="form-control" /></td>
-                      <td><input type="number" id="nilai_perolehan" name="nilai_perolehan" class="form-control" /></td>
-                    </tr>
+                  <label class="form-label" for="Foto Lainnya">Foto Lainnya</label>
+                  <table class="table table-bordered" id="fotoLainnyaTable">
+                      <thead>
+                          <tr>
+                              <th>#</th>
+                              <th>Judul Foto</th>
+                              <th>Upload Foto</th>
+                              <th>Aksi</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td class="row-number-foto">1</td>
+                              <td><input type="text" name="judul_foto[]" class="form-control" /></td>
+                              <td><input type="file" id="foto_lainnya" name="foto_lainnya[]" class="form-control" accept="image/*" /></td>
+                              <td>
+                                  <button type="button" class="btn btn-success btn-sm btn-action" onclick="addFotoRow()">+</button>
+                                  <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeFotoRow(this)">-</button>
+                              </td>
+                          </tr>
+                      </tbody>
                   </table>
-                </div>
-                <div class="col-12 d-flex justify-content-between">
-                  <button class="btn btn-label-secondary btn-prev" disabled type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
-                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                  </button>
-                  <button class="btn btn-primary btn-next" type="button"> <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span> <i class="ti ti-arrow-right"></i></button>
-                </div>
+              </div>
+              <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                <label class="form-label" for="Nilai Perolehan">Nilai Perolehan / NJOP / PBB</label>
+                <table class="table table-bordered" id="njopTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Tahun</th>
+                            <th>Nilai Perolehan / NJOP (Rp)</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="row-number">1</td>
+                            <td><input type="number" name="tahun[]" class="form-control" /></td>
+                            <td><input type="number" name="nilai_perolehan[]" class="form-control" /></td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm btn-action" onclick="addRow()">+</button>
+                                <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeRow(this)">-</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>             
               </div>
             </div>
             <!-- Personal Info -->
-            <div id="personal-info" class="content">
-              <div class="content-header mb-3">
-                <h6 class="mb-0">Step 2</h6>
-                <small>Enter Step 2.</small>
-              </div>
+            <div id="personal-info" class="content">             
               <div class="row g-3">
                 <div>
                     <div>
@@ -209,19 +162,19 @@ $configData = Helper::appClasses();
                     </select>
                 </div>   
                 <div>
-                    <div>
-                        <label class="form-label" for="kondisi_properti">Kondisi Properti</label>
-                    </div>
-                    <select class="form-select" name="kondisi_properti" id="kondisi_properti" aria-label="Default select example">
+                  <div>
+                      <label class="form-label" for="kondisi_properti">Kondisi Properti</label>
+                  </div>
+                  <select class="form-select" name="kondisi_properti" id="kondisi_properti" aria-label="Default select example">
                       <option value="" selected disabled>Pilih...</option>
                       <option value="Available">Available</option>
                       <option value="On Progress">On Progress</option>
-                    </select>
-                </div> 
-                <div>
+                  </select>
+              </div>
+              <div id="estimasi_wrapper" style="display: none;">
                   <label class="form-label" for="estimasi_properti">Estimasi Selesai Properti</label>
-                  <input type="text" id="estimasi_properti" name="estimasi_properti" class="form-control"  />
-                </div>    
+                  <input type="text" id="estimasi_properti" name="estimasi_properti" class="form-control" />
+              </div>
                 <div>
                     <div>
                         <label class="form-label" for="spesifikasi_properti">Spesifikasi Properti</label>
@@ -332,24 +285,12 @@ $configData = Helper::appClasses();
                 <div>
                     <label class="form-label" for="tgl_berakhir_dokumen">Tanggal Berakhir Dokumen</label>
                     <input type="date" id="tgl_berakhir_dokumen" name="tgl_berakhir_dokumen" class="form-control" placeholder="Hak Guna Bangunan" />
-                </div>                              
-                                   
-                <div class="col-12 d-flex justify-content-between">
-                  <button class="btn btn-label-secondary btn-prev" type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
-                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                  </button>
-                  <button class="btn btn-primary btn-next" type="button"> <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span> <i class="ti ti-arrow-right"></i></button>
-                </div>
+                </div>          
               </div>
             </div>
             <!-- Address -->
             <div id="address" class="content">
-              <div class="content-header mb-3">
-                <h6 class="mb-0">Step 3</h6>
-                <small>Enter Step 3.</small>
-              </div>
-              <div class="row g-3">                
-                
+              <div class="row g-3">           
                 <div>
                     <label class="form-label" for="peruntukan_bangunan">Peruntukan Bangunan</label>
                     <select name="peruntukan_bangunan" id="peruntukan_bangunan" class="form-select">
@@ -469,22 +410,11 @@ $configData = Helper::appClasses();
                       <td><input type="text" id="pep_pasar" name="pep_pasar" class="form-control" placeholder="Normal" /></td>
                     </tr>
                   </table>
-                </div>                
-                               
-                <div class="col-12 d-flex justify-content-between">
-                  <button class="btn btn-label-secondary btn-prev" type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
-                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                  </button>
-                  <button class="btn btn-primary btn-next" type="button"> <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span> <i class="ti ti-arrow-right"></i></button>
-                </div>
+                </div>            
               </div>
             </div>
             <!-- Social Links -->
-            <div id="social-links" class="content">
-              <div class="content-header mb-3">
-                <h6 class="mb-0">Step 4</h6>
-                <small>Enter Step 4.</small>
-              </div>
+            <div id="social-links" class="content">             
               <div class="row g-3">
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="penggunaan">Penggunaan</label>
@@ -548,22 +478,21 @@ $configData = Helper::appClasses();
                       <option value="Belakang">Belakang</option>
                     </select>
                 </div>
-                <div>
-                    <label class="form-label" for="bentuk_tanah">Bentuk Tanah</label>
-                    <input type="text" id="bentuk_tanah" name="bentuk_tanah" class="form-control" placeholder="Persegi Panjang" />
-                    <select name="letak_posisi_aset" id="letak_posisi_aset" class="form-select">
-                      <option value="">Pilih...</option>
-                      <option value="Beraturan">Beraturan</option>
-                      <option value="Tidak Beraturan">Tidak Beraturan</option>
-                      <option value="Persegi Panjang">Persegi Panjang</option>
-                      <option value="Persegi Empat">Persegi Empat</option>
-                      <option value="Lainnya">Lainnya</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="form-label" for="bentuk_tanah_lainnya">Bentuk Tanah Lainnya</label>
-                    <input type="text" id="bentuk_tanah_lainnya" name="bentuk_tanah_lainnya" class="form-control" />
-                </div>
+                <div class="mb-2">
+                  <label class="form-label" for="bentuk_tanah">Bentuk Tanah</label>
+                  <select name="bentuk_tanah" id="bentuk_tanah" class="form-select">
+                    <option value="">Pilih...</option>
+                    <option value="Beraturan">Beraturan</option>
+                    <option value="Tidak Beraturan">Tidak Beraturan</option>
+                    <option value="Persegi Panjang">Persegi Panjang</option>
+                    <option value="Persegi Empat">Persegi Empat</option>
+                    <option value="Lainnya">Lainnya</option>
+                  </select>
+              </div>
+              <div class="form-group" id="bentuk_tanah_lainnya_group" style="display: none; margin-top: 10px;">
+                <label for="bentuk_tanah_lainnya">Bentuk Tanah Lainnya</label>
+                <input type="text" class="form-control" id="bentuk_tanah_lainnya" name="bentuk_tanah_lainnya" placeholder="Sebutkan bentuk tanah lainnya...">
+              </div>
                 <div>
                     <label class="form-label" for="lebar_muka_tanah">Lebar Muka Tanah (m)</label>
                     <input type="number" id="lebar_muka_tanah" name="lebar_muka_tanah" class="form-control" placeholder="22" />
@@ -589,7 +518,6 @@ $configData = Helper::appClasses();
                       <label class="form-label" for="kondisi_lingkungan_khusus">Kondisi Lingkungan Khusus</label>
                   </div>
                   <select class="select2 form-select" name="kondisi_lingkungan_khusus" id="kondisi_lingkungan_khusus" aria-label="Default select example" multiple>
-                    <option value="" selected disabled>Pilih...</option>
                     <option value="Bebas Banjir">Bebas Banjir</option>
                     <option value="Banjir Musiman">Banjir Musiman</option>
                     <option value="Rawan Banjir">Rawan Banjir</option>
@@ -744,6 +672,94 @@ $configData = Helper::appClasses();
                 <label class="form-label" for="pemberi_tugas">Pemberi Tugas</label>
                 <input type="text" id="pemberi_tugas" name="pemberi_tugas" class="form-control" placeholder="Bank Mandiri" />                
               </div>  
+              <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded mb-3">
+                <label class="form-label" for="form_isi_mandiri">Form Isian Bank Mandiri</label>
+                <table class="table table-borderless">
+                  <tr>
+                    <th>
+                      Jenis Aset                     
+                    </th>
+                    <th>
+                      Peruntukan / Zoning
+                    </th>
+                  </tr>
+                  <tr>            
+                      <td>
+                        <select name="jenis_aset" id="jenis_aset" class="form-select">
+                          <option value="">Pilih...</option>
+                          <option value="Campuran">Campuran</option>
+                          <option value="Gedung Apartemen">Gedung Apartemen</option>
+                          <option value="Gedung Kantor">Gedung Kantor</option>
+                          <option value="Gudang">Gudang</option>
+                          <option value="Hotel">Hotel</option>
+                          <option value="Kios">Kios</option>
+                          <option value="Los Kerja/Bengkel/Workshop">Los Kerja/Bengkel/Workshop</option>
+                          <option value="Pabrik">Pabrik</option>
+                          <option value="Penginapan">Penginapan</option>
+                          <option value="Ruang Kantor">Ruang Kantor</option>
+                          <option value="Ruang Usaha">Ruang Usaha</option>
+                          <option value="Ruko/Rukan">Ruko/Rukan</option>
+                          <option value="Rumah Tinggal">Rumah Tinggal</option>
+                          <option value="Rumah Walet">Rumah Walet</option>
+                          <option value="Tanah Kosong">Tanah Kosong</option>
+                          <option value="Tempat Ibadah">Tempat Ibadah</option>
+                          <option value="Toko">Toko</option>
+                          <option value="Unit Apartemen">Unit Apartemen</option>
+                          <option value="Kantor & Pabrik">Kantor & Pabrik</option>
+                          <option value="Lainnya">Lainnya</option>
+                        </select>
+                      </td>
+                      <td>
+                        <select name="peruntukan" id="peruntukan" class="form-select">
+                          <option value="">Pilih...</option>
+                          <option value="Belum Ditentukan">Belum Ditentukan</option>
+                          <option value="Campuran/Peralihan">Campuran/Peralihan</option>
+                          <option value="Industri/Pergudangan">Industri/Pergudangan</option>
+                          <option value="Perdagangan dan Jasa Komersial">Perdagangan dan Jasa Komersial</option>
+                          <option value="Perumahan">Perumahan</option>
+                          <option value="Pertanian">Pertanian</option>
+                          <option value="Sarana Kesehatan">Sarana Kesehatan</option>
+                          <option value="Sarana Pemerintah">Sarana Pemerintah</option>
+                          <option value="Sarana Pendidikan">Sarana Pendidikan</option>
+                          <option value="Fasilitas Umum">Fasilitas Umum</option>
+                          <option value="Pemukiman Perkotaan">Pemukiman Perkotaan</option>
+                        </select>
+                      </td>
+                  </tr>  
+                  <tr>
+                    <th>
+                      Jenis Aset Campuran / Lainnya                    
+                    </th>
+                  </tr> 
+                  <tr>
+                    <td>
+                      <input type="text" name="jenis_aset" id="jenis_aset" class="form-control">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      Topografi                    
+                    </th>
+                    <th>
+                      Jabatan (Status) Narasumber
+                    </th>
+                  </tr>
+                  <tr>            
+                      <td>
+                        <select name="topografi_isian" id="topografi_isian" class="form-select">
+                          <option value="">Pilih...</option>
+                          <option value="Datar">Datar</option>
+                          <option value="Miring">Miring</option>
+                          <option value="Berbukit">Berbukit</option>
+                          <option value="Terasering">Terasering</option>
+                        </select>
+                      </td>
+                      <td>
+                          <input type="text" name="jabatan_narasumber" id="jabatan_narasumber" class="form-control">
+                      </td>
+                  </tr>                           
+                </table>
+              </div>     
               <div>
                 <label class="form-label" for="status_data_pembanding">Status Data Pembanding</label>
                 <select name="status_data_pembanding" id="status_data_pembanding" class="form-control">
@@ -752,431 +768,17 @@ $configData = Helper::appClasses();
                   <option value="Tidak lengkap">Tidak Lengkap</option>
                 </select>
               </div> 
-                <div class="col-12 d-flex justify-content-between">
-                  <button class="btn btn-label-secondary btn-prev" type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
-                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                  </button>
-                  <button type="button" class="btn btn-primary btn-next" id="btn-review"> <span class="align-middle d-sm-inline-block d-none me-sm-1">Next</span> <i class="ti ti-arrow-right"></i></button>
-                </div>
               </div>
-            </div>
-            <!-- Review -->
-            <div id="review-submit" class="content">
-  
-              <p class="fw-medium mb-2">Step 1</p>
-              <table class="table table-borderless">
-                  <tr>
-                    <td style="font-weight: 800">Nomor Induk Pembanding</td>
-                    <td>:</td>
-                    <td><span id="review-nip"></span></td>
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Nomor Induk Bangunan</td>
-                    <td>:</td>
-                    <td><span id="review-nib"></span></td>
-                  </tr>   
-                  <tr>
-                    <td style="font-weight: 800">Nama Office/ Retail/ Apartemen</td>
-                    <td>:</td>
-                    <td><span id="review-nama_retail"></span></td>
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Foto Tampak Depan</td>
-                    <td>:</td>
-                    <td><img id="review-foto_tampak_depan" src="" height="150" width="150" alt="Foto Tampak Depan" style="max-width: 100%; height: auto;"/></td>
-                  </tr>               
-                  <tr>
-                    <td style="font-weight: 800">Alamat</td>
-                    <td>:</td>
-                    <td><span id="review-alamat"></span></td>
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Koordinat</td>
-                    <td>:</td>
-                    <td><span id="review-lat"></span>,<span id="review-long"></span></td>
-                  </tr>
-                  
-                  
-                  <tr>
-                    <td style="font-weight: 800">Foto Tampak Sisi Kiri</td>
-                    <td>:</td>
-                    <td><img id="review-foto_tampak_sisi_kiri" src="" height="150" width="150" alt="Foto Sisi Kiri" style="max-width: 100%; height: auto;"/></td>
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Foto Tampak Sisi Kanan</td>
-                    <td>:</td>
-                    <td><img id="review-foto_tampak_sisi_kanan" src="" height="150" width="150" alt="Foto Sisi Kanan" style="max-width: 100%; height: auto;"/></td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: 800">Foto Lainnya</td>
-                    <td>:</td>
-                    <td><img id="review-foto_lainnya" src="" height="150" width="150" alt="Foto Lainnya" style="max-width: 100%; height: auto;"/></td>
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Nama Narasumber</td>
-                    <td>:</td>
-                    <td><span id="review-nama_narsum"></span></td>                    
-                  </tr>
-                  <tr>
-                    <td style="font-weight: 800">Telepon</td>
-                    <td>:</td>
-                    <td><span id="review-telepon"></span></td>                  
-                  </tr>
-              </table>
-              <hr>
-              <p class="fw-medium mb-2">Step 2</p>
-              <table class="table table-borderless">
-                <tr>
-                  <td style="font-weight: 800">Jenis Properti</td>
-                  <td>:</td>
-                  <td><span id="review-jenis_properti"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Kondisi Properti</td>
-                  <td>:</td>
-                  <td><span id="review-kondisi_properti"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Spesifikasi Properti</td>
-                  <td>:</td>
-                  <td><span id="review-spesifikasi_properti"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Tipe Apartemen (jika bangunan apartemen)</td>
-                  <td>:</td>
-                  <td><span id="review-tipe_apartemen"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Posisi Lantai</td>
-                  <td>:</td>
-                  <td><span id="review-posisi_lantai"></span></td>                  
-                </tr>
-                <tr>
-                    <td colspan="8" class="fs-5 fw-bold">Biaya Properti</td>
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Service Charge (Rp)</td>
-                  <td>:</td>
-                  <td><span id="review-service_charge"></span></td>                    
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Parkir (Rp)</td>
-                  <td>:</td>
-                  <td><span id="review-parkir"></span></td>                    
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Utilitas (Rp)</td>
-                  <td>:</td>
-                  <td><span id="review-utilitas"></span></td>   
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Overtime (Rp)</td>
-                  <td>:</td>
-                  <td><span id="review-overtime"></span></td>                   
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Grade Bangunan</td>
-                  <td>:</td>
-                  <td><span id="review-grade_bangunan"></span></td>   
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Fasilitas Bangunan</td>
-                  <td>:</td>
-                  <td><span id="review-fasilitas_bangunan"></span></td>                   
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Row Koridor (meter)</td>
-                  <td>:</td>
-                  <td><span id="review-row_koridor"></span></td>   
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Tipe Akses Koridor</td>
-                  <td>:</td>
-                  <td><span id="review-tipe_akses_koridor"></span></td>                   
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Luas Gross Bangunan Total (m2)</td>
-                  <td>:</td>
-                  <td><span id="review-luas_bangunan_total"></span></td>   
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Jumlah Lantai</td>
-                  <td>:</td>
-                  <td><span id="review-jumlah_lantai"></span></td>                   
-                </tr>
-                <tr>
-                  <td style="font-weight: 800">Jenis Dokumen Hak Tanah</td>
-                  <td>:</td>
-                  <td><span id="review-jenis_dok_hak_tanah"></span></td>   
-                  <td></td>
-                  <td></td>
-                  <td style="font-weight: 800">Tanggal Berakhir Dokumen</td>
-                  <td>:</td>
-                  <td><span id="review-tgl_berakhir_dokumen"></span></td>                   
-                </tr>
-                
-              </table>
-              <hr>
-              <p class="fw-medium mb-2">Step 3</p>
-              <table class="table table-borderless"> 
-                <tr>
-                    <td style="font-weight: 800">Peruntukan Bangunan</td>
-                    <td>:</td>
-                    <td><span id="review-peruntukan_bangunan"></span></td>   
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Jenis Data</td>
-                    <td>:</td>
-                    <td><span id="review-jenis_data"></span></td>                   
-                </tr>
-                <tr>
-                    <td style="font-weight: 800">Tanggal Penawaran / Waktu Transaksi</td>
-                    <td>:</td>
-                    <td><span id="review-tgl_penawaran"></span></td>   
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Sumber Data</td>
-                    <td>:</td>
-                    <td><span id="review-sumber_data"></span></td>                   
-                </tr>
-                <tr>
-                    <td style="font-weight: 800">Luas Semigross (m2)</td>
-                    <td>:</td>
-                    <td><span id="review-luas_semigross"></span></td>   
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Luas Nett (m2)</td>
-                    <td>:</td>
-                    <td><span id="review-luas_net"></span></td>                   
-                </tr>
-                <tr>
-                    <td style="font-weight: 800">Harga Penawaran/Transaksi (Rp)</td>
-                    <td>:</td>
-                    <td><span id="review-harga_penawaran"></span></td>   
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Diskon (%)</td>
-                    <td>:</td>
-                    <td><span id="review-diskon"></span></td>                   
-                </tr>
-                <tr>
-                    <td style="font-weight: 800">Harga Sewa per Tahun (Rp/tahun)</td>
-                    <td>:</td>
-                    <td><span id="review-harga_sewa_pertahun"></span></td>                   
-                </tr>
-                <tr>
-                    <td colspan="8" class="fs-5 fw-bold">Penyesuaian Elemen Perbandingan</td>
-                  </tr>
-                  <tr>
-                    <td style="font-weight: 800">Syarat Pembiayaan Batasan dilakukan pelunasan pembayaran (Kelunakan)</td>
-                    <td>:</td>
-                    <td><span id="review-pep_pembiayaan"></span></td>                    
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Kondisi Penjualan Bebas Ikatan, Waktu Pemasaran yang Wajar atau Ketiadaan Kondisi Pemaksa</td>
-                    <td>:</td>
-                    <td><span id="review-pep_penjualan"></span></td>                    
-                  </tr>
-                  <tr>
-                    <td style="font-weight: 800">Pengeluaran yang dilakukan segera setelah pembelian Biaya yang harus segera dikeluarkan untuk mengembalikan objek ke fungsi atau peruntukan awal atau seharusnya</td>
-                    <td>:</td>
-                    <td><span id="review-pep_pengeluaran"></span></td>                    
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Kondisi Pasar Kondisi Ekonomi Saat Terjadi Transaksi atau terbentuknya harga penawaran (Menggunakan Indikator Waktu Penawaran / Transaksi)</td>
-                    <td>:</td>
-                    <td><span id="review-pep_pasar"></span></td>                    
-                  </tr>                  
-                  
-              </table>
-              <hr>
-              <p class="fw-medium mb-2">Step 4</p>
-              <table class="table table-borderless">
-                <tr>
-                    <td style="font-weight: 800">Row Jalan (m)</td>
-                    <td>:</td>
-                    <td><span id="review-row_jalan"></span></td>                    
-                  </tr>
-                  <tr>
-                    <td style="font-weight: 800">Tipe Jalan</td>
-                    <td>:</td>
-                    <td><span id="review-tipe_jalan"></span></td>                    
-                    <td></td>
-                    <td></td>
-                    <td style="font-weight: 800">Kapasitas Jalan</td>
-                    <td>:</td>
-                    <td><span id="review-kapasitas_jalan"></span></td>                    
-                  </tr>
-                  <tr>
-                    <td style="font-weight: 800">Penggunaan Lahan Lingkungan Eksisting</td>
-                    <td>:</td>
-                    <td><span id="review-pengguna_lahan_lingkungan_eksisting"></span></td>  
-                    <td></td>
-                    <td></td> 
-                    <td style="font-weight: 800">Letak / Posisi Obyek</td>
-                    <td>:</td>
-                    <td><span id="review-letak_posisi_obyek"></span></td>                               
-                  </tr>                
-                  <tr>
-                    <td style="font-weight: 800">Lokasi Aset</td>
-                    <td>:</td>
-                    <td><span id="review-letak_posisi_aset"></span></td>  
-                    <td></td>
-                    <td></td> 
-                    <td style="font-weight: 800">Bentuk Tanah</td>
-                    <td>:</td>
-                    <td><span id="review-bentuk_tanah"></span></td>                               
-                  </tr>
-                <tr>
-                    <td style="font-weight: 800">Lebar Muka Tanah (m)</td>
-                    <td>:</td>
-                    <td><span id="review-lebar_muka_tanah"></span></td>  
-                    <td></td>
-                    <td></td> 
-                    <td style="font-weight: 800">Ketinggian Tanah dari Muka Jalan (m)</td>
-                    <td>:</td>
-                    <td><span id="review-ketinggian_tanah_dr_muka_jln"></span></td>                               
-                  </tr>                
-                  <tr>
-                    <td style="font-weight: 800">Topografi / Elevasi</td>
-                    <td>:</td>
-                    <td><span id="review-topografi"></span></td>  
-                    <td></td>
-                    <td></td> 
-                    <td style="font-weight: 800">Tingkat Hunian (%)</td>
-                    <td>:</td>
-                    <td><span id="review-tingkat_hunian"></span></td>                               
-                  </tr>                
-                  <tr>
-                    <td style="font-weight: 800">Kondisi Lingkungan Khusus</td>
-                    <td>:</td>
-                    <td><span id="review-kondisi_lingkungan_khusus"></span></td>  
-                    <td></td>
-                    <td></td> 
-                    <td style="font-weight: 800">Gambaran Objek terhadap Wilayah dan Lingkungan</td>
-                    <td>:</td>
-                    <td><span id="review-gambaran_objek"></span></td>                               
-                  </tr> 
-                <tr> 
-                  <td style="font-weight: 800">Status Data Pembanding</td>
-                  <td>:</td>
-                  <td><span id="review-status_data_pembanding"></span></td>               
-                </tr>
-              </table>
-              <div class="col-12 d-flex justify-content-between">
-                <button class="btn btn-label-secondary btn-prev" type="button"> <i class="ti ti-arrow-left me-sm-1"></i>
-                  <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                </button>
-                <button class="btn btn-success btn-submit" type="submit">Submit</button>
-              </div>
+            </div>     
+            <div class="mt-3">
+              <button class="btn btn-success btn-submit" type="submit">Submit</button>
             </div>
           </form>
-        </div>
       </div>
     </div>
     <!-- /Default Icons Wizard -->
-  </div>
-  
-<script>
-  document.querySelector('#btn-review').addEventListener('click', function() {
-    // Step 1
-    document.getElementById('review-nip').innerHTML = document.getElementById('nip').value    
-    document.getElementById('review-nib').innerHTML = document.getElementById('nib').value    
-    document.getElementById('review-nama_retail').innerHTML = document.getElementById('nama_retail').value    
-    document.getElementById('review-alamat').innerHTML = document.getElementById('alamat').value    
-    document.getElementById('review-lat').innerHTML = document.getElementById('lat').value    
-    document.getElementById('review-long').innerHTML = document.getElementById('long').value    
-    const foto_tampak_depan = document.getElementById('foto_tampak_depan');
-        if (foto_tampak_depan.files && foto_tampak_depan.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            document.getElementById('review-foto_tampak_depan').src = e.target.result;
-          }
-          reader.readAsDataURL(foto_tampak_depan.files[0]);
-        } else {
-          document.getElementById('review-foto_tampak_depan').src = '';
-        }
+  </div>  
 
-    const foto_tampak_sisi_kiri = document.getElementById('foto_tampak_sisi_kiri');
-        if (foto_tampak_sisi_kiri.files && foto_tampak_sisi_kiri.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            document.getElementById('review-foto_tampak_sisi_kiri').src = e.target.result;
-          }
-          reader.readAsDataURL(foto_tampak_sisi_kiri.files[0]);
-        } else {
-          document.getElementById('review-foto_tampak_sisi_kiri').src = '';
-        }
-    const foto_tampak_sisi_kanan = document.getElementById('foto_tampak_sisi_kanan');
-        if (foto_tampak_sisi_kanan.files && foto_tampak_sisi_kanan.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            document.getElementById('review-foto_tampak_sisi_kanan').src = e.target.result;
-          }
-          reader.readAsDataURL(foto_tampak_sisi_kanan.files[0]);
-        } else {
-          document.getElementById('review-foto_tampak_sisi_kanan').src = '';
-        }
-    const foto_lainnya = document.getElementById('foto_lainnya');
-        if (foto_lainnya.files && foto_lainnya.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            document.getElementById('review-foto_lainnya').src = e.target.result;
-          }
-          reader.readAsDataURL(foto_lainnya.files[0]);
-        } else {
-          document.getElementById('review-foto_lainnya').src = '';
-        }
-    document.getElementById('review-nama_narsum').innerHTML = document.getElementById('nama_narsum').value
-    document.getElementById('review-telepon').innerHTML = document.getElementById('telepon').value
-    document.getElementById('review-jenis_properti').innerHTML = document.getElementById('jenis_properti').value
-    document.getElementById('review-kondisi_properti').innerHTML = document.getElementById('kondisi_properti').value
-    document.getElementById('review-spesifikasi_properti').innerHTML = document.getElementById('spesifikasi_properti').value
-    document.getElementById('review-tipe_apartemen').innerHTML = document.getElementById('tipe_apartemen').value
-    document.getElementById('review-posisi_lantai').innerHTML = document.getElementById('posisi_lantai').value
-    document.getElementById('review-service_charge').innerHTML = document.getElementById('service_charge').value
-    document.getElementById('review-parkir').innerHTML = document.getElementById('parkir').value
-    document.getElementById('review-utilitas').innerHTML = document.getElementById('utilitas').value
-    document.getElementById('review-overtime').innerHTML = document.getElementById('overtime').value
-    document.getElementById('review-grade_bangunan').innerHTML = document.getElementById('grade_bangunan').value
-    document.getElementById('review-fasilitas_bangunan').innerHTML = document.getElementById('fasilitas_bangunan').value
-    document.getElementById('review-row_koridor').innerHTML = document.getElementById('row_koridor').value
-    document.getElementById('review-tipe_akses_koridor').innerHTML = document.getElementById('tipe_akses_koridor').value
-    document.getElementById('review-luas_bangunan_total').innerHTML = document.getElementById('luas_bangunan_total').value
-    document.getElementById('review-jumlah_lantai').innerHTML = document.getElementById('jumlah_lantai').value
-    document.getElementById('review-jenis_dok_hak_tanah').innerHTML = document.getElementById('jenis_dok_hak_tanah').value
-    document.getElementById('review-tgl_berakhir_dokumen').innerHTML = document.getElementById('tgl_berakhir_dokumen').value
-    document.getElementById('review-peruntukan_bangunan').innerHTML = document.getElementById('peruntukan_bangunan').value
-    document.getElementById('review-jenis_data').innerHTML = document.getElementById('jenis_data').value
-    document.getElementById('review-tgl_penawaran').innerHTML = document.getElementById('tgl_penawaran').value
-    document.getElementById('review-sumber_data').innerHTML = document.getElementById('sumber_data').value
-    // Step 2
-    document.getElementById('review-luas_semigross').innerHTML = document.getElementById('luas_semigross').value
-    document.getElementById('review-luas_net').innerHTML = document.getElementById('luas_net').value
-    document.getElementById('review-harga_penawaran').innerHTML = document.getElementById('harga_penawaran').value 
-    document.getElementById('review-diskon').innerHTML = document.getElementById('diskon').value
-    document.getElementById('review-harga_sewa_pertahun').innerHTML = document.getElementById('harga_sewa_pertahun').value
-   
-    document.getElementById('review-pep_pembiayaan').innerHTML = document.getElementById('pep_pembiayaan').value
-    document.getElementById('review-pep_penjualan').innerHTML = document.getElementById('pep_penjualan').value      
-    document.getElementById('review-pep_pengeluaran').innerHTML = document.getElementById('pep_pengeluaran').value      
-    document.getElementById('review-pep_pasar').innerHTML = document.getElementById('pep_pasar').value      
-    document.getElementById('review-row_jalan').innerHTML = document.getElementById('row_jalan').value      
-    document.getElementById('review-tipe_jalan').innerHTML = document.getElementById('tipe_jalan').value      
-    document.getElementById('review-kapasitas_jalan').innerHTML = document.getElementById('kapasitas_jalan').value      
-    document.getElementById('review-pengguna_lahan_lingkungan_eksisting').innerHTML = document.getElementById('pengguna_lahan_lingkungan_eksisting').value      
-    document.getElementById('review-letak_posisi_obyek').innerHTML = document.getElementById('letak_posisi_obyek').value      
-    document.getElementById('review-letak_posisi_aset').innerHTML = document.getElementById('letak_posisi_aset').value      
-    document.getElementById('review-bentuk_tanah').innerHTML = document.getElementById('bentuk_tanah').value      
-    document.getElementById('review-lebar_muka_tanah').innerHTML = document.getElementById('lebar_muka_tanah').value      
-    document.getElementById('review-ketinggian_tanah_dr_muka_jln').innerHTML = document.getElementById('ketinggian_tanah_dr_muka_jln').value      
-    document.getElementById('review-topografi').innerHTML = document.getElementById('topografi').value      
-    document.getElementById('review-tingkat_hunian').innerHTML = document.getElementById('tingkat_hunian').value      
-    document.getElementById('review-kondisi_lingkungan_khusus').innerHTML = document.getElementById('kondisi_lingkungan_khusus').value      
-    document.getElementById('review-gambaran_objek').innerHTML = document.getElementById('gambaran_objek').value           
-    document.getElementById('review-status_data_pembanding').innerHTML = document.getElementById('status_data_pembanding').value          
-  });
-</script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="crossorigin=""></script>
 <script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
 <script>
@@ -1224,5 +826,113 @@ $configData = Helper::appClasses();
   map.invalidateSize();
 });
 </script>
+<script>
+  // Menambahkan baris baru ke tabel Foto Lainnya
+  function addFotoRow() {
+      const table = document.getElementById('fotoLainnyaTable').getElementsByTagName('tbody')[0];
+      const newRow = table.insertRow();
+      const rowCount = table.rows.length;
+
+      newRow.innerHTML = `
+          <td class="row-number-foto">${rowCount}</td>
+          <td><input type="text" name="judul_foto[]" class="form-control" /></td>
+          <td><input type="file" id="foto_lainnya" name="foto_lainnya[]" class="form-control" accept="image/*" /></td>
+          <td>
+              <button type="button" class="btn btn-success btn-sm btn-action" onclick="addFotoRow()">+</button>
+              <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeFotoRow(this)">-</button>
+          </td>
+      `;
+      updateFotoRowNumbers();
+  }
+
+  // Menghapus baris dari tabel Foto Lainnya
+  function removeFotoRow(button) {
+      const table = document.getElementById('fotoLainnyaTable').getElementsByTagName('tbody')[0];
+      if (table.rows.length > 1) {
+          const row = button.parentNode.parentNode;
+          table.deleteRow(row.rowIndex - 1); // Menyesuaikan indeks untuk header
+          updateFotoRowNumbers();
+      }
+  }
+
+  // Memperbarui nomor urut di tabel Foto Lainnya
+  function updateFotoRowNumbers() {
+      const rows = document.querySelectorAll('#fotoLainnyaTable .row-number-foto');
+      rows.forEach((cell, index) => {
+          cell.textContent = index + 1;
+      });
+  }
+</script>
+<script>
+  function addRow() {
+      const table = document.getElementById('njopTable').getElementsByTagName('tbody')[0];
+      const newRow = table.insertRow();
+      const rowCount = table.rows.length;
+
+      newRow.innerHTML = `
+          <td class="row-number">${rowCount}</td>
+          <td><input type="number" name="tahun[]" class="form-control" /></td>
+          <td><input type="number" name="nilai_perolehan[]" class="form-control" /></td>
+          <td>
+              <button type="button" class="btn btn-success btn-sm btn-action" onclick="addRow()">+</button>
+              <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeRow(this)">-</button>
+          </td>
+      `;
+      updateRowNumbers();
+  }
+
+  function removeRow(button) {
+      const table = document.getElementById('njopTable').getElementsByTagName('tbody')[0];
+      if (table.rows.length > 1) {
+          const row = button.parentNode.parentNode;
+          table.deleteRow(row.rowIndex - 1); // Adjust for header row
+          updateRowNumbers();
+      }
+  }
+
+  function updateRowNumbers() {
+      const rows = document.querySelectorAll('#njopTable .row-number');
+      rows.forEach((cell, index) => {
+          cell.textContent = index + 1;
+      });
+  }
+</script>
+<script>
+  document.getElementById('kondisi_properti').addEventListener('change', function () {
+      const estimasiWrapper = document.getElementById('estimasi_wrapper');
+      if (this.value === 'On Progress') {
+          estimasiWrapper.style.display = 'block';
+      } else {
+          estimasiWrapper.style.display = 'none';
+      }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const dropdown = document.getElementById('bentuk_tanah');
+      const inputGroup = document.getElementById('bentuk_tanah_lainnya_group');
+
+      dropdown.addEventListener('change', function () {
+          if (this.value === 'Lainnya') {
+              inputGroup.style.display = 'block'; // Tampilkan input
+          } else {
+              inputGroup.style.display = 'none'; // Sembunyikan input
+              document.getElementById('bentuk_tanah_lainnya').value = ''; // Reset nilai input
+          }
+      });
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if(session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: '{{ session("success") }}',
+        showConfirmButton: false,
+        timer: 2000
+    });
+</script>
+@endif
 
 @endsection

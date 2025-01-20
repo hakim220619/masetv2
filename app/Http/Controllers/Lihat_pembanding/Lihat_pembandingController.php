@@ -12,7 +12,7 @@ class Lihat_pembandingController extends Controller
     public function lihat_pembanding() {
 
         $pembanding_bangunan = DB::table('pembanding_bangunan')->count();
-        $pembanding_tanah_kosong = DB::table('pembanding_tanah_kosong')->count();
+        $pembanding_tanah_kosong = DB::table('tanah_kosong')->count();
         $pembanding_retail = DB::table('pembanding_retail')->count();
 
         //query tabel object

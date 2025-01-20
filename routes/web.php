@@ -221,8 +221,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pembanding/detail_pembanding_bangunan/{id}', [PembandingBangunanController::class, 'detail_pembanding_bangunan'])->name('detail_pembanding_bangunan');
 
     Route::get('/pembanding/tanah_kosong', [Pembanding_tanah_kosongController::class, 'tanah_kosong'])->name('pembanding-tanah-kosong');
-    Route::post('/pembanding/add_pembanding_tanah_kosong', [Pembanding_tanah_kosongController::class, 'add_pembanding_tanah_kosong'])->name('add_pembanding_tanah_kosong');
-    Route::get('/pembanding/detail_pembanding_tanah_kosong/{id}', [Pembanding_tanah_kosongController::class, 'detail_pembanding_tanah_kosong'])->name('detail_pembanding_tanah_kosong');
+    Route::post('/pembanding/add_tanah_kosong', [Pembanding_tanah_kosongController::class, 'store'])->name('add_pembanding_tanah_kosong');
 
 
     Route::get('/pembanding/retail', [Pembanding_retailController::class, 'retail'])->name('pembanding-retail');

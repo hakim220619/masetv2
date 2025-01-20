@@ -406,6 +406,10 @@ $configData = Helper::appClasses();
                   <option value="Lainnya">Lainnya</option>
                 </select>
             </div>
+            <div class="form-group" id="bentuk_tanah_lainnya_group" style="display: none; margin-top: 10px;">
+              <label for="bentuk_tanah_lainnya">Bentuk Tanah Lainnya</label>
+              <input type="text" class="form-control" id="bentuk_tanah_lainnya" name="bentuk_tanah_lainnya" placeholder="Sebutkan bentuk tanah lainnya...">
+            </div>
             <!-- Social Links -->
             <div>
               <div class="mb-3">
@@ -694,91 +698,6 @@ $configData = Helper::appClasses();
     <!-- /Default Icons Wizard -->
   </div>
   
-<script>
-  document.querySelector('#btn-review').addEventListener('click', function() {
-    // Step 1
-    document.getElementById('review-nip').innerHTML = document.getElementById('nip').value    
-    document.getElementById('review-nib').innerHTML = document.getElementById('nib').value    
-    document.getElementById('review-nama_tanah_kosong').innerHTML = document.getElementById('nama_tanah_kosong').value    
-    document.getElementById('review-alamat').innerHTML = document.getElementById('alamat').value    
-    document.getElementById('review-lat').innerHTML = document.getElementById('lat').value    
-    document.getElementById('review-long').innerHTML = document.getElementById('long').value    
-    const foto_tampak_depan = document.getElementById('foto_tampak_depan');
-        if (foto_tampak_depan.files && foto_tampak_depan.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            document.getElementById('review-foto_tampak_depan').src = e.target.result;
-          }
-          reader.readAsDataURL(foto_tampak_depan.files[0]);
-        } else {
-          document.getElementById('review-foto_tampak_depan').src = '';
-        }
-
-    const foto_tampak_sisi_kiri = document.getElementById('foto_tampak_sisi_kiri');
-        if (foto_tampak_sisi_kiri.files && foto_tampak_sisi_kiri.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            document.getElementById('review-foto_tampak_sisi_kiri').src = e.target.result;
-          }
-          reader.readAsDataURL(foto_tampak_sisi_kiri.files[0]);
-        } else {
-          document.getElementById('review-foto_tampak_sisi_kiri').src = '';
-        }
-    const foto_tampak_sisi_kanan = document.getElementById('foto_tampak_sisi_kanan');
-        if (foto_tampak_sisi_kanan.files && foto_tampak_sisi_kanan.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            document.getElementById('review-foto_tampak_sisi_kanan').src = e.target.result;
-          }
-          reader.readAsDataURL(foto_tampak_sisi_kanan.files[0]);
-        } else {
-          document.getElementById('review-foto_tampak_sisi_kanan').src = '';
-        }
-    const foto_lainnya = document.getElementById('foto_lainnya');
-        if (foto_lainnya.files && foto_lainnya.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            document.getElementById('review-foto_lainnya').src = e.target.result;
-          }
-          reader.readAsDataURL(foto_lainnya.files[0]);
-        } else {
-          document.getElementById('review-foto_lainnya').src = '';
-        }
-    document.getElementById('review-nama_narsum').innerHTML = document.getElementById('nama_narsum').value
-    document.getElementById('review-telepon').innerHTML = document.getElementById('telepon').value
-    document.getElementById('review-jenis_dok_hak_tanah').innerHTML = document.getElementById('jenis_dok_hak_tanah').value
-    document.getElementById('review-perutuntukan_kawasan').innerHTML = document.getElementById('perutuntukan_kawasan').value
-    document.getElementById('review-jenis_data').innerHTML = document.getElementById('jenis_data').value
-    document.getElementById('review-tgl_penawaran').innerHTML = document.getElementById('tgl_penawaran').value
-    document.getElementById('review-sumber_data').innerHTML = document.getElementById('sumber_data').value
-    document.getElementById('review-luas_tanah').innerHTML = document.getElementById('luas_tanah').value
-    document.getElementById('review-harga_penawaran').innerHTML = document.getElementById('harga_penawaran').value
-    document.getElementById('review-harga_sewa_per_tahun').innerHTML = document.getElementById('harga_sewa_per_tahun').value
-    document.getElementById('review-diskon').innerHTML = document.getElementById('diskon').value
-    document.getElementById('review-pep_pembiayaan').innerHTML = document.getElementById('pep_pembiayaan').value
-    document.getElementById('review-pep_penjualan').innerHTML = document.getElementById('pep_penjualan').value
-    document.getElementById('review-pep_pengeluaran').innerHTML = document.getElementById('pep_pengeluaran').value
-    document.getElementById('review-letak_posisi_aset').innerHTML = document.getElementById('letak_posisi_aset').value
-    document.getElementById('review-pep_pasar').innerHTML = document.getElementById('pep_pasar').value
-    document.getElementById('review-row_jalan').innerHTML = document.getElementById('row_jalan').value
-    document.getElementById('review-tipe_jalan').innerHTML = document.getElementById('tipe_jalan').value
-    document.getElementById('review-kapasitas_jalan').innerHTML = document.getElementById('kapasitas_jalan').value
-    document.getElementById('review-pengguna_lahan_lingkungan_eksisting').innerHTML = document.getElementById('pengguna_lahan_lingkungan_eksisting').value
-    document.getElementById('review-letak_posisi_obyek').innerHTML = document.getElementById('letak_posisi_obyek').value
-    document.getElementById('review-letak_posisi_aset').innerHTML = document.getElementById('letak_posisi_aset').value
-    document.getElementById('review-bentuk_tanah').innerHTML = document.getElementById('bentuk_tanah').value
-    document.getElementById('review-lebar_muka_tanah').innerHTML = document.getElementById('lebar_muka_tanah').value
-    // Step 2
-    document.getElementById('review-ketinggian_tanah_dr_muka_jln').innerHTML = document.getElementById('ketinggian_tanah_dr_muka_jln').value
-    document.getElementById('review-topografi').innerHTML = document.getElementById('topografi').value
-    document.getElementById('review-tingkat_hunian').innerHTML = document.getElementById('tingkat_hunian').value 
-    document.getElementById('review-kondisi_lingkungan_khusus').innerHTML = document.getElementById('kondisi_lingkungan_khusus').value
-    document.getElementById('review-gambaran_objek').innerHTML = document.getElementById('gambaran_objek').value
-   
-    document.getElementById('review-pengguanan_tnh_saat_ini').innerHTML = document.getElementById('pengguanan_tnh_saat_ini').value
-    document.getElementById('review-status_data_pembanding').innerHTML = document.getElementById('status_data_pembanding').value      
-  });
-</script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="crossorigin=""></script>
 <script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
 <script>
@@ -899,5 +818,33 @@ $configData = Helper::appClasses();
       });
   }
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const dropdown = document.getElementById('bentuk_tanah');
+      const inputGroup = document.getElementById('bentuk_tanah_lainnya_group');
+
+      dropdown.addEventListener('change', function () {
+          if (this.value === 'Lainnya') {
+              inputGroup.style.display = 'block'; // Tampilkan input
+          } else {
+              inputGroup.style.display = 'none'; // Sembunyikan input
+              document.getElementById('bentuk_tanah_lainnya').value = ''; // Reset nilai input
+          }
+      });
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if(session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: '{{ session("success") }}',
+        showConfirmButton: false,
+        timer: 2000
+    });
+</script>
+@endif
 
 @endsection
