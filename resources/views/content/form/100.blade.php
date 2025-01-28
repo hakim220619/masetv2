@@ -168,12 +168,12 @@
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Nama Area</label>
                     <input type="text" name="nama_pintu_jendela[]" class="form-control" placeholder="Nama Area"
-                        required>
+                        >
                 </div>
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Luas (m²)</label>
                     <input type="number" name="luas_pintu_jendela[]" class="form-control" placeholder="Luas (m²)"
-                        min="0" step="0.01" required>
+                        min="0" step="0.01" >
                 </div>
                 <div class="area-controls">
                     <div class="row">
@@ -197,12 +197,12 @@
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Nama Area</label>
                     <input type="text" name="nama_dinding[]" class="form-control" placeholder="Nama Area"
-                        required>
+                        >
                 </div>
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Luas (m²)</label>
                     <input type="number" name="luas_dinding[]" class="form-control" placeholder="Luas (m²)"
-                        min="0" step="0.01" required>
+                        min="0" step="0.01" >
                 </div>
                 <div class="area-controls">
                     <div class="row">
@@ -224,12 +224,12 @@
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Nama Area</label>
                     <input type="text" name="nama_atap_datar[]" class="form-control" placeholder="Nama Area"
-                        required>
+                        >
                 </div>
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Luas (m²)</label>
                     <input type="number" name="luas_atap_datar[]" class="form-control" placeholder="Luas (m²)"
-                        min="0" step="0.01" required>
+                        min="0" step="0.01" >
                 </div>
                 <div class="area-controls">
                     <div class="row">
@@ -252,12 +252,12 @@
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Nama Area</label>
                     <input type="text" name="nama_atap_datar_2[]" class="form-control" placeholder="Nama Area"
-                        required>
+                        >
                 </div>
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Luas (m²)</label>
                     <input type="number" name="luas_atap_datar_2[]" class="form-control" placeholder="Luas (m²)"
-                        min="0" step="0.01" required>
+                        min="0" step="0.01" >
                 </div>
                 <div class="area-controls">
                     <div class="row">
@@ -293,7 +293,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_pondasi[]" class="form-control" required>
+                        <select name="tipe_pondasi[]" class="form-control" >
                             <option value="" selected>- Select -</option>
 
                             @foreach ($dataBangunan['Tambah Tipe Pondasi Eksisting'] as $item)
@@ -306,7 +306,7 @@
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
                         <input type="number" name="bobot_pondasi[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -348,7 +348,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_struktur[]" class="form-control" required>
+                        <select name="tipe_struktur[]" class="form-control" >
                             <option value="">- Select -</option>
                             @foreach ($dataBangunan['Tambah Tipe Struktur Eksisting'] as $item)
                                 <option value="{{ $item->label_value }}">{{ $item->label_option }}
@@ -359,7 +359,7 @@
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
                         <input type="number" name="bobot_struktur[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -445,7 +445,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_rangka_atap[]" class="form-control" required>
+                        <select name="tipe_rangka_atap[]" class="form-control" >
                             <option value="">- Select -</option>
                             @foreach ($dataBangunan['Tipe Rangka Atap Existing'] as $item)
                                 <option value="{{ $item->label_value }}">{{ $item->label_option }}
@@ -456,7 +456,7 @@
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
                         <input type="number" name="bobot_rangka_atap[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -560,7 +560,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_penutup-atap-existing[]" class="form-control" required>
+                        <select name="tipe_penutup-atap-existing[]" class="form-control" >
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Tipe Penutup Atap Existing'] as $item)
@@ -572,7 +572,7 @@
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
                         <input type="number" name="bobot_penutup-atap-existing[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -638,7 +638,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_tipe-dinding-existing[]" class="form-control" required>
+                        <select name="tipe_tipe-dinding-existing[]" class="form-control" >
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Tipe Dinding Existing'] as $item)
@@ -650,7 +650,7 @@
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
                         <input type="number" name="bobot_tipe-dinding-existing[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -717,7 +717,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_tipe-pelapis-dinding-existing[]" class="form-control" required>
+                        <select name="tipe_tipe-pelapis-dinding-existing[]" class="form-control" >
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Tipe Pelapis Dinding Existing'] as $item)
@@ -729,7 +729,7 @@
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
                         <input type="number" name="bobot_tipe-pelapis-dinding-existing[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -806,7 +806,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_tipe-pintu-jendela-existing[]" class="form-control" required>
+                        <select name="tipe_tipe-pintu-jendela-existing[]" class="form-control" >
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Tipe Pintu & Jendela Existing'] as $item)
@@ -819,7 +819,7 @@
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
                         <input type="number" name="bobot_tipe-pintu-jendela-existing[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -900,7 +900,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_tipe-lantai-existing[]" class="form-control" required>
+                        <select name="tipe_tipe-lantai-existing[]" class="form-control" >
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Tipe Lantai Existing'] as $item)
@@ -912,7 +912,7 @@
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
                         <input type="number" name="bobot_tipe-lantai-existing[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -957,7 +957,7 @@
                 areaItem.innerHTML = `
                                     <div style="flex: 1; margin-right: 10px;">
                                         <label>Tipe Material</label>
-                                        <select name="${nameTipe}" class="form-control" required>
+                                        <select name="${nameTipe}" class="form-control" >
                                             <option value="" selected>- Select -</option>
 
                                             @foreach ($dataBangunan['Tambah Tipe Pondasi Eksisting'] as $item)
@@ -967,7 +967,7 @@
                                     </div>
                                     <div style="flex: 1; margin-right: 10px;">
                                         <label>Bobot (%)</label>
-                                        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+                                        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
                                     </div>
                                     <div class="area-controls">
                                         <div class="row">
@@ -985,7 +985,7 @@
                 areaItem.innerHTML = `
     <div style="flex: 1; margin-right: 10px;">
         <label>Tipe Material</label>
-        <select name="${nameTipe}" class="form-control" required>
+        <select name="${nameTipe}" class="form-control" >
             <option value="">- Select -</option>
             @foreach ($dataBangunan['Tambah Tipe Struktur Eksisting'] as $item)
                 <option value="{{ $item->label_value }}">{{ $item->label_option }}
@@ -995,7 +995,7 @@
     </div>
     <div style="flex: 1; margin-right: 10px;">
         <label>Bobot (%)</label>
-        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
     </div>
     <div class="area-controls">
         <div class="row">
@@ -1014,7 +1014,7 @@
                 areaItem.innerHTML = `
     <div style="flex: 1; margin-right: 10px;">
         <label>Tipe Material</label>
-        <select name="${nameTipe}" class="form-control" required>
+        <select name="${nameTipe}" class="form-control" >
             <option value="">- Select -</option>
             @foreach ($dataBangunan['Tipe Rangka Atap Existing'] as $item)
                 <option value="{{ $item->label_value }}">{{ $item->label_option }}
@@ -1024,7 +1024,7 @@
     </div>
     <div style="flex: 1; margin-right: 10px;">
         <label>Bobot (%)</label>
-        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
     </div>
     <div class="area-controls">
         <div class="row">
@@ -1042,7 +1042,7 @@
                 areaItem.innerHTML = `
     <div style="flex: 1; margin-right: 10px;">
         <label>Tipe Material</label>
-        <select name="${nameTipe}" class="form-control" required>
+        <select name="${nameTipe}" class="form-control" >
             <option value="">- Select -</option>
              @foreach ($dataBangunan['Tambah Tipe Penutup Atap Existing'] as $item)
                 <option value="{{ $item->label_value }}">{{ $item->label_option }}
@@ -1052,7 +1052,7 @@
     </div>
     <div style="flex: 1; margin-right: 10px;">
         <label>Bobot (%)</label>
-        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
     </div>
     <div class="area-controls">
         <div class="row">
@@ -1071,7 +1071,7 @@
                 areaItem.innerHTML = `
     <div style="flex: 1; margin-right: 10px;">
         <label>Tipe Material</label>
-        <select name="${nameTipe}" class="form-control" required>
+        <select name="${nameTipe}" class="form-control" >
             <option value="">- Select -</option>
             @foreach ($dataBangunan['Tambah Tipe Dinding Existing'] as $item)
                 <option value="{{ $item->label_value }}">{{ $item->label_option }}
@@ -1081,7 +1081,7 @@
     </div>
     <div style="flex: 1; margin-right: 10px;">
         <label>Bobot (%)</label>
-        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
     </div>
     <div class="area-controls">
         <div class="row">
@@ -1099,7 +1099,7 @@
                 areaItem.innerHTML = `
     <div style="flex: 1; margin-right: 10px;">
         <label>Tipe Material</label>
-        <select name="${nameTipe}" class="form-control" required>
+        <select name="${nameTipe}" class="form-control" >
             <option value="">- Select -</option>
            @foreach ($dataBangunan['Tambah Tipe Pelapis Dinding Existing'] as $item)
             <option value="{{ $item->label_value }}">{{ $item->label_option }}
@@ -1109,7 +1109,7 @@
     </div>
     <div style="flex: 1; margin-right: 10px;">
         <label>Bobot (%)</label>
-        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
     </div>
     <div class="area-controls">
         <div class="row">
@@ -1127,7 +1127,7 @@
                 areaItem.innerHTML = `
     <div style="flex: 1; margin-right: 10px;">
         <label>Tipe Material</label>
-        <select name="${nameTipe}" class="form-control" required>
+        <select name="${nameTipe}" class="form-control" >
             <option value="">- Select -</option>
             @foreach ($dataBangunan['Tambah Tipe Lantai Existing'] as $item)
             <option value="{{ $item->label_value }}">{{ $item->label_option }}
@@ -1137,7 +1137,7 @@
     </div>
     <div style="flex: 1; margin-right: 10px;">
         <label>Bobot (%)</label>
-        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
     </div>
     <div class="area-controls">
         <div class="row">
@@ -1155,7 +1155,7 @@
                 areaItem.innerHTML = `
     <div style="flex: 1; margin-right: 10px;">
         <label>Tipe Material</label>
-        <select name="${nameTipe}" class="form-control" required>
+        <select name="${nameTipe}" class="form-control" >
             <option value="">- Select -</option>
              @foreach ($dataBangunan['Tambah Tipe Pintu & Jendela Existing'] as $item)
                                 <option value="{{ $item->label_value }}">{{ $item->label_option }}
@@ -1165,7 +1165,7 @@
     </div>
     <div style="flex: 1; margin-right: 10px;">
         <label>Bobot (%)</label>
-        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" required>
+        <input type="number" name="${nameBobot}" class="form-control" placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
     </div>
     <div class="area-controls">
         <div class="row">
@@ -1199,11 +1199,11 @@
             areaItem.innerHTML = `
         <div style="flex: 1; margin-right: 10px;">
             <label>Nama Area</label>
-            <input type="text" name="${nameNama}" class="form-control" placeholder="Nama Area" required>
+            <input type="text" name="${nameNama}" class="form-control" placeholder="Nama Area" >
         </div>
         <div style="flex: 1; margin-right: 10px;">
             <label>Luas (m²)</label>
-            <input type="number" name="${nameLuas}" class="form-control" placeholder="Luas (m²)" min="0" step="0.01" required>
+            <input type="number" name="${nameLuas}" class="form-control" placeholder="Luas (m²)" min="0" step="0.01" >
         </div>
         <div class="area-controls">
             <div class="row">

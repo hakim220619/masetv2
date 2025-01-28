@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Object;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bangunan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
@@ -59,4 +60,6 @@ class ObjectController extends Controller
 
         return view('content.object.lihat_object', compact('objects'));
     }
+
+   
 }

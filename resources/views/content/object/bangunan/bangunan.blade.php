@@ -77,8 +77,8 @@
 
     <div class="row">
         <!-- Default Icons Wizard -->
-        <form action="" method="POST" enctype="multipart/form-data">
-
+        <form action="{{ route('object-store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="col-12 mb-4">
                 @csrf
                 <div class="form-group mb-3">
@@ -214,7 +214,7 @@
                     <label for="tipe_spek"><b>Tipikal Bangunan Sesuai Spek BTB MAPPI </b> <span
                             class="text-danger">*</span></label>
                     <select id="tipe_spek" name="tipe_spek" class="form-select" required>
-                        <option value="" selected>- Select -</option>
+                        <option value="tolol" selected>- Select -</option>
                         <option value="100">Rumah Tinggal Sederhana 1 Lantai</option>
                         <option value="200">Rumah Tinggal Menengah 2 Lantai</option>
                         <option value="300">Rumah Tinggal Mewah 2 Lantai</option>
@@ -285,6 +285,17 @@
                                 break;
                             default:
                                 // Tidak ada yang dipilih, semua tetap disembunyikan
+                                document.getElementById('100').style.display = 'none';
+                                document.getElementById('200').style.display = 'none';
+                                document.getElementById('300').style.display = 'none';
+                                document.getElementById('400').style.display = 'none';
+                                document.getElementById('500').style.display = 'none';
+                                document.getElementById('600').style.display = 'none';
+                                document.getElementById('700').style.display = 'none';
+                                document.getElementById('800').style.display = 'none';
+                                document.getElementById('900').style.display = 'none';
+                                document.getElementById('1000').style.display = 'none';
+                                document.getElementById('1100').style.display = 'none';
                                 break;
                         }
                     });
@@ -445,5 +456,18 @@
 
         <!-- /Default Icons Wizard -->
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if(session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '{{ session("success") }}',
+            showConfirmButton: false,
+            timer: 2000
+        });
+    </script>
+    @endif
 
 @endsection

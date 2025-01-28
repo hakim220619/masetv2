@@ -198,13 +198,6 @@
       ]
     },
     {
-      "url": "/penilai",
-      "name": "Penilai",
-      "icon": "menu-icon tf-icons ti ti-pencil",
-      "slug": "penilai",
-      "role": "Super Admin"
-    },
-    {
       "url": "object",
       "icon": "menu-icon tf-icons ti ti-package",
       "name": "Object",
@@ -277,63 +270,40 @@
       ]
     },
     {
-      "url": "/penilai",
-      "name": "Penilai",
-      "icon": "menu-icon tf-icons ti ti-pencil",
-      "slug": "penilai",
-      "role": "User",
-      "role_name": "Penilai"
-    },
-    {
-      "url": "/reviewers",
-      "name": "Reviewers",
-      "icon": "menu-icon tf-icons ti ti-pencil",
-      "slug": "reviewers",
-      "role": "Super Admin"
-    },
-    {
-      "url": "/reviewers",
-      "name": "Reviewers",
-      "icon": "menu-icon tf-icons ti ti-pencil",
-      "slug": "reviewers",
-      "role": "User",
-      "role_name": "Penilai"
-    },
-    {
-      "url": "/penilai_public",
-      "name": "Penilai Public",
-      "icon": "menu-icon tf-icons ti ti-pencil",
-      "slug": "penilai_public",
-      "role": "Super Admin"
-    },
-    {
-      "url": "/penilai_public",
-      "name": "Penilai Public",
-      "icon": "menu-icon tf-icons ti ti-pencil",
-      "slug": "penilai_public",
+      "url": "laporan_penilaian",
+      "icon": "menu-icon tf-icons ti ti-package",
+      "name": "Laporan Penilaian",
+      "slug": "laporan_penilaian",
       "role": "Super Admin",
-      "role_name": "Penilai Public"
-    },
-    {
-      "url": "/laporan",
-      "name": "Laporan",
-      "icon": "menu-icon tf-icons ti ti-smart-home",
-      "slug": "laporan",
-      "role": "User"
-    },
-    {
-      "url": "/laporan",
-      "name": "Laporan",
-      "icon": "menu-icon tf-icons ti ti-smart-home",
-      "slug": "laporan",
-      "role": "Super Admin"
-    },
-    {
-      "url": "/laporan",
-      "name": "Laporan",
-      "icon": "menu-icon tf-icons ti ti-smart-home",
-      "slug": "laporan",
-      "role": "Admin"
+      "submenu": [
+        {
+          "url": "laporan_penilaian/semua_laporan",
+          "name": "Semua Laporan",
+          "slug": "laporan-semua-laporan"
+        },
+        {
+          "url": "laporan_penilaian/tambah_laporan",
+          "name": "Tambah Laporan",
+          "slug": "laporan-tambah-laporan",
+          "submenu": [
+            {
+              "url": "laporan_penilaian/bangunan",
+              "name": "Laporan Tanah dan Bangunan",
+              "slug": "laporan-bangunan"
+            },
+            {
+              "url": "laporan_penilaian/tanah_kosong",
+              "name": "Laporan Tanah Kosong",
+              "slug": "laporan-tanah-kosong"
+            },
+            {
+              "url": "laporan_penilaian/retail",
+              "name": "Laporan Office/Retai/Apartemen",
+              "slug": "laporan-retail"
+            }
+          ]
+        }
+      ]
     },
     {
       "url": "masterdata",
@@ -348,14 +318,6 @@
           "slug": "MasterDataSu-users-list"
         }
       ]
-    },
-    {
-      "url": "/penilai",
-      "name": "Penilai",
-      "icon": "menu-icon tf-icons ti ti-pencil",
-      "slug": "penilai",
-      "role": "Admin",
-      "role_name": "Penilai"
     }
   ]
 }

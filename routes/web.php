@@ -24,6 +24,7 @@ use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\Retail\ReatailController;
 use App\Http\Controllers\Tanah_kosong\TanahkosongController;
 use App\Http\Controllers\Laporan\LaporanController;
+use App\Http\Controllers\Laporan_penilaian\LaporanPenilaianController;
 use App\Http\Controllers\Penilai\PenilaiController;
 use App\Http\Controllers\PenilaiPublic\PenilaiPublicController;
 use App\Http\Controllers\Reviewers\ReviewersController;
@@ -149,6 +150,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/object/retailLoadData', [BangunanController::class, 'retailLoadData'])->name('bangunan.retailLoadData');
     Route::post('/object/add_bangunan', [BangunanController::class, 'add_bangunan'])->name('add_bangunan');
     Route::get('/object/detail_bangunan/{id}', [BangunanController::class, 'detail_bangunan'])->name('detail_bangunan');
+    Route::post('/object/store', [BangunanController::class, 'store'])->name('object-store');
 
 
     Route::get('/object/acceptSurveyor/{id}', [BangunanController::class, 'acceptSurveyor'])->name('acceptSurveyor');
@@ -157,17 +159,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/object/kendaraan', [KendaraanController::class, 'kendaraan'])->name('object-kendaraan');
 
 
-    //Tanah Kosong
-    Route::get('/object/tanah_kosong', [TanahkosongController::class, 'tanah_kosong'])->name('object-tanah_kosong');
-    Route::post('/object/add_tanah_kosong', [TanahkosongController::class, 'add_tanah_kosong'])->name('add_tanah_kosong');
-    Route::get('/object/detail_tanah_kosong/{id}', [TanahkosongController::class, 'detail_tanah_kosong'])->name('detail_tanah_kosong');
-    //Retail
-    Route::get('/object/retail', [ReatailController::class, 'retail'])->name('object-retail');
-    Route::post('/object/add_retail', [ReatailController::class, 'add_retail'])->name('add_retail');
-    Route::get('/object/detail_retail/{id}', [ReatailController::class, 'detail_retail'])->name('detail_retail');
-
     //Object
     Route::get('/object/lihat_object', [ObjectController::class, 'lihat_object'])->name('object-lihat_object');
+   
+
 
     //Penilai
     Route::get('/penilai', [PenilaiController::class, 'penilai'])->name('penilai');
@@ -245,6 +240,11 @@ Route::middleware(['auth'])->group(function () {
     // laporan
     Route::get('/laporan', [LaporanController::class, 'laporan'])->name('laporan');
     Route::get('/getCoordinates', [LaporanController::class, 'getCoordinates'])->name('getCoordinates');
+
+    // Laporan Penilaian
+    Route::get('/laporan_penilaian/bangunan', [LaporanPenilaianController::class, 'laporan_bangunan'])->name('laporan-bangunan');
+    Route::get('/laporan_penilaian/tanah_kosong', [LaporanPenilaianController::class, 'laporan_tanah_kosong'])->name('laporan-tanah_kosong');
+    Route::get('/laporan_penilaian/retail', [LaporanPenilaianController::class, 'laporan_retail'])->name('laporan-retail');
 
     // masterdata
     // Jenis Dokumen Hak Tanah

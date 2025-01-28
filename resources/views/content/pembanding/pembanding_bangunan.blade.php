@@ -88,6 +88,54 @@ $configData = Helper::appClasses();
       font-size: 14px;
   }
 </style>
+<style>
+  .foto-lainnya-container {
+      border: 1px solid #dee2e6;
+      padding: 10px;
+      border-radius: 5px;
+  }
+
+  .foto-lainnya-container .form-group {
+      margin-bottom: 0;
+  }
+
+  .foto-lainnya-container label {
+      font-weight: bold;
+  }
+
+  .foto-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding: 5px;
+  }
+
+  .foto-item input {
+      margin-right: 5px;
+  }
+
+  .foto-controls button {
+      background: none;
+      border: none;
+      color: #007bff;
+      font-size: 18px;
+  }
+</style>
+
+@php
+// Ambil semua header unik dari tabel master_data
+$headers = DB::table('master_data')->select('label_header')->distinct()->pluck('label_header'); // Menghasilkan collection berisi semua header unik
+
+$dataBangunan = [];
+foreach ($headers as $header) {
+    $dataBangunan[$header] = DB::table('master_data')
+        ->where('label_header', $header)
+        ->where('label_option', '!=', null)
+        ->where('state', 'ON')
+        ->get();
+}
+@endphp
 
 <h4>Data Pembanding – Tanah dan Bangunan</h4>
   <!-- Default -->
@@ -816,195 +864,103 @@ $configData = Helper::appClasses();
                       ?>
                   </select>
                 </div> 
-                <div>
-                  <label class="form-label" for="tipikal_bangunan">Tipikal Bangunan Sesuai Spek BTB MAPPI</label>
-                  <select class="form-select" name="tipikal_bangunan" id="tipikal_bangunan" aria-label="Default select example">
-                    <option value="" selected>- Select -</option>
-                    <option value="Rumah Tinggal Sederhana 1 Lantai">Rumah Tinggal Sederhana 1 Lantai</option>
-                    <option value="Rumah Tinggal Menengah 2 Lantai">Rumah Tinggal Menengah 2 Lantai</option>
-                    <option value="Rumah Tinggal Mewah 2 Lantai">Rumah Tinggal Mewah 2 Lantai</option>
-                    <option value="Bangunan Perkebunan (Semi Permanen) 1 Lantai">Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
-                    <option value="Bangunan Gudang 1 Lantai">Bangunan Gudang 1 Lantai</option>
-                    <option value="Bangunan Gedung Bertingkat Rendah 3 Lantai (<5 Lantai)">Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt;5 Lantai)</option>
-                    <option value="Bangunan Gedung Bertingkat Sedang 8 Lantai + 1 Basement (5-8 Lantai)">Bangunan Gedung Bertingkat Sedang 8 Lantai + 1 Basement (5-8 Lantai)</option>
-                    <option value="Bangunan Gedung Bertingkat Tinggi 16 Lantai + 2 Basement (>8 Lantai)">Bangunan Gedung Bertingkat Tinggi 16 Lantai + 2 Basement (&gt;8 Lantai)</option>
-                    <option value="Bangunan Mall 4 Lantai + 1 Basement">Bangunan Mall 4 Lantai + 1 Basement</option>
-                    <option value="Bangunan Hotel 8 Lantai">Bangunan Hotel 8 Lantai</option>
-                    <option value="Bangunan Apartemen 14 Lantai + 2 Semi Basement">Bangunan Apartemen 14 Lantai + 2 Semi Basement</option>
+                <div class="form-group mb-3">
+                  <label for="tipe_spek"><b>Tipikal Bangunan Sesuai Spek BTB MAPPI </b> <span
+                          class="text-danger">*</span></label>
+                  <select id="tipe_spek" name="tipe_spek" class="form-select" required>
+                      <option value="" selected>- Select -</option>
+                      <option value="100">Rumah Tinggal Sederhana 1 Lantai</option>
+                      <option value="200">Rumah Tinggal Menengah 2 Lantai</option>
+                      <option value="300">Rumah Tinggal Mewah 2 Lantai</option>
+                      <option value="400">Bangunan Perkebunan (Semi Permanen) 1 Lantai</option>
+                      <option value="500">Bangunan Gudang 1 Lantai</option>
+                      <option value="600">Bangunan Gedung Bertingkat Rendah 3 Lantai (&lt;5 Lantai)</option>
+                      <option value="700">Bangunan Gedung Bertingkat Sedang 8 Lantai + 1 Basement (5-8 Lantai)
+                      </option>
+                      <option value="800">Bangunan Gedung Bertingkat Tinggi 16 Lantai + 2 Basement (&gt;8 Lantai)
+                      </option>
+                      <option value="900">Bangunan Mall 4 Lantai + 1 Basement</option>
+                      <option value="1000">Bangunan Hotel 8 Lantai</option>
+                      <option value="1100">Bangunan Apartemen 14 Lantai + 2 Semi Basement</option>
+                      <!-- More options... -->
                   </select>
-                </div> 
+              </div>
 
-                {{-- Rumah Tinggal Sederhana 1 Lantai --}}
-                <div>
-                  <div class="mt-2">
-                    <label for="jenis_bangunan" class="form-label">Jenis Bangunan (Umur Ekonomis)</label><br>
-                    <small><i>Pilih jenis bangunan yg sesuai untuk menentukan umur ekonomis bangunan.</i></small>
-                    <select class="form-select" name="jenis_bangunan" id="jenis_bangunan">
-                        <option value="" selected>- Select -</option>
-                        <option value="Bangunan Rumah Tinggal">Bangunan Rumah Tinggal</option>
-                        <option value="Bangunan Rumah Susun">Bangunan Rumah Susun</option>
-                        <option value="Pusat Perbelanjaan">Pusat Perbelanjaan</option>
-                        <option value="Bangunan Kantor">Bangunan Kantor</option>
-                        <option value="Bangunan Gedung Pemerintah">Bangunan Gedung Pemerintah</option>
-                        <option value="Bangunan Hotel/Motel">Bangunan Hotel/Motel</option>
-                        <option value="Bangunan Industri dan Gudang">Bangunan Industri dan Gudang</option>
-                        <option value="Bangunan di Kawasan Perkebunan">Bangunan di Kawasan Perkebunan</option>
-                    </select>
-                  </div>
-                  <div class="mt-2">
-                    <label for="jenis_bangunan_indeks" class="form-label">Jenis Bangunan (Indeks Lantai)</label><br>
-                    <small><i>Pilih jenis bangunan yg sesuai untuk menentukan indeks lantai MAPPI.</i></small>
-                    <select class="form-select" name="jenis_bangunan_indeks" id="jenis_bangunan_indeks">
-                        <option value="" selected>- Select -</option>
-                        <option value="Rumah Tinggal Sederhana">Rumah Tinggal Sederhana</option>
-                        <option value="Rumah Tinggal Menengah">Rumah Tinggal Menengah</option>
-                        <option value="Rumah Tinggal Mewah">Rumah Tinggal Mewah</option>
-                        <option value="Bangunan Gedung Bertingkat Low Rise (<5 Lantai)">Bangunan Gedung Bertingkat Low Rise (&lt;5 Lantai)</option>
-                        <option value="Bangunan Gedung Bertingkat Mid Rise (<9 Lantai)">Bangunan Gedung Bertingkat Mid Rise (&lt;9 Lantai)</option>
-                        <option value="Bangunan Gedung Bertingkat High Rise (>8 Lantai)">Bangunan Gedung Bertingkat High Rise (&gt;8 Lantai)</option>
-                    </select>                    
-                  </div>
-                  <div class="mt-2">
-                    <label for="tahun_dibangun" class="form-label">Tahun Dibangun</label>
-                    <select class="form-select" name="tahun_dibangun" id="tahun_dibangun">
-                        <option value="" selected>- Select -</option>
-                        <?php
-                        $startYear = 1900;
-                        $currentYear = date('Y'); // Mendapatkan tahun saat ini
-                        $endYear = $currentYear + 6; // 6 tahun ke depan
-                    
-                        // Loop untuk menghasilkan opsi tahun
-                        for ($year = $startYear; $year <= $endYear; $year++) {
-                            echo "<option value=\"$year\">$year</option>";
-                        }
-                        ?>
-                    </select>
-                  </div>
-                  <div class="mt-2">
-                    <label for="tahun_renovasi" class="form-label">Tahun Renovasi</label>
-                    <select class="form-select" name="tahun_renovasi" id="tahun_renovasi">
-                        <option value="" selected>- Select -</option>
-                        <?php
-                        $startYear = 1900;
-                        $currentYear = date('Y'); // Mendapatkan tahun saat ini
-                        $endYear = $currentYear + 6; // 6 tahun ke depan
-                    
-                        // Loop untuk menghasilkan opsi tahun
-                        for ($year = $startYear; $year <= $endYear; $year++) {
-                            echo "<option value=\"$year\">$year</option>";
-                        }
-                        ?>
-                    </select>
-                  </div>
-                  <div class="mt-2">
-                    <label for="kondisi_bangunan" class="form-label">Kondisi Bangunan Secara Visual</label>
-                    <select class="form-select" name="kondisi_bangunan" id="kondisi_bangunan">
-                        <option value="" selected>- Select -</option>
-                        <option value="Rusak">Rusak</option>
-                        <option value="Kurang Baik">Kurang Baik</option>
-                        <option value="Cukup">Cukup</option>
-                        <option value="Baik">Baik</option>
-                        <option value="Baik Sekali">Baik Sekali</option>
-                        <option value="Baru">Baru</option>
-                    </select>
-                  </div>
-                  <div class="mt-2">
+              <script>
+                // Fungsi untuk menangani perubahan dropdown
+                document.getElementById('tipe_spek').addEventListener('change', function() {
+                    const selectedValue = this.value;
 
-                    <label>Luas Bangunan Fisik</label>
-                    <div class="form-container">
-                        <!-- Canvas Section -->
-                        <div id="canvasContainer">
-                            <canvas id="drawingCanvas" width="1000" height="500"></canvas>
-                        </div>
-                
-                        <!-- Input Section -->
-                        <div class="input-section">
-                            <label for="line_length">Panjang Garis (meter):</label>
-                            <input type="number" id="line_length" placeholder="Masukkan panjang garis" value="5">
-                
-                            <label for="angle">Derajat:</label>
-                            <input type="number" id="angle" placeholder="Masukkan derajat" value="0">
-                
-                            <label for="polygon_area">Luas (m²):</label>
-                            <input type="text" id="polygon_area" placeholder="Luas otomatis" readonly>
-                
-                            <button id="clearLastLineButton" type="button">Hapus Garis Terakhir</button>
-                        </div>
-                    </div>
-                
-                    <!-- Controls -->
-                    <div class="controls">
-                        <button type="button" onclick="move('up')">Atas</button>
-                        <button type="button" onclick="move('left')">Kiri</button>
-                        <button type="button" onclick="move('right')">Kanan</button>
-                        <button type="button" onclick="move('down')">Bawah</button>
-                    </div>
+                    // Sembunyikan semua form terlebih dahulu
+                    document.querySelectorAll('#dynamic-content > div').forEach(function(form) {
+                        form.style.display = 'none'; // Pastikan semua form disembunyikan
+                    });
 
-                  </div>
-                  <div class="mt-2">
-                    <label for="lb_trpotong" class="form-label">Luas Bangunan Terpotong (m2)</label>
-                    <input type="text" class="form-control" name="lb_trpotong" id="lb_trpotong">
-                  </div>
-                  <div class="mt-2">
-                    <label for="luas_dasar_bangunan_jika_ruko" class="form-label">Luas Dasar Bangunan jika Ruko (m2)</label>
-                    <input type="text" class="form-control" name="luas_dasar_bangunan_jika_ruko" id="luas_dasar_bangunan_jika_ruko">
-                  </div>
-                  <div class="mt-2">
-                      <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
-                        <label class="form-label" for="luas_pintu_jendela">Luas Pintu dan Jendela</label>
-                        <table class="table table-bordered" id="luas_pintu_jendela">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nama Area</th>
-                                    <th>Luas (m2)</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="row-number">1</td>
-                                    <td><input type="text" name="nama_area_pintu_jendela[]" class="form-control" /></td>
-                                    <td><input type="number" name="luas_area_pintu_jendela[]" class="form-control" /></td>
-                                    <td>
-                                        <button type="button" class="btn btn-success btn-sm btn-action" onclick="addRow()">+</button>
-                                        <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeRow(this)">-</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                      </div>
-                    </div>
-                    <div class="mt-2">
-                      <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
-                        <label class="form-label" for="luas_dinding">Luas Dinding</label>
-                        <table class="table table-bordered" id="luas_dinding">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nama Area</th>
-                                    <th>Luas Kotor(m2)</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="row-number">1</td>
-                                    <td><input type="text" name="nama_area_dinding[]" class="form-control" /></td>
-                                    <td><input type="number" name="luas_area_dinding[]" class="form-control" /></td>
-                                    <td>
-                                        <button type="button" class="btn btn-success btn-sm btn-action" onclick="addRow()">+</button>
-                                        <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeRow(this)">-</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                      </div>
-                    </div>
-                </div>
+                    // Tampilkan form sesuai pilihan dan sembunyikan yang lain
+                    switch (selectedValue) {
+                        case '100':
+                            document.getElementById('100').style.display = 'block';
+                            break;
+                        case '200':
+                            document.getElementById('200').style.display = 'block';
+                            break;
+                        case '300':
+                            document.getElementById('300').style.display = 'block';
+                            break;
+                        case '400':
+                            document.getElementById('400').style.display = 'block';
+                            break;
+                        case '500':
+                            document.getElementById('500').style.display = 'block';
+                            break;
+                        case '600':
+                            document.getElementById('600').style.display = 'block';
+                            break;
+                        case '700':
+                            document.getElementById('700').style.display = 'block';
+                            break;
+                        case '800':
+                            document.getElementById('800').style.display = 'block';
+                            break;
+                        case '900':
+                            document.getElementById('900').style.display = 'block';
+                            break;
+                        case '1000':
+                            document.getElementById('1000').style.display = 'block';
+                            break;
+                        case '1100':
+                            document.getElementById('1100').style.display = 'block';
+                            break;
+                        default:
+                                document.getElementById('100').style.display = 'none';
+                                document.getElementById('200').style.display = 'none';
+                                document.getElementById('300').style.display = 'none';
+                                document.getElementById('400').style.display = 'none';
+                                document.getElementById('500').style.display = 'none';
+                                document.getElementById('600').style.display = 'none';
+                                document.getElementById('700').style.display = 'none';
+                                document.getElementById('800').style.display = 'none';
+                                document.getElementById('900').style.display = 'none';
+                                document.getElementById('1000').style.display = 'none';
+                                document.getElementById('1100').style.display = 'none';
+                            break;
+                    }
+                });    
+            </script>
 
-
-
+            <div id="dynamic-content">
+                @include('content.form.100')
+                @include('content.form.200')
+                @include('content.form.300')
+                @include('content.form.400')
+                @include('content.form.500')
+                @include('content.form.600')
+                @include('content.form.700')
+                @include('content.form.800')
+                @include('content.form.900')
+                @include('content.form.1000')
+                @include('content.form.1100')
+            </div>
 
                 <div>
                   <label class="form-label" for="pengguaan_bangunan_saat_ini">Penggunaan Bangunan Saat Ini</label>
