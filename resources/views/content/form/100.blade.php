@@ -167,13 +167,13 @@
             <div class="area-item d-flex align-items-center mb-2">
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Nama Area</label>
-                    <input type="text" name="nama_pintu_jendela[]" class="form-control" placeholder="Nama Area"
-                        >
+                    <input type="text" name="luas_nama_pintu_jendela[]" class="form-control"
+                        placeholder="Nama Area">
                 </div>
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Luas (m²)</label>
-                    <input type="number" name="luas_pintu_jendela[]" class="form-control" placeholder="Luas (m²)"
-                        min="0" step="0.01" >
+                    <input type="number" name="luas_bobot_pintu_jendela[]" class="form-control"
+                        placeholder="Luas (m²)" min="0" step="0.01">
                 </div>
                 <div class="area-controls">
                     <div class="row">
@@ -196,13 +196,12 @@
             <div class="area-item d-flex align-items-center mb-2">
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Nama Area</label>
-                    <input type="text" name="nama_dinding[]" class="form-control" placeholder="Nama Area"
-                        >
+                    <input type="text" name="luas_nama_dinding[]" class="form-control" placeholder="Nama Area">
                 </div>
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Luas (m²)</label>
-                    <input type="number" name="luas_dinding[]" class="form-control" placeholder="Luas (m²)"
-                        min="0" step="0.01" >
+                    <input type="number" name="luas_bobot_dinding[]" class="form-control" placeholder="Luas (m²)"
+                        min="0" step="0.01">
                 </div>
                 <div class="area-controls">
                     <div class="row">
@@ -219,17 +218,45 @@
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Luas Rangka Atap Datar</b></label><br>
         <small class="form-text text-muted">Masukkan luas rangka atap datar.</small>
+        <div class="area-lainnya-container-rumah-sederhana" data-type="rangka-atap-datar">
+            <div class="area-item d-flex align-items-center mb-2">
+                <div style="flex: 1; margin-right: 10px;">
+                    <label>Nama Area</label>
+                    <input type="text" name="luas_nama_rangka_atap_datar[]" class="form-control"
+                        placeholder="Nama Area">
+                </div>
+                <div style="flex: 1; margin-right: 10px;">
+                    <label>Luas (m²)</label>
+                    <input type="number" name="luas_bobot_rangka_atap_datar[]" class="form-control"
+                        placeholder="Luas (m²)" min="0" step="0.01">
+                </div>
+                <div class="area-controls">
+                    <div class="row">
+                        <button type="button" class="add-area-btn">+</button>
+                        <button type="button" class="remove-area-btn">-</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana"
+            data-type="rangka-atap-datar">Tambah Area</button>
+    </div>
+
+    <!-- Luas Atap Datar -->
+    <div class="form-group mb-3" style="margin-top: 20px;">
+        <label><b>Luas Atap Datar</b></label><br>
+        <small class="form-text text-muted">Masukkan luas atap datar.</small>
         <div class="area-lainnya-container-rumah-sederhana" data-type="atap-datar">
             <div class="area-item d-flex align-items-center mb-2">
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Nama Area</label>
-                    <input type="text" name="nama_atap_datar[]" class="form-control" placeholder="Nama Area"
-                        >
+                    <input type="text" name="luas_nama_atap_datar[]" class="form-control"
+                        placeholder="Nama Area">
                 </div>
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Luas (m²)</label>
-                    <input type="number" name="luas_atap_datar[]" class="form-control" placeholder="Luas (m²)"
-                        min="0" step="0.01" >
+                    <input type="number" name="luas_bobot_atap_datar[]" class="form-control"
+                        placeholder="Luas (m²)" min="0" step="0.01">
                 </div>
                 <div class="area-controls">
                     <div class="row">
@@ -242,47 +269,19 @@
         <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana"
             data-type="atap-datar">Tambah Area</button>
     </div>
-
-    <!-- Luas Atap Datar -->
-    <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><b>Luas Atap Datar</b></label><br>
-        <small class="form-text text-muted">Masukkan luas atap datar.</small>
-        <div class="area-lainnya-container-rumah-sederhana" data-type="atap-datar-2">
-            <div class="area-item d-flex align-items-center mb-2">
-                <div style="flex: 1; margin-right: 10px;">
-                    <label>Nama Area</label>
-                    <input type="text" name="nama_atap_datar_2[]" class="form-control" placeholder="Nama Area"
-                        >
-                </div>
-                <div style="flex: 1; margin-right: 10px;">
-                    <label>Luas (m²)</label>
-                    <input type="number" name="luas_atap_datar_2[]" class="form-control" placeholder="Luas (m²)"
-                        min="0" step="0.01" >
-                </div>
-                <div class="area-controls">
-                    <div class="row">
-                        <button type="button" class="add-area-btn">+</button>
-                        <button type="button" class="remove-area-btn">-</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana"
-            data-type="atap-datar-2">Tambah Area</button>
-    </div>
     <!-- Tipe Pondasi Existing -->
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Tipe Pondasi Eksisting - Rumah Tinggal Sederhana 1 Lantai</b></label>
         <div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Batu Kali" id="pondasi_batu_kali"
-                    onchange="toggleBobotInput(this, 'bobot_pondasi_batu_kali')">
+                    name="tipe_pondasi_existing[]" onchange="toggleBobotInput(this, 'bobot_pondasi_batu_kali')">
                 <label class="form-check-label" for="pondasi_batu_kali">Batu Kali</label>
             </div>
         </div>
         <div id="bobot_pondasi_batu_kali" style="display: none; margin-top: 10px;">
             <label for="bobot_batu_kali">Bobot Pondasi Batu Kali (dalam persen %)</label>
-            <input type="number" class="form-control" id="bobot_batu_kali" name="bobot_batu_kali"
+            <input type="number" class="form-control" id="bobot_batu_kali" name="bobot_tipe_pondasi_existing[]"
                 placeholder="Masukkan bobot dalam persen" min="0" max="100" step="0.01">
         </div>
     </div>
@@ -293,7 +292,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_pondasi[]" class="form-control" >
+                        <select name="tipe_pondasi_existing[]" class="form-control">
                             <option value="" selected>- Select -</option>
 
                             @foreach ($dataBangunan['Tambah Tipe Pondasi Eksisting'] as $item)
@@ -305,8 +304,8 @@
 
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
-                        <input type="number" name="bobot_pondasi[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
+                        <input type="number" name="bobot_tipe_pondasi_existing[]" class="form-control"
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -330,14 +329,16 @@
         <div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Beton Bertulang"
-                    id="struktur_beton_bertulang" onchange="toggleBobotInput(this, 'bobot_struktur_beton_bertulang')">
+                    name="tipe_struktur_existing[]" id="struktur_beton_bertulang"
+                    onchange="toggleBobotInput(this, 'bobot_struktur_beton_bertulang')">
                 <label class="form-check-label" for="struktur_beton_bertulang">Beton Bertulang</label>
             </div>
         </div>
         <div id="bobot_struktur_beton_bertulang" style="display: none; margin-top: 10px;">
             <label for="bobot_beton_bertulang">Bobot Struktur Beton Bertulang (dalam persen %)</label>
-            <input type="number" class="form-control" id="bobot_beton_bertulang" name="bobot_beton_bertulang"
-                placeholder="Masukkan bobot dalam persen" min="0" max="100" step="0.01">
+            <input type="number" class="form-control" id="bobot_beton_bertulang"
+                name="bobot_tipe_struktur_existing[]" placeholder="Masukkan bobot dalam persen" min="0"
+                max="100" step="0.01">
         </div>
     </div>
 
@@ -348,7 +349,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_struktur[]" class="form-control" >
+                        <select name="tipe_struktur_existing[]" class="form-control">
                             <option value="">- Select -</option>
                             @foreach ($dataBangunan['Tambah Tipe Struktur Eksisting'] as $item)
                                 <option value="{{ $item->label_value }}">{{ $item->label_option }}
@@ -358,8 +359,8 @@
                     </div>
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
-                        <input type="number" name="bobot_struktur[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
+                        <input type="number" name="bobot_tipe_struktur_existing[]" class="form-control"
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -382,31 +383,28 @@
         <div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Dak Beton (Jika Pakai Balok)"
-                    id="atap_dak_beton">
-                <label class="form-check-label" for="atap_dak_beton">Dak Beton (Jika Pakai
-                    Balok)</label>
+                    id="atap_dak_beton" name="tipe_rangka_atap_existing[]">
+                <label class="form-check-label" for="atap_dak_beton">Dak Beton (Jika Pakai Balok)</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Kayu (Atap Genteng)" id="atap_kayu_genteng">
+                <input class="form-check-input" type="checkbox" value="Kayu (Atap Genteng)" id="atap_kayu_genteng"
+                    name="tipe_rangka_atap_existing[]">
                 <label class="form-check-label" for="atap_kayu_genteng">Kayu (Atap Genteng)</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Kayu (Atap Asbes, Seng dll, Tanpa Reng)"
-                    id="atap_kayu_asbes">
-                <label class="form-check-label" for="atap_kayu_asbes">Kayu (Atap Asbes, Seng dll,
-                    Tanpa Reng)</label>
+                    id="atap_kayu_asbes" name="tipe_rangka_atap_existing[]">
+                <label class="form-check-label" for="atap_kayu_asbes">Kayu (Atap Asbes, Seng dll, Tanpa Reng)</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Baja Ringan (Atap Genteng)"
-                    id="atap_baja_genteng">
-                <label class="form-check-label" for="atap_baja_genteng">Baja Ringan (Atap
-                    Genteng)</label>
+                    id="atap_baja_genteng" name="tipe_rangka_atap_existing[]">
+                <label class="form-check-label" for="atap_baja_genteng">Baja Ringan (Atap Genteng)</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Baja Ringan (Atap Asbes, Seng dll)"
-                    id="atap_baja_asbes">
-                <label class="form-check-label" for="atap_baja_asbes">Baja Ringan (Atap Asbes, Seng
-                    dll)</label>
+                    id="atap_baja_asbes" name="tipe_rangka_atap_existing[]">
+                <label class="form-check-label" for="atap_baja_asbes">Baja Ringan (Atap Asbes, Seng dll)</label>
             </div>
         </div>
     </div>
@@ -415,28 +413,35 @@
     <div id="content-atap_dak_beton" class="content" style="display: none;">
         <label><b>Bobot Dak Beton (Jika Pakai Balok)</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_rangka_atap_existing[]">
     </div>
     <div id="content-atap_kayu_genteng" class="content" style="display: none;">
         <label><b>Bobot Kayu (Atap Genteng)</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_rangka_atap_existing[]">
     </div>
     <div id="content-atap_kayu_asbes" class="content" style="display: none;">
         <label><b>Bobot Kayu (Atap Asbes, Seng dll, Tanpa Reng)</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_rangka_atap_existing[]">
     </div>
     <div id="content-atap_baja_genteng" class="content" style="display: none;">
         <label><b>Bobot Baja Ringan (Atap Genteng)</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_rangka_atap_existing[]">
     </div>
     <div id="content-atap_baja_asbes" class="content" style="display: none;">
         <label><b>Bobot Baja Ringan (Atap Asbes, Seng dll)</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_rangka_atap_existing[]">
     </div>
+
+
 
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Tipe Rangka Atap Existing</b></label><br>
@@ -445,7 +450,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_rangka_atap[]" class="form-control" >
+                        <select name="tipe_rangka_atap_existing[]" class="form-control">
                             <option value="">- Select -</option>
                             @foreach ($dataBangunan['Tipe Rangka Atap Existing'] as $item)
                                 <option value="{{ $item->label_value }}">{{ $item->label_option }}
@@ -455,8 +460,8 @@
                     </div>
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
-                        <input type="number" name="bobot_rangka_atap[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
+                        <input type="number" name="bobot_rangka_atap_existing[]" class="form-control"
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -476,33 +481,40 @@
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><strong>Tipe Penutup Atap Eksisting - Rumah Tinggal Sederhana 1
                 Lantai</strong></label><br>
-        <input type="checkbox" id="asbes" name="tipe_atap" value="Asbes" class="form-check-input">
+        <input type="checkbox" id="asbes" name="tipe_penutup_atap_existing[]" value="Asbes"
+            class="form-check-input">
         <label for="asbes" class="form-check-label">Asbes</label><br>
 
-        <input type="checkbox" id="dak-beton" name="tipe_atap" value="Dak Beton" class="form-check-input">
+        <input type="checkbox" id="dak-beton" name="tipe_penutup_atap_existing[]" value="Dak Beton"
+            class="form-check-input">
         <label for="dak-beton" class="form-check-label">Dak Beton</label><br>
 
-        <input type="checkbox" id="fibreglass" name="tipe_atap" value="Fibreglass" class="form-check-input">
+        <input type="checkbox" id="fibreglass" name="tipe_penutup_atap_existing[]" value="Fibreglass"
+            class="form-check-input">
         <label for="fibreglass" class="form-check-label">Fibreglass</label><br>
 
-        <input type="checkbox" id="genteng-tanah-liat" name="tipe_atap" value="Genteng Tanah Liat"
-            class="form-check-input">
+        <input type="checkbox" id="genteng-tanah-liat" name="tipe_penutup_atap_existing[]"
+            value="Genteng Tanah Liat" class="form-check-input">
         <label for="genteng-tanah-liat" class="form-check-label">Genteng Tanah Liat</label><br>
 
-        <input type="checkbox" id="genteng-beton" name="tipe_atap" value="Genteng Beton" class="form-check-input">
+        <input type="checkbox" id="genteng-beton" name="tipe_penutup_atap_existing[]" value="Genteng Beton"
+            class="form-check-input">
         <label for="genteng-beton" class="form-check-label">Genteng Beton</label><br>
 
-        <input type="checkbox" id="genteng-metal" name="tipe_atap" value="Genteng Metal" class="form-check-input">
+        <input type="checkbox" id="genteng-metal" name="tipe_penutup_atap_existing[]" value="Genteng Metal"
+            class="form-check-input">
         <label for="genteng-metal" class="form-check-label">Genteng Metal</label><br>
 
-        <input type="checkbox" id="seng-gelombang" name="tipe_atap" value="Seng Gelombang"
+        <input type="checkbox" id="seng-gelombang" name="tipe_penutup_atap_existing[]" value="Seng Gelombang"
             class="form-check-input">
         <label for="seng-gelombang" class="form-check-label">Seng Gelombang</label><br>
 
-        <input type="checkbox" id="spandek" name="tipe_atap" value="Spandek" class="form-check-input">
+        <input type="checkbox" id="spandek" name="tipe_penutup_atap_existing[]" value="Spandek"
+            class="form-check-input">
         <label for="spandek" class="form-check-label">Spandek</label><br>
 
-        <input type="checkbox" id="pvc" name="tipe_atap" value="PVC" class="form-check-input">
+        <input type="checkbox" id="pvc" name="tipe_penutup_atap_existing[]" value="PVC"
+            class="form-check-input">
         <label for="pvc" class="form-check-label">PVC</label><br>
     </div>
 
@@ -510,48 +522,58 @@
     <div id="content-asbes" class="content" style="display: none;">
         <label><b>Bobot Asbes</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_penutup_atap_existing[]">
     </div>
     <div id="content-dak-beton" class="content" style="display: none;">
         <label><b>Bobot Dak Beton</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_penutup_atap_existing[]">
     </div>
     <div id="content-fibreglass" class="content" style="display: none;">
         <label><b>Bobot Fibreglass</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_penutup_atap_existing[]">
     </div>
     <div id="content-genteng-tanah-liat" class="content" style="display: none;">
         <label><b>Bobot Genteng Tanah Liat</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_penutup_atap_existing[]">
     </div>
     <div id="content-genteng-beton" class="content" style="display: none;">
         <label><b>Bobot Genteng Beton</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_penutup_atap_existing[]">
     </div>
     <div id="content-genteng-metal" class="content" style="display: none;">
         <label><b>Bobot Genteng Metal</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_penutup_atap_existing[]">
     </div>
     <div id="content-seng-gelombang" class="content" style="display: none;">
         <label><b>Bobot Seng Gelombang</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_penutup_atap_existing[]">
     </div>
     <div id="content-spandek" class="content" style="display: none;">
         <label><b>Bobot Spandek</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_penutup_atap_existing[]">
     </div>
     <div id="content-pvc" class="content" style="display: none;">
         <label><b>Bobot PVC</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_penutup_atap_existing[]">
     </div>
+
 
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Tambah Tipe Penutup Atap Existing</b></label><br>
@@ -560,7 +582,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_penutup-atap-existing[]" class="form-control" >
+                        <select name="tipe_penutup_atap_existing[]" class="form-control">
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Tipe Penutup Atap Existing'] as $item)
@@ -571,8 +593,8 @@
                     </div>
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
-                        <input type="number" name="bobot_penutup-atap-existing[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
+                        <input type="number" name="bobot_penutup_atap_existing[]" class="form-control"
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -583,23 +605,22 @@
                 </div>
             </div>
             <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana"
-                data-type="penutup-atap-existing">Tambah Tipe Rangka Atap Existing</button>
+                data-type="penutup-atap-existing">Tambah Tipe Penutup Atap Existing</button>
         </div>
         <button type="button" class="btn btn-primary btn-sm mt-2" id="show-penutup-atap-existing-btn">Tambah Tipe
-            Rangka Atap Existing</button>
+            Penutup Atap Existing</button>
     </div>
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Penutup Atap Eksisting - Rumah Tinggal Sederhana 1
-                Lantai</strong></label><br>
-        <input type="checkbox" id="batako" class="form-check-input">
+        <label><strong>Tipe Dinding Existing</strong></label><br>
+        <input type="checkbox" id="batako" class="form-check-input" name="tipe_tipe_dinding_existing[]">
         <label for="batako" class="form-check-label">Batako</label><br>
-        <input type="checkbox" id="bata-merah" class="form-check-input">
+        <input type="checkbox" id="bata-merah" class="form-check-input" name="tipe_tipe_dinding_existing[]">
         <label for="bata-merah" class="form-check-label">Bata Merah</label><br>
-        <input type="checkbox" id="bata-ringan" class="form-check-input">
+        <input type="checkbox" id="bata-ringan" class="form-check-input" name="tipe_tipe_dinding_existing[]">
         <label for="bata-ringan" class="form-check-label">Bata Ringan</label><br>
-        <input type="checkbox" id="gypsumboard" class="form-check-input">
+        <input type="checkbox" id="gypsumboard" class="form-check-input" name="tipe_tipe_dinding_existing[]">
         <label for="gypsumboard" class="form-check-label">Partisi Gypsumboard 2 Muka</label><br>
-        <input type="checkbox" id="rooster-bata" class="form-check-input">
+        <input type="checkbox" id="rooster-bata" class="form-check-input" name="tipe_tipe_dinding_existing[]">
         <label for="rooster-bata" class="form-check-label">Rooster Bata</label><br>
     </div>
 
@@ -607,28 +628,34 @@
     <div id="content-batako" class="content" style="display: none;">
         <label><b>Bobot Dinding Batako</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_dinding_existing[]">
     </div>
     <div id="content-bata-merah" class="content" style="display: none;">
         <label><b>Bobot Dinding Bata Merah</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_dinding_existing[]">
     </div>
     <div id="content-bata-ringan" class="content" style="display: none;">
         <label><b>Bobot Dinding Bata Ringan</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_dinding_existing[]">
     </div>
     <div id="content-gypsumboard" class="content" style="display: none;">
         <label><b>Bobot Dinding Partisi Gypsumboard 2 Muka</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_dinding_existing[]">
     </div>
     <div id="content-rooster-bata" class="content" style="display: none;">
         <label><b>Bobot Dinding Rooster Bata</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_dinding_existing[]">
     </div>
+
 
 
     <div class="form-group mb-3" style="margin-top: 20px;">
@@ -638,7 +665,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_tipe-dinding-existing[]" class="form-control" >
+                        <select name="tipe_tipe_dinding_existing[]" class="form-control">
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Tipe Dinding Existing'] as $item)
@@ -649,8 +676,8 @@
                     </div>
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
-                        <input type="number" name="bobot_tipe-dinding-existing[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
+                        <input type="number" name="bobot_tipe_dinding_existing[]" class="form-control"
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -661,25 +688,23 @@
                 </div>
             </div>
             <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana"
-                data-type="tipe-dinding-existing">Tambah Tipe Rangka Atap Existing</button>
+                data-type="tipe-dinding-existing">Tambah Tipe Dinding Existing</button>
         </div>
         <button type="button" class="btn btn-primary btn-sm mt-2" id="show-tipe-dinding-existing-btn">Tambah Tipe
-            Rangka Atap Existing</button>
+            Dinding Existing</button>
     </div>
 
-
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Pelapis Dinding Eksisting - Rumah Tinggal Sederhana 1
-                Lantai</strong></label><br>
-        <input type="checkbox" id="cat" class="form-check-input">
+        <label><strong>Tipe Pelapis Dinding Eksisting - Rumah Tinggal Sederhana 1 Lantai</strong></label><br>
+        <input type="checkbox" id="cat" class="form-check-input" name="tipe_tipe_pelapis_dinding_existing[]">
         <label for="cat" class="form-check-label">Dilapis Cat (Diplester dan Diaci)</label><br>
-        <input type="checkbox" id="keramik" class="form-check-input">
+        <input type="checkbox" id="keramik" class="form-check-input" name="tipe_tipe_pelapis_dinding_existing[]">
         <label for="keramik" class="form-check-label">Dilapis Keramik</label><br>
-        <input type="checkbox" id="wallpaper" class="form-check-input">
+        <input type="checkbox" id="wallpaper" class="form-check-input" name="tipe_tipe_pelapis_dinding_existing[]">
         <label for="wallpaper" class="form-check-label">Dilapis Wallpaper</label><br>
-        <input type="checkbox" id="mozaik" class="form-check-input">
+        <input type="checkbox" id="mozaik" class="form-check-input" name="tipe_tipe_pelapis_dinding_existing[]">
         <label for="mozaik" class="form-check-label">Dilapis Mozaik</label><br>
-        <input type="checkbox" id="batu-alam" class="form-check-input">
+        <input type="checkbox" id="batu-alam" class="form-check-input" name="tipe_tipe_pelapis_dinding_existing[]">
         <label for="batu-alam" class="form-check-label">Dilapis Batu Alam</label><br>
     </div>
 
@@ -687,28 +712,34 @@
     <div id="content-cat" class="content" style="display: none;">
         <label><b>Bobot Dinding Dilapis Cat</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_pelapis_dinding_existing[]">
     </div>
     <div id="content-keramik" class="content" style="display: none;">
         <label><b>Bobot Dinding Dilapis Keramik</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_pelapis_dinding_existing[]">
     </div>
     <div id="content-wallpaper" class="content" style="display: none;">
         <label><b>Bobot Dinding Dilapis Wallpaper</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_pelapis_dinding_existing[]">
     </div>
     <div id="content-mozaik" class="content" style="display: none;">
         <label><b>Bobot Dinding Dilapis Mozaik</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_pelapis_dinding_existing[]">
     </div>
     <div id="content-batu-alam" class="content" style="display: none;">
         <label><b>Bobot Dinding Dilapis Batu Alam</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_pelapis_dinding_existing[]">
     </div>
+
 
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Tambah Tipe Pelapis Dinding Existing</b></label><br>
@@ -717,7 +748,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_tipe-pelapis-dinding-existing[]" class="form-control" >
+                        <select name="tipe_tipe_pelapis_dinding_existing[]" class="form-control">
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Tipe Pelapis Dinding Existing'] as $item)
@@ -728,8 +759,8 @@
                     </div>
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
-                        <input type="number" name="bobot_tipe-pelapis-dinding-existing[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
+                        <input type="number" name="bobot_tipe_pelapis_dinding_existing[]" class="form-control"
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -740,30 +771,32 @@
                 </div>
             </div>
             <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana"
-                data-type="tipe-pelapis-dinding-existing">Tambah Tipe Rangka Atap Existing</button>
+                data-type="tipe-pelapis-dinding-existing">Tambah Tipe Pelapis Dinding Existing</button>
         </div>
         <button type="button" class="btn btn-primary btn-sm mt-2" id="show-tipe-pelapis-dinding-existing-btn">Tambah
-            Tipe Rangka Atap Existing</button>
+            Tipe Pelapis Dinding Existing</button>
     </div>
 
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Pintu & Jendela Eksisting - Rumah Tinggal Sederhana 1
-                Lantai</strong></label><br>
-        <input type="checkbox" id="pintu-kayu-panil" class="form-check-input">
+        <label><strong>Tipe Pintu & Jendela Eksisting - Rumah Tinggal Sederhana 1 Lantai</strong></label><br>
+        <input type="checkbox" id="pintu-kayu-panil" class="form-check-input"
+            name="tipe_tipe_pintu_jendela_existing[]">
         <label for="pintu-kayu-panil" class="form-check-label">Pintu Kayu Panil</label><br>
-        <input type="checkbox" id="pintu-kayu-dobel" class="form-check-input">
-        <label for="pintu-kayu-dobel" class="form-check-label">Pintu Kayu Dobel Triplek/
-            HPL</label><br>
-        <input type="checkbox" id="pintu-kaca-aluminium" class="form-check-input">
-        <label for="pintu-kaca-aluminium" class="form-check-label">Pintu Kaca Rk
-            Aluminium</label><br>
-        <input type="checkbox" id="jendela-kaca-kayu" class="form-check-input">
+        <input type="checkbox" id="pintu-kayu-dobel" class="form-check-input"
+            name="tipe_tipe_pintu_jendela_existing[]">
+        <label for="pintu-kayu-dobel" class="form-check-label">Pintu Kayu Dobel Triplek/ HPL</label><br>
+        <input type="checkbox" id="pintu-kaca-aluminium" class="form-check-input"
+            name="tipe_tipe_pintu_jendela_existing[]">
+        <label for="pintu-kaca-aluminium" class="form-check-label">Pintu Kaca Rk Aluminium</label><br>
+        <input type="checkbox" id="jendela-kaca-kayu" class="form-check-input"
+            name="tipe_tipe_pintu_jendela_existing[]">
         <label for="jendela-kaca-kayu" class="form-check-label">Jendela Kaca Rk Kayu</label><br>
-        <input type="checkbox" id="jendela-kaca-aluminium" class="form-check-input">
-        <label for="jendela-kaca-aluminium" class="form-check-label">Jendela Kaca Rk
-            Aluminium</label><br>
-        <input type="checkbox" id="pintu-km-upvc" class="form-check-input">
+        <input type="checkbox" id="jendela-kaca-aluminium" class="form-check-input"
+            name="tipe_tipe_pintu_jendela_existing[]">
+        <label for="jendela-kaca-aluminium" class="form-check-label">Jendela Kaca Rk Aluminium</label><br>
+        <input type="checkbox" id="pintu-km-upvc" class="form-check-input"
+            name="tipe_tipe_pintu_jendela_existing[]">
         <label for="pintu-km-upvc" class="form-check-label">Pintu KM UPVC/PVC</label><br>
     </div>
 
@@ -771,33 +804,40 @@
     <div id="content-pintu-kayu-panil" class="content" style="display: none;">
         <label><b>Bobot Pintu Kayu Panil</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_pintu_jendela_existing[]">
     </div>
     <div id="content-pintu-kayu-dobel" class="content" style="display: none;">
         <label><b>Bobot Pintu Kayu Dobel Triplek/ HPL</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_pintu_jendela_existing[]">
     </div>
     <div id="content-pintu-kaca-aluminium" class="content" style="display: none;">
         <label><b>Bobot Pintu Kaca Rk Aluminium</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_pintu_jendela_existing[]">
     </div>
     <div id="content-jendela-kaca-kayu" class="content" style="display: none;">
         <label><b>Bobot Jendela Kaca Rk Kayu</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_pintu_jendela_existing[]">
     </div>
     <div id="content-jendela-kaca-aluminium" class="content" style="display: none;">
         <label><b>Bobot Jendela Kaca Rk Aluminium</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_pintu_jendela_existing[]">
     </div>
     <div id="content-pintu-km-upvc" class="content" style="display: none;">
         <label><b>Bobot Pintu KM UPVC/PVC</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_pintu_jendela_existing[]">
     </div>
+
 
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Tambah Tipe Pintu & Jendela Existing</b></label><br>
@@ -806,7 +846,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_tipe-pintu-jendela-existing[]" class="form-control" >
+                        <select name="tipe_tipe_pintu_jendela_existing[]" class="form-control">
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Tipe Pintu & Jendela Existing'] as $item)
@@ -818,8 +858,8 @@
                     </div>
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
-                        <input type="number" name="bobot_tipe-pintu-jendela-existing[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
+                        <input type="number" name="bobot_tipe_pintu_jendela_existing[]" class="form-control"
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -830,28 +870,28 @@
                 </div>
             </div>
             <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana"
-                data-type="tipe-pintu-jendela-existing">Tambah Tipe Rangka Atap Existing</button>
+                data-type="tipe-pintu-jendela-existing">Tambah Tipe Pintu & Jendela Existing</button>
         </div>
         <button type="button" class="btn btn-primary btn-sm mt-2" id="show-tipe-pintu-jendela-existing-btn">Tambah
-            Tipe Rangka Atap Existing</button>
+            Tipe Pintu & Jendela Existing</button>
     </div>
 
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><strong>Tipe Lantai Eksisting - Rumah Tinggal Sederhana 1 Lantai</strong></label><br>
-        <input type="checkbox" id="granit-homogenous-tile" class="form-check-input">
-        <label for="granit-homogenous-tile" class="form-check-label">Granit/Homogenous
-            Tile</label><br>
-        <input type="checkbox" id="karpet" class="form-check-input">
+        <input type="checkbox" id="granit-homogenous-tile" class="form-check-input"
+            name="tipe_tipe_lantai_existing[]">
+        <label for="granit-homogenous-tile" class="form-check-label">Granit/Homogenous Tile</label><br>
+        <input type="checkbox" id="karpet" class="form-check-input" name="tipe_tipe_lantai_existing[]">
         <label for="karpet" class="form-check-label">Karpet</label><br>
-        <input type="checkbox" id="keramik" class="form-check-input">
+        <input type="checkbox" id="keramik" class="form-check-input" name="tipe_tipe_lantai_existing[]">
         <label for="keramik" class="form-check-label">Keramik</label><br>
-        <input type="checkbox" id="rabat-beton" class="form-check-input">
+        <input type="checkbox" id="rabat-beton" class="form-check-input" name="tipe_tipe_lantai_existing[]">
         <label for="rabat-beton" class="form-check-label">Rabat Beton (Semen Ekspose)</label><br>
-        <input type="checkbox" id="teraso" class="form-check-input">
+        <input type="checkbox" id="teraso" class="form-check-input" name="tipe_tipe_lantai_existing[]">
         <label for="teraso" class="form-check-label">Teraso</label><br>
-        <input type="checkbox" id="vynil" class="form-check-input">
+        <input type="checkbox" id="vynil" class="form-check-input" name="tipe_tipe_lantai_existing[]">
         <label for="vynil" class="form-check-label">Vynil</label><br>
-        <input type="checkbox" id="papan-kayu" class="form-check-input">
+        <input type="checkbox" id="papan-kayu" class="form-check-input" name="tipe_tipe_lantai_existing[]">
         <label for="papan-kayu" class="form-check-label">Papan Kayu</label><br>
     </div>
 
@@ -859,37 +899,44 @@
     <div id="content-granit-homogenous-tile" class="content" style="display: none;">
         <label><b>Bobot Granit/Homogenous Tile</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_lantai_existing[]">
     </div>
     <div id="content-karpet" class="content" style="display: none;">
         <label><b>Bobot Karpet</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_lantai_existing[]">
     </div>
     <div id="content-keramik" class="content" style="display: none;">
         <label><b>Bobot Keramik</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_lantai_existing[]">
     </div>
     <div id="content-rabat-beton" class="content" style="display: none;">
         <label><b>Bobot Rabat Beton (Semen Ekspose)</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_lantai_existing[]">
     </div>
     <div id="content-teraso" class="content" style="display: none;">
         <label><b>Bobot Teraso</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_lantai_existing[]">
     </div>
     <div id="content-vynil" class="content" style="display: none;">
         <label><b>Bobot Vynil</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_lantai_existing[]">
     </div>
     <div id="content-papan-kayu" class="content" style="display: none;">
         <label><b>Bobot Papan Kayu</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100"
+            name="bobot_tipe_lantai_existing[]">
     </div>
 
 
@@ -900,7 +947,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_tipe-lantai-existing[]" class="form-control" >
+                        <select name="tipe_tipe_lantai_existing[]" class="form-control">
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Tipe Lantai Existing'] as $item)
@@ -911,8 +958,8 @@
                     </div>
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
-                        <input type="number" name="bobot_tipe-lantai-existing[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
+                        <input type="number" name="bobot_tipe_lantai_existing[]" class="form-control"
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -923,10 +970,10 @@
                 </div>
             </div>
             <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link-rumah-sederhana"
-                data-type="tipe-lantai-existing">Tambah Tipe Rangka Atap Existing</button>
+                data-type="tipe-lantai-existing">Tambah Tipe Lantai Existing</button>
         </div>
         <button type="button" class="btn btn-primary btn-sm mt-2" id="show-tipe-lantai-existing-btn">Tambah Tipe
-            Rangka Atap Existing</button>
+            Lantai Existing</button>
     </div>
 
 
@@ -951,8 +998,8 @@
 
             // Logika khusus untuk tipe pondasi
             if (type === 'pondasi') {
-                nameTipe = 'tipe_pondasi[]';
-                nameBobot = 'bobot_pondasi[]';
+                nameTipe = 'tipe_pondasi_existing[]';
+                nameBobot = 'bobot_pondasi_existing[]';
 
                 areaItem.innerHTML = `
                                     <div style="flex: 1; margin-right: 10px;">
@@ -979,8 +1026,8 @@
                 return areaItem;
             }
             if (type === 'struktur') {
-                nameTipe = 'tipe_struktur[]';
-                nameBobot = 'bobot_struktur[]';
+                nameTipe = 'tipe_struktur_existing[]';
+                nameBobot = 'bobot_tipe_struktur_existing[]';
 
                 areaItem.innerHTML = `
     <div style="flex: 1; margin-right: 10px;">
@@ -1008,8 +1055,8 @@
             }
 
             if (type === 'rangka-atap') {
-                nameTipe = 'tipe_rangka_atap[]';
-                nameBobot = 'bobot_rangka_atap[]';
+                nameTipe = 'tipe_rangka_atap_existing[]';
+                nameBobot = 'bobot_rangka_atap_existing[]';
 
                 areaItem.innerHTML = `
     <div style="flex: 1; margin-right: 10px;">
@@ -1036,8 +1083,8 @@
                 return areaItem;
             }
             if (type === 'penutup-atap-existing') {
-                nameTipe = 'tipe_penutup-atap-existing[]';
-                nameBobot = 'bobot_penutup-atap-existing[]';
+                nameTipe = 'tipe_penutup_atap_existing[]';
+                nameBobot = 'bobot_penutup_atap_existing[]';
 
                 areaItem.innerHTML = `
     <div style="flex: 1; margin-right: 10px;">
@@ -1065,8 +1112,8 @@
             }
 
             if (type === 'tipe-dinding-existing') {
-                nameTipe = 'tipe_tipe-dinding-existing[]';
-                nameBobot = 'bobot_tipe-dinding-existing[]';
+                nameTipe = 'tipe_tipe_dinding_existing[]';
+                nameBobot = 'bobot_tipe_dinding_existing[]';
 
                 areaItem.innerHTML = `
     <div style="flex: 1; margin-right: 10px;">
@@ -1093,8 +1140,8 @@
                 return areaItem;
             }
             if (type === 'tipe-pelapis-dinding-existing') {
-                nameTipe = 'tipe_tipe-pelapis-dinding-existing[]';
-                nameBobot = 'bobot_tipe-pelapis-dinding-existing[]';
+                nameTipe = 'tipe_tipe_pelapis_dinding_existing[]';
+                nameBobot = 'bobot_tipe_pelapis_dinding_existing[]';
 
                 areaItem.innerHTML = `
     <div style="flex: 1; margin-right: 10px;">
@@ -1121,8 +1168,8 @@
                 return areaItem;
             }
             if (type === 'tipe-lantai-existing') {
-                nameTipe = 'tipe_tipe-lantai-existing[]';
-                nameBobot = 'bobot_tipe-lantai-existing[]';
+                nameTipe = 'tipe_tipe_lantai_existing[]';
+                nameBobot = 'bobot_tipe_lantai_existing[]';
 
                 areaItem.innerHTML = `
     <div style="flex: 1; margin-right: 10px;">
@@ -1149,8 +1196,8 @@
                 return areaItem;
             }
             if (type === 'tipe-pintu-jendela-existing') {
-                nameTipe = 'tipe_tipe-pintu-jendela-existing[]';
-                nameBobot = 'bobot_tipe-pintu-jendela-existing[]';
+                nameTipe = 'tipe_tipe_pintu_jendela_existing[]';
+                nameBobot = 'bobot_tipe_pintu_jendela_existing[]';
 
                 areaItem.innerHTML = `
     <div style="flex: 1; margin-right: 10px;">
@@ -1183,17 +1230,17 @@
 
             // Logika umum untuk tipe lainnya
             if (type === 'pintu-jendela') {
-                nameNama = 'nama_pintu_jendela[]';
-                nameLuas = 'luas_pintu_jendela[]';
+                nameNama = 'luas_nama_pintu_jendela[]';
+                nameLuas = 'luas_bobot_pintu_jendela[]';
             } else if (type === 'dinding') {
-                nameNama = 'nama_dinding[]';
-                nameLuas = 'luas_dinding[]';
+                nameNama = 'luas_nama_dinding[]';
+                nameLuas = 'luas_bobot_dinding[]';
+            } else if (type === 'rangka-atap-datar') {
+                nameNama = 'luas_nama_rangka_atap_datar[]';
+                nameLuas = 'luas_bobot_rangka_atap_datar[]';
             } else if (type === 'atap-datar') {
-                nameNama = 'nama_atap_datar[]';
-                nameLuas = 'luas_atap_datar[]';
-            } else if (type === 'atap-datar-2') {
-                nameNama = 'nama_atap_datar_2[]';
-                nameLuas = 'luas_atap_datar_2[]';
+                nameNama = 'luas_nama_atap_datar[]';
+                nameLuas = 'luas_bobot_atap_datar[]';
             }
 
             areaItem.innerHTML = `

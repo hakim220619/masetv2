@@ -362,7 +362,7 @@
                     <!-- Rumah Sederhana -->
 
                     @include('content.form.100')
-                    @include('content.form.200')
+                    {{-- @include('content.form.200')
                     @include('content.form.300')
                     @include('content.form.400')
                     @include('content.form.500')
@@ -371,7 +371,7 @@
                     @include('content.form.800')
                     @include('content.form.900')
                     @include('content.form.1000')
-                    @include('content.form.1100')
+                    @include('content.form.1100') --}}
 
                     <!-- Rumah Sederhana -->
 
@@ -458,16 +458,16 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @if(session('success'))
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Berhasil!',
-            text: '{{ session("success") }}',
-            showConfirmButton: false,
-            timer: 2000
-        });
-    </script>
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '{{ session('success') }}',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        </script>
     @endif
 
 @endsection

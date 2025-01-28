@@ -32,6 +32,27 @@ class Bangunan extends Model
         'progres_pembangunan',
         'kondisi_bangunan',
         'status_data',
+        // Add any other fields that are arrays or JSON
+        'luas_nama_pintu_jendela',
+        'luas_bobot_pintu_jendela',
+        'luas_nama_dinding',
+        'luas_bobot_dinding',
+        'tipe_pondasi_existing',
+        'bobot_tipe_pondasi_existing',
+        'tipe_struktur_existing',
+        'bobot_tipe_struktur_existing',
+        'tipe_rangka_atap_existing',
+        'bobot_rangka_atap_existing',
+        'tipe_penutup_atap_existing',
+        'bobot_penutup_atap_existing',
+        'tipe_tipe_dinding_existing',
+        'bobot_tipe_dinding_existing',
+        'tipe_tipe_pelapis_dinding_existing',
+        'bobot_tipe_pelapis_dinding_existing',
+        'tipe_tipe_pintu_jendela_existing',
+        'bobot_tipe_pintu_jendela_existing',
+        'tipe_tipe_lantai_existing',
+        'bobot_tipe_lantai_existing',
     ];
 
     /**
@@ -41,6 +62,26 @@ class Bangunan extends Model
         'foto_lainnya' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
         'dynamic_data' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
         'perlengkapan_bangunan' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'luas_nama_pintu_jendela' => 'array',
+        'luas_bobot_pintu_jendela' => 'array',
+        'luas_nama_dinding' => 'array',
+        'luas_bobot_dinding' => 'array',
+        'tipe_pondasi_existing' => 'array',
+        'bobot_tipe_pondasi_existing' => 'array',
+        'tipe_struktur_existing' => 'array',
+        'bobot_tipe_struktur_existing' => 'array',
+        'tipe_rangka_atap_existing' => 'array',
+        'bobot_rangka_atap_existing' => 'array',
+        'tipe_penutup_atap_existing' => 'array',
+        'bobot_penutup_atap_existing' => 'array',
+        'tipe_tipe_dinding_existing' => 'array',
+        'bobot_tipe_dinding_existing' => 'array',
+        'tipe_tipe_pelapis_dinding_existing' => 'array',
+        'bobot_tipe_pelapis_dinding_existing' => 'array',
+        'tipe_tipe_pintu_jendela_existing' => 'array',
+        'bobot_tipe_pintu_jendela_existing' => 'array',
+        'tipe_tipe_lantai_existing' => 'array',
+        'bobot_tipe_lantai_existing' => 'array',
     ];
 
     /**
@@ -75,8 +116,47 @@ class Bangunan extends Model
         return collect($this->foto_lainnya)->map(function ($foto) {
             return [
                 'judul' => $foto['judul'],
-                'url' => asset('storage/' . $foto['foto']),
+                'url' => $foto['foto'] ? asset('storage/' . $foto['foto']) : null,
             ];
         });
     }
+
+    /**
+     * Aksesor untuk mendapatkan data dinamis (dynamic_data) sebagai array.
+     */
+    public function getDynamicDataAttribute($value)
+    {
+        return json_decode($value, true); // Ensure dynamic_data is decoded as array
+    }
+
+    /**
+     * Aksesor untuk mendapatkan nilai perlengkapan bangunan dalam format array.
+     */
+    public function getPerlengkapanBangunanAttribute($value)
+    {
+        return json_decode($value, true); // Ensure perlengkapan_bangunan is decoded as array
+    }
+
+    // Add similar accessors for other JSON fields if needed
+    public function getLuasNamaPintuJendelaAttribute($value)
+    {
+        return json_decode($value, true);
+    }
+
+    public function getLuasBobotPintuJendelaAttribute($value)
+    {
+        return json_decode($value, true);
+    }
+
+    public function getLuasNamaDindingAttribute($value)
+    {
+        return json_decode($value, true);
+    }
+
+    public function getLuasBobotDindingAttribute($value)
+    {
+        return json_decode($value, true);
+    }
+
+    // Continue adding accessors for the remaining fields...
 }

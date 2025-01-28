@@ -38,118 +38,110 @@
     <div class="form-group" style="margin-top: 20px;">
         <label for="jenis_bangunan_800" style="font-weight: bold;">Jenis Bangunan (Umur Ekonomis)</label>
         <br><span>Pilih jenis bangunan yg sesuai untuk menentukan umur ekonomis bangunan.</span>
-        <select class="form-control" id="jenis_bangunan_800" name="jenis_bangunan_800"
-            onchange="handleJenisBangunanChange()">
+        <select class="form-control" id="jenis_bangunan_800" name="jenis_bangunan" onchange="handleJenisBangunanChange()">
             <option value="" selected>- Select -</option>
-            <option value="BangunanRumahTinggal">Bangunan Rumah Tinggal</option>
-            <option value="BangunanRumahSusun">Bangunan Rumah Susun</option>
-            <option value="PusatPerbelanjaan">Pusat Perbelanjaan</option>
-            <option value="BangunanKantor">Bangunan Kantor</option>
-            <option value="BangunanGedungPemerintah">Bangunan Gedung Pemerintah</option>
-            <option value="BangunanHotelMotel">Bangunan Hotel/ Motel</option>
-            <option value="BangunanIndustriGudang">Bangunan Industri dan Gudang</option>
-            <option value="BangunanKawasanPerkebunan">Bangunan di Kawasan Perkebunan</option>
+            <option value="Bangunan Rumah Tinggal">Bangunan Rumah Tinggal</option>
+            <option value="Bangunan Rumah Susun">Bangunan Rumah Susun</option>
+            <option value="Pusat Perbelanjaan">Pusat Perbelanjaan</option>
+            <option value="Bangunan Kantor">Bangunan Kantor</option>
+            <option value="Bangunan Gedung Pemerintah">Bangunan Gedung Pemerintah</option>
+            <option value="Bangunan Hotel/Motel">Bangunan Hotel/ Motel</option>
+            <option value="Bangunan Industri dan Gudang">Bangunan Industri dan Gudang</option>
+            <option value="Bangunan di Kawasan Perkebunan">Bangunan di Kawasan Perkebunan</option>
         </select>
     </div>
+
     <div style="margin-top: 20px;">
-
-
         <!-- Dropdown tambahan, ditampilkan kondisional -->
         <div id="BangunanRumahTinggal" class="form-group" style="display: none;">
             <label for="tipe_rumah_tinggal" style="font-weight: bold;">Tipe Rumah Tinggal (Umur Ekonomis)</label>
             <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
-            <select class="form-control">
+            <select class="form-control" name="tipe_rumah_tinggal">
                 <option value="" selected>- Select -</option>
-                <option value="10_0">Bangunan kelas Sangat Sederhana</option>
-                <option value="20_1">Bangunan kelas Sederhana</option>
-                <option value="30_2">Bangunan kelas Menengah</option>
-                <option value="40_3">Bangunan kelas Menengah-Mewah</option>
-                <option value="50_4">Bangunan kelas Mewah</option>
+                <option value="Bangunan Rumah Tinggal Kelas Sangat Sederhana">Bangunan kelas Sangat Sederhana</option>
+                <option value="Bangunan Rumah Tinggal Kelas Sederhana">Bangunan kelas Sederhana</option>
+                <option value="Bangunan Rumah Tinggal Kelas Menengah">Bangunan kelas Menengah</option>
+                <option value="Bangunan Rumah Tinggal Kelas Menengah-Mewah">Bangunan kelas Menengah-Mewah</option>
+                <option value="Bangunan Rumah Tinggal Kelas Mewah">Bangunan kelas Mewah</option>
             </select>
         </div>
 
         <div id="BangunanRumahSusun" class="form-group" style="display: none;">
             <label for="tipe_rusun" style="font-weight: bold;">Tipe Rusun (Umur Ekonomis)</label>
             <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
-            <select class="form-control">
+            <select class="form-control" name="tipe_rusun">
                 <option value="" selected>- Select -</option>
-                <option value="40_0">Rusun sampai dengan 4 lantai</option>
-                <option value="50_1">Rusun >= 5 lantai</option>
+                <option value="Rusun sampai dengan 4 lantai">Rusun sampai dengan 4 lantai</option>
+                <option value="Rusun >= 5 lantai">Rusun >= 5 lantai</option>
             </select>
         </div>
 
         <div id="PusatPerbelanjaan" class="form-group" style="display: none;">
             <label for="tipe_perbelanjaan" style="font-weight: bold;">Tipe Pusat Perbelanjaan (Umur Ekonomis)</label>
             <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
-            <select class="form-control">
+            <select class="form-control" name="tipe_perbelanjaan">
                 <option value="" selected>- Select -</option>
-                <option value="20_0">Toko / Kios Individu</option>
-                <option value="30_1">Ruko / Rukan</option>
-                <option value="30_2">Pasar Tradisional</option>
-                <option value="40_3">Pusat Perbelanjaan / Mall</option>
+                <option value="Toko / Kios Individu">Toko / Kios Individu</option>
+                <option value="Ruko / Rukan">Ruko / Rukan</option>
+                <option value="Pasar Tradisional">Pasar Tradisional</option>
+                <option value="Pusat Perbelanjaan / Mall">Pusat Perbelanjaan / Mall</option>
             </select>
         </div>
 
         <div id="BangunanKantor" class="form-group" style="display: none;">
             <label for="tipe_kantor" style="font-weight: bold;">Tipe Bangunan Kantor (Umur Ekonomis)</label>
             <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
-            <select class="form-control">
+            <select class="form-control" name="tipe_kantor">
                 <option value="" selected>- Select -</option>
-                <option value="40_0">Bangunan Kantor <= 4 lantai</option>
-                <option value="50_1">Bangunan Kantor >= 5 lantai</option>
+                <option value="Bangunan Kantor <= 4 lantai">Bangunan Kantor <= 4 lantai</option>
+                <option value="Bangunan Kantor >= 5 lantai">Bangunan Kantor >= 5 lantai</option>
             </select>
         </div>
 
         <div id="BangunanGedungPemerintah" class="form-group" style="display: none;">
-            <label for="tipe_gedung_pemerintah" style="font-weight: bold;">Tipe Gedung Pemerintah (Umur
-                Ekonomis)</label>
+            <label for="tipe_gedung_pemerintah" style="font-weight: bold;">Tipe Gedung Pemerintah (Umur Ekonomis)</label>
             <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
-
-            <select class="form-control">
+            <select class="form-control" name="tipe_gedung_pemerintah">
                 <option value="" selected>- Select -</option>
-                <option value="50_0">Bangunan Kantor Pemerintah, Sekolah, Pertemuan, Rumah Sakit</option>
-                <option value="60_1">Bangunan Peribadatan & Pusat Kebudayaan</option>
+                <option value="Bangunan Kantor Pemerintah, Sekolah, Pertemuan, Rumah Sakit">Bangunan Kantor Pemerintah, Sekolah, Pertemuan, Rumah Sakit</option>
+                <option value="Bangunan Peribadatan & Pusat Kebudayaan">Bangunan Peribadatan & Pusat Kebudayaan</option>
             </select>
         </div>
 
         <div id="BangunanHotelMotel" class="form-group" style="display: none;">
             <label for="tipe_hotel_motel" style="font-weight: bold;">Tipe Hotel / Motel (Umur Ekonomis)</label>
             <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
-
-            <select class="form-control">
+            <select class="form-control" name="tipe_hotel_motel">
                 <option value="" selected>- Select -</option>
-                <option value="30_0">Bangunan Villa tidak bertingkat</option>
-                <option value="40_1">Bangunan Villa / Hotel / Motel bertingkat <= 4 lantai</option>
-                <option value="50_2">Bangunan Hotel / Motel bertingkat >= 5 lantai</option>
+                <option value="Bangunan Villa tidak bertingkat">Bangunan Villa tidak bertingkat</option>
+                <option value="Bangunan Villa / Hotel / Motel bertingkat <= 4 lantai">Bangunan Villa / Hotel / Motel bertingkat <= 4 lantai</option>
+                <option value="Bangunan Hotel / Motel bertingkat >= 5 lantai">Bangunan Hotel / Motel bertingkat >= 5 lantai</option>
             </select>
         </div>
 
         <div id="BangunanIndustriGudang" class="form-group" style="display: none;">
-            <label for="tipe_industri_gudang" style="font-weight: bold;">Tipe Bangunan Industri dan Gudang (Umur
-                Ekonomis)</label>
+            <label for="tipe_industri_gudang" style="font-weight: bold;">Tipe Bangunan Industri dan Gudang (Umur Ekonomis)</label>
             <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
-
-            <select class="form-control">
+            <select class="form-control" name="tipe_industri_gudang">
                 <option value="" selected>- Select -</option>
-                <option value="30_0">Bangunan Gedung / Industri kelas Konstruksi Ringan</option>
-                <option value="50_1">Bangunan Gudang / Industri kelas Konstruksi Menengah & Berat</option>
+                <option value="Bangunan Gedung / Industri kelas Konstruksi Ringan">Bangunan Gedung / Industri kelas Konstruksi Ringan</option>
+                <option value="Bangunan Gudang / Industri kelas Konstruksi Menengah & Berat">Bangunan Gudang / Industri kelas Konstruksi Menengah & Berat</option>
             </select>
         </div>
 
         <div id="BangunanKawasanPerkebunan" class="form-group" style="display: none;">
             <label for="tipe_perkebunan" style="font-weight: bold;">Tipe Bangunan Perkebunan (Umur Ekonomis)</label>
             <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
-
-            <select class="form-control">
+            <select class="form-control" name="tipe_perkebunan">
                 <option value="" selected>- Select -</option>
-                <option value="15_0">Bangunan dari bahan konstruksi kayu kelas Awet 4 & 5</option>
-                <option value="30_1">Bangunan dari bahan konstruksi kayu kelas Awet 3</option>
-                <option value="50_2">Bangunan dari bahan konstruksi kayu kelas Awet 1 & 2</option>
-                <option value="50_3">Bangunan dari bahan konstruksi Beton Bertulang / Baja / Tembok Baru Bata diaci
-                </option>
+                <option value="Bangunan dari bahan konstruksi kayu kelas Awet 4 & 5">Bangunan dari bahan konstruksi kayu kelas Awet 4 & 5</option>
+                <option value="Bangunan dari bahan konstruksi kayu kelas Awet 3">Bangunan dari bahan konstruksi kayu kelas Awet 3</option>
+                <option value="Bangunan dari bahan konstruksi kayu kelas Awet 1 & 2">Bangunan dari bahan konstruksi kayu kelas Awet 1 & 2</option>
+                <option value="Bangunan dari bahan konstruksi Beton Bertulang / Baja / Tembok Baru Bata diaci">Bangunan dari bahan konstruksi Beton Bertulang / Baja / Tembok Baru Bata diaci</option>
             </select>
         </div>
     </div>
+
     <script>
         function handleJenisBangunanChange() {
             const jenisBangunan = document.getElementById("jenis_bangunan_800").value;
@@ -168,96 +160,96 @@
 
     <div class="form-group" style="margin-top: 20px;">
         <label for="jenis_bangunan_indek_lantai" style="font-weight: bold;">Jenis Bangunan (Indeks lantai)</label>
-        <select class="form-control" id="jenis_bangunan_indek_lantai" name="jenis_bangunan_indek_lantai"
-            onchange="handleJenisBangunanIndekLantaiChange()">
+        <select class="form-control" id="jenis_bangunan_indek_lantai" name="jenis_bangunan_indek_lantai" onchange="handleJenisBangunanIndekLantaiChange()">
             <option value="" selected>- Select -</option>
-            <option value="RumahTinggalSederhana">Rumah Tinggal Sederhana</option>
-            <option value="RumahTinggalMenengah">Rumah Tinggal Menengah</option>
-            <option value="RumahTinggalMewah">Rumah Tinggal Mewah</option>
-            <option value="GedungLowRise">Bangunan Gedung Bertingkat Low Rise (&lt;5 Lantai)</option>
-            <option value="GedungMidRise">Bangunan Gedung Bertingkat Mid Rise (&lt;9 Lantai)</option>
-            <option value="GedungHighRise">Bangunan Gedung Bertingkat High Rise (&gt;8 Lantai)</option>
+            <option value="Rumah Tinggal Sederhana">Rumah Tinggal Sederhana</option>
+            <option value="Rumah Tinggal Menengah">Rumah Tinggal Menengah</option>
+            <option value="Rumah Tinggal Mewah">Rumah Tinggal Mewah</option>
+            <option value="Gedung Low Rise (<5 Lantai)">Bangunan Gedung Bertingkat Low Rise (&lt;5 Lantai)</option>
+            <option value="Gedung Mid Rise (<9 Lantai)">Bangunan Gedung Bertingkat Mid Rise (&lt;9 Lantai)</option>
+            <option value="Gedung High Rise (>8 Lantai)">Bangunan Gedung Bertingkat High Rise (&gt;8 Lantai)</option>
         </select>
     </div>
 
     <div class="form-group" id="RumahTinggalSederhana" style="display: none; margin-top: 20px;">
-        <label for="acf-field_5d9eada30263f">Jumlah Lantai Rumah Tinggal Sederhana</label>
-        <select class="form-control" id="acf-field_5d9eada30263f" name="acf[field_5d9eada30263f]">
+        <label for="jumlah_lantai_rumah_tinggal_sederhana">Jumlah Lantai Rumah Tinggal Sederhana</label>
+        <select class="form-control" id="jumlah_lantai_rumah_tinggal_sederhana" name="jumlah_lantai_rumah_tinggal_sederhana">
             <option value="" selected>- Select -</option>
-            <option value="1.00_0">1</option>
-            <option value="1.09_1">2</option>
-            <option value="1.12_2">3</option>
-            <option value="1.135_3">4</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
         </select>
     </div>
 
     <div class="form-group" id="RumahTinggalMenengah" style="display: none; margin-top: 20px;">
-        <label for="acf-field_5d9eada302967">Jumlah Lantai Rumah Tinggal Menengah</label>
-        <select class="form-control" id="acf-field_5d9eada302967" name="acf[field_5d9eada302967]">
+        <label for="jumlah_lantai_rumah_tinggal_menengah">Jumlah Lantai Rumah Tinggal Menengah</label>
+        <select class="form-control" id="jumlah_lantai_rumah_tinggal_menengah" name="jumlah_lantai_rumah_tinggal_menengah">
             <option value="" selected>- Select -</option>
-            <option value="0.9174_0">1</option>
-            <option value="1.00_1">2</option>
-            <option value="1.0275_2">3</option>
-            <option value="1.0413_3">4</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
         </select>
     </div>
 
     <div class="form-group" id="RumahTinggalMewah" style="display: none; margin-top: 20px;">
-        <label for="acf-field_5d9eada302d65">Jumlah Lantai Rumah Tinggal Mewah</label>
-        <select class="form-control" id="acf-field_5d9eada302d65" name="acf[field_5d9eada302d65]">
+        <label for="jumlah_lantai_rumah_tinggal_mewah">Jumlah Lantai Rumah Tinggal Mewah</label>
+        <select class="form-control" id="jumlah_lantai_rumah_tinggal_mewah" name="jumlah_lantai_rumah_tinggal_mewah">
             <option value="" selected>- Select -</option>
-            <option value="0.9174_0">1</option>
-            <option value="1.00_1">2</option>
-            <option value="1.0275_2">3</option>
-            <option value="1.0413_3">4</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
         </select>
     </div>
 
     <div class="form-group" id="GedungLowRise" style="display: none; margin-top: 20px;">
-        <label for="acf-field_5d9eada303138">Jumlah Lantai Bangunan Gedung Bertingkat Low Rise (&lt;5 Lantai)</label>
-        <select class="form-control" id="acf-field_5d9eada303138" name="acf[field_5d9eada303138]">
+        <label for="jumlah_lantai_gedung_low_rise">Jumlah Lantai Bangunan Gedung Bertingkat Low Rise (&lt;5 Lantai)</label>
+        <select class="form-control" id="jumlah_lantai_gedung_low_rise" name="jumlah_lantai_gedung_low_rise">
             <option value="" selected>- Select -</option>
-            <option value="0.8929_0">1</option>
-            <option value="0.9732_1">2</option>
-            <option value="1.00_2">3</option>
-            <option value="1.0134_3">4</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
         </select>
     </div>
 
     <div class="form-group" id="GedungMidRise" style="display: none; margin-top: 20px;">
-        <label for="acf-field_5d9eada303543">Jumlah Lantai Bangunan Gedung Bertingkat Mid Rise (&lt;9 Lantai)</label>
-        <select class="form-control" id="acf-field_5d9eada303543" name="acf[field_5d9eada303543]">
+        <label for="jumlah_lantai_gedung_mid_rise">Jumlah Lantai Bangunan Gedung Bertingkat Mid Rise (&lt;9 Lantai)</label>
+        <select class="form-control" id="jumlah_lantai_gedung_mid_rise" name="jumlah_lantai_gedung_mid_rise">
             <option value="" selected>- Select -</option>
-            <option value="0.9186_0">5</option>
-            <option value="0.9462_1">6</option>
-            <option value="0.9771_2">7</option>
-            <option value="1.00_3">8</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
         </select>
     </div>
 
     <div class="form-group" id="GedungHighRise" style="display: none; margin-top: 20px;">
-        <label for="acf-field_5d9eada303940">Jumlah Lantai Bangunan Gedung Bertingkat High Rise (&gt;8 Lantai)</label>
-        <select class="form-control" id="acf-field_5d9eada303940" name="acf[field_5d9eada303940]">
+        <label for="jumlah_lantai_gedung_high_rise">Jumlah Lantai Bangunan Gedung Bertingkat High Rise (&gt;8 Lantai)</label>
+        <select class="form-control" id="jumlah_lantai_gedung_high_rise" name="jumlah_lantai_gedung_high_rise">
             <option value="" selected>- Select -</option>
-            <option value="0.8636_0">9</option>
-            <option value="0.8834_1">10</option>
-            <option value="0.9024_2">11</option>
-            <option value="0.9223_31">12</option>
-            <option value="0.9413_3">13</option>
-            <option value="0.9611_4">14</option>
-            <option value="0.9801_5">15</option>
-            <option value="1.00_6">16</option>
-            <option value="1.0190_7">17</option>
-            <option value="1.0389_8">18</option>
-            <option value="1.0579_9">19</option>
-            <option value="1.0777_10">20</option>
-            <option value="1.0967_11">21</option>
-            <option value="1.1166_12">22</option>
-            <option value="1.1364_13">23</option>
-            <option value="1.1554_14">24</option>
-            <option value="1.1753_15">25</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
         </select>
     </div>
+
 
     <script>
         function handleJenisBangunanIndekLantaiChange() {
@@ -280,7 +272,7 @@
 
     <div class="form-group" style="margin-top: 20px;">
         <label for="tahun_dibangun_800" style="font-weight: bold;">Tahun Dibangun</label>
-        <select class="form-control" id="tahun_dibangun_800" name="tahun_dibangun_800"
+        <select class="form-control" id="tahun_dibangun_800" name="tahun_dibangun"
             onchange="toggleCheckboxes800(this, 'checkboxContainerDibangun800')">
             <script>
                 const currentYear800 = new Date().getFullYear();
@@ -298,13 +290,12 @@
     </div>
 
     <div id="checkboxContainerDibangun800" style="display: none; margin-top: 20px;">
-        <label><input type="checkbox" name="keterangan" value="keterangan_pendamping_lokasi"> Keterangan pendamping
-            lokasi / pemilik</label><br>
-        <label><input type="checkbox" name="keterangan" value="imb"> IMB</label><br>
-        <label><input type="checkbox" name="keterangan" value="pengamatan_visual"> Pengamatan visual</label><br>
-        <label><input type="checkbox" name="keterangan" value="keterangan_lingkungan"> Keterangan
-            lingkungan</label><br>
+        <label><input type="checkbox" name="keterangan" value="Keterangan pendamping lokasi"> Keterangan pendamping lokasi / pemilik</label><br>
+        <label><input type="checkbox" name="keterangan" value="IMB"> IMB</label><br>
+        <label><input type="checkbox" name="keterangan" value="Pengamatan visual"> Pengamatan visual</label><br>
+        <label><input type="checkbox" name="keterangan" value="Keterangan lingkungan"> Keterangan lingkungan</label><br>
     </div>
+
 
     <div class="form-group" style="margin-top: 20px;">
         <label for="tahun_renovasi" style="font-weight: bold;">Tahun Renovasi</label>
@@ -326,13 +317,12 @@
     </div>
 
     <div id="checkboxContainerRenovasi800" style="display: none; margin-top: 20px;">
-        <label><input type="checkbox" name="keterangan" value="keterangan_pendamping_lokasi"> Keterangan pendamping
-            lokasi / pemilik</label><br>
-        <label><input type="checkbox" name="keterangan" value="imb"> IMB</label><br>
-        <label><input type="checkbox" name="keterangan" value="pengamatan_visual"> Pengamatan visual</label><br>
-        <label><input type="checkbox" name="keterangan" value="keterangan_lingkungan"> Keterangan
-            lingkungan</label><br>
+        <label><input type="checkbox" name="keterangan" value="Keterangan pendamping lokasi"> Keterangan pendamping lokasi / pemilik</label><br>
+        <label><input type="checkbox" name="keterangan" value="IMB"> IMB</label><br>
+        <label><input type="checkbox" name="keterangan" value="Pengamatan visual"> Pengamatan visual</label><br>
+        <label><input type="checkbox" name="keterangan" value="Keterangan lingkungan"> Keterangan lingkungan</label><br>
     </div>
+
 
     <div class="form-group mb-3 " style="margin-top: 20px">
         <label for="jenis_renovasi"><b>Jenis Renovasi</b></label>
@@ -382,13 +372,12 @@
             <div class="area-item d-flex align-items-center mb-2">
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Nama Area</label>
-                    <input type="text" name="nama_pintu_jendela[]" class="form-control" placeholder="Nama Area"
-                        >
+                    <input type="text" name="nama_pintu_jendela[]" class="form-control" placeholder="Nama Area">
                 </div>
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Luas (m²)</label>
                     <input type="number" name="luas_pintu_jendela[]" class="form-control" placeholder="Luas (m²)"
-                        min="0" step="0.01" >
+                        min="0" step="0.01">
                 </div>
                 <div class="area-controls">
                     <div class="row">
@@ -410,13 +399,12 @@
             <div class="area-item d-flex align-items-center mb-2">
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Nama Area</label>
-                    <input type="text" name="nama_dinding-300[]" class="form-control" placeholder="Nama Area"
-                        >
+                    <input type="text" name="nama_dinding[]" class="form-control" placeholder="Nama Area">
                 </div>
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Luas (m²)</label>
-                    <input type="number" name="luas_dinding-300[]" class="form-control" placeholder="Luas (m²)"
-                        min="0" step="0.01" >
+                    <input type="number" name="luas_dinding[]" class="form-control" placeholder="Luas (m²)"
+                        min="0" step="0.01">
                 </div>
                 <div class="area-controls">
                     <div class="row">
@@ -437,13 +425,12 @@
             <div class="area-item d-flex align-items-center mb-2">
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Nama Area</label>
-                    <input type="text" name="nama_atap_datar-300[]" class="form-control" placeholder="Nama Area"
-                        >
+                    <input type="text" name="rangka_atap_datar[]" class="form-control" placeholder="Nama Area">
                 </div>
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Luas (m²)</label>
-                    <input type="number" name="luas_atap_datar-300[]" class="form-control" placeholder="Luas (m²)"
-                        min="0" step="0.01" >
+                    <input type="number" name="luas_rangka_atap_datar[]" class="form-control" placeholder="Luas (m²)"
+                        min="0" step="0.01">
                 </div>
                 <div class="area-controls">
                     <div class="row">
@@ -465,13 +452,12 @@
             <div class="area-item d-flex align-items-center mb-2">
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Nama Area</label>
-                    <input type="text" name="nama_atap_datar-300_2[]" class="form-control" placeholder="Nama Area"
-                        >
+                    <input type="text" name="nama_luas_atap_datar[]" class="form-control" placeholder="Nama Area">
                 </div>
                 <div style="flex: 1; margin-right: 10px;">
                     <label>Luas (m²)</label>
-                    <input type="number" name="luas_atap_datar-300_2[]" class="form-control" placeholder="Luas (m²)"
-                        min="0" step="0.01" >
+                    <input type="number" name="luas_atap_datar[]" class="form-control" placeholder="Luas (m²)"
+                        min="0" step="0.01">
                 </div>
                 <div class="area-controls">
                     <div class="row">
@@ -489,14 +475,14 @@
         <label><b>Tipe Pondasi Eksisting - Rumah Tinggal Menengah 2 Lantai</b></label>
         <div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Batu Kali" id="pondasi_batu_kali_300"
+                <input class="form-check-input" type="checkbox" value="Batu Kali" id="pondasi_batu_kali_300" name="tipe_pondasi_existing"
                     onchange="toggleBobotInput(this, 'bobot_pondasi_batu_kali_menengah-300')">
                 <label class="form-check-label" for="pondasi_batu_kali">Batu Kali</label>
             </div>
         </div>
         <div id="bobot_pondasi_batu_kali_menengah-300" style="display: none; margin-top: 10px;">
             <label for="bobot_batu_kali_300">Bobot Pondasi Batu Kali (dalam persen %)</label>
-            <input type="number" class="form-control" id="bobot_batu_kali_300" name="bobot_batu_kali_300"
+            <input type="number" class="form-control" id="bobot_batu_kali_300" name="bobot_batu_kali"
                 placeholder="Masukkan bobot dalam persen" min="0" max="100" step="0.01">
         </div>
     </div>
@@ -508,7 +494,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_pondasi_300[]" class="form-control" >
+                        <select name="tipe_pondasi_existing[]" class="form-control">
                             <option value="">- Select -</option>
                             @foreach ($dataBangunan['Tambah Tipe Pondasi Eksisting'] as $item)
                             <option value="{{ $item->label_value }}">{{ $item->label_option }}
@@ -519,8 +505,8 @@
 
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
-                        <input type="number" name="bobot_pondasi_300[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
+                        <input type="number" name="bobot_pondasi_existing[]" class="form-control"
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -543,7 +529,7 @@
         <div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Beton Bertulang"
-                    id="struktur_beton_bertulang_300"
+                    id="struktur_beton_bertulang_300" name="tipe_struktur_existing"
                     onchange="toggleBobotInput(this, 'bobot_struktur_beton_bertulang_300')">
                 <label class="form-check-label" for="struktur_beton_bertulang_300">Beton
                     Bertulang</label>
@@ -563,7 +549,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_struktur_300[]" class="form-control" >
+                        <select name="tipe_struktur_existing[]" class="form-control">
                             <option value="">- Select -</option>
                             @foreach ($dataBangunan['Tambah Tipe Struktur Eksisting'] as $item)
                             <option value="{{ $item->label_value }}">{{ $item->label_option }}</option>
@@ -572,8 +558,8 @@
                     </div>
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
-                        <input type="number" name="bobot_struktur_300[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
+                        <input type="number" name="bobot_struktur_existing[]" class="form-control"
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -595,30 +581,28 @@
         <div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Dak Beton (Jika Pakai Balok)"
-                    id="atap_dak_beton_300">
+                    id="atap_dak_beton_300" name="tipe_rangka_atap_existing[]">
                 <label class="form-check-label" for="atap_dak_beton_300">Dak Beton (Jika Pakai Balok)</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Kayu (Atap Genteng)"
-                    id="atap_kayu_genteng_300">
+                    id="atap_kayu_genteng_300" name="tipe_rangka_atap_existing[]">
                 <label class="form-check-label" for="atap_kayu_genteng_300">Kayu (Atap Genteng)</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Kayu (Atap Asbes, Seng dll, Tanpa Reng)"
-                    id="atap_kayu_asbes_300">
-                <label class="form-check-label" for="atap_kayu_asbes_300">Kayu (Atap Asbes, Seng dll, Tanpa
-                    Reng)</label>
+                    id="atap_kayu_asbes_300" name="tipe_rangka_atap_existing[]">
+                <label class="form-check-label" for="atap_kayu_asbes_300">Kayu (Atap Asbes, Seng dll, Tanpa Reng)</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Baja Ringan (Atap Genteng)"
-                    id="atap_baja_genteng_300">
+                    id="atap_baja_genteng_300" name="tipe_rangka_atap_existing[]">
                 <label class="form-check-label" for="atap_baja_genteng_300">Baja Ringan (Atap Genteng)</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Baja Ringan (Atap Asbes, Seng dll)"
-                    id="atap_baja_asbes_300">
-                <label class="form-check-label" for="atap_baja_asbes_300">Baja Ringan (Atap Asbes, Seng
-                    dll)</label>
+                    id="atap_baja_asbes_300" name="tipe_rangka_atap_existing[]">
+                <label class="form-check-label" for="atap_baja_asbes_300">Baja Ringan (Atap Asbes, Seng dll)</label>
             </div>
         </div>
     </div>
@@ -627,32 +611,34 @@
     <div id="content-atap_dak_beton_300" class="content" style="display: none;">
         <label><b>Bobot Dak Beton (Jika Pakai Balok)</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100" name="bobot_dak_beton">
     </div>
+
 
     <div id="content-atap_kayu_genteng_300" class="content" style="display: none;">
         <label><b>Bobot Kayu (Atap Genteng)</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100" name="bobot_kayu_genteng">
     </div>
 
     <div id="content-atap_kayu_asbes_300" class="content" style="display: none;">
         <label><b>Bobot Kayu (Atap Asbes, Seng dll, Tanpa Reng)</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100" name="bobot_kayu_asbes">
     </div>
 
     <div id="content-atap_baja_genteng_300" class="content" style="display: none;">
         <label><b>Bobot Baja Ringan (Atap Genteng)</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100" name="bobot_baja_genteng">
     </div>
 
     <div id="content-atap_baja_asbes_300" class="content" style="display: none;">
         <label><b>Bobot Baja Ringan (Atap Asbes, Seng dll)</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100">
+        <input type="number" class="form-control" placeholder="Masukkan nilai" min="0" max="100" name="bobot_baja_asbes">
     </div>
+
 
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Tipe Rangka Atap Existing</b></label><br>
@@ -661,7 +647,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_rangka_atap_300[]" class="form-control" >
+                        <select name="tipe_rangka_atap_300[]" class="form-control">
                             <option value="">- Select -</option>
                             @foreach ($dataBangunan['Tipe Rangka Atap Existing'] as $item)
                             <option value="{{ $item->label_value }}">{{ $item->label_option }} </option>
@@ -671,7 +657,7 @@
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
                         <input type="number" name="bobot_rangka_atap_300[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -794,7 +780,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_penutup-atap-existing-300[]" class="form-control" >
+                        <select name="tipe_penutup-atap-existing-300[]" class="form-control">
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Tipe Penutup Atap Existing'] as $item)
@@ -805,7 +791,7 @@
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
                         <input type="number" name="bobot_penutup-atap-existing-300[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -892,7 +878,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_plafon-existing-300[]" class="form-control" >
+                        <select name="tipe_plafon-existing-300[]" class="form-control">
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Plafon Existing'] as $item)
@@ -903,7 +889,7 @@
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
                         <input type="number" name="bobot_plafon-existing-300[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -964,7 +950,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_dinding-existing-300[]" class="form-control" >
+                        <select name="tipe_dinding-existing-300[]" class="form-control">
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Tipe Dinding Existing'] as $item)
@@ -975,7 +961,7 @@
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
                         <input type="number" name="bobot_dinding-existing-300[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -1078,7 +1064,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_tipe-pelapis-dinding-existing-300[]" class="form-control" >
+                        <select name="tipe_tipe-pelapis-dinding-existing-300[]" class="form-control">
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Tipe Pelapis Dinding Existing'] as $item)
@@ -1090,7 +1076,7 @@
                         <label>Bobot (%)</label>
                         <input type="number" name="bobot_tipe-pelapis-dinding-existing-300[]"
                             class="form-control" placeholder="Masukkan bobot" min="0" max="100"
-                            step="0.01" >
+                            step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -1219,7 +1205,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_tipe-pintu-jendela-existing-300[]" class="form-control" >
+                        <select name="tipe_tipe-pintu-jendela-existing-300[]" class="form-control">
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Tipe Pintu & Jendela Existing'] as $item)
@@ -1232,7 +1218,7 @@
                         <label>Bobot (%)</label>
                         <input type="number" name="bobot_tipe-pintu-jendela-existing-300[]"
                             class="form-control" placeholder="Masukkan bobot" min="0" max="100"
-                            step="0.01" >
+                            step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
@@ -1339,7 +1325,7 @@
                 <div class="area-item d-flex align-items-center mb-2">
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Tipe Material</label>
-                        <select name="tipe_tipe-lantai-existing-300[]" class="form-control" >
+                        <select name="tipe_tipe-lantai-existing-300[]" class="form-control">
                             <option value="" selected="selected" data-i="0">- Select -
                             </option>
                             @foreach ($dataBangunan['Tambah Tipe Lantai Existing'] as $item)
@@ -1350,7 +1336,7 @@
                     <div style="flex: 1; margin-right: 10px;">
                         <label>Bobot (%)</label>
                         <input type="number" name="bobot_tipe-lantai-existing-300[]" class="form-control"
-                            placeholder="Masukkan bobot" min="0" max="100" step="0.01" >
+                            placeholder="Masukkan bobot" min="0" max="100" step="0.01">
                     </div>
                     <div class="area-controls">
                         <div class="row">
