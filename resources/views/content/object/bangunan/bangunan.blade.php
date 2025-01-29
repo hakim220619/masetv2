@@ -128,7 +128,32 @@
                     </div>
                     <a href="#" id="tambah-foto" class="btn btn-primary btn-sm mt-2">Tambah Foto</a>
                 </div>
-
+                <script>
+                    document.getElementById('tambah-foto').addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const container = document.querySelector('.foto-lainnya-container');
+                        const newItem = document.createElement('div');
+                        newItem.classList.add('foto-item');
+                        newItem.innerHTML = `
+        <div style="flex: 1;">
+            <label>Judul Foto</label>
+            <input type="text" name="judul_foto[]" class="form-control" placeholder="Judul Foto">
+        </div>
+        &nbsp;&nbsp;
+        <div style="flex: 1;">
+            <label>Upload Foto</label>
+            <input type="file" name="foto_lainnya[]" class="form-control">
+        </div>
+        <div class="foto-controls">
+         <div class="row">
+            <button type="button" class="tambah-foto">+</button>
+            <button type="button" class="hapus-foto">-</button>
+        </div>
+        </div>
+    `;
+                        container.appendChild(newItem);
+                    });
+                </script>
                 <div class="form-group mb-3">
                     <label for="bentuk_bangunan"><b>Bentuk Bangunan</b></label>
                     <select id="bentuk_bangunan" name="bentuk_bangunan" class="form-select">
@@ -362,8 +387,8 @@
                     <!-- Rumah Sederhana -->
 
                     @include('content.form.100')
-                    {{-- @include('content.form.200')
-                    @include('content.form.300')
+                    @include('content.form.200')
+                    {{-- @include('content.form.300')
                     @include('content.form.400')
                     @include('content.form.500')
                     @include('content.form.600')
