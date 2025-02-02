@@ -111,6 +111,7 @@ class GeneralModel extends Model
                 'label_header' => $getUid->label_header,
                 'label_option' => $request['option'],
                 'label_value' => $request['value'],
+                'label_id' => $request['label_id'],
                 'type' => 'Options',
                 'state' => $request['state'],
                 'created_at' => now(),
@@ -129,7 +130,7 @@ class GeneralModel extends Model
         DB::table('master_data')->where('id', $id)->update([
             'label_option' => $request['option'],
             'label_value' => $request['value'],
-
+            'label_id' => $request['label_id'],
             'state' => $request['state']
         ]);
     }

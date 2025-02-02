@@ -107,7 +107,11 @@
                     @endphp
                     @foreach ($groupedOptions as $header => $options)
                         @php
-                            $idSafeHeader = str_replace([' ', '(', ')'], '_', $header ?? 'default_id');
+                            $idSafeHeader = str_replace(
+                                [' ', '(', ')', '/', '-', '&', ';'],
+                                '_',
+                                $header ?? 'default_id',
+                            );
 
                         @endphp
 
@@ -237,6 +241,11 @@
                                                     name="value" placeholder="Masukkan Option" required>
                                             </div>
                                             <div class="form-group">
+                                                <label for="modalOptionLabelId" class="form-label">Option ID</label>
+                                                <input type="text" class="form-control" id="modalOptionLabelId"
+                                                    name="label_id" placeholder="Masukkan Option" required>
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="modalState" class="form-label">State</label>
                                                 <select class="form-control" id="modalStateOpt" name="state">
                                                     <option value="ON">ON</option>
@@ -310,6 +319,13 @@
                                                         <input type="text" class="form-control"
                                                             id="editOptionInput{{ $option->id }}" name="value"
                                                             value="{{ $option->label_value }}" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="editOptionInput{{ $option->id }}"
+                                                            class="form-label">Label ID</label>
+                                                        <input type="text" class="form-control"
+                                                            id="editOptionInput{{ $option->label_id }}" name="label_id"
+                                                            value="{{ $option->label_id }}" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="editStateSelect{{ $option->id }}"

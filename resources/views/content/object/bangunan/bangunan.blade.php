@@ -126,10 +126,10 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" id="tambah-foto" class="btn btn-primary btn-sm mt-2">Tambah Foto</a>
+                    <a href="#" id="tambah-foto-menengah" class="btn btn-primary btn-sm mt-2">Tambah Foto</a>
                 </div>
                 <script>
-                    document.getElementById('tambah-foto').addEventListener('click', function(e) {
+                    document.getElementById('tambah-foto-menengah').addEventListener('click', function(e) {
                         e.preventDefault();
                         const container = document.querySelector('.foto-lainnya-container');
                         const newItem = document.createElement('div');
@@ -235,6 +235,8 @@
                     <label for="versi_btb"><b>Versi BTB</b></label>
                     <input type="text" id="versi_btb" name="versi_btb" class="form-control" value="2024" readonly>
                 </div>
+
+
                 <div class="form-group mb-3">
                     <label for="tipe_spek"><b>Tipikal Bangunan Sesuai Spek BTB MAPPI </b> <span
                             class="text-danger">*</span></label>
@@ -310,101 +312,120 @@
                                 break;
                             default:
                                 // Tidak ada yang dipilih, semua tetap disembunyikan
-                                document.getElementById('100').style.display = 'none';
-                                document.getElementById('200').style.display = 'none';
-                                document.getElementById('300').style.display = 'none';
-                                document.getElementById('400').style.display = 'none';
-                                document.getElementById('500').style.display = 'none';
-                                document.getElementById('600').style.display = 'none';
-                                document.getElementById('700').style.display = 'none';
-                                document.getElementById('800').style.display = 'none';
-                                document.getElementById('900').style.display = 'none';
-                                document.getElementById('1000').style.display = 'none';
-                                document.getElementById('1100').style.display = 'none';
+                                // document.getElementById('100').style.display = 'none';
+                                // document.getElementById('200').style.display = 'none';
+                                // document.getElementById('300').style.display = 'none';
+                                // document.getElementById('400').style.display = 'none';
+                                // document.getElementById('500').style.display = 'none';
+                                // document.getElementById('600').style.display = 'none';
+                                // document.getElementById('700').style.display = 'none';
+                                // document.getElementById('800').style.display = 'none';
+                                // document.getElementById('900').style.display = 'none';
+                                // document.getElementById('1000').style.display = 'none';
+                                // document.getElementById('1100').style.display = 'none';
                                 break;
                         }
                     });
+                    document.getElementById('tipe_spek').addEventListener('change', function() {
+                        const selectedValue = this.value;
 
-                    // document.getElementById('tipe_spek').addEventListener('change', function() {
-                    //     const selectedValue = this.value;
+                        // Sembunyikan semua form terlebih dahulu
+                        document.querySelectorAll('#dynamic-content > div').forEach(function(form) {
+                            form.style.display = 'none'; // Pastikan semua form disembunyikan
+                        });
 
-                    //     // Sembunyikan semua form terlebih dahulu
-                    //     document.querySelectorAll('#dynamic-content > div').forEach(function(form) {
-                    //         form.style.display = 'none'; // Pastikan semua form disembunyikan
-                    //     });
+                        // Reset semua form sebelum menampilkan yang dipilih
+                        document.querySelectorAll('#dynamic-content > div').forEach(function(form) {
+                            form.querySelectorAll('input, select, textarea').forEach(function(input) {
+                                // Handle different input types
+                                switch (input.type) {
+                                    case 'checkbox':
+                                    case 'radio':
+                                        input.checked = false; // Uncheck checkboxes and radio buttons
+                                        break;
+                                    case 'text':
+                                    case 'number':
+                                    case 'email':
+                                    case 'password':
+                                    case 'date':
+                                    case 'textarea':
+                                    case 'select-one':
+                                    case 'select-multiple':
+                                        input.value =
+                                            ''; // Reset text, number, email, password, date, textarea, and select inputs
+                                        break;
+                                    default:
+                                        // Handle other input types if necessary
+                                        break;
+                                }
+                            });
+                        });
 
-                    //     // Tampilkan form sesuai pilihan dan sembunyikan yang lain
-                    //     switch (selectedValue) {
-                    //         case '100':
-                    //             document.getElementById('100').style.display = 'block';
-                    //             break;
-                    //         case '200':
-                    //             document.getElementById('200').style.display = 'block';
-                    //             break;
-                    //         case '300':
-                    //             document.getElementById('300').style.display = 'block';
-                    //             break;
-                    //         case '400':
-                    //             document.getElementById('400').style.display = 'block';
-                    //             break;
-                    //         case '500':
-                    //             document.getElementById('500').style.display = 'block';
-                    //             break;
-                    //         case '600':
-                    //             document.getElementById('600').style.display = 'block';
-                    //             break;
-                    //         case '700':
-                    //             document.getElementById('700').style.display = 'block';
-                    //             break;
-                    //         case '800':
-                    //             document.getElementById('800').style.display = 'block';
-                    //             break;
-                    //         case '900':
-                    //             document.getElementById('900').style.display = 'block';
-                    //             break;
-                    //         case '1000':
-                    //             document.getElementById('1000').style.display = 'block';
-                    //             break;
-                    //         case '1100':
-                    //             document.getElementById('1100').style.display = 'block';
-                    //             break;
-                    //         default:
-                    //             // Tidak ada yang dipilih, semua tetap disembunyikan
-                    //             break;
-                    //     }
-                    // });
+                        // Tampilkan form sesuai pilihan
+                        if (selectedValue && document.getElementById(selectedValue)) {
+                            document.getElementById(selectedValue).style.display = 'block';
+                        }
+                    });
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const tipeSpekDropdown = document.getElementById('tipe_spek');
 
-                    // // Pilih secara otomatis "rumah_menengah" dan panggil event change
-                    // document.addEventListener('DOMContentLoaded', function() {
-                    //     const dropdown = document.getElementById('tipe_spek');
-                    //     dropdown.value = '600'; // Set nilai dropdown ke rumah_menengah
-                    //     dropdown.dispatchEvent(new Event('change')); // Panggil event change
-                    // });
+                        // Cek jika ada nilai yang tersimpan di localStorage
+                        const savedValue = localStorage.getItem('selectedTipeSpek');
+                        if (savedValue) {
+                            tipeSpekDropdown.value = savedValue;
+                            showFormBasedOnSelection(savedValue); // Tampilkan form sesuai nilai yang dipilih
+                        }
+
+                        // Simpan nilai yang dipilih ke localStorage dan tampilkan form yang sesuai
+                        tipeSpekDropdown.addEventListener('change', function() {
+                            const selectedValue = this.value;
+                            localStorage.setItem('selectedTipeSpek', selectedValue);
+                            showFormBasedOnSelection(selectedValue);
+                        });
+
+                        // Fungsi untuk menampilkan form yang sesuai
+                        function showFormBasedOnSelection(selectedValue) {
+                            // Sembunyikan semua form terlebih dahulu
+                            document.querySelectorAll('#dynamic-content > div').forEach(function(form) {
+                                form.style.display = 'none';
+                            });
+
+                            // Tampilkan form yang sesuai dengan nilai yang dipilih
+                            if (selectedValue && document.getElementById(selectedValue)) {
+                                document.getElementById(selectedValue).style.display = 'block';
+                            }
+                        }
+                    });
                 </script>
-
-
-                <div id="dynamic-content">
-                    <!-- Rumah Sederhana -->
-
+                <div id ="dynamic-content">
                     @include('content.form.100')
                     @include('content.form.200')
-                    {{-- @include('content.form.300')
-                    @include('content.form.400')
-                    @include('content.form.500')
+                    @include('content.form.300')
+                    {{-- @include('content.form.400') --}}
+                    {{-- @include('content.form.500')
                     @include('content.form.600')
                     @include('content.form.700')
                     @include('content.form.800')
                     @include('content.form.900')
                     @include('content.form.1000')
                     @include('content.form.1100') --}}
-
-                    <!-- Rumah Sederhana -->
-
-
-                    <!-- Rumah menengah -->
                 </div>
 
 
+                <script>
+                    function generateYearOptions(startYear, endYear, selectedYear, elementId) {
+                        let options = '';
+                        for (let year = startYear; year <= endYear; year++) {
+                            const selected = year === selectedYear ? 'selected' : '';
+                            options += `<option value="${year}" ${selected}>${year}</option>`;
+                        }
+                        document.getElementById(elementId).innerHTML = options;
+                    }
+
+                    const currentYear = new Date().getFullYear();
+                    generateYearOptions(1960, currentYear + 7, currentYear, 'tahun_renovasi');
+                    generateYearOptions(1960, currentYear + 7, currentYear, 'tahun_renovasi_menengah');
+                </script>
                 <div class="form-group mb-3">
                     <label for="penggunaan_bangunan"><b>Penggunaan Bangunan Saat Ini</b></label>
                     <input type="text" id="penggunaan_bangunan" name="penggunaan_bangunan" class="form-control"

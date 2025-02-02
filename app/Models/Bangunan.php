@@ -27,7 +27,9 @@ class Bangunan extends Model
         'konstruksi_pondasi',
         'versi_btb',
         'tipe_spek',
-        'jenis_bangunan', // Added missing field
+        'jenis_bangunan',
+        'jenis_bangunan_detail',
+        'jumlah_lantai_rumah_tinggal',
         'jenis_bangunan_indeks_lantai', // Added missing field
         'tahun_dibangun',
         'tahun_renovasi',
