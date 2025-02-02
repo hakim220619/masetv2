@@ -78,17 +78,19 @@
                     options += `<option value="${year}" ${selected}>${year}</option>`;
                 }
 
-                document.write(options);
+                document.getElementById('tahun_dibangun').innerHTML = options;
             </script>
         </select>
     </div>
-
     <div id="checkboxContainerDibangun" style="display: none; margin-top: 20px;">
-        <label><input type="checkbox" name="keterangan" value="keterangan_pendamping_lokasi"> Keterangan pendamping
+        <label><input type="checkbox" name="keterangan_tahun_dibangaun[]" value="keterangan_pendamping_lokasi">
+            Keterangan pendamping
             lokasi / pemilik</label><br>
-        <label><input type="checkbox" name="keterangan" value="imb"> IMB</label><br>
-        <label><input type="checkbox" name="keterangan" value="pengamatan_visual"> Pengamatan visual</label><br>
-        <label><input type="checkbox" name="keterangan" value="keterangan_lingkungan"> Keterangan lingkungan</label><br>
+        <label><input type="checkbox" name="keterangan_tahun_dibangaun[]" value="imb"> IMB</label><br>
+        <label><input type="checkbox" name="keterangan_tahun_dibangaun[]" value="pengamatan_visual"> Pengamatan
+            visual</label><br>
+        <label><input type="checkbox" name="keterangan_tahun_dibangaun[]" value="keterangan_lingkungan"> Keterangan
+            lingkungan</label><br>
     </div>
 
     <div class="form-group" style="margin-top: 20px;">
@@ -96,26 +98,30 @@
         <select class="form-control" id="tahun_renovasi" name="tahun_renovasi"
             onchange="toggleCheckboxes(this, 'checkboxContainerRenovasi')">
             <script>
+                const currentYearklkk = new Date().getFullYear(); // Pastikan currentYearklkk didefinisikan
                 const startYearRenovasi = 1960;
-                const endYearRenovasi = currentYear + 7;
+                const endYearRenovasi = currentYearklkk + 7;
                 let optionsRenovasi = '';
 
                 for (let year = startYearRenovasi; year <= endYearRenovasi; year++) {
-                    const selected = year === currentYear ? 'selected' : '';
+                    const selected = year === currentYearklkk ? 'selected' : '';
                     optionsRenovasi += `<option value="${year}" ${selected}>${year}</option>`;
                 }
 
-                document.write(optionsRenovasi);
+                document.getElementById('tahun_renovasi').innerHTML = optionsRenovasi;
             </script>
         </select>
     </div>
 
     <div id="checkboxContainerRenovasi" style="display: none; margin-top: 20px;">
-        <label><input type="checkbox" name="keterangan" value="keterangan_pendamping_lokasi"> Keterangan pendamping
+        <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="keterangan_pendamping_lokasi">
+            Keterangan pendamping
             lokasi / pemilik</label><br>
-        <label><input type="checkbox" name="keterangan" value="imb"> IMB</label><br>
-        <label><input type="checkbox" name="keterangan" value="pengamatan_visual"> Pengamatan visual</label><br>
-        <label><input type="checkbox" name="keterangan" value="keterangan_lingkungan"> Keterangan lingkungan</label><br>
+        <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="imb"> IMB</label><br>
+        <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="pengamatan_visual"> Pengamatan
+            visual</label><br>
+        <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="keterangan_lingkungan"> Keterangan
+            lingkungan</label><br>
     </div>
 
     <div class="form-group mb-3 " style="margin-top: 20px">
@@ -1007,6 +1013,14 @@
             const contentElement = document.getElementById(contentId);
             if (contentElement) {
                 contentElement.style.display = checkbox.checked ? 'block' : 'none';
+
+                // Jika checkbox tidak dicentang, set nilai input bobot ke null
+                if (!checkbox.checked) {
+                    const inputElement = contentElement.querySelector('input[type="text"]');
+                    if (inputElement) {
+                        inputElement.value = '';
+                    }
+                }
             }
         });
     });

@@ -275,6 +275,10 @@ class BangunanController extends Controller
         $bobotPintuJendelaExistingJson = json_encode(filterNullValues($data['bobot_tipe_pintu_jendela_existing'] ?? []));
         $tipeLantaiExistingJson = json_encode(filterNullValues($data['tipe_tipe_lantai_existing'] ?? []));
         $bobotLantaiExistingJson = json_encode(filterNullValues($data['bobot_tipe_lantai_existing'] ?? []));
+
+
+        $jenisBangunanDetailJson = json_encode(filterNullValues($data['jenis_bangunan_detail'] ?? []));
+        $jumlahLantaiRumahTinggalJson = json_encode(filterNullValues($data['jumlah_lantai_rumah_tinggal'] ?? []));
         // dd($data['bobot_rangka_atap_existing']);
         // dd($tipeLantaiExistingJson);
         // Insert the data into the database
@@ -306,6 +310,8 @@ class BangunanController extends Controller
             'bobot_tipe_pintu_jendela_existing' => $bobotPintuJendelaExistingJson,
             'tipe_tipe_lantai_existing' => $tipeLantaiExistingJson,
             'bobot_tipe_lantai_existing' => $bobotLantaiExistingJson,
+            'jenis_bangunan_detail' => $jenisBangunanDetailJson,
+            'jumlah_lantai_rumah_tinggal' => $jumlahLantaiRumahTinggalJson,
         ]);
         return;
         // return redirect()->back()->with('success', 'Data berhasil disimpan!');
