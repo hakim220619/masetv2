@@ -190,7 +190,7 @@ $configData = Helper::appClasses();
                 </div>
                 <div class="form-group">
                     <label for="kategori_kredit"><b>Kategori Kredit</b></label>
-                    <input type="text" id="kategori_kredit" name="kategori_kredit" class="form-control" value="Konsumer (KPR)" readonly>
+                    <input type="text" id="kategori_kredit" name="kategori_kredit" class="form-control" placeholder="Konsumer (KPR)" >
                 </div>                
                 <div class="form-group">
                     <label for="kategori_kredit_bca"><b>Kategori Kredit (khusus BCA)</b></label>
@@ -202,22 +202,22 @@ $configData = Helper::appClasses();
                 </div>                
                 <div class="form-group">
                     <label for="tipe_jaminan"><b>Tipe Jaminan</b></label>
-                    <input type="text" id="tipe_jaminan" name="tipe_jaminan" class="form-control" value="Rumah Tinggal" readonly>
+                    <input type="text" id="tipe_jaminan" name="tipe_jaminan" class="form-control" placeholder="Rumah Tinggal" >
                 </div>                
                 <div class="form-group">
                     <label for="lokasi_cabang_bank"><b>Lokasi Cabang Bank</b></label>
-                    <input type="text" id="lokasi_cabang_bank" name="lokasi_cabang_bank" class="form-control" value="BCA KCU Madiun" readonly>
+                    <input type="text" id="lokasi_cabang_bank" name="lokasi_cabang_bank" class="form-control" placeholder="BCA KCU Madiun" >
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                     <label class="form-label" for="bap_final">BAP / Final</label>
                     <table class="table table-borderless">
                       <tr>
                         <th>Kota / Daerah</th>
-                        <th>Pilih Nama / Instansi</th>
+                        <th>Tanggal</th>
                       </tr>
                       <tr>
                         <td><input type="text" id="kota" name="kota" class="form-control" /></td>
-                        <td><input type="text" id="pilih_nama_instansi_daerah" name="pilih_nama_instansi_daerah" class="form-control"/></td>
+                        <td><input type="date" id="bap_final_tgl" name="bap_final_tgl" class="form-control"/></td>
                       </tr>
                     </table>
                 </div>
