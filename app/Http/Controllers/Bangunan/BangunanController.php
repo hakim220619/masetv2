@@ -153,7 +153,7 @@ class BangunanController extends Controller
 
         // Ambil semua input dari request
         $data = $request->all();
-        dd($data);
+        // dd($data);
         // 1. Filter data untuk field biasa
         $fieldData = [
             'nama_bangunan' => $data['nama_bangunan'],
@@ -313,8 +313,8 @@ class BangunanController extends Controller
             'jenis_bangunan_detail' => $jenisBangunanDetailJson,
             'jumlah_lantai_rumah_tinggal' => $jumlahLantaiRumahTinggalJson,
         ]);
-        return;
-        // return redirect()->back()->with('success', 'Data berhasil disimpan!');
+        // return;
+        return redirect()->back()->with('success', 'Data berhasil disimpan!');
     }
 
     private function uploadFile($request, $fieldName)

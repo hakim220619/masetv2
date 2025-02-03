@@ -312,17 +312,17 @@
                                 break;
                             default:
                                 // Tidak ada yang dipilih, semua tetap disembunyikan
-                                // document.getElementById('100').style.display = 'none';
-                                // document.getElementById('200').style.display = 'none';
-                                // document.getElementById('300').style.display = 'none';
-                                // document.getElementById('400').style.display = 'none';
-                                // document.getElementById('500').style.display = 'none';
-                                // document.getElementById('600').style.display = 'none';
-                                // document.getElementById('700').style.display = 'none';
-                                // document.getElementById('800').style.display = 'none';
-                                // document.getElementById('900').style.display = 'none';
-                                // document.getElementById('1000').style.display = 'none';
-                                // document.getElementById('1100').style.display = 'none';
+                                document.getElementById('100').style.display = 'none';
+                                document.getElementById('200').style.display = 'none';
+                                document.getElementById('300').style.display = 'none';
+                                document.getElementById('400').style.display = 'none';
+                                document.getElementById('500').style.display = 'none';
+                                document.getElementById('600').style.display = 'none';
+                                document.getElementById('700').style.display = 'none';
+                                document.getElementById('800').style.display = 'none';
+                                document.getElementById('900').style.display = 'none';
+                                document.getElementById('1000').style.display = 'none';
+                                document.getElementById('1100').style.display = 'none';
                                 break;
                         }
                     });
@@ -401,8 +401,8 @@
                     @include('content.form.100')
                     @include('content.form.200')
                     @include('content.form.300')
-                    {{-- @include('content.form.400') --}}
-                    {{-- @include('content.form.500')
+                    {{-- @include('content.form.400')
+                    @include('content.form.500')
                     @include('content.form.600')
                     @include('content.form.700')
                     @include('content.form.800')
