@@ -157,12 +157,14 @@ class BangunanController extends Controller
         // 1. Filter data untuk field biasa
         $fieldData = [
             'nama_bangunan' => $data['nama_bangunan'],
-            'foto_depan' => $this->uploadFile($request, 'foto_depan'),
-            'foto_sisi_kiri' => $this->uploadFile($request, 'foto_sisi_kiri'),
-            'foto_sisi_kanan' => $this->uploadFile($request, 'foto_sisi_kanan'),
+            'foto_tampak_depan' => $this->uploadFile($request, 'foto_tampak_depan'),
+            'foto_tampak_sisi_kiri' => $this->uploadFile($request, 'foto_tampak_sisi_kiri'),
+            'foto_tampak_sisi_kanan' => $this->uploadFile($request, 'foto_tampak_sisi_kanan'),
             'bentuk_bangunan' => $data['bentuk_bangunan'] ?? null,
             'jenis_bangunan' => $data['jenis_bangunan'] ?? null,
             'jenis_bangunan_indeks_lantai' => $data['jenis_bangunan_indeks_lantai'] ?? null,
+            'jenis_bangunan_detail' => $data['jenis_bangunan_detail'] ?? null,
+            'grade_gudang' => $data['grade_gudang'] ?? null,
             'tahun_dibangun' => $data['tahun_dibangun'] ?? null,
             'tahun_renovasi' => $data['tahun_renovasi'] ?? null,
             'jenis_renovasi' => $data['jenis_renovasi'] ?? null,
@@ -189,9 +191,9 @@ class BangunanController extends Controller
         // Handle dynamic data for fields like arrays (JSON)
         $dynamicData = collect($data)->except([
             'nama_bangunan',
-            'foto_depan',
-            'foto_sisi_kiri',
-            'foto_sisi_kanan',
+            'foto_tampak_depan',
+            'foto_tampak_sisi_kiri',
+            'foto_tampak_sisi_kanan',
             'bentuk_bangunan',
             'jumlah_lantai',
             'basement',

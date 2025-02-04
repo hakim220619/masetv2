@@ -286,25 +286,25 @@
 
 
     <div class="form-group" style="margin-top: 20px;">
-        <label for="tahun_dibangun_900" style="font-weight: bold;">Tahun Dibangun</label>
-        <select class="form-control" id="tahun_dibangun_900" name="tahun_dibangun_900"
-            onchange="toggleCheckboxes900(this, 'checkboxContainerDibangun900')">
+        <label for="tahun_dibangun_1100" style="font-weight: bold;">Tahun Dibangun</label>
+        <select class="form-control" id="tahun_dibangun_1100" name="tahun_dibangun_1100"
+            onchange="toggleCheckboxes1100(this, 'checkboxContainerDibangun1100')">
             <script>
-                const currentYear900 = new Date().getFullYear();
-                const startYear900 = 1900;
-                const endYear900 = currentYear900 + 7;
-                let options900 = '';
+                const currentYear1100 = new Date().getFullYear();
+                const startYear1100 = 1900;
+                const endYear1100 = currentYear1100 + 7;
+                let options1100 = '';
 
-                for (let year = startYear900; year <= endYear900; year++) {
-                    const selected = year === currentYear900 ? 'selected' : '';
-                    options900 += `<option value="${year}" ${selected}>${year}</option>`;
+                for (let year = startYear1100; year <= endYear1100; year++) {
+                    const selected = year === currentYear1100 ? 'selected' : '';
+                    options1100 += `<option value="${year}" ${selected}>${year}</option>`;
                 }
-                document.write(options900);
+                document.write(options1100);
             </script>
         </select>
     </div>
 
-    <div id="checkboxContainerDibangun900" style="display: none; margin-top: 20px;">
+    <div id="checkboxContainerDibangun1100" style="display: none; margin-top: 20px;">
         <label><input type="checkbox" name="keterangan" value="keterangan_pendamping_lokasi"> Keterangan pendamping
             lokasi / pemilik</label><br>
         <label><input type="checkbox" name="keterangan" value="imb"> IMB</label><br>
@@ -316,18 +316,18 @@
     <div class="form-group" style="margin-top: 20px;">
         <label for="tahun_renovasi" style="font-weight: bold;">Tahun Renovasi</label>
         <select class="form-control" id="tahun_renovasi" name="tahun_renovasi"
-            onchange="toggleCheckboxes900(this, 'checkboxContainerRenovasi900')">
+            onchange="toggleCheckboxes1100(this, 'checkboxContainerRenovasi1100')">
             <script>
-                const startYearRenovasi900 = 1960;
-                const endYearRenovasi900 = currentYear + 7;
-                let optionsRenovasi900 = '';
+                const startYearRenovasi1100 = 1960;
+                const endYearRenovasi1100 = currentYear1100 + 7;
+                let optionsRenovasi1100 = '';
 
-                for (let year = startYearRenovasi900; year <= endYearRenovasi900; year++) {
-                    const selected = year === currentYear ? 'selected' : '';
-                    optionsRenovasi900 += `<option value="${year}" ${selected}>${year}</option>`;
+                for (let year = startYearRenovasi1100; year <= endYearRenovasi1100; year++) {
+                    const selected = year === currentYear1100 ? 'selected' : '';
+                    optionsRenovasi1100 += `<option value="${year}" ${selected}>${year}</option>`;
                 }
 
-                document.write(optionsRenovasi900);
+                document.write(optionsRenovasi1100);
             </script>
         </select>
     </div>
@@ -358,7 +358,7 @@
             <option value="" selected>- Select -</option>
 
             @foreach ($dataBangunan['Kondisi Bangunan Secara Visual'] as $item)
-            <option value="{{ $item->label_value }}">{{ $item->label_option }}</option>
+                <option value="{{ $item->label_value }}">{{ $item->label_option }}</option>
             @endforeach
         </select>
     </div>

@@ -55,7 +55,8 @@
         <br>
         <small class="form-text text-muted">Pilih jenis bangunan yg sesuai untuk menentukan indeks
             lantai MAPPI.</small>
-        <select class="form-control" id="jenis_bangunan_indeks_lantai" name="jenis_bangunan_indeks_lantai">
+        <select class="form-control" id="jenis_bangunan_indeks_lantai" name="jenis_bangunan_indeks_lantai"
+            onchange="handleJenisBangunanIndekLantaiChange()">
             <option value="" selected>- Select -</option>
 
             @foreach ($dataBangunan['Jenis Bangunan (Indeks Lantai)'] as $item)

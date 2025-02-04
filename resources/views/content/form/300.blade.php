@@ -33,12 +33,13 @@
     }
 </style>
 
-<div id="300" style=" margin-top: 20px; display: none;">
-
+<div id="300" style="margin-top: 20px; display: none;">
     <div class="form-group" style="margin-top: 20px;">
-        <label for="jenis_bangunan_300" style="font-weight: bold;">Jenis Bangunan (Umur Ekonomis)</label>
-        <br><span>Pilih jenis bangunan yg sesuai untuk menentukan umur ekonomis bangunan.</span>
-        <select class="form-control" id="jenis_bangunan_300" name="jenis_bangunan" onchange="handleJenisBangunanChange()">
+        <label for="jenis_bangunan" style="font-weight: bold;">Jenis Bangunan (Umur Ekonomis)</label>
+        <br>
+        <small class="form-text text-muted" style="margin-top: 5px;">Pilih jenis bangunan yang
+            sesuai untuk menentukan umur ekonomis bangunan.</small>
+        <select class="form-control" id="jenis_bangunan" name="jenis_bangunan" onchange="handleJenisBangunanChange()">
             <option value="" selected>- Select -</option>
             @foreach ($dataBangunan['Jenis Bangunan (Umur Ekonomis)'] as $item)
                 <option value="{{ $item->label_value }}">{{ $item->label_option }}</option>
@@ -47,10 +48,11 @@
     </div>
 
     <div style="margin-top: 20px;">
-        <!-- Dropdown tambahan, ditampilkan kondisional -->
         <div id="Bangunan Rumah Tinggal" class="form-group" style="display: none;">
-            <label for="tipe_rumah_tinggal" style="font-weight: bold;">Tipe Rumah Tinggal (Umur Ekonomis)</label>
-            <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
+            <label for="jenis_bangunan_detail" style="font-weight: bold;">Tipe Rumah Tinggal (Umur Ekonomis)</label>
+            <br>
+            <small class="form-text text-muted" style="margin-top: 5px;">Pilih tipe bangunan spesifik untuk menentukan
+                umur ekonomis bangunan.</small>
             <select class="form-control" name="jenis_bangunan_detail[]">
                 <option value="" selected>- Select -</option>
                 @foreach ($dataBangunan['Tipe Rumah Tinggal (Umur Ekonomis)'] as $item)
@@ -61,7 +63,9 @@
 
         <div id="Bangunan Rumah Susun" class="form-group" style="display: none;">
             <label for="tipe_rusun" style="font-weight: bold;">Tipe Rusun (Umur Ekonomis)</label>
-            <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
+            <br>
+            <small class="form-text text-muted" style="margin-top: 5px;">Pilih tipe bangunan spesifik untuk menentukan
+                umur ekonomis bangunan.</small>
             <select class="form-control" name="jenis_bangunan_detail[]">
                 <option value="" selected>- Select -</option>
                 @foreach ($dataBangunan['Tipe Rusun (Umur Ekonomis)'] as $item)
@@ -72,7 +76,9 @@
 
         <div id="Bangunan Pusat Perbelanjaan" class="form-group" style="display: none;">
             <label for="tipe_perbelanjaan" style="font-weight: bold;">Tipe Pusat Perbelanjaan (Umur Ekonomis)</label>
-            <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
+            <br>
+            <small class="form-text text-muted" style="margin-top: 5px;">Pilih tipe bangunan spesifik untuk menentukan
+                umur ekonomis bangunan.</small>
             <select class="form-control" name="jenis_bangunan_detail[]">
                 <option value="" selected>- Select -</option>
                 @foreach ($dataBangunan['Tipe Pusat Perbelanjaan (Umur Ekonomis)'] as $item)
@@ -83,7 +89,9 @@
 
         <div id="Bangunan Kantor" class="form-group" style="display: none;">
             <label for="tipe_kantor" style="font-weight: bold;">Tipe Bangunan Kantor (Umur Ekonomis)</label>
-            <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
+            <br>
+            <small class="form-text text-muted" style="margin-top: 5px;">Pilih tipe bangunan spesifik untuk menentukan
+                umur ekonomis bangunan.</small>
             <select class="form-control" name="jenis_bangunan_detail[]">
                 <option value="" selected>- Select -</option>
                 @foreach ($dataBangunan['Tipe Bangunan Kantor (Umur Ekonomis)'] as $item)
@@ -95,7 +103,9 @@
         <div id="Bangunan Gedung Pemerintah" class="form-group" style="display: none;">
             <label for="tipe_gedung_pemerintah" style="font-weight: bold;">Tipe Gedung Pemerintah (Umur
                 Ekonomis)</label>
-            <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
+            <br>
+            <small class="form-text text-muted" style="margin-top: 5px;">Pilih tipe bangunan spesifik untuk menentukan
+                umur ekonomis bangunan.</small>
             <select class="form-control" name="jenis_bangunan_detail[]">
                 <option value="" selected>- Select -</option>
                 @foreach ($dataBangunan['Tipe Gedung Pemerintah (Umur Ekonomis)'] as $item)
@@ -106,7 +116,9 @@
 
         <div id="Bangunan Hotel/ Motel" class="form-group" style="display: none;">
             <label for="tipe_hotel_motel" style="font-weight: bold;">Tipe Hotel / Motel (Umur Ekonomis)</label>
-            <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
+            <br>
+            <small class="form-text text-muted" style="margin-top: 5px;">Pilih tipe bangunan spesifik untuk menentukan
+                umur ekonomis bangunan.</small>
             <select class="form-control" name="jenis_bangunan_detail[]">
                 <option value="" selected>- Select -</option>
                 @foreach ($dataBangunan['Tipe Hotel / Motel (Umur Ekonomis)'] as $item)
@@ -118,7 +130,9 @@
         <div id="Bangunan Industri dan Gudang" class="form-group" style="display: none;">
             <label for="tipe_industri_gudang" style="font-weight: bold;">Tipe Bangunan Industri dan Gudang (Umur
                 Ekonomis)</label>
-            <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
+            <br>
+            <small class="form-text text-muted" style="margin-top: 5px;">Pilih tipe bangunan spesifik untuk menentukan
+                umur ekonomis bangunan.</small>
             <select class="form-control" name="jenis_bangunan_detail[]">
                 <option value="" selected>- Select -</option>
                 @foreach ($dataBangunan['Tipe Bangunan Industri dan Gudang (Umur Ekonomis)'] as $item)
@@ -129,7 +143,9 @@
 
         <div id="Bangunan di Kawasan Perkebunan" class="form-group" style="display: none;">
             <label for="tipe_perkebunan" style="font-weight: bold;">Tipe Bangunan Perkebunan (Umur Ekonomis)</label>
-            <br><span>Pilih tipe bangunan spesifik untuk menentukan umur ekonomis bangunan.</span>
+            <br>
+            <small class="form-text text-muted" style="margin-top: 5px;">Pilih tipe bangunan spesifik untuk menentukan
+                umur ekonomis bangunan.</small>
             <select class="form-control" name="jenis_bangunan_detail[]">
                 <option value="" selected>- Select -</option>
                 @foreach ($dataBangunan['Tipe Bangunan Perkebunan (Umur Ekonomis)'] as $item)
@@ -140,7 +156,7 @@
     </div>
     <script>
         function handleJenisBangunanChange() {
-            const jenisBangunan = document.getElementById("jenis_bangunan_300").value;
+            const jenisBangunan = document.getElementById("jenis_bangunan").value;
 
             // Sembunyikan semua dropdown tambahan
             const dropdowns = document.querySelectorAll("[id^='Bangunan']");
@@ -164,8 +180,11 @@
 
 
     <div class="form-group" style="margin-top: 20px;">
-        <label for="jenis_bangunan_indek_lantai" style="font-weight: bold;">Jenis Bangunan (Indeks lantai)</label>
-        <select class="form-control" id="jenis_bangunan_indek_lantai" name="jenis_bangunan_indek_lantai"
+        <label for="jenis_bangunan_indeks_lantai" style="font-weight: bold;">Jenis Bangunan (Indeks Lantai)</label>
+        <br>
+        <small class="form-text text-muted">Pilih jenis bangunan yg sesuai untuk menentukan indeks
+            lantai MAPPI.</small>
+        <select class="form-control" id="jenis_bangunan_indeks_lantai" name="jenis_bangunan_indeks_lantai"
             onchange="handleJenisBangunanIndekLantaiChange()">
             <option value="" selected>- Select -</option>
             @foreach ($dataBangunan['Jenis Bangunan (Indeks Lantai)'] as $item)
@@ -248,7 +267,7 @@
 
     <script>
         function handleJenisBangunanIndekLantaiChange() {
-            const selectElement = document.getElementById("jenis_bangunan_indek_lantai");
+            const selectElement = document.getElementById("jenis_bangunan_indeks_lantai");
             const selectedValue = selectElement.value;
             console.log(selectedValue);
 
@@ -279,25 +298,25 @@
 
 
     <div class="form-group" style="margin-top: 20px;">
-        <label for="tahun_dibangun_800" style="font-weight: bold;">Tahun Dibangun</label>
-        <select class="form-control" id="tahun_dibangun_800" name="tahun_dibangun"
-            onchange="toggleCheckboxes800(this, 'checkboxContainerDibangun800')">
+        <label for="tahun_dibangun" style="font-weight: bold;">Tahun Dibangun</label>
+        <select class="form-control" id="tahun_dibangun" name="tahun_dibangun"
+            onchange="toggleCheckboxes300(this, 'checkboxContainerDibangun300')">
             <script>
-                const currentYear800 = new Date().getFullYear();
-                const startYear800 = 1900;
-                const endYear800 = currentYear800 + 7;
-                let options800 = '';
+                const currentYear300 = new Date().getFullYear();
+                const startYear300 = 1900;
+                const endYear300 = currentYear300 + 7;
+                let options300 = '';
 
-                for (let year = startYear800; year <= endYear800; year++) {
-                    const selected = year === currentYear800 ? 'selected' : '';
-                    options800 += `<option value="${year}" ${selected}>${year}</option>`;
+                for (let year = startYear300; year <= endYear300; year++) {
+                    const selected = year === currentYear300 ? 'selected' : '';
+                    options300 += `<option value="${year}" ${selected}>${year}</option>`;
                 }
-                document.write(options800);
+                document.write(options300);
             </script>
         </select>
     </div>
 
-    <div id="checkboxContainerDibangun800" style="display: none; margin-top: 20px;">
+    <div id="checkboxContainerDibangun300" style="display: none; margin-top: 20px;">
         <label><input type="checkbox" name="keterangan_tahun_dibangaun[]" value="Keterangan pendamping lokasi">
             Keterangan pendamping
             lokasi / pemilik</label><br>
@@ -312,23 +331,23 @@
     <div class="form-group" style="margin-top: 20px;">
         <label for="tahun_renovasi" style="font-weight: bold;">Tahun Renovasi</label>
         <select class="form-control" id="tahun_renovasi" name="tahun_renovasi"
-            onchange="toggleCheckboxes800(this, 'checkboxContainerRenovasi800')">
+            onchange="toggleCheckboxes300(this, 'checkboxContainerRenovasi300')">
             <script>
-                const startYearRenovasi800 = 1960;
-                const endYearRenovasi800 = currentYear + 7;
-                let optionsRenovasi800 = '';
+                const startYearRenovasi300 = 1960;
+                const endYearRenovasi300 = currentYear300 + 7;
+                let optionsRenovasi300 = '';
 
-                for (let year = startYearRenovasi800; year <= endYearRenovasi800; year++) {
-                    const selected = year === currentYear ? 'selected' : '';
-                    optionsRenovasi800 += `<option value="${year}" ${selected}>${year}</option>`;
+                for (let year = startYearRenovasi300; year <= endYearRenovasi300; year++) {
+                    const selected = year === currentYear300 ? 'selected' : '';
+                    optionsRenovasi300 += `<option value="${year}" ${selected}>${year}</option>`;
                 }
 
-                document.write(optionsRenovasi800);
+                document.write(optionsRenovasi300);
             </script>
         </select>
     </div>
 
-    <div id="checkboxContainerRenovasi800" style="display: none; margin-top: 20px;">
+    <div id="checkboxContainerRenovasi300" style="display: none; margin-top: 20px;">
         <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="Keterangan pendamping lokasi">
             Keterangan pendamping
             lokasi / pemilik</label><br>
@@ -346,7 +365,7 @@
     </div>
     <div class="form-group mb-3" style=" margin-top: 20px">
         <label for="bobot_renovasi"><b>Bobot Renovasi (%)</b></label>
-        <input type="text" id="bobot_renovasi" name="bobot_renovasi" class="form-control" min="0"
+        <input type="number" id="bobot_renovasi" name="bobot_renovasi" class="form-control" min="0"
             max="100" step="0.01">
     </div>
 
@@ -371,16 +390,16 @@
         <label for="luas_bangunan_terpotong" style="font-weight: bold;">Luas Bangunan Terpotong
             (m²)</label><br>
         <small class="form-text text-muted">Terpotong atau alasannya lainnya.</small>
-        <input type="text" class="form-control" id="luas_bangunan_terpotong" name="luas_bangunan_terpotong"
-            placeholder="Enter Area">
+        <input type="number" class="form-control" id="luas_bangunan_terpotong" name="luas_bangunan_terpotong"
+            placeholder="Enter Area" min="0" step="0.01">
     </div>
 
     <!-- Field Baru: Luas Bangunan menurut IMB (m²) -->
     <div class="form-group" style="margin-top: 20px;">
         <label for="luas_bangunan_imb" style="font-weight: bold;">Luas Bangunan menurut IMB
             (m²)</label>
-        <input type="text" class="form-control" id="luas_bangunan_imb" name="luas_bangunan_imb"
-            placeholder="Enter Area">
+        <input type="number" class="form-control" id="luas_bangunan_imb" name="luas_bangunan_imb"
+            placeholder="Enter Area" min="0" step="0.01">
     </div>
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Luas Pintu dan Jendela</b></label><br>

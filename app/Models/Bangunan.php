@@ -18,6 +18,7 @@ class Bangunan extends Model
         'judul_foto', // Added missing field
         'foto_lainnya', // Stored as JSON
         'bentuk_bangunan',
+        'grade_gudang',
         'jumlah_lantai',
         'basement',
         'konstruksi_bangunan',

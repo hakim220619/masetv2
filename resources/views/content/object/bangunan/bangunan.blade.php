@@ -271,11 +271,13 @@
                         const selectedValue = this.value;
 
                         // Sembunyikan semua form terlebih dahulu
-                        document.querySelectorAll('#dynamic-content > div').forEach(function(form) {
-                            form.style.display = 'none'; // Pastikan semua form disembunyikan
-                        });
+                        document.querySelectorAll(
+                            '[id^="100"], [id^="200"], [id^="300"], [id^="400"], [id^="500"], [id^="600"], [id^="700"], [id^="800"], [id^="900"], [id^="1000"], [id^="1100"]'
+                        ).forEach(
+                            form => {
+                                form.style.display = 'none';
+                            });
 
-                        // Tampilkan form sesuai pilihan dan sembunyikan yang lain
                         switch (selectedValue) {
                             case '100':
                                 document.getElementById('100').style.display = 'block';
@@ -291,6 +293,10 @@
                                 break;
                             case '500':
                                 document.getElementById('500').style.display = 'block';
+                                // Tambahkan inisialisasi untuk form 500
+                                if (typeof initForm500 === 'function') {
+                                    initForm500();
+                                }
                                 break;
                             case '600':
                                 document.getElementById('600').style.display = 'block';
@@ -311,89 +317,39 @@
                                 document.getElementById('1100').style.display = 'block';
                                 break;
                             default:
-                                // Tidak ada yang dipilih, semua tetap disembunyikan
-                                document.getElementById('100').style.display = 'none';
-                                document.getElementById('200').style.display = 'none';
-                                document.getElementById('300').style.display = 'none';
-                                document.getElementById('400').style.display = 'none';
-                                document.getElementById('500').style.display = 'none';
-                                document.getElementById('600').style.display = 'none';
-                                document.getElementById('700').style.display = 'none';
-                                document.getElementById('800').style.display = 'none';
-                                document.getElementById('900').style.display = 'none';
-                                document.getElementById('1000').style.display = 'none';
-                                document.getElementById('1100').style.display = 'none';
-                                break;
+                                // Sembunyikan semua form jika tidak ada yang dipilih
+                                document.querySelectorAll(
+                                        '[id^="100"], [id^="200"], [id^="300"], [id^="400"], [id^="500"], [id^="600"], [id^="700"], [id^="800"], [id^="900"], [id^="1000"], [id^="1100"]'
+                                    )
+                                    .forEach(form => {
+                                        form.style.display = 'none';
+                                    });
                         }
                     });
-                    document.getElementById('tipe_spek').addEventListener('change', function() {
-                        const selectedValue = this.value;
 
-                        // Sembunyikan semua form terlebih dahulu
-                        document.querySelectorAll('#dynamic-content > div').forEach(function(form) {
-                            form.style.display = 'none'; // Pastikan semua form disembunyikan
-                        });
+                    // Tambahkan fungsi inisialisasi untuk form 500
+                    function initForm500() {
+                        // Inisialisasi select grade gudang
+                        const gradeGudangSelect = document.getElementById('grade_gudang');
+                        if (gradeGudangSelect) {
+                            // Reset nilai
+                            gradeGudangSelect.value = '';
 
-                        // Reset semua form sebelum menampilkan yang dipilih
-                        document.querySelectorAll('#dynamic-content > div').forEach(function(form) {
-                            form.querySelectorAll('input, select, textarea').forEach(function(input) {
-                                // Handle different input types
-                                switch (input.type) {
-                                    case 'checkbox':
-                                    case 'radio':
-                                        input.checked = false; // Uncheck checkboxes and radio buttons
-                                        break;
-                                    case 'text':
-                                    case 'number':
-                                    case 'email':
-                                    case 'password':
-                                    case 'date':
-                                    case 'textarea':
-                                    case 'select-one':
-                                    case 'select-multiple':
-                                        input.value =
-                                            ''; // Reset text, number, email, password, date, textarea, and select inputs
-                                        break;
-                                    default:
-                                        // Handle other input types if necessary
-                                        break;
-                                }
-                            });
-                        });
+                            // Tampilkan select
+                            gradeGudangSelect.closest('.form-group').style.display = 'block';
 
-                        // Tampilkan form sesuai pilihan
-                        if (selectedValue && document.getElementById(selectedValue)) {
-                            document.getElementById(selectedValue).style.display = 'block';
+                            // Trigger change event untuk memastikan handler terpanggil
+                            gradeGudangSelect.dispatchEvent(new Event('change'));
                         }
-                    });
+                    }
+
+                    // Tambahkan event listener saat dokumen dimuat
                     document.addEventListener('DOMContentLoaded', function() {
-                        const tipeSpekDropdown = document.getElementById('tipe_spek');
-
-                        // Cek jika ada nilai yang tersimpan di localStorage
-                        const savedValue = localStorage.getItem('selectedTipeSpek');
-                        if (savedValue) {
-                            tipeSpekDropdown.value = savedValue;
-                            showFormBasedOnSelection(savedValue); // Tampilkan form sesuai nilai yang dipilih
-                        }
-
-                        // Simpan nilai yang dipilih ke localStorage dan tampilkan form yang sesuai
-                        tipeSpekDropdown.addEventListener('change', function() {
-                            const selectedValue = this.value;
-                            localStorage.setItem('selectedTipeSpek', selectedValue);
-                            showFormBasedOnSelection(selectedValue);
-                        });
-
-                        // Fungsi untuk menampilkan form yang sesuai
-                        function showFormBasedOnSelection(selectedValue) {
-                            // Sembunyikan semua form terlebih dahulu
-                            document.querySelectorAll('#dynamic-content > div').forEach(function(form) {
-                                form.style.display = 'none';
-                            });
-
-                            // Tampilkan form yang sesuai dengan nilai yang dipilih
-                            if (selectedValue && document.getElementById(selectedValue)) {
-                                document.getElementById(selectedValue).style.display = 'block';
-                            }
+                        // Cek apakah form 500 perlu ditampilkan berdasarkan nilai yang tersimpan
+                        const tipeSpekSelect = document.getElementById('tipe_spek');
+                        if (tipeSpekSelect && tipeSpekSelect.value === '500') {
+                            document.getElementById('500').style.display = 'block';
+                            initForm500();
                         }
                     });
                 </script>
@@ -401,14 +357,14 @@
                     @include('content.form.100')
                     @include('content.form.200')
                     @include('content.form.300')
-                    {{-- @include('content.form.400')
+                    @include('content.form.400')
                     @include('content.form.500')
                     @include('content.form.600')
                     @include('content.form.700')
                     @include('content.form.800')
                     @include('content.form.900')
                     @include('content.form.1000')
-                    @include('content.form.1100') --}}
+                    @include('content.form.1100')
                 </div>
 
 
@@ -421,8 +377,6 @@
                         }
                         document.getElementById(elementId).innerHTML = options;
                     }
-
-                    const currentYear = new Date().getFullYear();
                     generateYearOptions(1960, currentYear + 7, currentYear, 'tahun_renovasi');
                     generateYearOptions(1960, currentYear + 7, currentYear, 'tahun_renovasi_menengah');
                 </script>
