@@ -494,17 +494,17 @@
     </div>
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><b>Tipe Pondasi Eksisting - Rumah Tinggal Mewah 2 Lantai</b></label>
+        <label><b>Tipe Pondasi Eksisting - Bangunan Perkebunan (Semi Permanen) 1 Lantai</b></label>
         <div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Tapak Beton dan Batu Kali"
                     id="pondasi_batu_kali-400" name="tipe_pondasi_existing[]"
                     onchange="toggleBobotInput(this, 'bobot_pondasi_batu_kali_400')">
-                <label class="form-check-label" for="pondasi_batu_kali-400">Tapak Beton dan Batu Kali</label>
+                <label class="form-check-label" for="pondasi_batu_kali-400">Rollag Bata</label>
             </div>
         </div>
         <div id="bobot_pondasi_batu_kali_400" style="display: none; margin-top: 10px;">
-            <label for="bobot_batu_kali">Bobot Pondasi Tapak Beton dan Batu Kali(dalam persen %)</label>
+            <label for="bobot_batu_kali">Bobot Rollag Bata(dalam persen %)</label>
             <input type="text" class="form-control" id="bobot_batu_kali" name="bobot_batu_kali"
                 placeholder="Masukkan bobot dalam persen">
         </div>
@@ -547,18 +547,17 @@
     </div>
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><b>Tipe Struktur Eksisting - Rumah Tinggal Mewah 2 Lantai</b></label>
+        <label><b>Tipe Struktur Eksisting - Bangunan Perkebunan (Semi Permanen) 1 Lantai</b></label>
         <div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Beton Bertulang"
-                    id="struktur_beton_bertulang_400" name="tipe_struktur_existing[]"
+                <input class="form-check-input" type="checkbox" value="Kayu" id="struktur_beton_bertulang_400"
+                    name="tipe_struktur_existing[]"
                     onchange="toggleBobotInput(this, 'bobot_struktur_beton_bertulang_400')">
-                <label class="form-check-label" for="struktur_beton_bertulang_400">Beton
-                    Bertulang</label>
+                <label class="form-check-label" for="struktur_beton_bertulang_400">Kayu</label>
             </div>
         </div>
         <div id="bobot_struktur_beton_bertulang_400" style="display: none; margin-top: 10px;">
-            <label for="bobot_beton_bertulang">Bobot Struktur Beton Bertulang (dalam persen %)</label>
+            <label for="bobot_beton_bertulang">Bobot Struktur Kayu (dalam persen %)</label>
             <input type="text" class="form-control" id="bobot_beton_bertulang" name="bobot_beton_bertulang"
                 placeholder="Masukkan bobot dalam persen">
         </div>
@@ -599,67 +598,23 @@
     </div>
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><b>Tipe Rangka Atap Eksisting - Rumah Tinggal Mewah 2 Lantai</b></label>
+        <label><b>Tipe Rangka Atap Eksisting - Bangunan Perkebunan (Semi Permanen) 1 Lantai</b></label>
         <div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Dak Beton (Jika Pakai Balok)"
-                    id="atap_dak_beton_400" name="tipe_rangka_atap_existing[]">
-                <label class="form-check-label" for="atap_dak_beton_400">Dak Beton (Jika Pakai Balok)</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Kayu (Atap Genteng)"
-                    id="atap_kayu_genteng_400" name="tipe_rangka_atap_existing[]">
-                <label class="form-check-label" for="atap_kayu_genteng_400">Kayu (Atap Genteng)</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Kayu (Atap Asbes, Seng dll, Tanpa Reng)"
-                    id="atap_kayu_asbes_400" name="tipe_rangka_atap_existing[]">
-                <label class="form-check-label" for="atap_kayu_asbes_400">Kayu (Atap Asbes, Seng dll, Tanpa
+                <input class="form-check-input" type="checkbox" value="Kayu (Atap Asbes, Seng dll, Tanpa
+                    Reng)" id="kayu-400" name="tipe_rangka_atap_existing[]">
+                <label class="form-check-label" for="kayu-400">Kayu (Atap Asbes, Seng dll, Tanpa
                     Reng)</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Baja Ringan (Atap Genteng)"
-                    id="atap_baja_genteng_400" name="tipe_rangka_atap_existing[]">
-                <label class="form-check-label" for="atap_baja_genteng_400">Baja Ringan (Atap Genteng)</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Baja Ringan (Atap Asbes, Seng dll)"
-                    id="atap_baja_asbes_400" name="tipe_rangka_atap_existing[]">
-                <label class="form-check-label" for="atap_baja_asbes_400">Baja Ringan (Atap Asbes, Seng dll)</label>
             </div>
         </div>
     </div>
 
     <!-- Content sections for each option -->
-    <div id="content-atap_dak_beton_400" class="content" style="display: none;">
-        <label><b>Bobot Dak Beton (Jika Pakai Balok)</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_rangka_atap_existing[]">
-    </div>
-    <div id="content-atap_kayu_genteng_400" class="content" style="display: none;">
-        <label><b>Bobot Kayu (Atap Genteng)</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_rangka_atap_existing[]">
-    </div>
-
-    <div id="content-atap_kayu_asbes_400" class="content" style="display: none;">
+    <div id="content-kayu-400" class="content" style="display: none;">
         <label><b>Bobot Kayu (Atap Asbes, Seng dll, Tanpa Reng)</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_rangka_atap_existing[]">
     </div>
-
-    <div id="content-atap_baja_genteng_400" class="content" style="display: none;">
-        <label><b>Bobot Baja Ringan (Atap Genteng)</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_rangka_atap_existing[]">
-    </div>
-
-    <div id="content-atap_baja_asbes_400" class="content" style="display: none;">
-        <label><b>Bobot Baja Ringan (Atap Asbes, Seng dll)</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_rangka_atap_existing[]">
-    </div>
-
 
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Tipe Rangka Atap Existing</b></label><br>
@@ -697,101 +652,25 @@
 
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Penutup Atap Eksisting - Rumah Tinggal Mewah 2 Lantai</strong></label><br>
-        <input type="checkbox" id="dak-beton-400" name="tipe_atap" value="Dak Beton" class="form-check-input">
-        <label for="dak-beton-400" class="form-check-label">Dak Beton</label><br>
+        <label><strong>Tipe Penutup Atap Eksisting - Bangunan Perkebunan (Semi Permanen) 1 Lantai</strong></label><br>
+        <input type="checkbox" id="asbes-400" name="tipe_atap" value="Asbes" class="form-check-input">
+        <label for="asbes-400" class="form-check-label">Asbes</label><br>
 
-        <input type="checkbox" id="fibreglass-400" name="tipe_atap" value="Fibreglass" class="form-check-input">
-        <label for="fibreglass-400" class="form-check-label">Fibreglass</label><br>
+        <input type="checkbox" id="seng-gelombang-400" name="tipe_atap" value="Seng Gelombang" class="form-check-input">
+        <label for="seng-gelombang-400" class="form-check-label">Seng Gelombang</label><br>
 
-        <input type="checkbox" id="genteng-keramik-glazur-400" name="tipe_atap" value="Genteng Keramik Glazur"
-            class="form-check-input">
-        <label for="genteng-keramik-glazur-400" class="form-check-label">Genteng Keramik Glazur</label><br>
-
-        <input type="checkbox" id="genteng-tanah-liat-400" name="tipe_atap" value="Genteng Tanah Liat"
-            class="form-check-input">
-        <label for="genteng-tanah-liat-400" class="form-check-label">Genteng Tanah Liat</label><br>
-
-        <input type="checkbox" id="genteng-beton-400" name="tipe_atap" value="Genteng Beton"
-            class="form-check-input">
-        <label for="genteng-beton-400" class="form-check-label">Genteng Beton</label><br>
-
-        <input type="checkbox" id="genteng-metal-400" name="tipe_atap" value="Genteng Metal"
-            class="form-check-input">
-        <label for="genteng-metal-400" class="form-check-label">Genteng Metal</label><br>
-
-        <input type="checkbox" id="bitumen-400" name="tipe_atap" value="Bitumen (Ondulin/Onduvilla)"
-            class="form-check-input">
-        <label for="bitumen-400" class="form-check-label">Bitumen (Ondulin/Onduvilla)</label><br>
-
-        <input type="checkbox" id="tegola-400" name="tipe_atap" value="Tegola" class="form-check-input">
-        <label for="tegola-400" class="form-check-label">Tegola</label><br>
-
-        <input type="checkbox" id="sirap-400" name="tipe_atap" value="Sirap" class="form-check-input">
-        <label for="sirap-400" class="form-check-label">Sirap</label><br>
-
-        <input type="checkbox" id="spandek-400" name="tipe_atap" value="Spandek" class="form-check-input">
-        <label for="spandek-400" class="form-check-label">Spandek</label><br>
-
-        <input type="checkbox" id="pvc-400" name="tipe_atap" value="PVC" class="form-check-input">
-        <label for="pvc-400" class="form-check-label">PVC</label><br>
     </div>
 
 
 
     <!-- Content sections for each option -->
-    <div id="content-dak-beton-400" class="content" style="display: none;">
-        <label><b>Bobot Dak Beton</b></label><br>
+    <div id="content-asbes-400" class="content" style="display: none;">
+        <label><b>Bobot Asbes</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai">
     </div>
-    <div id="content-fibreglass-400" class="content" style="display: none;">
-        <label><b>Bobot Fibreglass</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai">
-    </div>
-    <div id="content-genteng-keramik-glazur-400" class="content" style="display: none;">
-        <label><b>Bobot Genteng Keramik Glazur</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai">
-    </div>
-    <div id="content-genteng-tanah-liat-400" class="content" style="display: none;">
-        <label><b>Bobot Genteng Tanah Liat</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai">
-    </div>
-    <div id="content-genteng-beton-400" class="content" style="display: none;">
-        <label><b>Bobot Genteng Beton</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai">
-    </div>
-    <div id="content-genteng-metal-400" class="content" style="display: none;">
-        <label><b>Bobot Genteng Metal</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai">
-    </div>
-    <div id="content-bitumen-400" class="content" style="display: none;">
-        <label><b>Bobot Bitumen (Ondulin/Onduvilla)</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai">
-    </div>
-    <div id="content-tegola-400" class="content" style="display: none;">
-        <label><b>Bobot Tegola</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai">
-    </div>
-    <div id="content-sirap-400" class="content" style="display: none;">
-        <label><b>Bobot Sirap</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai">
-    </div>
-    <div id="content-spandek-400" class="content" style="display: none;">
-        <label><b>Bobot Spandek</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai">
-    </div>
-    <div id="content-pvc-400" class="content" style="display: none;">
-        <label><b>Bobot PVC</b></label><br>
+    <div id="content-seng-gelombang-400" class="content" style="display: none;">
+        <label><b>Bobot Seng Gelombang</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai">
     </div>
@@ -833,70 +712,17 @@
     </div>
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Plafon Eksisting - Rumah Tinggal Mewah 2 Lantai</strong></label><br>
-        <input type="checkbox" id="akustik-plafon-400" name="tipe_plafon_existing[]" value="Akustik"
-            class="form-check-input">
-        <label for="akustik-plafon-400" class="form-check-label">Akustik</label><br>
-
-        <input type="checkbox" id="beton-ekspose-plafon-400" name="tipe_plafon_existing[]" value="Beton Ekspose"
-            class="form-check-input">
-        <label for="beton-ekspose-plafon-400" class="form-check-label">Beton Ekspose</label><br>
-
-        <input type="checkbox" id="grc-plafon-400" name="tipe_plafon_existing[]" value="GRC"
-            class="form-check-input">
-        <label for="grc-plafon-400" class="form-check-label">GRC</label><br>
-
-        <input type="checkbox" id="gypsum-plafon-400" name="tipe_plafon_existing[]" value="Gypsum"
-            class="form-check-input">
-        <label for="gypsum-plafon-400" class="form-check-label">Gypsum</label><br>
-
-        <input type="checkbox" id="lambresering-plafon-400" name="tipe_plafon_existing[]" value="Lambresering"
-            class="form-check-input">
-        <label for="lambresering-plafon-400" class="form-check-label">Lambresering</label><br>
+        <label><strong>Tipe Plafon Eksisting - Bangunan Perkebunan (Semi Permanen) 1 Lantai</strong></label><br>
 
         <input type="checkbox" id="triplek-plafon-400" name="tipe_plafon_existing[]" value="Triplek"
             class="form-check-input">
         <label for="triplek-plafon-400" class="form-check-label">Triplek</label><br>
-
-        <input type="checkbox" id="pvc-plafon-400" name="tipe_plafon_existing[]" value="PVC (Shunda Plafon dll)"
-            class="form-check-input">
-        <label for="pvc-plafon-400" class="form-check-label">PVC (Shunda Plafon dll)</label><br>
     </div>
 
 
     <!-- Content sections for each option -->
-    <div id="content-akustik-plafon-400" class="content" style="display: none;">
-        <label><b>Bobot Akustik</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_plafon_existing[]">
-    </div>
-    <div id="content-beton-ekspose-plafon-400" class="content" style="display: none;">
-        <label><b>Bobot Beton Ekspose</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_plafon_existing[]">
-    </div>
-    <div id="content-grc-plafon-400" class="content" style="display: none;">
-        <label><b>Bobot GRC</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_plafon_existing[]">
-    </div>
-    <div id="content-gypsum-plafon-400" class="content" style="display: none;">
-        <label><b>Bobot Gypsum</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_plafon_existing[]">
-    </div>
-    <div id="content-lambresering-plafon-400" class="content" style="display: none;">
-        <label><b>Bobot Lambresering</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_plafon_existing[]">
-    </div>
     <div id="content-triplek-plafon-400" class="content" style="display: none;">
         <label><b>Bobot Triplek</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_plafon_existing[]">
-    </div>
-    <div id="content-pvc-plafon-400" class="content" style="display: none;">
-        <label><b>Bobot PVC (Shunda Plafon dll)</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_plafon_existing[]">
     </div>
@@ -938,44 +764,15 @@
 
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Dinding Eksisting - Rumah Tinggal Mewah 2 Lantai</strong></label><br>
+        <label><strong>Tipe Dinding Eksisting - Bangunan Perkebunan (Semi Permanen) 1 Lantai</strong></label><br>
 
-        <input type="checkbox" id="bata-merah-dinding-400" name="tipe_tipe_dinding_existing[]" value="Bata Merah"
+        <input type="checkbox" id="papan-partisi-triplek-dicat-400" name="tipe_tipe_dinding_existing[]" value="Papan dan Partisi Triplek Dicat"
             class="form-check-input">
-        <label for="bata-merah-dinding-400" class="form-check-label">Bata Merah</label><br>
+        <label for="papan-partisi-triplek-dicat-400" class="form-check-label">Papan dan Partisi Triplek Dicat</label><br>
 
-        <input type="checkbox" id="bata-ringan-dinding-400" name="tipe_tipe_dinding_existing[]" value="Bata Ringan"
-            class="form-check-input">
-        <label for="bata-ringan-dinding-400" class="form-check-label">Bata Ringan</label><br>
-
-        <input type="checkbox" id="partisi-gypsumboard-dinding-400" name="tipe_tipe_dinding_existing[]"
-            value="Partisi Gypsumboard 2 Muka" class="form-check-input">
-        <label for="partisi-gypsumboard-dinding-400" class="form-check-label">Partisi Gypsumboard 2 Muka</label><br>
-
-        <input type="checkbox" id="rooster-bata-dinding-400" name="tipe_tipe_dinding_existing[]"
-            value="Rooster Bata" class="form-check-input">
-        <label for="rooster-bata-dinding-400" class="form-check-label">Rooster Bata</label><br>
     </div>
-    <div id="content-bata-merah-dinding-400" class="content" style="display: none;">
-        <label><b>Bobot Bata Merah</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_dinding_existing[]">
-    </div>
-    <div id="content-bata-ringan-dinding-400" class="content" style="display: none;">
-        <label><b>Bobot Bata Ringan</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_dinding_existing[]">
-    </div>
-    <div id="content-partisi-gypsumboard-dinding-400" class="content" style="display: none;">
-        <label><b>Bobot Partisi Gypsumboard 2 Muka</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_dinding_existing[]">
-    </div>
-    <div id="content-rooster-bata-dinding-400" class="content" style="display: none;">
-        <label><b>Bobot Rooster Bata</b></label><br>
+    <div id="content-papan-partisi-triplek-dicat-400" class="content" style="display: none;">
+        <label><b>Bobot Papan dan Partisi Triplek Dicat</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai"
             name="bobot_tipe_dinding_existing[]">
@@ -1017,7 +814,8 @@
     </div>
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Pelapis Dinding Eksisting - Rumah Tinggal Mewah 2 Lantai</strong></label><br>
+        <label><strong>Tipe Pelapis Dinding Eksisting - Bangunan Perkebunan (Semi Permanen) 1
+                Lantai</strong></label><br>
 
         <input type="checkbox" id="cat-dinding-400" name="tipe_tipe_pelapis_dinding_existing[]"
             value="Dilapis Cat (Diplester dan Diaci)" class="form-check-input">
@@ -1051,9 +849,6 @@
             value="Dilapis Batu Alam" class="form-check-input">
         <label for="batu-alam-dinding-400" class="form-check-label">Dilapis Batu Alam</label><br>
     </div>
-
-
-
 
     <!-- Content sections for each option -->
     <div id="content-cat-dinding-400" class="content" style="display: none;">
@@ -1150,63 +945,19 @@
 
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Pintu & Jendela Eksisting - Rumah Tinggal Mewah 2 Lantai</strong></label><br>
-
-        <input type="checkbox" id="pintu-kayu-panil-400" name="tipe_tipe_pintu_jendela_existing[]"
-            value="Pintu Kayu Panil" class="form-check-input">
-        <label for="pintu-kayu-panil-400" class="form-check-label">Pintu Kayu Panil</label><br>
+        <label><strong>Tipe Pintu & Jendela Eksisting - Bangunan Perkebunan (Semi Permanen) 1
+                Lantai</strong></label><br>
 
         <input type="checkbox" id="pintu-kayu-dobel-400" name="tipe_tipe_pintu_jendela_existing[]"
             value="Pintu Kayu Dobel Triplek/HPL" class="form-check-input">
         <label for="pintu-kayu-dobel-400" class="form-check-label">Pintu Kayu Dobel Triplek/HPL</label><br>
 
-        <input type="checkbox" id="pintu-kaca-aluminium-400" name="tipe_tipe_pintu_jendela_existing[]"
-            value="Pintu Kaca Rk Aluminium" class="form-check-input">
-        <label for="pintu-kaca-aluminium-400" class="form-check-label">Pintu Kaca Rk Aluminium</label><br>
-
         <input type="checkbox" id="jendela-kaca-kayu-400" name="tipe_tipe_pintu_jendela_existing[]"
             value="Jendela Kaca Rk Kayu" class="form-check-input">
         <label for="jendela-kaca-kayu-400" class="form-check-label">Jendela Kaca Rk Kayu</label><br>
 
-        <input type="checkbox" id="jendela-kaca-aluminium-400" name="tipe_tipe_pintu_jendela_existing[]"
-            value="Jendela Kaca Rk Aluminium" class="form-check-input">
-        <label for="jendela-kaca-aluminium-400" class="form-check-label">Jendela Kaca Rk Aluminium</label><br>
-
-        <input type="checkbox" id="pintu-km-upvc-400" name="tipe_tipe_pintu_jendela_existing[]"
-            value="Pintu KM UPVC/PVC" class="form-check-input">
-        <label for="pintu-km-upvc-400" class="form-check-label">Pintu KM UPVC/PVC</label><br>
-
-        <input type="checkbox" id="pintu-kaca-tempered-floor-hinge-400" name="tipe_tipe_pintu_jendela_existing[]"
-            value="Pintu Kaca Tempered Floor Hinge" class="form-check-input">
-        <label for="pintu-kaca-tempered-floor-hinge-400" class="form-check-label">Pintu Kaca Tempered Floor
-            Hinge</label><br>
-
-        <input type="checkbox" id="pintu-garasi-kayu-400" name="tipe_tipe_pintu_jendela_existing[]"
-            value="Pintu Garasi Kayu" class="form-check-input">
-        <label for="pintu-garasi-kayu-400" class="form-check-label">Pintu Garasi Kayu</label><br>
-
-        <input type="checkbox" id="pintu-garasi-besi-400" name="tipe_tipe_pintu_jendela_existing[]"
-            value="Pintu Garasi Besi" class="form-check-input">
-        <label for="pintu-garasi-besi-400" class="form-check-label">Pintu Garasi Besi</label><br>
-
-        <input type="checkbox" id="jendela-kaca-stopsol-8mm-curtain-wall-400"
-            name="tipe_tipe_pintu_jendela_existing[]" value="Jendela Kaca Stopsol 8 mm Rangka Curtain Wall"
-            class="form-check-input">
-        <label for="jendela-kaca-stopsol-8mm-curtain-wall-400" class="form-check-label">Jendela Kaca Stopsol 8 mm
-            Rangka Curtain Wall</label><br>
-
-        <input type="checkbox" id="jendela-kaca-tempered-frameless-400" name="tipe_tipe_pintu_jendela_existing[]"
-            value="Jendela Kaca Tempered Frameless" class="form-check-input">
-        <label for="jendela-kaca-tempered-frameless-400" class="form-check-label">Jendela Kaca Tempered
-            Frameless</label><br>
     </div>
 
-    <div id="content-pintu-kayu-panil-400" class="content" style="display: none;">
-        <label><b>Bobot Pintu Kayu Panil</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_pintu_jendela_existing[]">
-    </div>
 
     <div id="content-pintu-kayu-dobel-400" class="content" style="display: none;">
         <label><b>Bobot Pintu Kayu Dobel Triplek/HPL</b></label><br>
@@ -1215,64 +966,8 @@
             name="bobot_tipe_pintu_jendela_existing[]">
     </div>
 
-    <div id="content-pintu-kaca-aluminium-400" class="content" style="display: none;">
-        <label><b>Bobot Pintu Kaca Rk Aluminium</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_pintu_jendela_existing[]">
-    </div>
-
     <div id="content-jendela-kaca-kayu-400" class="content" style="display: none;">
         <label><b>Bobot Jendela Kaca Rk Kayu</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_pintu_jendela_existing[]">
-    </div>
-
-    <div id="content-jendela-kaca-aluminium-400" class="content" style="display: none;">
-        <label><b>Bobot Jendela Kaca Rk Aluminium</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_pintu_jendela_existing[]">
-    </div>
-
-    <div id="content-pintu-km-upvc-400" class="content" style="display: none;">
-        <label><b>Bobot Pintu KM UPVC/PVC</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_pintu_jendela_existing[]">
-    </div>
-
-    <div id="content-pintu-kaca-tempered-floor-hinge-400" class="content" style="display: none;">
-        <label><b>Bobot Pintu Kaca Tempered Floor Hinge</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_pintu_jendela_existing[]">
-    </div>
-
-    <div id="content-pintu-garasi-kayu-400" class="content" style="display: none;">
-        <label><b>Bobot Pintu Garasi Kayu</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_pintu_jendela_existing[]">
-    </div>
-
-    <div id="content-pintu-garasi-besi-400" class="content" style="display: none;">
-        <label><b>Bobot Pintu Garasi Besi</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_pintu_jendela_existing[]">
-    </div>
-
-    <div id="content-jendela-kaca-stopsol-8mm-curtain-wall-400" class="content" style="display: none;">
-        <label><b>Bobot Jendela Kaca Stopsol 8 mm Rangka Curtain Wall</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_pintu_jendela_existing[]">
-    </div>
-
-    <div id="content-jendela-kaca-tempered-frameless-400" class="content" style="display: none;">
-        <label><b>Bobot Jendela Kaca Tempered Frameless</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai"
             name="bobot_tipe_pintu_jendela_existing[]">
@@ -1316,128 +1011,37 @@
     </div>
 
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><strong>Tipe Lantai Eksisting - Rumah Tinggal Mewah 2 Lantai</strong></label><br>
-        <input type="checkbox" id="granit-homogenous-tile-400" class="form-check-input"
-            name="tipe_tipe_lantai_existing[]" value="Granit/Homogenous Tile">
-        <label for="granit-homogenous-tile-400" class="form-check-label">Granit/Homogenous Tile</label><br>
-
-        <input type="checkbox" id="granit-impor-400" class="form-check-input" name="tipe_tipe_lantai_existing[]"
-            value="Granit Impor">
-        <label for="granit-impor-400" class="form-check-label">Granit Impor</label><br>
-
-        <input type="checkbox" id="karpet-400" class="form-check-input" name="tipe_tipe_lantai_existing[]"
-            value="Karpet">
-        <label for="karpet-400" class="form-check-label">Karpet</label><br>
+        <label><strong>Tipe Lantai Eksisting - Bangunan Perkebunan (Semi Permanen) 1 Lantai</strong></label><br>
 
         <input type="checkbox" id="keramik-400" class="form-check-input" name="tipe_tipe_lantai_existing[]"
             value="Keramik">
         <label for="keramik-400" class="form-check-label">Keramik</label><br>
 
-        <input type="checkbox" id="marmer-lokal-400" class="form-check-input" name="tipe_tipe_lantai_existing[]"
-            value="Marmer Lokal">
-        <label for="marmer-lokal-400" class="form-check-label">Marmer Lokal</label><br>
-
-        <input type="checkbox" id="marmer-impor-400" class="form-check-input" name="tipe_tipe_lantai_existing[]"
-            value="Marmer Impor">
-        <label for="marmer-impor-400" class="form-check-label">Marmer Impor</label><br>
-
-        <input type="checkbox" id="mozaik-400" class="form-check-input" name="tipe_tipe_lantai_existing[]"
-            value="Mozaik">
-        <label for="mozaik-400" class="form-check-label">Mozaik</label><br>
-
         <input type="checkbox" id="rabat-beton-400" class="form-check-input" name="tipe_tipe_lantai_existing[]"
             value="Rabat Beton (Semen Ekspose)">
         <label for="rabat-beton-400" class="form-check-label">Rabat Beton (Semen Ekspose)</label><br>
 
-        <input type="checkbox" id="parkit-jati-400" class="form-check-input" name="tipe_tipe_lantai_existing[]"
-            value="Parkit Jati">
-        <label for="parkit-jati-400" class="form-check-label">Parkit Jati</label><br>
-
-        <input type="checkbox" id="teraso-400" class="form-check-input" name="tipe_tipe_lantai_existing[]"
-            value="Teraso">
-        <label for="teraso-400" class="form-check-label">Teraso</label><br>
-
-        <input type="checkbox" id="vynil-400" class="form-check-input" name="tipe_tipe_lantai_existing[]"
-            value="Vynil">
-        <label for="vynil-400" class="form-check-label">Vynil</label><br>
+        <input type="checkbox" id="papan-kayu-400" class="form-check-input" name="tipe_tipe_lantai_existing[]"
+            value="Papan Kayu">
+        <label for="papan-kayu-400" class="form-check-label">Papan Kayu</label><br>
     </div>
 
     <!-- Content sections for each option -->
-    <div id="content-granit-homogenous-tile-400" class="content" style="display: none;">
-        <label><b>Bobot Granit/Homogenous Tile</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_lantai_existing[]">
-    </div>
-
-    <div id="content-granit-impor-400" class="content" style="display: none;">
-        <label><b>Bobot Granit Impor</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_lantai_existing[]">
-    </div>
-
-    <div id="content-karpet-400" class="content" style="display: none;">
-        <label><b>Bobot Karpet</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_lantai_existing[]">
-    </div>
-
     <div id="content-keramik-400" class="content" style="display: none;">
         <label><b>Bobot Keramik</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_lantai_existing[]">
+        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_tipe_lantai_existing[]">
     </div>
-
-    <div id="content-marmer-lokal-400" class="content" style="display: none;">
-        <label><b>Bobot Marmer Lokal</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_lantai_existing[]">
-    </div>
-
-    <div id="content-marmer-impor-400" class="content" style="display: none;">
-        <label><b>Bobot Marmer Impor</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_lantai_existing[]">
-    </div>
-
-    <div id="content-mozaik-400" class="content" style="display: none;">
-        <label><b>Bobot Mozaik</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_lantai_existing[]">
-    </div>
-
     <div id="content-rabat-beton-400" class="content" style="display: none;">
         <label><b>Bobot Rabat Beton (Semen Ekspose)</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_lantai_existing[]">
+        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_tipe_lantai_existing[]">
     </div>
 
-    <div id="content-parkit-jati-400" class="content" style="display: none;">
-        <label><b>Bobot Parkit Jati</b></label><br>
+    <div id="content-papan-kayu-400" class="content" style="display: none;">
+        <label><b>Bobot Papan Kayu</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_lantai_existing[]">
-    </div>
-
-    <div id="content-teraso-400" class="content" style="display: none;">
-        <label><b>Bobot Teraso</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_lantai_existing[]">
-    </div>
-
-    <div id="content-vynil-400" class="content" style="display: none;">
-        <label><b>Bobot Vynil</b></label><br>
-        <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai"
-            name="bobot_tipe_lantai_existing[]">
+        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_tipe_lantai_existing[]">
     </div>
 
     <div class="form-group mb-3" style="margin-top: 20px;">

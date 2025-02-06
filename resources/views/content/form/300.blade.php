@@ -265,7 +265,6 @@
         document.getElementById('jenis_bangunan_indeks_lantai_300').addEventListener('change', function() {
             // Sembunyikan semua detail
             document.querySelectorAll('.lantai-detail').forEach(el => el.style.display = 'none');
-            console.log('test');
 
             // Tampilkan detail yang sesuai
             const selectedValue = this.value;
