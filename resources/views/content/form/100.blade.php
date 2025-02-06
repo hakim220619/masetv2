@@ -1370,10 +1370,8 @@
         addPondasiBtn.style.display = 'none';
 
         showPondasiBtn.addEventListener('click', function() {
-            console.log('asd');
-
             pondasiContainer.style.display = 'block'; // Tampilkan container
-            showPondasiBtn.remove();
+            showPondasiBtn.remove(); // Hapus tombol show
             addPondasiBtn.style.display = 'inline-block'; // Tampilkan tombol "Tambah Area"
         });
 

@@ -378,7 +378,6 @@
                         document.getElementById(elementId).innerHTML = options;
                     }
                     generateYearOptions(1960, currentYear + 7, currentYear, 'tahun_renovasi');
-                    generateYearOptions(1960, currentYear + 7, currentYear, 'tahun_renovasi_menengah');
                 </script>
                 <div class="form-group mb-3">
                     <label for="penggunaan_bangunan"><b>Penggunaan Bangunan Saat Ini</b></label>

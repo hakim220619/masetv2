@@ -46,7 +46,7 @@
 
     <!-- Jenis Bangunan -->
     <div class="form-group" style="margin-top: 20px;">
-        <label for="jenis_bangunan" style="font-weight: bold;">Jenis (Umur Ekonomis)</label>
+        <label for="jenis_bangunan" style="font-weight: bold;">Jenis Bangunan (Umur Ekonomis)</label>
         <br>
         <small class="form-text text-muted">Pilih jenis bangunan yg sesuai untuk menentukan umur ekonomis
             bangunan.</small>
@@ -124,15 +124,15 @@
         <label for="tahun_dibangun" style="font-weight: bold;">Tahun Dibangun</label>
         <select class="form-control" id="tahun_dibangun" name="tahun_dibangun">
             <script>
-                const currentYear = new Date().getFullYear();
-                const startYear = 1900;
-                const endYear = currentYear + 7;
+                const currentYear500 = new Date().getFullYear();
+                const startYear500 = 1900;
+                const endYear500 = currentYear500 + 7;
 
-                let options = '';
-                for (let year = startYear; year <= endYear; year++) {
-                    options += `<option value="${year}">${year}</option>`;
+                let options500 = '';
+                for (let year = startYear500; year <= endYear500; year++) {
+                    options500 += `<option value="${year}">${year}</option>`;
                 }
-                document.write(options);
+                document.write(options500);
             </script>
         </select>
     </div>

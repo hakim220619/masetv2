@@ -64,20 +64,20 @@
     </div>
     <div class="form-group" style="margin-top: 20px;">
         <label for="tahun_dibangun" style="font-weight: bold;">Tahun Dibangun</label>
-        <select class="form-control" id="tahun_dibangun" name="tahun_dibangun"
+        <select class="form-control" id="tahun_dibangun_200" name="tahun_dibangun"
             onchange="toggleCheckboxesMenengah(this, 'checkboxContainerDibangunMenengah')">
             <script>
-                const currentYearMenengah = new Date().getFullYear();
-                const startYearMenengah = 1900;
-                const endYearMenengah = currentYearMenengah + 7;
-                let optionsMenengah = '';
+                const currentYear200 = new Date().getFullYear();
+                const startYear200 = 1900;
+                const endYear200 = currentYear200 + 7;
+                let options200 = '';
 
-                for (let year = startYearMenengah; year <= endYearMenengah; year++) {
-                    const selected = year === currentYearMenengah ? 'selected' : '';
-                    optionsMenengah += `<option value="${year}" ${selected}>${year}</option>`;
+                for (let year = startYear200; year <= endYear200; year++) {
+                    const selected = year === currentYear200 ? 'selected' : '';
+                    options200 += `<option value="${year}" ${selected}>${year}</option>`;
                 }
 
-                document.getElementById('tahun_dibangun').innerHTML = optionsMenengah;
+                document.getElementById('tahun_dibangun_200').innerHTML = options200;
             </script>
         </select>
     </div>
@@ -94,7 +94,7 @@
 
     <div class="form-group" style="margin-top: 20px;">
         <label for="tahun_renovasi" style="font-weight: bold;">Tahun Renovasi</label>
-        <select class="form-control" id="tahun_renovasi" name="tahun_renovasi"
+        <select class="form-control" id="tahun_renovasi_200" name="tahun_renovasi"
             onchange="toggleCheckboxesMenengah(this, 'checkboxContainerRenovasiMenengah')">
             <script>
                 const currentYearMenengah = new Date().getFullYear();
@@ -107,7 +107,7 @@
                     optionsRenovasiMenengah += `<option value="${year}" ${selected}>${year}</option>`;
                 }
 
-                document.getElementById('tahun_renovasi').innerHTML = optionsRenovasiMenengah;
+                document.getElementById('tahun_renovasi_200').innerHTML = optionsRenovasiMenengah;
             </script>
         </select>
     </div>
@@ -279,13 +279,12 @@
         <label><b>Tipe Pondasi Eksisting - Rumah Tinggal Menengah 2 Lantai</b></label>
         <div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Batu Kali" id="pondasi_batu_kali"
-                    name="tipe_pondasi_existing[]"
-                    onchange="toggleBobotInput(this, 'bobot_pondasi_batu_kali_menengah')">
-                <label class="form-check-label" for="pondasi_batu_kali">Batu Kali</label>
+                <input class="form-check-input" type="checkbox" value="Batu Kali" id="pondasi_batu_kali_200"
+                    name="tipe_pondasi_existing[]" onchange="toggleBobotInput(this, 'bobot_pondasi_batu_kali_200')">
+                <label class="form-check-label" for="pondasi_batu_kali_200">Batu Kali</label>
             </div>
         </div>
-        <div id="bobot_pondasi_batu_kali_menengah" style="display: none; margin-top: 10px;">
+        <div id="bobot_pondasi_batu_kali_200" style="display: none; margin-top: 10px;">
             <label for="bobot_batu_kali">Bobot Pondasi Batu Kali (dalam persen %)</label>
             <input type="text" class="form-control" id="bobot_batu_kali" name="bobot_tipe_pondasi_existing[]"
                 placeholder="Masukkan bobot dalam persen">
@@ -335,12 +334,12 @@
         <div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Beton Bertulang"
-                    name="tipe_struktur_existing[]" id="struktur_beton_bertulang"
-                    onchange="toggleBobotInput(this, 'bobot_struktur_beton_bertulang_menengah')">
-                <label class="form-check-label" for="struktur_beton_bertulang">Beton Bertulang</label>
+                    name="tipe_struktur_existing[]" id="struktur_beton_bertulang_200"
+                    onchange="toggleBobotInput(this, 'bobot_struktur_beton_bertulang_200')">
+                <label class="form-check-label" for="struktur_beton_bertulang_200">Beton Bertulang</label>
             </div>
         </div>
-        <div id="bobot_struktur_beton_bertulang_menengah" style="display: none; margin-top: 10px;">
+        <div id="bobot_struktur_beton_bertulang_200" style="display: none; margin-top: 10px;">
             <label for="bobot_beton_bertulang">Bobot Struktur Beton Bertulang (dalam persen %)</label>
             <input type="text" class="form-control" id="bobot_beton_bertulang"
                 name="bobot_tipe_struktur_existing[]" placeholder="Masukkan bobot dalam persen" min="0"
@@ -1316,13 +1315,11 @@
 
     function toggleBobotInput(checkbox, targetId) {
         const bobotInput = document.getElementById(targetId);
-        const bobotValueInput = bobotInput.querySelector('input'); // Ambil input bobot
 
         if (checkbox.checked) {
             bobotInput.style.display = 'block';
         } else {
             bobotInput.style.display = 'none';
-            bobotValueInput.value = ''; // Set nilai input ke kosong
         }
     }
 </script>
@@ -1336,10 +1333,8 @@
         addPondasiBtn.style.display = 'none';
 
         showPondasiBtn.addEventListener('click', function() {
-            console.log('asd');
-
             pondasiContainer.style.display = 'block'; // Tampilkan container
-            showPondasiBtn.remove();
+            showPondasiBtn.remove(); // Hapus tombol show
             addPondasiBtn.style.display = 'inline-block'; // Tampilkan tombol "Tambah Area"
         });
 
@@ -1540,59 +1535,34 @@
     //     }
     // });
 
-    document.getElementById('tambah-foto').addEventListener('click', function(e) {
-        e.preventDefault();
-        const container = document.querySelector('.foto-lainnya-container');
-        const newItem = document.createElement('div');
-        newItem.classList.add('foto-item');
-        newItem.innerHTML = `
-            <div style="flex: 1;">
-                <label>Judul Foto</label>
-                <input type="text" name="judul_foto[]" class="form-control" placeholder="Judul Foto">
-            </div>
-            &nbsp;&nbsp;
-            <div style="flex: 1;">
-                <label>Upload Foto</label>
-                <input type="file" name="foto_lainnya[]" class="form-control">
-            </div>
-            <div class="foto-controls">
-             <div class="row">
-                <button type="button" class="tambah-foto">+</button>
-                <button type="button" class="hapus-foto">-</button>
-            </div>
-            </div>
-        `;
-        container.appendChild(newItem);
-    });
-
     // Menggunakan event delegation untuk tombol tambah dan hapus
-    document.querySelector('.foto-lainnya-container').addEventListener('click', function(e) {
-        if (e.target.classList.contains('tambah-foto')) {
-            const container = document.querySelector('.foto-lainnya-container');
-            const newItem = document.createElement('div');
-            newItem.classList.add('foto-item');
-            newItem.innerHTML = `
-                <div style="flex: 1;">
-                    <label>Judul Foto</label>
-                    <input type="text" name="judul_foto[]" class="form-control" placeholder="Judul Foto">
-                </div>
-                &nbsp;&nbsp;
-                <div style="flex: 1;">
-                    <label>Upload Foto</label>
-                    <input type="file" name="foto_lainnya[]" class="form-control">
-                </div>
-                <div class="foto-controls">
-                 <div class="row">
-                    <button type="button" class="tambah-foto">+</button>
-                    <button type="button" class="hapus-foto">-</button>
-                </div>
-                </div>
-            `;
-            container.appendChild(newItem);
-        }
+    // document.querySelector('.foto-lainnya-container').addEventListener('click', function(e) {
+    //     if (e.target.classList.contains('tambah-foto')) {
+    //         const container = document.querySelector('.foto-lainnya-container');
+    //         const newItem = document.createElement('div');
+    //         newItem.classList.add('foto-item');
+    //         newItem.innerHTML = `
+    //             <div style="flex: 1;">
+    //                 <label>Judul Foto</label>
+    //                 <input type="text" name="judul_foto[]" class="form-control" placeholder="Judul Foto">
+    //             </div>
+    //             &nbsp;&nbsp;
+    //             <div style="flex: 1;">
+    //                 <label>Upload Foto</label>
+    //                 <input type="file" name="foto_lainnya[]" class="form-control">
+    //             </div>
+    //             <div class="foto-controls">
+    //              <div class="row">
+    //                 <button type="button" class="tambah-foto">+</button>
+    //                 <button type="button" class="hapus-foto">-</button>
+    //             </div>
+    //             </div>
+    //         `;
+    //         container.appendChild(newItem);
+    //     }
 
-        if (e.target.classList.contains('hapus-foto')) {
-            e.target.closest('.foto-item').remove();
-        }
-    });
+    //     if (e.target.classList.contains('hapus-foto')) {
+    //         e.target.closest('.foto-item').remove();
+    //     }
+    // });
 </script>

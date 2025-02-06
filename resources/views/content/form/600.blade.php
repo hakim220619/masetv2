@@ -67,10 +67,17 @@
         <label for="tahun_dibangun" style="font-weight: bold;">Tahun Dibangun</label>
         <select class="form-control" id="tahun_dibangun" name="tahun_dibangun">
             <script>
-                const currentYear = new Date().getFullYear();
-                for (let year = 1900; year <= currentYear + 7; year++) {
-                    document.write(`<option value="${year}">${year}</option>`);
+                const currentYear600 = new Date().getFullYear();
+                const startYear600 = 1900;
+                const endYear600 = currentYear600 + 7;
+                let options600 = '';
+
+                for (let year = startYear600; year <= endYear600; year++) {
+                    const selected = year === currentYear600 ? 'selected' : '';
+                    options600 += `<option value="${year}" ${selected}>${year}</option>`;
                 }
+
+                document.write(options600);
             </script>
         </select>
     </div>
