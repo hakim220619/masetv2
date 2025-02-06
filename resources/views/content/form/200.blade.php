@@ -281,7 +281,7 @@
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Batu Kali" id="pondasi_batu_kali_200"
                     name="tipe_pondasi_existing[]" onchange="toggleBobotInput(this, 'bobot_pondasi_batu_kali_200')">
-                <label class="form-check-label" for="pondasi_batu_kali_200">Batu Kali</label>
+                <label class="form-check-label" for="pondasi_batu_kali_200">Tapak Beton dan Batu Kali</label>
             </div>
         </div>
         <div id="bobot_pondasi_batu_kali_200" style="display: none; margin-top: 10px;">
@@ -330,7 +330,7 @@
     </div>
     <!-- Tipe Struktur Existing -->
     <div class="form-group mb-3" style="margin-top: 20px;">
-        <label><b>Tipe Struktur Eksisting - Rumah Tinggal Sederhana 1 Lantai</b></label>
+        <label><b>Tipe Struktur Eksisting - Rumah Tinggal Menengah 2 Lantai</b></label>
         <div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Beton Bertulang"
@@ -416,7 +416,6 @@
     </div>
 
     <!-- Content sections for each option -->
-    <!-- Content sections for each option -->
     <div id="content-atap_dak_beton_menengah" class="content" style="display: none;">
         <label><b>Bobot Dak Beton (Jika Pakai Balok)</b></label><br>
         <span>Dalam satuan persen (%)</span>
@@ -494,6 +493,10 @@
             class="form-check-input">
         <label for="fibreglass" class="form-check-label">Fibreglass</label><br>
 
+        <input type="checkbox" id="genteng-keramik-menengah" name="tipe_penutup_atap_existing[]"
+            value="Genteng Keramik" class="form-check-input">
+        <label for="genteng-keramik" class="form-check-label">Genteng Keramik Glazur</label><br>
+
         <input type="checkbox" id="genteng-tanah-liat-menengah" name="tipe_penutup_atap_existing[]"
             value="Genteng Tanah Liat" class="form-check-input">
         <label for="genteng-tanah-liat" class="form-check-label">Genteng Tanah Liat</label><br>
@@ -506,9 +509,21 @@
             class="form-check-input">
         <label for="genteng-metal" class="form-check-label">Genteng Metal</label><br>
 
+        <input type="checkbox" id="bitumen-menengah" name="tipe_penutup_atap_existing[]"
+            value="Bitumen (Ondulin/ Onduvilla)" class="form-check-input">
+        <label for="bitumen" class="form-check-label">Bitumen (Ondulin/ Onduvilla) </label><br>
+
+        <input type="checkbox" id="tegola-menengah" name="tipe_penutup_atap_existing[]" value="Tegola"
+            class="form-check-input">
+        <label for="tegola" class="form-check-label">Tegola</label><br>
+
         <input type="checkbox" id="seng-gelombang-menengah" name="tipe_penutup_atap_existing[]"
             value="Seng Gelombang" class="form-check-input">
         <label for="seng-gelombang" class="form-check-label">Seng Gelombang</label><br>
+
+        <input type="checkbox" id="sirap-menengah" name="tipe_penutup_atap_existing[]" value="Sirap"
+            class="form-check-input">
+        <label for="sirap" class="form-check-label">Sirap</label><br>
 
         <input type="checkbox" id="spandek-menengah" name="tipe_penutup_atap_existing[]" value="Spandek"
             class="form-check-input">
@@ -538,6 +553,12 @@
         <input type="text" class="form-control" placeholder="Masukkan nilai"
             name="bobot_penutup_atap_existing[]">
     </div>
+    <div id="content-genteng-keramik-menengah" class="content" style="display: none;">
+        <label><b>Bobot Genteng Keramik</b></label><br>
+        <span>Dalam satuan persen (%)</span>
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_penutup_atap_existing[]">
+    </div>
     <div id="content-genteng-tanah-liat-menengah" class="content" style="display: none;">
         <label><b>Bobot Genteng Tanah Liat</b></label><br>
         <span>Dalam satuan persen (%)</span>
@@ -556,12 +577,35 @@
         <input type="text" class="form-control" placeholder="Masukkan nilai"
             name="bobot_penutup_atap_existing[]">
     </div>
+
+    <div id="content-bitumen-menengah" class="content" style="display: none;">
+        <label><b>Bobot Bitumen (Ondulin/ Onduvilla)</b></label><br>
+        <span>Dalam satuan persen (%)</span>
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_penutup_atap_existing[]">
+    </div>
+
+    <div id="content-tegola-menengah" class="content" style="display: none;">
+        <label><b>Bobot Tegola</b></label><br>
+        <span>Dalam satuan persen (%)</span>
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_penutup_atap_existing[]">
+    </div>
+
     <div id="content-seng-gelombang-menengah" class="content" style="display: none;">
         <label><b>Bobot Seng Gelombang</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai"
             name="bobot_penutup_atap_existing[]">
     </div>
+
+    <div id="content-sirap-menengah" class="content" style="display: none;">
+        <label><b>Bobot Sirap</b></label><br>
+        <span>Dalam satuan persen (%)</span>
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_penutup_atap_existing[]">
+    </div>
+
     <div id="content-spandek-menengah" class="content" style="display: none;">
         <label><b>Bobot Spandek</b></label><br>
         <span>Dalam satuan persen (%)</span>
@@ -610,6 +654,126 @@
         <button type="button" class="btn btn-primary btn-sm mt-2"
             id="show-penutup-atap-existing-menengah-btn">Tambah Tipe
             Penutup Atap Existing</button>
+    </div>
+    <div class="form-group mb-3" style="margin-top: 20px;">
+        <label><strong>Tipe Plafon Eksisting - Rumah Tinggal Menengah 2 Lantai</strong></label><br>
+        <input type="checkbox" id="akustik-menengah" name="tipe_penutup_atap_existing[]" value="Akustik"
+            class="form-check-input">
+        <label for="akustik" class="form-check-label">Akustik</label><br>
+
+        <input type="checkbox" id="asbes-menengah" name="tipe_penutup_atap_existing[]" value="Asbes"
+            class="form-check-input">
+        <label for="asbes" class="form-check-label">Asbes</label><br>
+
+        <input type="checkbox" id="beton-ekspose-menengah" name="tipe_penutup_atap_existing[]" value="Beton Ekspose"
+            class="form-check-input">
+        <label for="beton-ekspose" class="form-check-label">Beton Ekspose</label><br>
+
+        <input type="checkbox" id="grc-menengah" name="tipe_penutup_atap_existing[]" value="GRC"
+            class="form-check-input">
+        <label for="grc" class="form-check-label">GRC</label><br>
+
+        <input type="checkbox" id="gypsum-menengah" name="tipe_penutup_atap_existing[]" value="Gypsum"
+            class="form-check-input">
+        <label for="gypsum" class="form-check-label">Gypsum</label><br>
+
+        <input type="checkbox" id="lambresering-menengah" name="tipe_penutup_atap_existing[]" value="Lambresering"
+            class="form-check-input">
+        <label for="lambresering" class="form-check-label">Lambresering</label><br>
+
+        <input type="checkbox" id="triplek-menengah" name="tipe_penutup_atap_existing[]" value="Triplek"
+            class="form-check-input">
+        <label for="triplek" class="form-check-label">Triplek</label><br>
+
+        <input type="checkbox" id="pvc-menengah" name="tipe_penutup_atap_existing[]" value="PVC"
+            class="form-check-input">
+        <label for="pvc" class="form-check-label">PVC (Shunda Plafon dll) </label><br>
+    </div>
+
+    <!-- Content sections for each option -->
+    <div id="content-akustik-menengah" class="content" style="display: none;">
+        <label><b>Bobot Akustik</b></label><br>
+        <span>Dalam satuan persen (%)</span>
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_penutup_atap_existing[]">
+    </div>
+    <div id="content-asbes-menengah" class="content" style="display: none;">
+        <label><b>Bobot Asbes</b></label><br>
+        <span>Dalam satuan persen (%)</span>
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_penutup_atap_existing[]">
+    </div>
+    <div id="content-beton-ekspose-menengah" class="content" style="display: none;">
+        <label><b>Bobot Beton Ekspose</b></label><br>
+        <span>Dalam satuan persen (%)</span>
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_penutup_atap_existing[]">
+    </div>
+    <div id="content-grc-menengah" class="content" style="display: none;">
+        <label><b>Bobot GRC</b></label><br>
+        <span>Dalam satuan persen (%)</span>
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_penutup_atap_existing[]">
+    </div>
+    <div id="content-gypsum-menengah" class="content" style="display: none;">
+        <label><b>Bobot Gypsum</b></label><br>
+        <span>Dalam satuan persen (%)</span>
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_penutup_atap_existing[]">
+    </div>
+    <div id="content-lambresering-menengah" class="content" style="display: none;">
+        <label><b>Bobot Lambresering</b></label><br>
+        <span>Dalam satuan persen (%)</span>
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_penutup_atap_existing[]">
+    </div>
+    <div id="content-triplek-menengah" class="content" style="display: none;">
+        <label><b>Bobot Triplek</b></label><br>
+        <span>Dalam satuan persen (%)</span>
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_plafon_existing[]">
+    </div>
+    <div id="content-pvc-menengah" class="content" style="display: none;">
+        <label><b>Bobot PVC</b></label><br>
+        <span>Dalam satuan persen (%)</span>
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_plafon_existing[]">
+    </div>
+
+    <div class="form-group mb-3" style="margin-top: 20px;">
+        <label><b>Tambah Tipe Plafon Existing</b></label><br>
+        <div id="plafon-existing-menengah-container" style="display: none;">
+            <div class="area-lainnya-container-menengah" data-type="plafon-existing-menengah">
+                <div class="area-item d-flex align-items-center mb-2">
+                    <div style="flex: 1; margin-right: 10px;">
+                        <label>Tipe Material</label>
+                        <select name="tipe_plafon_existing[]" class="form-control">
+                            <option value="" selected="selected" data-i="0">- Select -
+                            </option>
+                            @foreach ($dataBangunan['Tambah Tipe Penutup Atap Existing'] as $item)
+                                <option value="{{ $item->label_value }}">{{ $item->label_option }} </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div style="flex: 1; margin-right: 10px;">
+                        <label>Bobot (%)</label>
+                        <input type="text" name="bobot_plafon_existing[]" class="form-control"
+                            placeholder="Masukkan bobot">
+                    </div>
+                    <div class="area-controls">
+                        <div class="row">
+                            <button type="button" class="add-area-btn">+</button>
+                            <button type="button" class="remove-area-btn">-</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm mt-2 add-area-link"
+                data-type="plafon-existing-menengah">Tambah Tipe Plafon Existing</button>
+        </div>
+        <button type="button" class="btn btn-primary btn-sm mt-2"
+            id="show-plafon-existing-menengah-btn">Tambah Tipe
+            Plafon Existing</button>
     </div>
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><strong>Tipe Dinding Eksisting - Rumah Tinggal Menengah 2 Lantai</strong></label><br>
@@ -925,22 +1089,26 @@
     <div id="content-keramik-menengah" class="content" style="display: none;">
         <label><b>Bobot Keramik</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_tipe_lantai_existing[]">
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_tipe_lantai_existing[]">
     </div>
     <div id="content-rabat-beton-menengah" class="content" style="display: none;">
         <label><b>Bobot Rabat Beton (Semen Ekspose)</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_tipe_lantai_existing[]">
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_tipe_lantai_existing[]">
     </div>
     <div id="content-teraso-menengah" class="content" style="display: none;">
         <label><b>Bobot Teraso</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_tipe_lantai_existing[]">
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_tipe_lantai_existing[]">
     </div>
     <div id="content-vynil-menengah" class="content" style="display: none;">
         <label><b>Bobot Vynil</b></label><br>
         <span>Dalam satuan persen (%)</span>
-        <input type="text" class="form-control" placeholder="Masukkan nilai" name="bobot_tipe_lantai_existing[]">
+        <input type="text" class="form-control" placeholder="Masukkan nilai"
+            name="bobot_tipe_lantai_existing[]">
     </div>
     <div id="content-papan-kayu-menengah" class="content" style="display: none;">
         <label><b>Bobot Papan Kayu</b></label><br>
