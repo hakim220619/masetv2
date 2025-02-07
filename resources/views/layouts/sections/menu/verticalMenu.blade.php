@@ -9,7 +9,7 @@
         <div class="app-brand demo">
             <a href="#" class="app-brand-link">
                 <span class="app-brand-logo demo">
-                    @include('_partials.macros', ['height' => 20])
+                    @include('_partials.macros', ['height' => 70, 'rounded'])
                 </span>
                 <span class="app-brand-text demo menu-text fw-bold">{{ Helper::aplikasi()->pemilik }}</span>
             </a>

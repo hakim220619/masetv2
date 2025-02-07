@@ -39,7 +39,7 @@ $configData = Helper::appClasses();
       <div class="wizard-icons wizard-icons-example mt-2">
         
         <div class="content">
-          <form method="POST" action="{{ route('add_pembanding_tanah_kosong') }}" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('laporan-bangunan-store') }}" enctype="multipart/form-data">
             <!-- Account Details -->
             @csrf
             <div id="account-details" class="content">
@@ -80,7 +80,7 @@ $configData = Helper::appClasses();
                       <th>Tanggal</th>
                     </tr>
                     <tr>
-                      <td><input type="text" id="no_laporan" name="no_laporan" class="form-control" /></td>
+                      <td><input type="text" id="no_laporan_penilaian" name="no_laporan_penilaian" class="form-control" /></td>
                       <td><input type="date" id="tgl_laporan_penilaian" name="tgl_laporan_penilaian" class="form-control"/></td>
                     </tr>
                   </table>
@@ -93,7 +93,7 @@ $configData = Helper::appClasses();
                       <th>Tanggal</th>
                     </tr>
                     <tr>
-                      <td><input type="text" id="no_kontrak" name="no_kontrak" class="form-control" /></td>
+                      <td><input type="text" id="no_dokumen_kontrak" name="no_dokumen_kontrak" class="form-control" /></td>
                       <td><input type="date" id="tgl_dokumen_kontrak" name="tgl_dokumen_kontrak" class="form-control"/></td>
                     </tr>
                   </table>
@@ -106,16 +106,16 @@ $configData = Helper::appClasses();
                       <th>Key KCP</th>
                     </tr>
                     <tr>
-                      <td><input type="text" id="nama_instansi" name="nama_instansi" class="form-control" /></td>
-                      <td><input type="text" id="key_kcp" name="key_kcp" class="form-control"/></td>
+                      <td><input type="text" id="nama_instansi_pemberi_tugas" name="nama_instansi_pemberi_tugas" class="form-control" /></td>
+                      <td><input type="text" id="key_kcp_pemberi_tugas" name="key_kcp_pemberi_tugas" class="form-control"/></td>
                     </tr>
                     <tr>
                         <th>Contact Person Penugasan</th>
                         <th>Telepon</th>
                     </tr>
                     <tr>
-                        <td><input type="text" id="cp_penugasan" name="cp_penugasan" class="form-control" /></td>
-                        <td><input type="text" id="telepon" name="telepon" class="form-control"/></td>
+                        <td><input type="text" id="cp_penugasan_pemberi_tugas" name="cp_penugasan_pemberi_tugas" class="form-control" /></td>
+                        <td><input type="text" id="telepon_pemberi_tugas" name="telepon_pemberi_tugas" class="form-control"/></td>
                     </tr>
                   </table>
                 </div>
@@ -151,13 +151,13 @@ $configData = Helper::appClasses();
                       </tr>
                       <tr>
                         <td><input type="text" id="nama_debitur" name="nama_debitur" class="form-control" /></td>
-                        <td><input type="text" id="nama_yang_dihubungi" name="nama_yang_dihubungi" class="form-control"/></td>
+                        <td><input type="text" id="nama_yang_dihubungi_debitur" name="nama_yang_dihubungi_debitur" class="form-control"/></td>
                       </tr>
                       <tr>
                           <th>No Telepon</th>
                       </tr>
                       <tr>
-                          <td><input type="text" id="no_telepon" name="no_telepon" class="form-control" /></td>
+                          <td><input type="text" id="no_telepon_debitur" name="no_telepon_debitur" class="form-control" /></td>
                       </tr>
                     </table>
                 </div>
@@ -169,8 +169,8 @@ $configData = Helper::appClasses();
                         <th>Pilih Nama / Instansi</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="nama_instansi" name="nama_instansi" class="form-control" /></td>
-                        <td><input type="text" id="pilih_nama_instansi" name="pilih_nama_instansi" class="form-control"/></td>
+                        <td><input type="text" id="nama_instansi_pengguna_laporan" name="nama_instansi_pengguna_laporan" class="form-control" /></td>
+                        <td><input type="text" id="pilih_nama_instansi_pengguna_laporan" name="pilih_nama_instansi_pengguna_laporan" class="form-control"/></td>
                       </tr>
                       <tr>
                           <th>Alamat</th>
@@ -190,7 +190,7 @@ $configData = Helper::appClasses();
                 </div>
                 <div class="form-group">
                     <label for="kategori_kredit"><b>Kategori Kredit</b></label>
-                    <input type="text" id="kategori_kredit" name="kategori_kredit" class="form-control" value="Konsumer (KPR)" readonly>
+                    <input type="text" id="kategori_kredit" name="kategori_kredit" class="form-control" placeholder="Konsumer (KPR)" >
                 </div>                
                 <div class="form-group">
                     <label for="kategori_kredit_bca"><b>Kategori Kredit (khusus BCA)</b></label>
@@ -202,11 +202,11 @@ $configData = Helper::appClasses();
                 </div>                
                 <div class="form-group">
                     <label for="tipe_jaminan"><b>Tipe Jaminan</b></label>
-                    <input type="text" id="tipe_jaminan" name="tipe_jaminan" class="form-control" value="Rumah Tinggal" readonly>
+                    <input type="text" id="tipe_jaminan" name="tipe_jaminan" class="form-control" placeholder="Rumah Tinggal" >
                 </div>                
                 <div class="form-group">
                     <label for="lokasi_cabang_bank"><b>Lokasi Cabang Bank</b></label>
-                    <input type="text" id="lokasi_cabang_bank" name="lokasi_cabang_bank" class="form-control" value="BCA KCU Madiun" readonly>
+                    <input type="text" id="lokasi_cabang_bank" name="lokasi_cabang_bank" class="form-control" placeholder="BCA KCU Madiun" >
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                     <label class="form-label" for="bap_final">BAP / Final</label>
@@ -216,8 +216,8 @@ $configData = Helper::appClasses();
                         <th>Pilih Nama / Instansi</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="kota" name="kota" class="form-control" /></td>
-                        <td><input type="text" id="pilih_nama_instansi_daerah" name="pilih_nama_instansi_daerah" class="form-control"/></td>
+                        <td><input type="text" id="kota_bap_final" name="kota_bap_final" class="form-control" /></td>
+                        <td><input type="text" id="pilih_nama_instansi_daerah_bap_final" name="pilih_nama_instansi_daerah_bap_final" class="form-control"/></td>
                       </tr>
                     </table>
                 </div>
@@ -248,38 +248,38 @@ $configData = Helper::appClasses();
                         <th>Kabupaten</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="nama_instansi" name="nama_instansi" class="form-control" /></td>
-                        <td><input type="text" id="pilih_nama_instansi" name="pilih_nama_instansi" class="form-control"/></td>
+                        <td><input type="text" id="provinsi_obyek" name="provinsi_obyek" class="form-control" /></td>
+                        <td><input type="text" id="kabupaten_lokasi_obyek" name="kabupaten_lokasi_obyek" class="form-control"/></td>
                       </tr>
                       <tr>
                         <th>Kecamatan</th>
                         <th>Kelurahan</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="nama_instansi" name="nama_instansi" class="form-control" /></td>
-                        <td><input type="text" id="pilih_nama_instansi" name="pilih_nama_instansi" class="form-control"/></td>
+                        <td><input type="text" id="kecamatan_lokasi_obyek" name="kecamatan_lokasi_obyek" class="form-control" /></td>
+                        <td><input type="text" id="kelurahan_lokasi_obyek" name="kelurahan_lokasi_obyek" class="form-control"/></td>
                       </tr>
                       <tr>
                         <th>Jalan/No/RT/RW</th>
                         <th>Kode Pos</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="nama_instansi" name="nama_instansi" class="form-control" /></td>
-                        <td><input type="text" id="pilih_nama_instansi" name="pilih_nama_instansi" class="form-control"/></td>
+                        <td><input type="text" id="rt_rw_lokasi_obyek" name="rt_rw_lokasi_obyek" class="form-control" /></td>
+                        <td><input type="text" id="kode_pos_rt_rw_lokasi_obyek" name="kode_pos_rt_rw_lokasi_obyek" class="form-control"/></td>
                       </tr>
                       <tr>
                         <th>Wilayah Administratif Tingkat II (Laporan)</th>
                         <th>Wilayah Administratif Tingkat IV (Laporan)</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="nama_instansi" name="nama_instansi" class="form-control" /></td>
-                        <td><input type="text" id="pilih_nama_instansi" name="pilih_nama_instansi" class="form-control"/></td>
+                        <td><input type="text" id="wil_admint2_lokasi_obyek" name="wil_admint2_lokasi_obyek" class="form-control" /></td>
+                        <td><input type="text" id="wil_admint4_lokasi_obyek" name="wil_admint4_lokasi_obyek" class="form-control"/></td>
                       </tr>
                       <tr>
                           <th>Alamat Lengkap (Laporan)</th>
                       </tr>
                       <tr>
-                          <td><textarea type="text" id="alamat" name="alamat" class="form-control" > </textarea></td>
+                          <td><textarea type="text" id="alamat_lokasi_obyek" name="alamat_lokasi_obyek" class="form-control" > </textarea></td>
                       </tr>
                     </table>
                 </div>  
@@ -300,14 +300,14 @@ $configData = Helper::appClasses();
                         <th>Sumber Data Suku Bunga</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="nama_instansi" name="nama_instansi" class="form-control" /></td>
-                        <td><input type="text" id="pilih_nama_instansi" name="pilih_nama_instansi" class="form-control"/></td>
+                        <td><input type="text" id="tingkat_suku_bunga_suku_bunga_pinjaman" name="tingkat_suku_bunga_suku_bunga_pinjaman" class="form-control" /></td>
+                        <td><input type="text" id="sumberdata_suku_bunga_pinjaman" name="sumberdata_suku_bunga_pinjaman" class="form-control"/></td>
                       </tr>
                       <tr>
                         <th>Screenshot Sumber Data Suku Bunga (jika ada)</th>
                       </tr>
                       <tr>
-                        <td><input type="file" id="nama_instansi" name="nama_instansi" class="form-control" /></td>
+                        <td><input type="file" id="screenshoot_sumber_suku_bunga_pinjaman" name="screenshoot_sumber_suku_bunga_pinjaman" class="form-control" /></td>
                       </tr>
                     </table>
                 </div>              
@@ -319,24 +319,24 @@ $configData = Helper::appClasses();
                         <th>Quality Control / Quality Assurance</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="nama_instansi" name="nama_instansi" class="form-control" /></td>
-                        <td><input type="text" id="pilih_nama_instansi" name="pilih_nama_instansi" class="form-control"/></td>
+                        <td><input type="text" id="admin_tim_penilai" name="admin_tim_penilai" class="form-control" /></td>
+                        <td><input type="text" id="tim_penilai_qc" name="tim_penilai_qc" class="form-control"/></td>
                       </tr>
                       <tr>
                         <th>Penilai 1</th>
                         <th>Penilai 2</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="nama_instansi" name="nama_instansi" class="form-control" /></td>
-                        <td><input type="text" id="pilih_nama_instansi" name="pilih_nama_instansi" class="form-control"/></td>
+                        <td><input type="text" id="penilai1_tim_penilai" name="penilai1_tim_penilai" class="form-control" /></td>
+                        <td><input type="text" id="penilai2_tim_penilai" name="penilai2_tim_penilai" class="form-control"/></td>
                       </tr>
                       <tr>
                         <th>Reviewer</th>
                         <th>Penanggung Jawab (Penilai Publik)</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="nama_instansi" name="nama_instansi" class="form-control" /></td>
-                        <td><input type="text" id="pilih_nama_instansi" name="pilih_nama_instansi" class="form-control"/></td>
+                        <td><input type="text" id="reviewer_tim_penilai" name="reviewer_tim_penilai" class="form-control" /></td>
+                        <td><input type="text" id="pj_tim_penilai" name="pj_tim_penilai" class="form-control"/></td>
                       </tr>
                     </table>
                 </div>  
@@ -348,14 +348,14 @@ $configData = Helper::appClasses();
                         <th>Telepon</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="nama_instansi" name="nama_instansi" class="form-control" /></td>
-                        <td><input type="text" id="pilih_nama_instansi" name="pilih_nama_instansi" class="form-control"/></td>
+                        <td><input type="text" id="nama_pendamping_inpeksi" name="nama_pendamping_inpeksi" class="form-control" /></td>
+                        <td><input type="text" id="telepon_pendamping_inpeksi" name="telepon_pendamping_inpeksi" class="form-control"/></td>
                       </tr>
                       <tr>
                         <th>Status</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="nama_instansi" name="nama_instansi" class="form-control" /></td>
+                        <td><input type="text" id="status_pendamping_inpeksi" name="status_pendamping_inpeksi" class="form-control" /></td>
                       </tr>
                       <tr>
                     </table>
