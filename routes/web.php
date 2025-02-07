@@ -246,6 +246,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/laporan_penilaian/tanah_kosong', [LaporanPenilaianController::class, 'laporan_tanah_kosong'])->name('laporan-tanah_kosong');
     Route::get('/laporan_penilaian/retail', [LaporanPenilaianController::class, 'laporan_retail'])->name('laporan-retail');
     Route::post('/laporan_penilaian/retail/store', [LaporanPenilaianController::class, 'store_laporan_retail'])->name('laporan-retail-store');
+    Route::post('/laporan_penilaian/tanah_kosong/store', [LaporanPenilaianController::class, 'store_laporan_tanah_kosong'])->name('laporan-tanah_kosong-store');
+    Route::post('/laporan_penilaian/bangunan/store', [LaporanPenilaianController::class, 'store_laporan_bangunan'])->name('laporan-bangunan-store');
 
     // masterdata
     // Jenis Dokumen Hak Tanah

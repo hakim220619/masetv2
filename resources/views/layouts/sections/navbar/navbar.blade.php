@@ -148,7 +148,7 @@ $navbarDetached = $navbarDetached ?? '';
                         <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                             <div class="avatar-online">
                                 <img width="30px" height="10px"
-                                    src="{{ asset('') }}storage/images/users/{{ request()->user()->image }}" alt
+                                    src="{{ asset('') }}storage/images/logo/userss.jpg" alt
                                     class="h-auto rounded-circle">
                             </div>
                         </a>

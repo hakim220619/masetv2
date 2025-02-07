@@ -93,7 +93,7 @@ $configData = Helper::appClasses();
                       <th>Tanggal</th>
                     </tr>
                     <tr>
-                      <td><input type="text" id="no_doumen_kontrak" name="no_doumen_kontrak" class="form-control" /></td>
+                      <td><input type="text" id="no_dokumen_kontrak" name="no_dokumen_kontrak" class="form-control" /></td>
                       <td><input type="date" id="tgl_dokumen_kontrak" name="tgl_dokumen_kontrak" class="form-control"/></td>
                     </tr>
                   </table>
@@ -190,7 +190,7 @@ $configData = Helper::appClasses();
                 </div>
                 <div class="form-group">
                     <label for="kategori_kredit"><b>Kategori Kredit</b></label>
-                    <input type="text" id="kategori_kredit" name="kategori_kredit" class="form-control" value="Konsumer (KPR)">
+                    <input type="text" id="kategori_kredit" name="kategori_kredit" class="form-control"  placeholder="Konsumer (KPR)">
                 </div>                
                 <div class="form-group">
                     <label for="kategori_kredit_bca"><b>Kategori Kredit (khusus BCA)</b></label>
@@ -202,11 +202,11 @@ $configData = Helper::appClasses();
                 </div>                
                 <div class="form-group">
                     <label for="tipe_jaminan"><b>Tipe Jaminan</b></label>
-                    <input type="text" id="tipe_jaminan" name="tipe_jaminan" class="form-control" value="Rumah Tinggal">
+                    <input type="text" id="tipe_jaminan" name="tipe_jaminan" class="form-control" placeholder="Rumah Tinggal">
                 </div>                
                 <div class="form-group">
                     <label for="lokasi_cabang_bank"><b>Lokasi Cabang Bank</b></label>
-                    <input type="text" id="lokasi_cabang_bank" name="lokasi_cabang_bank" class="form-control" value="BCA KCU Madiun">
+                    <input type="text" id="lokasi_cabang_bank" name="lokasi_cabang_bank" class="form-control" placeholder="BCA KCU Madiun">
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                     <label class="form-label" for="bap_final">BAP / Final</label>
