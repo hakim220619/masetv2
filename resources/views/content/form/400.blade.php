@@ -346,12 +346,13 @@
 
     <div class="form-group mb-3 " style="margin-top: 20px">
         <label for="jenis_renovasi"><b>Jenis Renovasi</b></label>
+        <small class="form-text text-muted">Masukkan jenis renovasi yang dilakukan</small>
         <input type="text" id="jenis_renovasi" name="jenis_renovasi" class="form-control">
     </div>
     <div class="form-group mb-3" style=" margin-top: 20px">
         <label for="bobot_renovasi"><b>Bobot Renovasi (%)</b></label>
         <input type="number" id="bobot_renovasi" name="bobot_renovasi" class="form-control" min="0"
-            max="100" step="0.01">
+            max="100" step="1">
     </div>
 
 
@@ -376,7 +377,7 @@
             (m²)</label><br>
         <small class="form-text text-muted">Terpotong atau alasannya lainnya.</small>
         <input type="number" class="form-control" id="luas_bangunan_terpotong" name="luas_bangunan_terpotong"
-            placeholder="Enter Area" min="0" step="0.01">
+            placeholder="Enter Area" min="0" step="1">
     </div>
 
     <!-- Field Baru: Luas Bangunan menurut IMB (m²) -->
@@ -384,7 +385,7 @@
         <label for="luas_bangunan_imb" style="font-weight: bold;">Luas Bangunan menurut IMB
             (m²)</label>
         <input type="number" class="form-control" id="luas_bangunan_imb" name="luas_bangunan_imb"
-            placeholder="Enter Area" min="0" step="0.01">
+            placeholder="Enter Area" min="0" step="1">
     </div>
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Luas Pintu dan Jendela</b></label><br>
@@ -601,8 +602,10 @@
         <label><b>Tipe Rangka Atap Eksisting - Bangunan Perkebunan (Semi Permanen) 1 Lantai</b></label>
         <div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Kayu (Atap Asbes, Seng dll, Tanpa
-                    Reng)" id="kayu-400" name="tipe_rangka_atap_existing[]">
+                <input class="form-check-input" type="checkbox"
+                    value="Kayu (Atap Asbes, Seng dll, Tanpa
+                    Reng)" id="kayu-400"
+                    name="tipe_rangka_atap_existing[]">
                 <label class="form-check-label" for="kayu-400">Kayu (Atap Asbes, Seng dll, Tanpa
                     Reng)</label>
             </div>
@@ -656,7 +659,8 @@
         <input type="checkbox" id="asbes-400" name="tipe_atap" value="Asbes" class="form-check-input">
         <label for="asbes-400" class="form-check-label">Asbes</label><br>
 
-        <input type="checkbox" id="seng-gelombang-400" name="tipe_atap" value="Seng Gelombang" class="form-check-input">
+        <input type="checkbox" id="seng-gelombang-400" name="tipe_atap" value="Seng Gelombang"
+            class="form-check-input">
         <label for="seng-gelombang-400" class="form-check-label">Seng Gelombang</label><br>
 
     </div>
@@ -766,9 +770,10 @@
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><strong>Tipe Dinding Eksisting - Bangunan Perkebunan (Semi Permanen) 1 Lantai</strong></label><br>
 
-        <input type="checkbox" id="papan-partisi-triplek-dicat-400" name="tipe_tipe_dinding_existing[]" value="Papan dan Partisi Triplek Dicat"
-            class="form-check-input">
-        <label for="papan-partisi-triplek-dicat-400" class="form-check-label">Papan dan Partisi Triplek Dicat</label><br>
+        <input type="checkbox" id="papan-partisi-triplek-dicat-400" name="tipe_tipe_dinding_existing[]"
+            value="Papan dan Partisi Triplek Dicat" class="form-check-input">
+        <label for="papan-partisi-triplek-dicat-400" class="form-check-label">Papan dan Partisi Triplek
+            Dicat</label><br>
 
     </div>
     <div id="content-papan-partisi-triplek-dicat-400" class="content" style="display: none;">
@@ -1653,7 +1658,7 @@
     });
 
 
-    function toggleCheckboxes800(selectElement, targetId) {
+    function toggleCheckboxes400(selectElement, targetId) {
         const year = selectElement.value;
         const checkboxContainer = document.getElementById(targetId);
 

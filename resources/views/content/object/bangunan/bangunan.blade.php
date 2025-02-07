@@ -77,7 +77,7 @@
 
     <div class="row">
         <!-- Default Icons Wizard -->
-        <form action="{{ route('object-store') }}" method="POST" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('object-store') }}" id="mainForm" enctype="multipart/form-data">
             @csrf
             <div class="col-12 mb-4">
                 @csrf
@@ -468,5 +468,122 @@
             });
         </script>
     @endif
+
+    <!-- Tambahkan sebelum tag </form> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM Content Loaded');
+
+            const mainForm = document.getElementById('mainForm');
+            const tipeSpekSelect = document.getElementById('tipe_spek');
+
+            if (mainForm) {
+                mainForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    console.log('Form submission intercepted');
+
+                    const selectedType = tipeSpekSelect ? tipeSpekSelect.value : null;
+                    console.log('Selected type at submission:', selectedType);
+
+                    if (!selectedType) {
+                        console.warn('No type selected');
+                        return;
+                    }
+
+                    // Dapatkan semua container
+                    const containers = document.querySelectorAll(
+                        '[id^="100"], [id^="200"], [id^="300"], [id^="400"], [id^="500"], [id^="600"], [id^="700"], [id^="800"], [id^="900"], [id^="1000"], [id^="1100"]'
+                    );
+
+                    // Sembunyikan semua container kecuali yang aktif
+                    containers.forEach(container => {
+                        if (container.id !== selectedType) {
+                            container.style.display = 'none';
+                        }
+                    });
+
+                    const activeContainer = document.getElementById(selectedType);
+                    console.log('Active container:', activeContainer);
+
+                    if (!activeContainer) {
+                        console.warn('Active container not found');
+                        return;
+                    }
+
+                    // Kumpulkan semua elemen form dari container aktif
+                    const formElements = activeContainer.querySelectorAll('input, select, textarea');
+                    console.log(`Found ${formElements.length} elements in active container`);
+
+                    // Proses setiap elemen
+                    formElements.forEach(element => {
+                        if (!element.name) return;
+
+                        // Log state awal
+                        console.log('Processing element:', {
+                            name: element.name,
+                            type: element.type,
+                            value: element.value,
+                            isArray: element.name.endsWith('[]')
+                        });
+
+                        // Hapus suffix dari nama elemen
+                        const suffix = `_${selectedType}`;
+                        if (element.name.endsWith(suffix)) {
+                            const newName = element.name.replace(suffix, '');
+                            console.log(`Renaming ${element.name} to ${newName}`);
+                            element.name = newName;
+                        } else if (element.name.endsWith(`${suffix}[]`)) {
+                            const newName = element.name.replace(`${suffix}[]`, '[]');
+                            console.log(`Renaming array element ${element.name} to ${newName}`);
+                            element.name = newName;
+                        }
+                    });
+
+                    // Nonaktifkan elemen di container yang tidak aktif
+                    containers.forEach(container => {
+                        if (container.id !== selectedType) {
+                            const inactiveElements = container.querySelectorAll(
+                                'input, select, textarea');
+                            inactiveElements.forEach(element => {
+                                element.disabled = true;
+                            });
+                        }
+                    });
+
+                    // Log final form data
+                    const formData = new FormData(this);
+                    console.log('Final form data:');
+                    for (let [key, value] of formData.entries()) {
+                        console.log(`${key}:`, value);
+                    }
+
+                    // Submit form
+                    console.log('Submitting form...');
+                    this.submit();
+                });
+
+                // Tambahkan event listener untuk perubahan tipe_spek
+                tipeSpekSelect.addEventListener('change', function() {
+                    const selectedType = this.value;
+                    console.log('Tipe spek changed to:', selectedType);
+
+                    // Update tampilan container
+                    const containers = document.querySelectorAll(
+                        '[id^="100"], [id^="200"], [id^="300"], [id^="400"], [id^="500"], [id^="600"], [id^="700"], [id^="800"], [id^="900"], [id^="1000"], [id^="1100"]'
+                    );
+
+                    containers.forEach(container => {
+                        container.style.display = container.id === selectedType ? 'block' : 'none';
+                    });
+
+                    // Reset form jika diperlukan
+                    // mainForm.reset();
+                });
+            }
+
+            // Debug info
+            console.log('Initial selected type:', tipeSpekSelect.value);
+        });
+    </script>
 
 @endsection

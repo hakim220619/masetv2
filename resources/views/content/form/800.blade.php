@@ -348,6 +348,7 @@
 
     <div class="form-group mb-3 " style="margin-top: 20px">
         <label for="jenis_renovasi"><b>Jenis Renovasi</b></label>
+        <small class="form-text text-muted">Masukkan jenis renovasi yang dilakukan</small>
         <input type="text" id="jenis_renovasi" name="jenis_renovasi" class="form-control">
     </div>
     <div class="form-group mb-3" style=" margin-top: 20px">
@@ -378,7 +379,7 @@
             (m²)</label><br>
         <small class="form-text text-muted">Terpotong atau alasannya lainnya.</small>
         <input type="number" class="form-control" id="luas_bangunan_terpotong" name="luas_bangunan_terpotong"
-            placeholder="Enter Area" min="0" step="0.01">
+            placeholder="Enter Area" min="0" step="1">
     </div>
 
     <!-- Field Baru: Luas Bangunan menurut IMB (m²) -->
@@ -386,7 +387,7 @@
         <label for="luas_bangunan_imb" style="font-weight: bold;">Luas Bangunan menurut IMB
             (m²)</label>
         <input type="number" class="form-control" id="luas_bangunan_imb" name="luas_bangunan_imb"
-            placeholder="Enter Area" min="0" step="0.01">
+            placeholder="Enter Area" min="0" step="1">
     </div>
 </div>
 

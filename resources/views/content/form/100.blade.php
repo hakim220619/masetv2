@@ -340,17 +340,17 @@
     </div>
 
     <div class="form-group mb-3" style="margin-top: 20px">
-        <label for="jenis_renovasi"><b>Jenis Renovasi</b></label>
+        <label for="jenis_renovasi_100"><b>Jenis Renovasi</b></label>
         <small class="form-text text-muted">Masukkan jenis renovasi yang dilakukan</small>
-        <input type="text" id="jenis_renovasi" name="jenis_renovasi" class="form-control"
-            placeholder="Contoh: Renovasi Atap" value="{{ old('jenis_renovasi') }}">
+        <input type="text" id="jenis_renovasi_100" name="jenis_renovasi_100" class="form-control"
+            placeholder="Contoh: Renovasi Atap">
     </div>
 
     <div class="form-group mb-3" style="margin-top: 20px">
-        <label for="bobot_renovasi"><b>Bobot Renovasi (%)</b></label>
+        <label for="bobot_renovasi_100"><b>Bobot Renovasi (%)</b></label>
         <small class="form-text text-muted">Masukkan persentase bobot renovasi (0-100)</small>
-        <input type="number" id="bobot_renovasi" name="bobot_renovasi" class="form-control" min="0"
-            max="100" step="1" placeholder="Contoh: 25" value="{{ old('bobot_renovasi') }}">
+        <input type="number" id="bobot_renovasi_100" name="bobot_renovasi_100" class="form-control" min="0"
+            max="100" step="1" placeholder="Contoh: 25">
     </div>
 
 
@@ -374,16 +374,16 @@
         <label for="luas_bangunan_terpotong" style="font-weight: bold;">Luas Bangunan Terpotong
             (m²)</label><br>
         <small class="form-text text-muted">Terpotong atau alasannya lainnya.</small>
-        <input type="text" class="form-control" id="luas_bangunan_terpotong" name="luas_bangunan_terpotong"
-            placeholder="Enter Area" min="0" step="0.01">
+        <input type="number" class="form-control" id="luas_bangunan_terpotong" name="luas_bangunan_terpotong"
+            placeholder="Enter Area" min="0" step="1">
     </div>
 
     <!-- Field Baru: Luas Bangunan menurut IMB (m²) -->
     <div class="form-group" style="margin-top: 20px;">
         <label for="luas_bangunan_imb" style="font-weight: bold;">Luas Bangunan menurut IMB
             (m²)</label>
-        <input type="text" class="form-control" id="luas_bangunan_imb" name="luas_bangunan_imb"
-            placeholder="Enter Area" min="0" step="0.01">
+        <input type="number" class="form-control" id="luas_bangunan_imb" name="luas_bangunan_imb"
+            placeholder="Enter Area" min="0" step="1">
     </div>
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><b>Luas Pintu dan Jendela</b></label><br>
@@ -916,54 +916,54 @@
 
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><strong>Tipe Pelapis Dinding Eksisting - Rumah Tinggal Sederhana 1 Lantai</strong></label><br>
-        <input type="checkbox" id="cat" class="form-check-input" name="tipe_tipe_pelapis_dinding_existing[]"
+        <input type="checkbox" id="dilapis-cat" class="form-check-input" name="tipe_tipe_pelapis_dinding_existing[]"
             value="Dilapis Cat (Diplester dan Diaci)">
-        <label for="cat" class="form-check-label">Dilapis Cat (Diplester dan Diaci)</label><br>
+        <label for="dilapis-cat" class="form-check-label">Dilapis Cat (Diplester dan Diaci)</label><br>
 
-        <input type="checkbox" id="keramikdinding" class="form-check-input"
+        <input type="checkbox" id="dilapis-keramik" class="form-check-input"
             name="tipe_tipe_pelapis_dinding_existing[]" value="Dilapis Keramik">
-        <label for="keramik" class="form-check-label">Dilapis Keramik</label><br>
+        <label for="dilapis-keramik" class="form-check-label">Dilapis Keramik</label><br>
 
-        <input type="checkbox" id="wallpaper" class="form-check-input" name="tipe_tipe_pelapis_dinding_existing[]"
-            value="Dilapis Wallpaper">
-        <label for="wallpaper" class="form-check-label">Dilapis Wallpaper</label><br>
+        <input type="checkbox" id="dilapis-wallpaper" class="form-check-input"
+            name="tipe_tipe_pelapis_dinding_existing[]" value="Dilapis Wallpaper">
+        <label for="dilapis-wallpaper" class="form-check-label">Dilapis Wallpaper</label><br>
 
-        <input type="checkbox" id="mozaik" class="form-check-input" name="tipe_tipe_pelapis_dinding_existing[]"
-            value="Dilapis Mozaik">
-        <label for="mozaik" class="form-check-label">Dilapis Mozaik</label><br>
+        <input type="checkbox" id="dilapis-mozaik" class="form-check-input"
+            name="tipe_tipe_pelapis_dinding_existing[]" value="Dilapis Mozaik">
+        <label for="dilapis-mozaik" class="form-check-label">Dilapis Mozaik</label><br>
 
-        <input type="checkbox" id="batu-alam" class="form-check-input" name="tipe_tipe_pelapis_dinding_existing[]"
-            value="Dilapis Batu Alam">
-        <label for="batu-alam" class="form-check-label">Dilapis Batu Alam</label><br>
+        <input type="checkbox" id="dilapis-batu-alam" class="form-check-input"
+            name="tipe_tipe_pelapis_dinding_existing[]" value="Dilapis Batu Alam">
+        <label for="dilapis-batu-alam" class="form-check-label">Dilapis Batu Alam</label><br>
     </div>
 
 
     <!-- Content sections for each option -->
-    <div id="content-cat" class="content" style="display: none;">
+    <div id="content-dilapis-cat" class="content" style="display: none;">
         <label><b>Bobot Dinding Dilapis Cat</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai"
             name="bobot_tipe_pelapis_dinding_existing[]">
     </div>
-    <div id="content-keramikdinding" class="content" style="display: none;">
+    <div id="content-dilapis-keramik" class="content" style="display: none;">
         <label><b>Bobot Dinding Dilapis Keramik</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai"
             name="bobot_tipe_pelapis_dinding_existing[]">
     </div>
-    <div id="content-wallpaper" class="content" style="display: none;">
+    <div id="content-dilapis-wallpaper" class="content" style="display: none;">
         <label><b>Bobot Dinding Dilapis Wallpaper</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai"
             name="bobot_tipe_pelapis_dinding_existing[]">
     </div>
-    <div id="content-mozaik" class="content" style="display: none;">
+    <div id="content-dilapis-mozaik" class="content" style="display: none;">
         <label><b>Bobot Dinding Dilapis Mozaik</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai"
             name="bobot_tipe_pelapis_dinding_existing[]">
     </div>
-    <div id="content-batu-alam" class="content" style="display: none;">
+    <div id="content-dilapis-batu-alam" class="content" style="display: none;">
         <label><b>Bobot Dinding Dilapis Batu Alam</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai"
@@ -1117,74 +1117,74 @@
     <div class="form-group mb-3" style="margin-top: 20px;">
         <label><strong>Tipe Lantai Eksisting - Rumah Tinggal Sederhana 1 Lantai</strong></label><br>
 
-        <input type="checkbox" id="granit-homogenous-tile" class="form-check-input"
+        <input type="checkbox" id="granit-homogenous-tile-100" class="form-check-input"
             name="tipe_tipe_lantai_existing[]" value="Granit/Homogenous Tile">
-        <label for="granit-homogenous-tile" class="form-check-label">Granit/Homogenous Tile</label><br>
+        <label for="granit-homogenous-tile-100" class="form-check-label">Granit/Homogenous Tile</label><br>
 
-        <input type="checkbox" id="karpet" class="form-check-input" name="tipe_tipe_lantai_existing[]"
+        <input type="checkbox" id="karpet-100" class="form-check-input" name="tipe_tipe_lantai_existing[]"
             value="Karpet">
-        <label for="karpet" class="form-check-label">Karpet</label><br>
+        <label for="karpet-100" class="form-check-label">Karpet</label><br>
 
-        <input type="checkbox" id="keramikLantai" class="form-check-input" name="tipe_tipe_lantai_existing[]"
-            value="Keramik">
-        <label for="keramik" class="form-check-label">Keramik</label><br>
+        <input type="checkbox" id="keramik-lantai-100" class="form-check-input"
+            name="tipe_tipe_lantai_existing[]" value="Keramik">
+        <label for="keramik-lantai-100" class="form-check-label">Keramik</label><br>
 
-        <input type="checkbox" id="rabat-beton" class="form-check-input" name="tipe_tipe_lantai_existing[]"
+        <input type="checkbox" id="rabat-beton-100" class="form-check-input" name="tipe_tipe_lantai_existing[]"
             value="Rabat Beton (Semen Ekspose)">
-        <label for="rabat-beton" class="form-check-label">Rabat Beton (Semen Ekspose)</label><br>
+        <label for="rabat-beton-100" class="form-check-label">Rabat Beton (Semen Ekspose)</label><br>
 
-        <input type="checkbox" id="teraso" class="form-check-input" name="tipe_tipe_lantai_existing[]"
+        <input type="checkbox" id="teraso-100" class="form-check-input" name="tipe_tipe_lantai_existing[]"
             value="Teraso">
-        <label for="teraso" class="form-check-label">Teraso</label><br>
+        <label for="teraso-100" class="form-check-label">Teraso</label><br>
 
-        <input type="checkbox" id="vynil" class="form-check-input" name="tipe_tipe_lantai_existing[]"
+        <input type="checkbox" id="vynil-100" class="form-check-input" name="tipe_tipe_lantai_existing[]"
             value="Vynil">
-        <label for="vynil" class="form-check-label">Vynil</label><br>
+        <label for="vynil-100" class="form-check-label">Vynil</label><br>
 
-        <input type="checkbox" id="papan-kayu" class="form-check-input" name="tipe_tipe_lantai_existing[]"
+        <input type="checkbox" id="papan-kayu-100" class="form-check-input" name="tipe_tipe_lantai_existing[]"
             value="Papan Kayu">
-        <label for="papan-kayu" class="form-check-label">Papan Kayu</label><br>
+        <label for="papan-kayu-100" class="form-check-label">Papan Kayu</label><br>
     </div>
 
 
     <!-- Content sections for each option -->
-    <div id="content-granit-homogenous-tile" class="content" style="display: none;">
+    <div id="content-granit-homogenous-tile-100" class="content" style="display: none;">
         <label><b>Bobot Granit/Homogenous Tile</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai"
             name="bobot_tipe_lantai_existing[]">
     </div>
-    <div id="content-karpet" class="content" style="display: none;">
+    <div id="content-karpet-100" class="content" style="display: none;">
         <label><b>Bobot Karpet</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai"
             name="bobot_tipe_lantai_existing[]">
     </div>
-    <div id="content-keramikLantai" class="content" style="display: none;">
+    <div id="content-keramik-lantai-100" class="content" style="display: none;">
         <label><b>Bobot Keramik</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai"
             name="bobot_tipe_lantai_existing[]">
     </div>
-    <div id="content-rabat-beton" class="content" style="display: none;">
+    <div id="content-rabat-beton-100" class="content" style="display: none;">
         <label><b>Bobot Rabat Beton (Semen Ekspose)</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai"
             name="bobot_tipe_lantai_existing[]">
     </div>
-    <div id="content-teraso" class="content" style="display: none;">
+    <div id="content-teraso-100" class="content" style="display: none;">
         <label><b>Bobot Teraso</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai"
             name="bobot_tipe_lantai_existing[]">
     </div>
-    <div id="content-vynil" class="content" style="display: none;">
+    <div id="content-vynil-100" class="content" style="display: none;">
         <label><b>Bobot Vynil</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai"
             name="bobot_tipe_lantai_existing[]">
     </div>
-    <div id="content-papan-kayu" class="content" style="display: none;">
+    <div id="content-papan-kayu-100" class="content" style="display: none;">
         <label><b>Bobot Papan Kayu</b></label><br>
         <span>Dalam satuan persen (%)</span>
         <input type="text" class="form-control" placeholder="Masukkan nilai"

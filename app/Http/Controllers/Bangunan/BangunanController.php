@@ -145,178 +145,188 @@ class BangunanController extends Controller
 
     public function store(Request $request)
     {
-        // Check if the directory exists, if not create it
-        $uploadPath = public_path('storage/uploads/bangunan');
-        if (!File::exists($uploadPath)) {
-            File::makeDirectory($uploadPath, 0775, true); // Create directories recursively
-        }
-
-        // Ambil semua input dari request
-        $data = $request->all();
-        // dd($data);
-        // 1. Filter data untuk field biasa
-        $fieldData = [
-            'nama_bangunan' => $data['nama_bangunan'],
-            'foto_tampak_depan' => $this->uploadFile($request, 'foto_tampak_depan'),
-            'foto_tampak_sisi_kiri' => $this->uploadFile($request, 'foto_tampak_sisi_kiri'),
-            'foto_tampak_sisi_kanan' => $this->uploadFile($request, 'foto_tampak_sisi_kanan'),
-            'bentuk_bangunan' => $data['bentuk_bangunan'] ?? null,
-            'jenis_bangunan' => $data['jenis_bangunan'] ?? null,
-            'jenis_bangunan_indeks_lantai' => $data['jenis_bangunan_indeks_lantai'] ?? null,
-            'jenis_bangunan_detail' => $data['jenis_bangunan_detail'] ?? null,
-            'grade_gudang' => $data['grade_gudang'] ?? null,
-            'tahun_dibangun' => $data['tahun_dibangun'] ?? null,
-            'tahun_renovasi' => $data['tahun_renovasi'] ?? null,
-            'jenis_renovasi' => $data['jenis_renovasi'] ?? null,
-            'bobot_renovasi' => $data['bobot_renovasi'] ?? null,
-            'kondisi_visual' => $data['kondisi_visual'] ?? null,
-            'catatan_khusus' => $data['catatan_khusus'] ?? null,
-            'luas_bangunan_terpotong' => $data['luas_bangunan_terpotong'] ?? null,
-            'luas_bangunan_imb' => $data['luas_bangunan_imb'] ?? null,
-            'jumlah_lantai' => $data['jumlah_lantai'] ?? 1,
-            'basement' => isset($data['basement']) ? 1 : 0,
-            'konstruksi_bangunan' => $data['konstruksi_bangunan'] ?? null,
-            'konstruksi_lantai' => $data['konstruksi_lantai'] ?? null,
-            'konstruksi_dinding' => $data['konstruksi_dinding'] ?? null,
-            'konstruksi_atap' => $data['konstruksi_atap'] ?? null,
-            'konstruksi_pondasi' => $data['konstruksi_pondasi'] ?? null,
-            'versi_btb' => $data['versi_btb'] ?? '2024',
-            'tipe_spek' => $data['tipe_spek'] ?? null,
-            'penggunaan_bangunan' => $data['penggunaan_bangunan'] ?? null,
-            'progres_pembangunan' => $data['progres_pembangunan'] ?? null,
-            'kondisi_bangunan' => $data['kondisi_bangunan'] ?? null,
-            'status_data' => $data['status_data'] ?? 'draft',
-        ];
-
-        // Handle dynamic data for fields like arrays (JSON)
-        $dynamicData = collect($data)->except([
-            'nama_bangunan',
-            'foto_tampak_depan',
-            'foto_tampak_sisi_kiri',
-            'foto_tampak_sisi_kanan',
-            'bentuk_bangunan',
-            'jumlah_lantai',
-            'basement',
-            'konstruksi_bangunan',
-            'konstruksi_lantai',
-            'konstruksi_dinding',
-            'konstruksi_atap',
-            'konstruksi_pondasi',
-            'versi_btb',
-            'tipe_spek',
-            'penggunaan_bangunan',
-            'progres_pembangunan',
-            'kondisi_bangunan',
-            'status_data',
-            'foto_lainnya',
-        ])->toArray();
-
-        // Sanitize dynamic data: remove null values from arrays and filter out null values
-        $dynamicData = array_filter($dynamicData, function ($value) {
-            if (is_array($value)) {
-                // If value is an array, remove null elements inside it
-                return count(array_filter($value, fn($v) => $v !== null)) > 0;
+        try {
+            // Check if the directory exists, if not create it
+            $uploadPath = public_path('storage/uploads/bangunan');
+            if (!File::exists($uploadPath)) {
+                File::makeDirectory($uploadPath, 0775, true); // Create directories recursively
             }
-            return $value !== null;
-        });
 
-        // Insert dynamic data into the JSON field one by one if they are arrays
-        $dynamicJsonData = [];
-        foreach ($dynamicData as $key => $value) {
-            if (is_array($value)) {
-                $dynamicJsonData[$key] = array_map(function ($item) {
-                    return $item !== null ? $item : null;
-                }, $value);
-            } else {
-                $dynamicJsonData[$key] = $value;
-            }
-        }
+            // Ambil semua input dari request
+            $data = $request->all();
+            // dd($data);
+            // 1. Filter data untuk field biasa
+            $fieldData = [
+                'nama_bangunan' => $data['nama_bangunan'],
+                'foto_depan' => $this->uploadFile($request, 'foto_depan'),
+                'foto_sisi_kiri' => $this->uploadFile($request, 'foto_sisi_kiri'),
+                'foto_sisi_kanan' => $this->uploadFile($request, 'foto_sisi_kanan'),
+                'bentuk_bangunan' => $data['bentuk_bangunan'] ?? null,
+                'jenis_bangunan' => $this->getJenisBangunan($request) ?? null,
+                'jenis_bangunan_indeks_lantai' => $this->getJenisBangunanIndeksLantai($request) ?? null,
+                'jenis_bangunan_detail' => $data['jenis_bangunan_detail'] ?? null,
+                'grade_gudang' => $data['grade_gudang'] ?? null,
+                'tahun_dibangun' => $data['tahun_dibangun'] ?? null,
+                'tahun_renovasi' => $data['tahun_renovasi'] ?? null,
+                'jenis_renovasi' => $data['jenis_renovasi'] ?? null,
+                'bobot_renovasi' => $data['bobot_renovasi'] ?? null,
+                'kondisi_visual' => $data['kondisi_visual'] ?? null,
+                'catatan_khusus' => $data['catatan_khusus'] ?? null,
+                'luas_bangunan_terpotong' => $data['luas_bangunan_terpotong'] ?? null,
+                'luas_bangunan_imb' => $data['luas_bangunan_imb'] ?? null,
+                'jumlah_lantai' => $data['jumlah_lantai'] ?? 1,
+                'basement' => isset($data['basement']) ? 1 : 0,
+                'konstruksi_bangunan' => $data['konstruksi_bangunan'] ?? null,
+                'konstruksi_lantai' => $data['konstruksi_lantai'] ?? null,
+                'konstruksi_dinding' => $data['konstruksi_dinding'] ?? null,
+                'konstruksi_atap' => $data['konstruksi_atap'] ?? null,
+                'konstruksi_pondasi' => $data['konstruksi_pondasi'] ?? null,
+                'versi_btb' => $data['versi_btb'] ?? '2024',
+                'tipe_spek' => $data['tipe_spek'] ?? null,
+                'penggunaan_bangunan' => $data['penggunaan_bangunan'] ?? null,
+                'progres_pembangunan' => $data['progres_pembangunan'] ?? null,
+                'kondisi_bangunan' => $data['kondisi_bangunan'] ?? null,
+                'status_data' => $data['status_data'] ?? 'draft',
+            ];
 
-        // Helper function to filter out null values
-        // Helper function to replace null values with empty string
-        // Helper function to remove null and empty string values
-        // Helper function to remove null and empty string values, and reindex the array
-        function filterNullValues($data)
-        {
-            // Remove null and empty strings
-            $filtered = array_filter($data, function ($value) {
-                return $value !== null && $value !== ''; // Remove null and empty strings
+            // Handle dynamic data for fields like arrays (JSON)
+            $dynamicData = collect($data)->except([
+                'nama_bangunan',
+                'foto_depan',
+                'foto_sisi_kiri',
+                'foto_sisi_kanan',
+                'bentuk_bangunan',
+                'jumlah_lantai',
+                'basement',
+                'konstruksi_bangunan',
+                'konstruksi_lantai',
+                'konstruksi_dinding',
+                'konstruksi_atap',
+                'konstruksi_pondasi',
+                'versi_btb',
+                'tipe_spek',
+                'penggunaan_bangunan',
+                'progres_pembangunan',
+                'kondisi_bangunan',
+                'status_data',
+                'foto_lainnya',
+            ])->toArray();
+
+            // Sanitize dynamic data: remove null values from arrays and filter out null values
+            $dynamicData = array_filter($dynamicData, function ($value) {
+                if (is_array($value)) {
+                    // If value is an array, remove null elements inside it
+                    return count(array_filter($value, fn($v) => $v !== null)) > 0;
+                }
+                return $value !== null;
             });
 
-            // Reindex the array so that keys are sequential starting from 0
-            return array_values($filtered);
+            // Insert dynamic data into the JSON field one by one if they are arrays
+            $dynamicJsonData = [];
+            foreach ($dynamicData as $key => $value) {
+                if (is_array($value)) {
+                    $dynamicJsonData[$key] = array_map(function ($item) {
+                        return $item !== null ? $item : null;
+                    }, $value);
+                } else {
+                    $dynamicJsonData[$key] = $value;
+                }
+            }
+
+            // Helper function to filter out null values
+            // Helper function to replace null values with empty string
+            // Helper function to remove null and empty string values
+            // Helper function to remove null and empty string values, and reindex the array
+            function filterNullValues($data)
+            {
+                // Remove null and empty strings
+                $filtered = array_filter($data, function ($value) {
+                    return $value !== null && $value !== ''; // Remove null and empty strings
+                });
+
+                // Reindex the array so that keys are sequential starting from 0
+                return array_values($filtered);
+            }
+
+            // Prepare dynamic fields as JSON
+            $fotoLainnyaJson = json_encode($this->processFotoLainnya($request));
+            $perlengkapanBangunanJson = json_encode(filterNullValues($data['perlengkapan_bangunan'] ?? []));
+            $luasPintuJendelaJson = json_encode(filterNullValues($data['luas_nama_pintu_jendela'] ?? []));
+            $luasBobotPintuJendelaJson = json_encode(filterNullValues($data['luas_bobot_pintu_jendela'] ?? []));
+            $luasDindingJson = json_encode(filterNullValues($data['luas_nama_dinding'] ?? []));
+            $luasBobotDindingJson = json_encode(filterNullValues($data['luas_bobot_dinding'] ?? []));
+            $luasRangkaAtapDatarJson = json_encode(filterNullValues($data['luas_nama_rangka_atap_datar'] ?? []));
+            $luasBobotRangkaAtapDatarJson = json_encode(filterNullValues($data['luas_bobot_rangka_atap_datar'] ?? []));
+            $luasAtapDatarJson = json_encode(filterNullValues($data['luas_nama_atap_datar'] ?? []));
+            $luasBobotAtapDatarJson = json_encode(filterNullValues($data['luas_bobot_atap_datar'] ?? []));
+            $tipePondasiExistingJson = json_encode(filterNullValues($data['tipe_pondasi_existing'] ?? []));
+            $bobotTipePondasiExistingJson = json_encode(filterNullValues($data['bobot_tipe_pondasi_existing'] ?? []));
+            $tipeStrukturExistingJson = json_encode(filterNullValues($data['tipe_struktur_existing'] ?? []));
+            $bobotTipeStrukturExistingJson = json_encode(filterNullValues($data['bobot_tipe_struktur_existing'] ?? []));
+            $tipeRangkaAtapExistingJson = json_encode(filterNullValues($data['tipe_rangka_atap_existing'] ?? []));
+            $bobotRangkaAtapExistingJson = json_encode(filterNullValues($data['bobot_rangka_atap_existing'] ?? []));
+            $tipePenutupAtapExistingJson = json_encode(filterNullValues($data['tipe_penutup_atap_existing'] ?? []));
+            $bobotPenutupAtapExistingJson = json_encode(filterNullValues($data['bobot_penutup_atap_existing'] ?? []));
+            $tipeDindingExistingJson = json_encode(filterNullValues($data['tipe_tipe_dinding_existing'] ?? []));
+            $bobotDindingExistingJson = json_encode(filterNullValues($data['bobot_tipe_dinding_existing'] ?? []));
+            $tipePelapisDindingExistingJson = json_encode(filterNullValues($data['tipe_tipe_pelapis_dinding_existing'] ?? []));
+            $bobotPelapisDindingExistingJson = json_encode(filterNullValues($data['bobot_tipe_pelapis_dinding_existing'] ?? []));
+            $tipePintuJendelaExistingJson = json_encode(filterNullValues($data['tipe_tipe_pintu_jendela_existing'] ?? []));
+            $bobotPintuJendelaExistingJson = json_encode(filterNullValues($data['bobot_tipe_pintu_jendela_existing'] ?? []));
+            $tipeLantaiExistingJson = json_encode(filterNullValues($data['tipe_tipe_lantai_existing'] ?? []));
+            $bobotLantaiExistingJson = json_encode(filterNullValues($data['bobot_tipe_lantai_existing'] ?? []));
+
+
+            $jenisBangunanDetailJson = json_encode(filterNullValues($data['jenis_bangunan_detail'] ?? []));
+            $jumlahLantaiRumahTinggalJson = json_encode(filterNullValues($data['jumlah_lantai_rumah_tinggal'] ?? []));
+            // dd($data['bobot_rangka_atap_existing']);
+            // dd($tipeLantaiExistingJson);
+            // Insert the data into the database
+            $bangunan = Bangunan::create([
+                ...$fieldData,
+                'foto_lainnya' => $fotoLainnyaJson,
+                'perlengkapan_bangunan' => $perlengkapanBangunanJson,
+                'luas_nama_pintu_jendela' => $luasPintuJendelaJson,
+                'luas_bobot_pintu_jendela' => $luasBobotPintuJendelaJson,
+                'luas_nama_dinding' => $luasDindingJson,
+                'luas_bobot_dinding' => $luasBobotDindingJson,
+                'luas_nama_rangka_atap_datar' => $luasRangkaAtapDatarJson,
+                'luas_bobot_rangka_atap_datar' => $luasBobotRangkaAtapDatarJson,
+                'luas_nama_atap_datar' => $luasAtapDatarJson,
+                'luas_bobot_atap_datar' => $luasBobotAtapDatarJson,
+                'tipe_pondasi_existing' => $tipePondasiExistingJson,
+                'bobot_tipe_pondasi_existing' => $bobotTipePondasiExistingJson,
+                'tipe_struktur_existing' => $tipeStrukturExistingJson,
+                'bobot_tipe_struktur_existing' => $bobotTipeStrukturExistingJson,
+                'tipe_rangka_atap_existing' => $tipeRangkaAtapExistingJson,
+                'bobot_rangka_atap_existing' => $bobotRangkaAtapExistingJson,
+                'tipe_penutup_atap_existing' => $tipePenutupAtapExistingJson,
+                'bobot_penutup_atap_existing' => $bobotPenutupAtapExistingJson,
+                'tipe_tipe_dinding_existing' => $tipeDindingExistingJson,
+                'bobot_tipe_dinding_existing' => $bobotDindingExistingJson,
+                'tipe_tipe_pelapis_dinding_existing' => $tipePelapisDindingExistingJson,
+                'bobot_tipe_pelapis_dinding_existing' => $bobotPelapisDindingExistingJson,
+                'tipe_tipe_pintu_jendela_existing' => $tipePintuJendelaExistingJson,
+                'bobot_tipe_pintu_jendela_existing' => $bobotPintuJendelaExistingJson,
+                'tipe_tipe_lantai_existing' => $tipeLantaiExistingJson,
+                'bobot_tipe_lantai_existing' => $bobotLantaiExistingJson,
+                'jenis_bangunan_detail' => $jenisBangunanDetailJson,
+                'jumlah_lantai_rumah_tinggal' => $jumlahLantaiRumahTinggalJson,
+            ]);
+            // return;
+            dd([
+                'field_data' => $fieldData,
+                'jenis_bangunan' => $this->getJenisBangunan($request),
+                'jenis_bangunan_detail' => $data['jenis_bangunan_detail'],
+                'jenis_renovasi' => $data['jenis_renovasi'],
+                'bobot_renovasi' => $data['bobot_renovasi'],
+                'jenis_bangunan_indeks_lantai' => $this->getJenisBangunanIndeksLantai($request),
+                'jumlah_lantai' => $data['jumlah_lantai'],
+            ]);
+            return redirect()->back()->with('success', 'Data berhasil disimpan!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
-
-
-
-
-        // Prepare dynamic fields as JSON
-        $fotoLainnyaJson = json_encode($this->processFotoLainnya($request));
-        $perlengkapanBangunanJson = json_encode(filterNullValues($data['perlengkapan_bangunan'] ?? []));
-        $luasPintuJendelaJson = json_encode(filterNullValues($data['luas_nama_pintu_jendela'] ?? []));
-        $luasBobotPintuJendelaJson = json_encode(filterNullValues($data['luas_bobot_pintu_jendela'] ?? []));
-        $luasDindingJson = json_encode(filterNullValues($data['luas_nama_dinding'] ?? []));
-        $luasBobotDindingJson = json_encode(filterNullValues($data['luas_bobot_dinding'] ?? []));
-        $luasRangkaAtapDatarJson = json_encode(filterNullValues($data['luas_nama_rangka_atap_datar'] ?? []));
-        $luasBobotRangkaAtapDatarJson = json_encode(filterNullValues($data['luas_bobot_rangka_atap_datar'] ?? []));
-        $luasAtapDatarJson = json_encode(filterNullValues($data['luas_nama_atap_datar'] ?? []));
-        $luasBobotAtapDatarJson = json_encode(filterNullValues($data['luas_bobot_atap_datar'] ?? []));
-        $tipePondasiExistingJson = json_encode(filterNullValues($data['tipe_pondasi_existing'] ?? []));
-        $bobotTipePondasiExistingJson = json_encode(filterNullValues($data['bobot_tipe_pondasi_existing'] ?? []));
-        $tipeStrukturExistingJson = json_encode(filterNullValues($data['tipe_struktur_existing'] ?? []));
-        $bobotTipeStrukturExistingJson = json_encode(filterNullValues($data['bobot_tipe_struktur_existing'] ?? []));
-        $tipeRangkaAtapExistingJson = json_encode(filterNullValues($data['tipe_rangka_atap_existing'] ?? []));
-        $bobotRangkaAtapExistingJson = json_encode(filterNullValues($data['bobot_rangka_atap_existing'] ?? []));
-        $tipePenutupAtapExistingJson = json_encode(filterNullValues($data['tipe_penutup_atap_existing'] ?? []));
-        $bobotPenutupAtapExistingJson = json_encode(filterNullValues($data['bobot_penutup_atap_existing'] ?? []));
-        $tipeDindingExistingJson = json_encode(filterNullValues($data['tipe_tipe_dinding_existing'] ?? []));
-        $bobotDindingExistingJson = json_encode(filterNullValues($data['bobot_tipe_dinding_existing'] ?? []));
-        $tipePelapisDindingExistingJson = json_encode(filterNullValues($data['tipe_tipe_pelapis_dinding_existing'] ?? []));
-        $bobotPelapisDindingExistingJson = json_encode(filterNullValues($data['bobot_tipe_pelapis_dinding_existing'] ?? []));
-        $tipePintuJendelaExistingJson = json_encode(filterNullValues($data['tipe_tipe_pintu_jendela_existing'] ?? []));
-        $bobotPintuJendelaExistingJson = json_encode(filterNullValues($data['bobot_tipe_pintu_jendela_existing'] ?? []));
-        $tipeLantaiExistingJson = json_encode(filterNullValues($data['tipe_tipe_lantai_existing'] ?? []));
-        $bobotLantaiExistingJson = json_encode(filterNullValues($data['bobot_tipe_lantai_existing'] ?? []));
-
-
-        $jenisBangunanDetailJson = json_encode(filterNullValues($data['jenis_bangunan_detail'] ?? []));
-        $jumlahLantaiRumahTinggalJson = json_encode(filterNullValues($data['jumlah_lantai_rumah_tinggal'] ?? []));
-        // dd($data['bobot_rangka_atap_existing']);
-        // dd($tipeLantaiExistingJson);
-        // Insert the data into the database
-        $bangunan = Bangunan::create([
-            ...$fieldData,
-            'foto_lainnya' => $fotoLainnyaJson,
-            'perlengkapan_bangunan' => $perlengkapanBangunanJson,
-            'luas_nama_pintu_jendela' => $luasPintuJendelaJson,
-            'luas_bobot_pintu_jendela' => $luasBobotPintuJendelaJson,
-            'luas_nama_dinding' => $luasDindingJson,
-            'luas_bobot_dinding' => $luasBobotDindingJson,
-            'luas_nama_rangka_atap_datar' => $luasRangkaAtapDatarJson,
-            'luas_bobot_rangka_atap_datar' => $luasBobotRangkaAtapDatarJson,
-            'luas_nama_atap_datar' => $luasAtapDatarJson,
-            'luas_bobot_atap_datar' => $luasBobotAtapDatarJson,
-            'tipe_pondasi_existing' => $tipePondasiExistingJson,
-            'bobot_tipe_pondasi_existing' => $bobotTipePondasiExistingJson,
-            'tipe_struktur_existing' => $tipeStrukturExistingJson,
-            'bobot_tipe_struktur_existing' => $bobotTipeStrukturExistingJson,
-            'tipe_rangka_atap_existing' => $tipeRangkaAtapExistingJson,
-            'bobot_rangka_atap_existing' => $bobotRangkaAtapExistingJson,
-            'tipe_penutup_atap_existing' => $tipePenutupAtapExistingJson,
-            'bobot_penutup_atap_existing' => $bobotPenutupAtapExistingJson,
-            'tipe_tipe_dinding_existing' => $tipeDindingExistingJson,
-            'bobot_tipe_dinding_existing' => $bobotDindingExistingJson,
-            'tipe_tipe_pelapis_dinding_existing' => $tipePelapisDindingExistingJson,
-            'bobot_tipe_pelapis_dinding_existing' => $bobotPelapisDindingExistingJson,
-            'tipe_tipe_pintu_jendela_existing' => $tipePintuJendelaExistingJson,
-            'bobot_tipe_pintu_jendela_existing' => $bobotPintuJendelaExistingJson,
-            'tipe_tipe_lantai_existing' => $tipeLantaiExistingJson,
-            'bobot_tipe_lantai_existing' => $bobotLantaiExistingJson,
-            'jenis_bangunan_detail' => $jenisBangunanDetailJson,
-            'jumlah_lantai_rumah_tinggal' => $jumlahLantaiRumahTinggalJson,
-        ]);
-        // return;
-        return redirect()->back()->with('success', 'Data berhasil disimpan!');
     }
 
     private function uploadFile($request, $fieldName)
@@ -330,8 +340,6 @@ class BangunanController extends Controller
         }
         return null;
     }
-
-
 
     private function processFotoLainnya($request)
     {
@@ -367,5 +375,65 @@ class BangunanController extends Controller
         }
 
         return $fotoLainnya;
+    }
+
+    // Tambahkan method helper untuk mengambil jenis bangunan
+    private function getJenisBangunan($request)
+    {
+        // Cek semua kemungkinan input jenis_bangunan dari berbagai form
+        $possibleInputs = [
+            $request->input('jenis_bangunan'),
+            $request->input('jenis_bangunan_100'),
+            $request->input('jenis_bangunan_200'),
+            $request->input('jenis_bangunan_300'),
+            $request->input('jenis_bangunan_400'),
+            $request->input('jenis_bangunan_500'),
+            $request->input('jenis_bangunan_600'),
+            $request->input('jenis_bangunan_700'),
+            $request->input('jenis_bangunan_800'),
+            $request->input('jenis_bangunan_900'),
+            $request->input('jenis_bangunan_1000'),
+            $request->input('jenis_bangunan_1100')
+        ];
+
+        // Ambil nilai yang tidak null
+        foreach ($possibleInputs as $input) {
+            if (!is_null($input)) {
+                // Bersihkan string dari suffix _100, _1000, _1100
+                return preg_replace('/_(?:100|200|300|400|500|600|700|800|900|1000|1100)$/', '', $input);
+            }
+        }
+
+        return null;
+    }
+
+    // Tambahkan method helper untuk mengambil jenis bangunan indeks lantai
+    private function getJenisBangunanIndeksLantai($request)
+    {
+        // Cek semua kemungkinan input jenis_bangunan_indeks_lantai dari berbagai form
+        $possibleInputs = [
+            $request->input('jenis_bangunan_indeks_lantai'),
+            $request->input('jenis_bangunan_indeks_lantai_100'),
+            $request->input('jenis_bangunan_indeks_lantai_200'),
+            $request->input('jenis_bangunan_indeks_lantai_300'),
+            $request->input('jenis_bangunan_indeks_lantai_400'),
+            $request->input('jenis_bangunan_indeks_lantai_500'),
+            $request->input('jenis_bangunan_indeks_lantai_600'),
+            $request->input('jenis_bangunan_indeks_lantai_700'),
+            $request->input('jenis_bangunan_indeks_lantai_800'),
+            $request->input('jenis_bangunan_indeks_lantai_900'),
+            $request->input('jenis_bangunan_indeks_lantai_1000'),
+            $request->input('jenis_bangunan_indeks_lantai_1100')
+        ];
+
+        // Ambil nilai yang tidak null
+        foreach ($possibleInputs as $input) {
+            if (!is_null($input)) {
+                // Bersihkan string dari suffix _100, _1000, _1100
+                return preg_replace('/_(?:100|200|300|400|500|600|700|800|900|1000|1100)$/', '', $input);
+            }
+        }
+
+        return null;
     }
 }
