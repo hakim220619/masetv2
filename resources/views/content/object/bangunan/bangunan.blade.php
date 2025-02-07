@@ -77,7 +77,7 @@
 
     <div class="row">
         <!-- Default Icons Wizard -->
-        <form action="{{ route('object-store') }}" method="POST" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('object-store') }}" id="mainForm" enctype="multipart/form-data">
             @csrf
             <div class="col-12 mb-4">
                 @csrf
@@ -271,11 +271,13 @@
                         const selectedValue = this.value;
 
                         // Sembunyikan semua form terlebih dahulu
-                        document.querySelectorAll('#dynamic-content > div').forEach(function(form) {
-                            form.style.display = 'none'; // Pastikan semua form disembunyikan
-                        });
+                        document.querySelectorAll(
+                            '[id^="100"], [id^="200"], [id^="300"], [id^="400"], [id^="500"], [id^="600"], [id^="700"], [id^="800"], [id^="900"], [id^="1000"], [id^="1100"]'
+                        ).forEach(
+                            form => {
+                                form.style.display = 'none';
+                            });
 
-                        // Tampilkan form sesuai pilihan dan sembunyikan yang lain
                         switch (selectedValue) {
                             case '100':
                                 document.getElementById('100').style.display = 'block';
@@ -291,6 +293,10 @@
                                 break;
                             case '500':
                                 document.getElementById('500').style.display = 'block';
+                                // Tambahkan inisialisasi untuk form 500
+                                if (typeof initForm500 === 'function') {
+                                    initForm500();
+                                }
                                 break;
                             case '600':
                                 document.getElementById('600').style.display = 'block';
@@ -311,89 +317,39 @@
                                 document.getElementById('1100').style.display = 'block';
                                 break;
                             default:
-                                // Tidak ada yang dipilih, semua tetap disembunyikan
-                                // document.getElementById('100').style.display = 'none';
-                                // document.getElementById('200').style.display = 'none';
-                                // document.getElementById('300').style.display = 'none';
-                                // document.getElementById('400').style.display = 'none';
-                                // document.getElementById('500').style.display = 'none';
-                                // document.getElementById('600').style.display = 'none';
-                                // document.getElementById('700').style.display = 'none';
-                                // document.getElementById('800').style.display = 'none';
-                                // document.getElementById('900').style.display = 'none';
-                                // document.getElementById('1000').style.display = 'none';
-                                // document.getElementById('1100').style.display = 'none';
-                                break;
+                                // Sembunyikan semua form jika tidak ada yang dipilih
+                                document.querySelectorAll(
+                                        '[id^="100"], [id^="200"], [id^="300"], [id^="400"], [id^="500"], [id^="600"], [id^="700"], [id^="800"], [id^="900"], [id^="1000"], [id^="1100"]'
+                                    )
+                                    .forEach(form => {
+                                        form.style.display = 'none';
+                                    });
                         }
                     });
-                    document.getElementById('tipe_spek').addEventListener('change', function() {
-                        const selectedValue = this.value;
 
-                        // Sembunyikan semua form terlebih dahulu
-                        document.querySelectorAll('#dynamic-content > div').forEach(function(form) {
-                            form.style.display = 'none'; // Pastikan semua form disembunyikan
-                        });
+                    // Tambahkan fungsi inisialisasi untuk form 500
+                    function initForm500() {
+                        // Inisialisasi select grade gudang
+                        const gradeGudangSelect = document.getElementById('grade_gudang');
+                        if (gradeGudangSelect) {
+                            // Reset nilai
+                            gradeGudangSelect.value = '';
 
-                        // Reset semua form sebelum menampilkan yang dipilih
-                        document.querySelectorAll('#dynamic-content > div').forEach(function(form) {
-                            form.querySelectorAll('input, select, textarea').forEach(function(input) {
-                                // Handle different input types
-                                switch (input.type) {
-                                    case 'checkbox':
-                                    case 'radio':
-                                        input.checked = false; // Uncheck checkboxes and radio buttons
-                                        break;
-                                    case 'text':
-                                    case 'number':
-                                    case 'email':
-                                    case 'password':
-                                    case 'date':
-                                    case 'textarea':
-                                    case 'select-one':
-                                    case 'select-multiple':
-                                        input.value =
-                                            ''; // Reset text, number, email, password, date, textarea, and select inputs
-                                        break;
-                                    default:
-                                        // Handle other input types if necessary
-                                        break;
-                                }
-                            });
-                        });
+                            // Tampilkan select
+                            gradeGudangSelect.closest('.form-group').style.display = 'block';
 
-                        // Tampilkan form sesuai pilihan
-                        if (selectedValue && document.getElementById(selectedValue)) {
-                            document.getElementById(selectedValue).style.display = 'block';
+                            // Trigger change event untuk memastikan handler terpanggil
+                            gradeGudangSelect.dispatchEvent(new Event('change'));
                         }
-                    });
+                    }
+
+                    // Tambahkan event listener saat dokumen dimuat
                     document.addEventListener('DOMContentLoaded', function() {
-                        const tipeSpekDropdown = document.getElementById('tipe_spek');
-
-                        // Cek jika ada nilai yang tersimpan di localStorage
-                        const savedValue = localStorage.getItem('selectedTipeSpek');
-                        if (savedValue) {
-                            tipeSpekDropdown.value = savedValue;
-                            showFormBasedOnSelection(savedValue); // Tampilkan form sesuai nilai yang dipilih
-                        }
-
-                        // Simpan nilai yang dipilih ke localStorage dan tampilkan form yang sesuai
-                        tipeSpekDropdown.addEventListener('change', function() {
-                            const selectedValue = this.value;
-                            localStorage.setItem('selectedTipeSpek', selectedValue);
-                            showFormBasedOnSelection(selectedValue);
-                        });
-
-                        // Fungsi untuk menampilkan form yang sesuai
-                        function showFormBasedOnSelection(selectedValue) {
-                            // Sembunyikan semua form terlebih dahulu
-                            document.querySelectorAll('#dynamic-content > div').forEach(function(form) {
-                                form.style.display = 'none';
-                            });
-
-                            // Tampilkan form yang sesuai dengan nilai yang dipilih
-                            if (selectedValue && document.getElementById(selectedValue)) {
-                                document.getElementById(selectedValue).style.display = 'block';
-                            }
+                        // Cek apakah form 500 perlu ditampilkan berdasarkan nilai yang tersimpan
+                        const tipeSpekSelect = document.getElementById('tipe_spek');
+                        if (tipeSpekSelect && tipeSpekSelect.value === '500') {
+                            document.getElementById('500').style.display = 'block';
+                            initForm500();
                         }
                     });
                 </script>
@@ -401,14 +357,14 @@
                     @include('content.form.100')
                     @include('content.form.200')
                     @include('content.form.300')
-                    {{-- @include('content.form.400') --}}
-                    {{-- @include('content.form.500')
+                    @include('content.form.400')
+                    @include('content.form.500')
                     @include('content.form.600')
                     @include('content.form.700')
                     @include('content.form.800')
                     @include('content.form.900')
                     @include('content.form.1000')
-                    @include('content.form.1100') --}}
+                    @include('content.form.1100')
                 </div>
 
 
@@ -421,10 +377,7 @@
                         }
                         document.getElementById(elementId).innerHTML = options;
                     }
-
-                    const currentYear = new Date().getFullYear();
                     generateYearOptions(1960, currentYear + 7, currentYear, 'tahun_renovasi');
-                    generateYearOptions(1960, currentYear + 7, currentYear, 'tahun_renovasi_menengah');
                 </script>
                 <div class="form-group mb-3">
                     <label for="penggunaan_bangunan"><b>Penggunaan Bangunan Saat Ini</b></label>
@@ -515,5 +468,122 @@
             });
         </script>
     @endif
+
+    <!-- Tambahkan sebelum tag </form> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM Content Loaded');
+
+            const mainForm = document.getElementById('mainForm');
+            const tipeSpekSelect = document.getElementById('tipe_spek');
+
+            if (mainForm) {
+                mainForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    console.log('Form submission intercepted');
+
+                    const selectedType = tipeSpekSelect ? tipeSpekSelect.value : null;
+                    console.log('Selected type at submission:', selectedType);
+
+                    if (!selectedType) {
+                        console.warn('No type selected');
+                        return;
+                    }
+
+                    // Dapatkan semua container
+                    const containers = document.querySelectorAll(
+                        '[id^="100"], [id^="200"], [id^="300"], [id^="400"], [id^="500"], [id^="600"], [id^="700"], [id^="800"], [id^="900"], [id^="1000"], [id^="1100"]'
+                    );
+
+                    // Sembunyikan semua container kecuali yang aktif
+                    containers.forEach(container => {
+                        if (container.id !== selectedType) {
+                            container.style.display = 'none';
+                        }
+                    });
+
+                    const activeContainer = document.getElementById(selectedType);
+                    console.log('Active container:', activeContainer);
+
+                    if (!activeContainer) {
+                        console.warn('Active container not found');
+                        return;
+                    }
+
+                    // Kumpulkan semua elemen form dari container aktif
+                    const formElements = activeContainer.querySelectorAll('input, select, textarea');
+                    console.log(`Found ${formElements.length} elements in active container`);
+
+                    // Proses setiap elemen
+                    formElements.forEach(element => {
+                        if (!element.name) return;
+
+                        // Log state awal
+                        console.log('Processing element:', {
+                            name: element.name,
+                            type: element.type,
+                            value: element.value,
+                            isArray: element.name.endsWith('[]')
+                        });
+
+                        // Hapus suffix dari nama elemen
+                        const suffix = `_${selectedType}`;
+                        if (element.name.endsWith(suffix)) {
+                            const newName = element.name.replace(suffix, '');
+                            console.log(`Renaming ${element.name} to ${newName}`);
+                            element.name = newName;
+                        } else if (element.name.endsWith(`${suffix}[]`)) {
+                            const newName = element.name.replace(`${suffix}[]`, '[]');
+                            console.log(`Renaming array element ${element.name} to ${newName}`);
+                            element.name = newName;
+                        }
+                    });
+
+                    // Nonaktifkan elemen di container yang tidak aktif
+                    containers.forEach(container => {
+                        if (container.id !== selectedType) {
+                            const inactiveElements = container.querySelectorAll(
+                                'input, select, textarea');
+                            inactiveElements.forEach(element => {
+                                element.disabled = true;
+                            });
+                        }
+                    });
+
+                    // Log final form data
+                    const formData = new FormData(this);
+                    console.log('Final form data:');
+                    for (let [key, value] of formData.entries()) {
+                        console.log(`${key}:`, value);
+                    }
+
+                    // Submit form
+                    console.log('Submitting form...');
+                    this.submit();
+                });
+
+                // Tambahkan event listener untuk perubahan tipe_spek
+                tipeSpekSelect.addEventListener('change', function() {
+                    const selectedType = this.value;
+                    console.log('Tipe spek changed to:', selectedType);
+
+                    // Update tampilan container
+                    const containers = document.querySelectorAll(
+                        '[id^="100"], [id^="200"], [id^="300"], [id^="400"], [id^="500"], [id^="600"], [id^="700"], [id^="800"], [id^="900"], [id^="1000"], [id^="1100"]'
+                    );
+
+                    containers.forEach(container => {
+                        container.style.display = container.id === selectedType ? 'block' : 'none';
+                    });
+
+                    // Reset form jika diperlukan
+                    // mainForm.reset();
+                });
+            }
+
+            // Debug info
+            console.log('Initial selected type:', tipeSpekSelect.value);
+        });
+    </script>
 
 @endsection

@@ -1,7 +1,8 @@
 <div class="luas-bangunan-fisik">
     <div class="form-group">
         <label for="nama_lantai" style="font-weight: bold;">Nomor/Nama Lantai (Area)</label>
-        <input type="text" class="form-control" id="nama_lantai" placeholder="Contoh: Teras, Basement, Lantai 1 atau Lantai 2 dll">
+        <input type="text" class="form-control" id="nama_lantai"
+            placeholder="Contoh: Teras, Basement, Lantai 1 atau Lantai 2 dll">
     </div>
 
     <div class="form-group">
@@ -17,7 +18,8 @@
         <input type="number" class="form-control" id="luas_lantai" placeholder="Masukkan angka tanpa m2/spasi">
     </div>
 
-    <canvas id="drawingCanvas" width="600" height="400" style="border:1px solid #000; display: block; margin: 10px auto;"></canvas>
+    <canvas id="drawingCanvas" width="600" height="400"
+        style="border:1px solid #000; display: block; margin: 10px auto;"></canvas>
 
     <div class="navigation-buttons" style="margin-top: 10px;">
         <button class="nav-btn" onclick="moveUp()">&#8593;</button>
