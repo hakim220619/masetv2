@@ -299,13 +299,13 @@
         </select>
     </div>
     <div id="checkboxContainerDibangunMenengah" style="display: none; margin-top: 20px;">
-        <label><input type="checkbox" name="keterangan_tahun_dibangaun[]" value="keterangan_pendamping_lokasi">
-            Keterangan pendamping
-            lokasi / pemilik</label><br>
-        <label><input type="checkbox" name="keterangan_tahun_dibangaun[]" value="imb"> IMB</label><br>
-        <label><input type="checkbox" name="keterangan_tahun_dibangaun[]" value="pengamatan_visual"> Pengamatan
+        <label style="font-weight: bold;">Sumber Informasi Tahun Dibangun</label><br>
+        <label><input type="checkbox" name="keterangan_tahun_dibangun[]" value="keterangan_pendamping_lokasi">
+            Keterangan pendamping lokasi / pemilik</label><br>
+        <label><input type="checkbox" name="keterangan_tahun_dibangun[]" value="imb"> IMB</label><br>
+        <label><input type="checkbox" name="keterangan_tahun_dibangun[]" value="pengamatan_visual"> Pengamatan
             visual</label><br>
-        <label><input type="checkbox" name="keterangan_tahun_dibangaun[]" value="keterangan_lingkungan"> Keterangan
+        <label><input type="checkbox" name="keterangan_tahun_dibangun[]" value="keterangan_lingkungan"> Keterangan
             lingkungan</label><br>
     </div>
 
@@ -330,9 +330,9 @@
     </div>
 
     <div id="checkboxContainerRenovasiMenengah" style="display: none; margin-top: 20px;">
+        <label style="font-weight: bold;">Sumber Informasi Tahun Renovasi</label><br>
         <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="keterangan_pendamping_lokasi">
-            Keterangan pendamping
-            lokasi / pemilik</label><br>
+            Keterangan pendamping lokasi / pemilik</label><br>
         <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="imb"> IMB</label><br>
         <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="pengamatan_visual"> Pengamatan
             visual</label><br>

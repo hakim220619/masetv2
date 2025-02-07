@@ -298,13 +298,13 @@
     </div>
 
     <div id="checkboxContainerDibangun300" style="display: none; margin-top: 20px;">
-        <label><input type="checkbox" name="keterangan_tahun_dibangaun[]" value="Keterangan pendamping lokasi">
-            Keterangan pendamping
-            lokasi / pemilik</label><br>
-        <label><input type="checkbox" name="keterangan_tahun_dibangaun[]" value="IMB"> IMB</label><br>
-        <label><input type="checkbox" name="keterangan_tahun_dibangaun[]" value="Pengamatan visual"> Pengamatan
+        <label style="font-weight: bold;">Sumber Informasi Tahun Dibangun</label><br>
+        <label><input type="checkbox" name="keterangan_tahun_dibangun[]" value="keterangan_pendamping_lokasi">
+            Keterangan pendamping lokasi / pemilik</label><br>
+        <label><input type="checkbox" name="keterangan_tahun_dibangun[]" value="imb"> IMB</label><br>
+        <label><input type="checkbox" name="keterangan_tahun_dibangun[]" value="pengamatan_visual"> Pengamatan
             visual</label><br>
-        <label><input type="checkbox" name="keterangan_tahun_dibangaun[]" value="Keterangan lingkungan"> Keterangan
+        <label><input type="checkbox" name="keterangan_tahun_dibangun[]" value="keterangan_lingkungan"> Keterangan
             lingkungan</label><br>
     </div>
 
@@ -329,13 +329,13 @@
     </div>
 
     <div id="checkboxContainerRenovasi300" style="display: none; margin-top: 20px;">
-        <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="Keterangan pendamping lokasi">
-            Keterangan pendamping
-            lokasi / pemilik</label><br>
-        <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="IMB"> IMB</label><br>
-        <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="Pengamatan visual"> Pengamatan
+        <label style="font-weight: bold;">Sumber Informasi Tahun Renovasi</label><br>
+        <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="keterangan_pendamping_lokasi">
+            Keterangan pendamping lokasi / pemilik</label><br>
+        <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="imb"> IMB</label><br>
+        <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="pengamatan_visual"> Pengamatan
             visual</label><br>
-        <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="Keterangan lingkungan"> Keterangan
+        <label><input type="checkbox" name="keterangan_tahun_direnovasi[]" value="keterangan_lingkungan"> Keterangan
             lingkungan</label><br>
     </div>
 

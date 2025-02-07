@@ -167,7 +167,9 @@ class BangunanController extends Controller
                 'jenis_bangunan_detail' => $data['jenis_bangunan_detail'] ?? null,
                 'grade_gudang' => $data['grade_gudang'] ?? null,
                 'tahun_dibangun' => $data['tahun_dibangun'] ?? null,
+                'keterangan_tahun_dibangun' => json_encode($data['keterangan_tahun_dibangun'] ?? []),
                 'tahun_renovasi' => $data['tahun_renovasi'] ?? null,
+                'keterangan_tahun_direnovasi' => json_encode($data['keterangan_tahun_direnovasi'] ?? []),
                 'jenis_renovasi' => $data['jenis_renovasi'] ?? null,
                 'bobot_renovasi' => $data['bobot_renovasi'] ?? null,
                 'kondisi_visual' => $data['kondisi_visual'] ?? null,
@@ -314,15 +316,15 @@ class BangunanController extends Controller
                 'jumlah_lantai_rumah_tinggal' => $jumlahLantaiRumahTinggalJson,
             ]);
             // return;
-            dd([
-                'field_data' => $fieldData,
-                'jenis_bangunan' => $this->getJenisBangunan($request),
-                'jenis_bangunan_detail' => $data['jenis_bangunan_detail'],
-                'jenis_renovasi' => $data['jenis_renovasi'],
-                'bobot_renovasi' => $data['bobot_renovasi'],
-                'jenis_bangunan_indeks_lantai' => $this->getJenisBangunanIndeksLantai($request),
-                'jumlah_lantai' => $data['jumlah_lantai'],
-            ]);
+            // dd([
+            //     'field_data' => $fieldData,
+            //     'jenis_bangunan' => $this->getJenisBangunan($request),
+            //     'jenis_bangunan_detail' => $data['jenis_bangunan_detail'],
+            //     'jenis_renovasi' => $data['jenis_renovasi'],
+            //     'bobot_renovasi' => $data['bobot_renovasi'],
+            //     'jenis_bangunan_indeks_lantai' => $this->getJenisBangunanIndeksLantai($request),
+            //     'jumlah_lantai' => $data['jumlah_lantai'],
+            // ]);
             return redirect()->back()->with('success', 'Data berhasil disimpan!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());

@@ -33,7 +33,9 @@ class Bangunan extends Model
         'jumlah_lantai_rumah_tinggal',
         'jenis_bangunan_indeks_lantai', // Added missing field
         'tahun_dibangun',
+        'keterangan_tahun_dibangun',
         'tahun_renovasi',
+        'keterangan_tahun_direnovasi',
         'jenis_renovasi',
         'bobot_renovasi',
         'kondisi_visual',
