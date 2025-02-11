@@ -73,8 +73,6 @@
         }
     @endphp
 
-
-
     <div class="row">
         <!-- Default Icons Wizard -->
         <form method="POST" action="{{ route('object-store') }}" id="mainForm" enctype="multipart/form-data">

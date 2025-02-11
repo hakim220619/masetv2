@@ -151,6 +151,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/object/add_bangunan', [BangunanController::class, 'add_bangunan'])->name('add_bangunan');
     Route::get('/object/detail_bangunan/{id}', [BangunanController::class, 'detail_bangunan'])->name('detail_bangunan');
     Route::post('/object/store', [BangunanController::class, 'store'])->name('object-store');
+    Route::get('/object/list-objects', [BangunanController::class, 'listObject'])->name('bangunan.listObjects');
+    Route::delete('/object/delete/{id}', [BangunanController::class, 'destroy'])->name('object.destroy');
 
 
     Route::get('/object/acceptSurveyor/{id}', [BangunanController::class, 'acceptSurveyor'])->name('acceptSurveyor');
@@ -161,7 +163,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Object
     Route::get('/object/lihat_object', [ObjectController::class, 'lihat_object'])->name('object-lihat_object');
-   
+
 
 
     //Penilai

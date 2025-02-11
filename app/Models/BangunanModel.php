@@ -36,4 +36,15 @@ class BangunanModel extends Model
         ORDER BY no ASC');
         return $data;
     }
+
+    public static function listObject($search = null, $type = null)
+    {
+        $query = DB::table('bangunan'); // Start the query on the 'bangunan' table
+
+        if ($search) {
+            $query->where('nama_bangunan', 'like', "%{$search}%");
+        }
+
+        return $query->get();
+    }
 }

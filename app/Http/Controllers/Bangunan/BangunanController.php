@@ -68,6 +68,41 @@ class BangunanController extends Controller
             'data' => $data,
         ]);
     }
+    public function listObject(Request $request)
+    {
+        // Capture search and type parameters (optional)
+        $search = $request->input('search');
+        $type = $request->input('type');
+
+        // Fetch objects based on optional filters
+        $data = BangunanModel::listObject($search, $type);
+
+        return response()->json([
+            'recordsTotal' => count($data),
+            'recordsFiltered' => count($data),
+            'data' => $data,
+        ]);
+    }
+    public function destroy($id)
+    {
+        try {
+            // Find the object by its ID using DB::table()
+            $deleted = DB::table('bangunan')->where('id', $id)->delete();
+
+            // Check if a row was deleted
+            if ($deleted) {
+                // Return a success response if deleted
+                return response()->json(['message' => 'Obyek berhasil dihapus.'], 200);
+            } else {
+                // If no rows were deleted (ID not found), return a not found message
+                return response()->json(['message' => 'Obyek tidak ditemukan.'], 404);
+            }
+        } catch (\Exception $e) {
+            // In case of error, return an error response
+            return response()->json(['message' => 'Terjadi kesalahan saat menghapus data.'], 500);
+        }
+    }
+
     public function add_bangunan(Request $request)
     {
         $id_bangunan = DB::table('bangunan')->max('id') + 1;
