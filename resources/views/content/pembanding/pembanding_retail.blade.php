@@ -517,7 +517,7 @@ $configData = Helper::appClasses();
                   <div>
                       <label class="form-label" for="kondisi_lingkungan_khusus">Kondisi Lingkungan Khusus</label>
                   </div>
-                  <select class="select2 form-select" name="kondisi_lingkungan_khusus" id="kondisi_lingkungan_khusus" aria-label="Default select example" multiple>
+                  <select class="select2 form-select" name="kondisi_lingkungan_khusus[]" id="kondisi_lingkungan_khusus" aria-label="Default select example" multiple>
                     <option value="Bebas Banjir">Bebas Banjir</option>
                     <option value="Banjir Musiman">Banjir Musiman</option>
                     <option value="Rawan Banjir">Rawan Banjir</option>
@@ -733,7 +733,7 @@ $configData = Helper::appClasses();
                   </tr> 
                   <tr>
                     <td>
-                      <input type="text" name="jenis_aset" id="jenis_aset" class="form-control">
+                      <input type="text" name="jenis_aset_campuran" id="jenis_aset_campuran" class="form-control">
                     </td>
                   </tr>
                   <tr>

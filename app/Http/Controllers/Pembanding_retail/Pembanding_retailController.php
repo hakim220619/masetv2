@@ -25,6 +25,14 @@ class Pembanding_retailController extends Controller
             'alamat' => 'nullable|string|max:255',
             'lat' => 'nullable|numeric',
             'long' => 'nullable|numeric',
+            'foto_tampak_depan' => 'nullable|image|mimes:jpg,jpeg,png|max:6048',
+            'foto_tampak_sisi_kiri' => 'nullable|image|mimes:jpg,jpeg,png|max:6048',
+            'foto_tampak_sisi_kanan' => 'nullable|image|mimes:jpg,jpeg,png|max:6048',
+            'foto_tampak_sisi_kanan' => 'nullable|image|mimes:jpg,jpeg,png|max:6048',
+            'foto_lainnya.*.foto' => 'nullable|image|mimes:jpg,jpeg,png|max:6048',
+            'foto_lainnya.*.judul_foto' => 'nullable|string|max:255',
+            'nama_narsum' => 'nullable|string|max:255',
+            'telepon' => 'nullable|string|max:15',
             'kondisi_properti' => 'nullable|string|max:255',
             'estimasi_properti' => 'nullable|string|max:255',
             'spesifikasi_properti' => 'nullable|string|max:255',
@@ -60,6 +68,7 @@ class Pembanding_retailController extends Controller
             'ketinggian_tanah_dr_muka_jln' => 'nullable|numeric',
             'topografi' => 'nullable|string|max:255',
             'tingkat_hunian' => 'nullable|numeric',
+            'kondisi_lingkungan_khusus' => 'nullable|array|max:255',
             'kondisi_lingkungan_lainnya' => 'nullable|string|max:255',
             'keterangan_tambahan_lainnya' => 'nullable|string',
             'keterangan_jarak' => 'nullable|string|max:255',
@@ -73,6 +82,7 @@ class Pembanding_retailController extends Controller
         ]);
 
         // Handle Multiple Data Fields
+        $validated['narasumber'] = $this->formatMultipleData($request, 'nama_narsum', 'telepon');
         $validated['nilai_perolehan_njop'] = $this->formatMultipleData($request, 'tahun', 'nilai_perolehan');
         $validated['penyusutan'] = $this->formatMultipleData($request, [
             'kemunduran_fungsi',
@@ -111,7 +121,7 @@ class Pembanding_retailController extends Controller
         ]);
 
         // Handle File Uploads
-        $validated['foto_lainnya'] = $this->uploadMultipleFiles($request, 'foto_lainnya');
+        $validated['foto_lainnya'] = $this->handleFotoLainnya($request);
         foreach (['foto_tampak_depan', 'foto_tampak_sisi_kiri', 'foto_tampak_sisi_kanan'] as $fotoField) {
             if ($request->hasFile($fotoField)) {
                 $validated[$fotoField] = $request->file($fotoField)->store('uploads/foto', 'public');
@@ -154,5 +164,27 @@ class Pembanding_retailController extends Controller
             }
         }
         return $files;
+    }
+    private function handleFotoLainnya(Request $request)
+    {
+        $fotoData = [];
+
+        if ($request->has('foto_lainnya')) {
+            foreach ($request->file('foto_lainnya') as $index => $file) {
+                $judulFoto = $request->input("judul_foto.{$index}");
+                
+                if ($file) {
+                    $fileName = time() . "_{$index}_" . $file->getClientOriginalName();
+                    $filePath = $file->storeAs('uploads/foto_lainnya', $fileName, 'public');
+
+                    $fotoData[] = [
+                        'judul_foto' => $judulFoto,
+                        'file_path' => $filePath,
+                    ];
+                }
+            }
+        }
+
+        return json_encode($fotoData, JSON_PRETTY_PRINT);
     }
 }

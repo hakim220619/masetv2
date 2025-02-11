@@ -114,8 +114,8 @@ $configData = Helper::appClasses();
                         <tbody>
                             <tr>
                                 <td class="row-number-foto">1</td>
-                                <td><input type="text" name="judul_foto[]" class="form-control" /></td>
-                                <td><input type="file" id="foto_lainnya" name="foto_lainnya[]" class="form-control" accept="image/*" /></td>
+                                <td><input type="text" name="judul_foto[0]" class="form-control" /></td>
+                                <td><input type="file" id="foto_lainnya" name="foto[0]" class="form-control" accept="image/*" /></td>
                                 <td>
                                     <button type="button" class="btn btn-success btn-sm btn-action" onclick="addFotoRow()">+</button>
                                     <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeFotoRow(this)">-</button>
@@ -138,8 +138,8 @@ $configData = Helper::appClasses();
                       <tbody>
                           <tr>
                               <td class="row-number">1</td>
-                              <td><input type="number" name="tahun[]" class="form-control" /></td>
-                              <td><input type="number" name="nilai_perolehan[]" class="form-control" /></td>
+                              <td><input type="number" name="njop[0][tahun]" class="form-control" /></td>
+                              <td><input type="number" name="njop[0][nilai_perolehan]" class="form-control" /></td>
                               <td>
                                   <button type="button" class="btn btn-success btn-sm btn-action" onclick="addRow()">+</button>
                                   <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeRow(this)">-</button>
@@ -747,76 +747,85 @@ $configData = Helper::appClasses();
 </script>
 
 <script>
-  // Menambahkan baris baru ke tabel Foto Lainnya
   function addFotoRow() {
-      const table = document.getElementById('fotoLainnyaTable').getElementsByTagName('tbody')[0];
-      const newRow = table.insertRow();
-      const rowCount = table.rows.length;
+      const tableBody = document.getElementById('fotoLainnyaTable');
+      const rowCount = tableBody.rows.length;
 
+      const newRow = tableBody.insertRow();
       newRow.innerHTML = `
-          <td class="row-number-foto">${rowCount}</td>
-          <td><input type="text" name="judul_foto[]" class="form-control" /></td>
-          <td><input type="file" id="foto_lainnya" name="foto_lainnya[]" class="form-control" accept="image/*" /></td>
+          <td class="row-number-foto">${rowCount + 1}</td>
+          <td><input type="text" name="judul_foto[${rowCount}]" class="form-control" /></td>
+          <td><input type="file" name="foto[${rowCount}]" class="form-control" accept="image/*" /></td>
           <td>
-              <button type="button" class="btn btn-success btn-sm btn-action" onclick="addFotoRow()">+</button>
-              <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeFotoRow(this)">-</button>
+              <button type="button" class="btn btn-success btn-sm" onclick="addFotoRow()">+</button>
+              <button type="button" class="btn btn-danger btn-sm" onclick="removeFotoRow(this)">-</button>
           </td>
       `;
       updateFotoRowNumbers();
   }
 
-  // Menghapus baris dari tabel Foto Lainnya
   function removeFotoRow(button) {
-      const table = document.getElementById('fotoLainnyaTable').getElementsByTagName('tbody')[0];
-      if (table.rows.length > 1) {
-          const row = button.parentNode.parentNode;
-          table.deleteRow(row.rowIndex - 1); // Menyesuaikan indeks untuk header
+      const row = button.parentNode.parentNode;
+      const tableBody = document.getElementById('fotoLainnyaTable');
+      if (tableBody.rows.length > 1) {
+          tableBody.deleteRow(row.rowIndex - 1);
           updateFotoRowNumbers();
       }
   }
 
-  // Memperbarui nomor urut di tabel Foto Lainnya
   function updateFotoRowNumbers() {
-      const rows = document.querySelectorAll('#fotoLainnyaTable .row-number-foto');
+      const rows = document.querySelectorAll('#fotoLainnyaTableBody .row-number-foto');
       rows.forEach((cell, index) => {
           cell.textContent = index + 1;
+          // Update nama input agar konsisten
+          const judulInput = cell.parentNode.querySelector('input[name^="judul_foto"]');
+          const fileInput = cell.parentNode.querySelector('input[name^="foto"]');
+          if (judulInput) judulInput.name = `judul_foto[${index}]`;
+          if (fileInput) fileInput.name = `foto[${index}]`;
       });
   }
+
 </script>
 
 <script>
   function addRow() {
-      const table = document.getElementById('njopTable').getElementsByTagName('tbody')[0];
-      const newRow = table.insertRow();
-      const rowCount = table.rows.length;
+    const tableBody = document.getElementById('njopTable');
+    const rowCount = tableBody.rows.length;
 
-      newRow.innerHTML = `
-          <td class="row-number">${rowCount}</td>
-          <td><input type="number" name="tahun[]" class="form-control" /></td>
-          <td><input type="number" name="nilai_perolehan[]" class="form-control" /></td>
-          <td>
-              <button type="button" class="btn btn-success btn-sm btn-action" onclick="addRow()">+</button>
-              <button type="button" class="btn btn-danger btn-sm btn-action" onclick="removeRow(this)">-</button>
-          </td>
-      `;
-      updateRowNumbers();
-  }
+    const newRow = tableBody.insertRow();
+    newRow.innerHTML = `
+        <td class="row-number">${rowCount + 1}</td>
+        <td><input type="number" name="njop[${rowCount}][tahun]" class="form-control" /></td>
+        <td><input type="number" name="njop[${rowCount}][nilai_perolehan]" class="form-control" /></td>
+        <td>
+            <button type="button" class="btn btn-success btn-sm" onclick="addRow()">+</button>
+            <button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)">-</button>
+        </td>
+    `;
+    updateRowNumbers();
+}
 
-  function removeRow(button) {
-      const table = document.getElementById('njopTable').getElementsByTagName('tbody')[0];
-      if (table.rows.length > 1) {
-          const row = button.parentNode.parentNode;
-          table.deleteRow(row.rowIndex - 1); // Adjust for header row
-          updateRowNumbers();
-      }
-  }
+function removeRow(button) {
+    const row = button.parentNode.parentNode;
+    const tableBody = document.getElementById('njopTable');
+    if (tableBody.rows.length > 1) {
+        tableBody.deleteRow(row.rowIndex - 1);
+        updateRowNumbers();
+    }
+}
 
-  function updateRowNumbers() {
-      const rows = document.querySelectorAll('#njopTable .row-number');
-      rows.forEach((cell, index) => {
-          cell.textContent = index + 1;
-      });
-  }
+function updateRowNumbers() {
+    const rows = document.querySelectorAll('#njopTable .row-number');
+    rows.forEach((cell, index) => {
+        cell.textContent = index + 1;
+        // Update nama input agar tetap konsisten
+        const tahunInput = cell.parentNode.querySelector('input[name^="njop"][name*="[tahun]"]');
+        const nilaiInput = cell.parentNode.querySelector('input[name^="njop"][name*="[nilai_perolehan]"]');
+        if (tahunInput) tahunInput.name = `njop[${index}][tahun]`;
+        if (nilaiInput) nilaiInput.name = `njop[${index}][nilai_perolehan]`;
+    });
+}
+
 </script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {

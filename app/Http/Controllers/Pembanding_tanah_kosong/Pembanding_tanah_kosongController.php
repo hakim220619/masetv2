@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\TanahKosong; // Impor model TanahKosong
+use Illuminate\Support\Facades\Storage;
 
 class Pembanding_tanah_kosongController extends Controller
 {
@@ -17,6 +18,7 @@ class Pembanding_tanah_kosongController extends Controller
     public function store(Request $request)
     {
         // Validasi data
+    
         $validated = $request->validate([
             'nama_tanah_kosong' => 'required|string|max:255',
             'nama_entitas' => 'nullable|string|max:255',
@@ -27,11 +29,11 @@ class Pembanding_tanah_kosongController extends Controller
             'alamat' => 'nullable|string',
             'lat' => 'nullable|numeric',
             'long' => 'nullable|numeric',
-            'foto_tampak_depan' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'foto_tampak_sisi_kiri' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'foto_tampak_sisi_kanan' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'foto_lainnya' => 'nullable|array',
-            'foto_lainnya.*' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'foto_tampak_depan' => 'nullable|image|mimes:jpg,jpeg,png|max:6048',
+            'foto_tampak_sisi_kiri' => 'nullable|image|mimes:jpg,jpeg,png|max:6048',
+            'foto_tampak_sisi_kanan' => 'nullable|image|mimes:jpg,jpeg,png|max:6048',
+            'foto' => 'nullable|array',
+            'foto.*' => 'nullable|image|mimes:jpg,jpeg,png|max:6048',
             'njop' => 'nullable|array',
             'njop.*.tahun' => 'nullable|integer',
             'njop.*.nilai_perolehan' => 'nullable|numeric',
@@ -69,6 +71,7 @@ class Pembanding_tanah_kosongController extends Controller
             'letak_posisi_obyek' => 'nullable|string',
             'letak_posisi_aset' => 'nullable|string',
             'bentuk_tanah' => 'nullable|string',
+            'bentuk_tanah_lainnya' => 'nullable|string',
             'lebar_muka_tanah' => 'nullable|integer',
             'ketinggian_tanah_dr_muka_jln' => 'nullable|integer',
             'topografi' => 'nullable|string',
@@ -101,13 +104,31 @@ class Pembanding_tanah_kosongController extends Controller
         $pathDepan = $request->file('foto_tampak_depan')?->store('public/uploads');
         $pathKiri = $request->file('foto_tampak_sisi_kiri')?->store('public/uploads');
         $pathKanan = $request->file('foto_tampak_sisi_kanan')?->store('public/uploads');
-        $fotoLainnya = [];
 
-        if ($request->hasFile('foto_lainnya')) {
-            foreach ($request->file('foto_lainnya') as $file) {
-                $fotoLainnya[] = $file->store('public/uploads');
+        $fotoData = $request->input('foto');
+
+        $fotoData = [];
+
+        // Iterasi file dan judul
+        if ($request->hasFile('foto')) {
+            foreach ($request->file('foto') as $index => $file) {
+                $judulFoto = $request->input("judul_foto.{$index}");
+                
+                // Simpan file ke storage
+                $fileName = time() . "_{$index}_" . $file->getClientOriginalName();
+                $filePath = $file->storeAs('uploads/foto_lainnya', $fileName, 'public');
+
+                $fotoData[] = [
+                    'judul_foto' => $judulFoto,
+                    'file_path' => $filePath,
+                ];
             }
         }
+
+        // Simpan JSON ke database atau sesuai kebutuhan
+        $jsonFotoData = json_encode($fotoData);
+
+        
 
         // Simpan data
         TanahKosong::create([
@@ -123,7 +144,7 @@ class Pembanding_tanah_kosongController extends Controller
             'foto_tampak_depan' => $pathDepan,
             'foto_tampak_sisi_kiri' => $pathKiri,
             'foto_tampak_sisi_kanan' => $pathKanan,
-            'foto_lainnya' => json_encode($fotoLainnya),
+            'foto_lainnya' => $jsonFotoData,
             'njop' => json_encode($request->njop),
             'nama_narsum' => $request->nama_narsum,
             'telepon' => $request->telepon,
@@ -159,6 +180,7 @@ class Pembanding_tanah_kosongController extends Controller
             'letak_posisi_obyek' => $request->letak_posisi_obyek,
             'letak_posisi_aset' => $request->letak_posisi_aset,
             'bentuk_tanah' => $request->bentuk_tanah,
+            'bentuk_tanah_lainnya' => $request->bentuk_tanah_lainnya,
             'lebar_muka_tanah' => $request->lebar_muka_tanah,
             'ketinggian_tanah_dr_muka_jln' => $request->ketinggian_tanah_dr_muka_jln,
             'topografi' => $request->topografi,
