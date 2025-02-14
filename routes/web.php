@@ -219,6 +219,7 @@ Route::middleware(['auth'])->group(function () {
     // pembanding
     Route::get('/pembanding/bangunan', [PembandingBangunanController::class, 'bangunan'])->name('pembanding-bangunan');
     Route::post('/pembanding/add_pembanding_bangunan', [PembandingBangunanController::class, 'add_pembanding_bangunan'])->name('add_pembanding_bangunan');
+    Route::post('/pembanding/store_pembanding_bangunan', [PembandingBangunanController::class, 'store_pembanding_bangunan'])->name('store_pembanding_bangunan');
     Route::get('/pembanding/detail_pembanding_bangunan/{id}', [PembandingBangunanController::class, 'detail_pembanding_bangunan'])->name('detail_pembanding_bangunan');
 
     Route::get('/pembanding/tanah_kosong', [Pembanding_tanah_kosongController::class, 'tanah_kosong'])->name('pembanding-tanah-kosong');
