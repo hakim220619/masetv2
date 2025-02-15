@@ -153,6 +153,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/object/store', [BangunanController::class, 'store'])->name('object-store');
     Route::get('/object/list-objects', [BangunanController::class, 'listObject'])->name('bangunan.listObjects');
     Route::delete('/object/delete/{id}', [BangunanController::class, 'destroy'])->name('object.destroy');
+    Route::get('/object/edit/{id}', [BangunanController::class, 'edit'])->name('object.edit');
+    Route::put('/object/update/{id}', [BangunanController::class, 'update'])->name('object.update');
 
 
     Route::get('/object/acceptSurveyor/{id}', [BangunanController::class, 'acceptSurveyor'])->name('acceptSurveyor');

@@ -76,31 +76,31 @@ class Bangunan extends Model
     /**
      * Tipe casting untuk kolom JSON.
      */
-    // protected $casts = [
-    //     'foto_lainnya' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'dynamic_data' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'perlengkapan_bangunan' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'luas_nama_pintu_jendela' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'luas_bobot_pintu_jendela' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'luas_nama_dinding' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'luas_bobot_dinding' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'tipe_pondasi_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'bobot_tipe_pondasi_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'tipe_struktur_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'bobot_tipe_struktur_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'tipe_rangka_atap_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'bobot_rangka_atap_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'tipe_penutup_atap_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'bobot_penutup_atap_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'tipe_tipe_dinding_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'bobot_tipe_dinding_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'tipe_tipe_pelapis_dinding_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'bobot_tipe_pelapis_dinding_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'tipe_tipe_pintu_jendela_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'bobot_tipe_pintu_jendela_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'tipe_tipe_lantai_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    //     'bobot_tipe_lantai_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
-    // ];
+    protected $casts = [
+        'foto_lainnya' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'dynamic_data' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'perlengkapan_bangunan' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'luas_nama_pintu_jendela' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'luas_bobot_pintu_jendela' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'luas_nama_dinding' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'luas_bobot_dinding' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'tipe_pondasi_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'bobot_tipe_pondasi_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'tipe_struktur_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'bobot_tipe_struktur_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'tipe_rangka_atap_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'bobot_rangka_atap_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'tipe_penutup_atap_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'bobot_penutup_atap_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'tipe_tipe_dinding_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'bobot_tipe_dinding_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'tipe_tipe_pelapis_dinding_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'bobot_tipe_pelapis_dinding_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'tipe_tipe_pintu_jendela_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'bobot_tipe_pintu_jendela_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'tipe_tipe_lantai_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+        'bobot_tipe_lantai_existing' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
+    ];
 
 
     /**
@@ -178,4 +178,14 @@ class Bangunan extends Model
     }
 
     // Continue adding accessors for the remaining fields...
+
+    // Jika casting tidak bekerja dengan baik, tambahkan accessor
+    public function getFotoLainnyaAttribute($value)
+    {
+        if (is_string($value)) {
+            $decoded = json_decode($value, true);
+            return is_array($decoded) ? $decoded : [];
+        }
+        return is_array($value) ? $value : [];
+    }
 }

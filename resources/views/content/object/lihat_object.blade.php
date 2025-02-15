@@ -72,7 +72,9 @@
                                             <div class="card-header d-flex justify-content-between" style="border-bottom: 1px solid #ccc; padding-bottom: 10px; font-size: 13px; font-weight: bold;">
                                                 ${object.nama_bangunan}
                                                 <span>
-                                                    <i class="fa fa-edit" title="Edit" style="font-size: 13px;"></i>
+                                                    <a href="/object/edit/${object.id}" class="text-primary me-2">
+                                                        <i class="fa fa-edit" title="Edit" style="font-size: 13px;"></i>
+                                                    </a>
                                                     <i class="fa fa-times" title="Delete" style="font-size: 13px;" data-object-id="${object.id}"></i>
                                                 </span>
                                             </div>
