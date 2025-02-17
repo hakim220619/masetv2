@@ -2361,3 +2361,58 @@
         box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
     }
 </style>
+
+<script>
+    // Tambahkan fungsi untuk mengumpulkan data canvas
+    function getCanvasData() {
+        return {
+            points: points.map(p => ({
+                x: p.x,
+                y: p.y
+            })),
+            measurements: [], // Jika Anda menyimpan pengukuran
+            zoomLevel: zoomLevel,
+            offset: {
+                x: offsetX,
+                y: offsetY
+            },
+            tipe_spek: '100' // tambahkan tipe_spek
+        };
+    }
+
+    // Tambahkan event listener untuk form submit
+    document.querySelector('form').addEventListener('submit', function(e) {
+        // Dapatkan data canvas
+        const canvasData = getCanvasData();
+
+        // Tambahkan input hidden untuk menyimpan data canvas
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'canvas_data';
+        input.value = JSON.stringify(canvasData);
+        this.appendChild(input);
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Jika ada data canvas yang tersimpan dan tipe_spek sesuai
+        @if (isset($bangunan->canvas_data) && $bangunan->tipe_spek === '100')
+            const savedData = @json($bangunan->canvas_data);
+
+            // Restore points
+            points = savedData.points.map(p => ({
+                x: p.x,
+                y: p.y
+            }));
+
+            // Restore zoom dan offset
+            zoomLevel = savedData.zoomLevel || 1;
+            offsetX = savedData.offset?.x || 0;
+            offsetY = savedData.offset?.y || 0;
+
+            // Redraw canvas
+            redrawCanvas();
+        @endif
+    });
+</script>

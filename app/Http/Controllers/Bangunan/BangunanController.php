@@ -580,7 +580,14 @@ class BangunanController extends Controller
             // Ambil semua input dari request
             $data = $request->all();
 
-            // 1. Update field biasa
+            // Proses data canvas
+            if (isset($data['canvas_data'])) {
+                $canvasData = json_decode($data['canvas_data'], true);
+                // Pastikan tipe_spek sesuai dengan form yang aktif
+                $canvasData['tipe_spek'] = $data['tipe_spek'];
+            }
+
+            // Update field biasa
             $fieldData = [
                 'nama_bangunan' => $data['nama_bangunan'],
                 'bentuk_bangunan' => $data['bentuk_bangunan'] ?? null,
@@ -612,6 +619,7 @@ class BangunanController extends Controller
                 'kondisi_bangunan' => $data['kondisi_bangunan'] ?? null,
                 'status_data' => $data['status_data'] ?? 'draft',
                 'jumlah_lantai_rumah_tinggal' => json_encode(filterNullValues($data['jumlah_lantai_rumah_tinggal'] ?? [])),
+                'canvas_data' => $canvasData ?? null,
             ];
 
             // 2. Update foto jika ada
@@ -679,9 +687,9 @@ class BangunanController extends Controller
             // 5. Lakukan update
             $bangunan->update($fieldData);
 
-            return redirect()->back()->with('success', 'Data bangunan berhasil diperbarui!');
+            return redirect()->back()->with('success', 'Data bangunan berhasil diperbarui');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Gagal memperbarui data bangunan: ' . $e->getMessage());
         }
     }
 

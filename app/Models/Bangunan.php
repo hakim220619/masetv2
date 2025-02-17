@@ -11,6 +11,7 @@ class Bangunan extends Model
     protected $table = 'bangunan';
 
     protected $fillable = [
+        'canvas_data',
         'nama_bangunan',
         'foto_depan',
         'foto_sisi_kiri',
@@ -77,6 +78,7 @@ class Bangunan extends Model
      * Tipe casting untuk kolom JSON.
      */
     protected $casts = [
+        'canvas_data' => 'array',
         'foto_lainnya' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
         'dynamic_data' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
         'perlengkapan_bangunan' => 'array', // Akan otomatis dikonversi menjadi array saat diakses
