@@ -300,17 +300,28 @@
                 <div class="form-group mb-3">
                     <label for="tipe_spek"><b>Tipe Spek</b></label>
                     <select id="tipe_spek" name="tipe_spek" class="form-select">
-                        <option value="100" {{ $bangunan->tipe_spek == '100' ? 'selected' : '' }}>100</option>
-                        <option value="200" {{ $bangunan->tipe_spek == '200' ? 'selected' : '' }}>200</option>
-                        <option value="300" {{ $bangunan->tipe_spek == '300' ? 'selected' : '' }}>300</option>
-                        <option value="400" {{ $bangunan->tipe_spek == '400' ? 'selected' : '' }}>400</option>
-                        <option value="500" {{ $bangunan->tipe_spek == '500' ? 'selected' : '' }}>500</option>
-                        <option value="600" {{ $bangunan->tipe_spek == '600' ? 'selected' : '' }}>600</option>
-                        <option value="700" {{ $bangunan->tipe_spek == '700' ? 'selected' : '' }}>700</option>
-                        <option value="800" {{ $bangunan->tipe_spek == '800' ? 'selected' : '' }}>800</option>
-                        <option value="900" {{ $bangunan->tipe_spek == '900' ? 'selected' : '' }}>900</option>
-                        <option value="1000" {{ $bangunan->tipe_spek == '1000' ? 'selected' : '' }}>1000</option>
-                        <option value="1100" {{ $bangunan->tipe_spek == '1100' ? 'selected' : '' }}>1100</option>
+                        <option value="100" {{ $bangunan->tipe_spek == '100' ? 'selected' : '' }}>Rumah Tinggal
+                            Sederhana 1 Lantai</option>
+                        <option value="200" {{ $bangunan->tipe_spek == '200' ? 'selected' : '' }}>Rumah Tinggal
+                            Menengah 2 Lantai</option>
+                        <option value="300" {{ $bangunan->tipe_spek == '300' ? 'selected' : '' }}>Rumah Tinggal Mewah 2
+                            Lantai</option>
+                        <option value="400" {{ $bangunan->tipe_spek == '400' ? 'selected' : '' }}>Bangunan Perkebunan
+                            (Semi Permanen) 1 Lantai</option>
+                        <option value="500" {{ $bangunan->tipe_spek == '500' ? 'selected' : '' }}>Bangunan Gudang 1
+                            Lantai</option>
+                        <option value="600" {{ $bangunan->tipe_spek == '600' ? 'selected' : '' }}>Bangunan Gedung
+                            Bertingkat Rendah 3 Lantai (&lt;5 Lantai)</option>
+                        <option value="700" {{ $bangunan->tipe_spek == '700' ? 'selected' : '' }}>Bangunan Gedung
+                            Bertingkat Sedang 8 Lantai + 1 Basement (5-8 Lantai)</option>
+                        <option value="800" {{ $bangunan->tipe_spek == '800' ? 'selected' : '' }}>Bangunan Gedung
+                            Bertingkat Tinggi 16 Lantai + 2 Basement (&gt;8 Lantai)</option>
+                        <option value="900" {{ $bangunan->tipe_spek == '900' ? 'selected' : '' }}>Bangunan Mall 4
+                            Lantai + 1 Basement</option>
+                        <option value="1000" {{ $bangunan->tipe_spek == '1000' ? 'selected' : '' }}>Bangunan Hotel 8
+                            Lantai</option>
+                        <option value="1100" {{ $bangunan->tipe_spek == '1100' ? 'selected' : '' }}>Bangunan Pusat
+                            Perbelanjaan 4 Lantai + 1 Basement</option>
                     </select>
                 </div>
 
