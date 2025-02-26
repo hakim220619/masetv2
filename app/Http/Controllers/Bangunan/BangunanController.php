@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-
+use Illuminate\Support\Facades\Log;
 
 class BangunanController extends Controller
 {
@@ -382,28 +382,24 @@ class BangunanController extends Controller
     {
         $fotoLainnya = [];
 
-        // Check if 'judul_foto' exists and is an array
         if ($request->has('judul_foto') && is_array($request->judul_foto)) {
             $files = $request->hasFile('foto_lainnya') ? $request->file('foto_lainnya') : [];
 
             foreach ($request->judul_foto as $index => $judul) {
+                // Skip if no title and no file
+                if (empty($judul) && !isset($files[$index])) {
+                    continue;
+                }
+
                 $foto = null;
 
                 if (isset($files[$index]) && $files[$index]->isValid()) {
-                    // Get the file
                     $file = $files[$index];
-
-                    // Generate a unique file name based on timestamp and random string
                     $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-
-                    // Move the file to the storage folder with the unique name
                     $file->move(public_path('storage/uploads/bangunan/foto_lainnya'), $fileName);
-
-                    // Convert the file path to be accessible via the /storage/ URL
                     $foto = 'storage/uploads/bangunan/foto_lainnya/' . $fileName;
                 }
 
-                // Add the photo entry to the array
                 $fotoLainnya[] = [
                     'judul' => $judul,
                     'foto'  => $foto,
@@ -472,5 +468,250 @@ class BangunanController extends Controller
         }
 
         return null;
+    }
+
+    public function edit($id)
+    {
+        try {
+            $bangunan = Bangunan::findOrFail($id);
+
+            // Ambil tipe_spek yang tersimpan
+            $tipeSpek = $bangunan->tipe_spek;
+
+            // Data yang perlu ditambahkan suffix
+            $fieldsNeedSuffix = [
+                'jenis_bangunan',
+                'jenis_bangunan_detail',
+                'jenis_bangunan_indeks_lantai',
+                'tipe_struktur_utama',
+                'tipe_struktur_atap',
+                'tipe_penutup_atap',
+                'tipe_dinding',
+                'tipe_pelapis_dinding',
+                'tipe_pintu_jendela',
+                'tipe_lantai',
+                'bobot_struktur_utama',
+                'bobot_struktur_atap',
+                'bobot_penutup_atap',
+                'bobot_dinding',
+                'bobot_pelapis_dinding',
+                'bobot_pintu_jendela',
+                'bobot_lantai',
+                // Tambahan field bobot
+                'bobot_renovasi',
+                'bobot_fasilitas',
+                'bobot_sarana',
+                'bobot_keamanan',
+                'bobot_harga',
+                'bobot_konstruksi',
+                'bobot_material',
+                'bobot_utilitas',
+                'bobot_aksesibilitas',
+                'bobot_lokasi',
+                // Tambahan field tipe
+                'grade_gudang',
+                'tahun_dibangun',
+                'keterangan_tahun_dibangun',
+                'tahun_renovasi',
+                'keterangan_tahun_direnovasi',
+                'jenis_renovasi',
+                'kondisi_visual',
+                'catatan_khusus',
+                'luas_bangunan_terpotong',
+                'luas_bangunan_imb',
+                'jumlah_lantai',
+                'luas_nama_pintu_jendela',
+                'luas_bobot_pintu_jendela',
+                'luas_nama_dinding',
+                'luas_bobot_dinding',
+                'luas_nama_rangka_atap_datar',
+                'luas_bobot_rangka_atap_datar',
+                'luas_nama_atap_datar',
+                'luas_bobot_atap_datar',
+                'tipe_pondasi_existing',
+                'bobot_tipe_pondasi_existing',
+                'tipe_struktur_existing',
+                'bobot_tipe_struktur_existing',
+                'tipe_rangka_atap_existing',
+                'bobot_rangka_atap_existing',
+                'tipe_penutup_atap_existing',
+                'bobot_penutup_atap_existing',
+                'tipe_tipe_dinding_existing',
+                'bobot_tipe_dinding_existing',
+                'tipe_tipe_pelapis_dinding_existing',
+                'bobot_tipe_pelapis_dinding_existing',
+                'tipe_tipe_pintu_jendela_existing',
+                'bobot_tipe_pintu_jendela_existing',
+                'tipe_tipe_lantai_existing',
+                'bobot_tipe_lantai_existing',
+                'jumlah_lantai_rumah_tinggal',
+                'jenis_bangunan_indeks_lantai',
+            ];
+
+            // Tambahkan suffix ke data sesuai tipe_spek
+            $processedData = new \stdClass();
+            foreach ($fieldsNeedSuffix as $field) {
+                if (isset($bangunan->$field)) {
+                    // Buat key baru dengan suffix
+                    $newKey = $field . '_' . $tipeSpek;
+                    $processedData->$newKey = $bangunan->$field;
+                }
+            }
+
+            // Gabungkan properti dari processedData ke objek bangunan
+            foreach (get_object_vars($processedData) as $key => $value) {
+                $bangunan->$key = $value;
+            }
+
+            return view('content.object.bangunan.edit', [
+                'bangunan' => $bangunan,
+                'dataBangunan' => $this->getDataBangunan()
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data bangunan tidak ditemukan: ' . $e->getMessage());
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $bangunan = Bangunan::findOrFail($id);
+
+            // Ambil semua input dari request
+            $data = $request->all();
+
+            // Proses data canvas
+            if (isset($data['canvas_data'])) {
+                $canvasData = json_decode($data['canvas_data'], true);
+                // Pastikan tipe_spek sesuai dengan form yang aktif
+                $canvasData['tipe_spek'] = $data['tipe_spek'];
+            }
+
+            // Update field biasa
+            $fieldData = [
+                'nama_bangunan' => $data['nama_bangunan'],
+                'bentuk_bangunan' => $data['bentuk_bangunan'] ?? null,
+                'jenis_bangunan' => $this->getJenisBangunan($request) ?? null,
+                'jenis_bangunan_indeks_lantai' => $this->getJenisBangunanIndeksLantai($request) ?? null,
+                'jenis_bangunan_detail' => json_encode(filterNullValues($data['jenis_bangunan_detail'] ?? [])),
+                'grade_gudang' => $data['grade_gudang'] ?? null,
+                'tahun_dibangun' => $data['tahun_dibangun'] ?? null,
+                'keterangan_tahun_dibangun' => json_encode($data['keterangan_tahun_dibangun'] ?? []),
+                'tahun_renovasi' => $data['tahun_renovasi'] ?? null,
+                'keterangan_tahun_direnovasi' => json_encode($data['keterangan_tahun_direnovasi'] ?? []),
+                'jenis_renovasi' => $data['jenis_renovasi'] ?? null,
+                'bobot_renovasi' => $data['bobot_renovasi'] ?? null,
+                'kondisi_visual' => $data['kondisi_visual'] ?? null,
+                'catatan_khusus' => $data['catatan_khusus'] ?? null,
+                'luas_bangunan_terpotong' => $data['luas_bangunan_terpotong'] ?? null,
+                'luas_bangunan_imb' => $data['luas_bangunan_imb'] ?? null,
+                'jumlah_lantai' => $data['jumlah_lantai'] ?? 1,
+                'basement' => isset($data['basement']) ? 1 : 0,
+                'konstruksi_bangunan' => $data['konstruksi_bangunan'] ?? null,
+                'konstruksi_lantai' => $data['konstruksi_lantai'] ?? null,
+                'konstruksi_dinding' => $data['konstruksi_dinding'] ?? null,
+                'konstruksi_atap' => $data['konstruksi_atap'] ?? null,
+                'konstruksi_pondasi' => $data['konstruksi_pondasi'] ?? null,
+                'versi_btb' => $data['versi_btb'] ?? '2024',
+                'tipe_spek' => $data['tipe_spek'] ?? null,
+                'penggunaan_bangunan' => $data['penggunaan_bangunan'] ?? null,
+                'progres_pembangunan' => $data['progres_pembangunan'] ?? null,
+                'kondisi_bangunan' => $data['kondisi_bangunan'] ?? null,
+                'status_data' => $data['status_data'] ?? 'draft',
+                'jumlah_lantai_rumah_tinggal' => json_encode(filterNullValues($data['jumlah_lantai_rumah_tinggal'] ?? [])),
+                'canvas_data' => $canvasData ?? null,
+            ];
+
+            // 2. Update foto jika ada
+            if ($request->hasFile('foto_depan')) {
+                if ($bangunan->foto_depan) {
+                    Storage::delete('public/uploads/bangunan/' . $bangunan->foto_depan);
+                }
+                $fieldData['foto_depan'] = $this->uploadFile($request, 'foto_depan');
+            }
+
+            if ($request->hasFile('foto_sisi_kiri')) {
+                if ($bangunan->foto_sisi_kiri) {
+                    Storage::delete('public/uploads/bangunan/' . $bangunan->foto_sisi_kiri);
+                }
+                $fieldData['foto_sisi_kiri'] = $this->uploadFile($request, 'foto_sisi_kiri');
+            }
+
+            if ($request->hasFile('foto_sisi_kanan')) {
+                if ($bangunan->foto_sisi_kanan) {
+                    Storage::delete('public/uploads/bangunan/' . $bangunan->foto_sisi_kanan);
+                }
+                $fieldData['foto_sisi_kanan'] = $this->uploadFile($request, 'foto_sisi_kanan');
+            }
+
+            // 3. Update foto lainnya jika ada
+            if ($request->has('judul_foto')) {
+                $fieldData['foto_lainnya'] = $this->processFotoLainnya($request);
+            }
+
+            // 4. Update data JSON lainnya
+            $jsonFields = [
+                'perlengkapan_bangunan',
+                'luas_nama_pintu_jendela',
+                'luas_bobot_pintu_jendela',
+                'luas_nama_dinding',
+                'luas_bobot_dinding',
+                'luas_nama_rangka_atap_datar',
+                'luas_bobot_rangka_atap_datar',
+                'luas_nama_atap_datar',
+                'luas_bobot_atap_datar',
+                'tipe_pondasi_existing',
+                'bobot_tipe_pondasi_existing',
+                'tipe_struktur_existing',
+                'bobot_tipe_struktur_existing',
+                'tipe_rangka_atap_existing',
+                'bobot_rangka_atap_existing',
+                'tipe_penutup_atap_existing',
+                'bobot_penutup_atap_existing',
+                'tipe_tipe_dinding_existing',
+                'bobot_tipe_dinding_existing',
+                'tipe_tipe_pelapis_dinding_existing',
+                'bobot_tipe_pelapis_dinding_existing',
+                'tipe_tipe_pintu_jendela_existing',
+                'bobot_tipe_pintu_jendela_existing',
+                'tipe_tipe_lantai_existing',
+                'bobot_tipe_lantai_existing'
+            ];
+
+            foreach ($jsonFields as $field) {
+                if (isset($data[$field])) {
+                    $fieldData[$field] = json_encode(filterNullValues($data[$field]));
+                }
+            }
+
+            // 5. Lakukan update
+            $bangunan->update($fieldData);
+
+            return redirect()->back()->with('success', 'Data bangunan berhasil diperbarui');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal memperbarui data bangunan: ' . $e->getMessage());
+        }
+    }
+
+    private function getDataBangunan()
+    {
+        // Ambil semua header unik dari tabel master_data
+        $headers = DB::table('master_data')
+            ->select('label_header')
+            ->distinct()
+            ->pluck('label_header');
+
+        $dataBangunan = [];
+
+        // Untuk setiap header, ambil data yang sesuai
+        foreach ($headers as $header) {
+            $dataBangunan[$header] = DB::table('master_data')
+                ->where('label_header', $header)
+                ->where('label_option', '!=', null)
+                ->where('state', 'ON')
+                ->get();
+        }
+
+        return $dataBangunan;
     }
 }

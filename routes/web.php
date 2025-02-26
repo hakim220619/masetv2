@@ -153,6 +153,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/object/store', [BangunanController::class, 'store'])->name('object-store');
     Route::get('/object/list-objects', [BangunanController::class, 'listObject'])->name('bangunan.listObjects');
     Route::delete('/object/delete/{id}', [BangunanController::class, 'destroy'])->name('object.destroy');
+    Route::get('/object/edit/{id}', [BangunanController::class, 'edit'])->name('object.edit');
+    Route::put('/object/update/{id}', [BangunanController::class, 'update'])->name('object.update');
 
 
     Route::get('/object/acceptSurveyor/{id}', [BangunanController::class, 'acceptSurveyor'])->name('acceptSurveyor');
@@ -219,6 +221,7 @@ Route::middleware(['auth'])->group(function () {
     // pembanding
     Route::get('/pembanding/bangunan', [PembandingBangunanController::class, 'bangunan'])->name('pembanding-bangunan');
     Route::post('/pembanding/add_pembanding_bangunan', [PembandingBangunanController::class, 'add_pembanding_bangunan'])->name('add_pembanding_bangunan');
+    Route::post('/pembanding/store_pembanding_bangunan', [PembandingBangunanController::class, 'store_pembanding_bangunan'])->name('store_pembanding_bangunan');
     Route::get('/pembanding/detail_pembanding_bangunan/{id}', [PembandingBangunanController::class, 'detail_pembanding_bangunan'])->name('detail_pembanding_bangunan');
 
     Route::get('/pembanding/tanah_kosong', [Pembanding_tanah_kosongController::class, 'tanah_kosong'])->name('pembanding-tanah-kosong');

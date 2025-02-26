@@ -231,7 +231,23 @@
 
                 <div class="form-group mb-3">
                     <label for="versi_btb"><b>Versi BTB</b></label>
-                    <input type="text" id="versi_btb" name="versi_btb" class="form-control" value="2024" readonly>
+                    <div>
+                        <small><i>Mengupdate versi BTB akan mengubah tipe material bangunan. Mohon periksa
+                                kembali bobot material pada kotak-kotak isian dibawah ini sebelum menyimpan
+                                form.</i></small>
+                    </div>
+                    <?php
+                    $currentYear = date('Y');
+                    ?>
+
+                    <select class="form-select" name="versi_btb" id="versi_btb" aria-label="Default select example">
+                        <?php
+                        for ($i = 0; $i < 5; $i++) {
+                            $year = $currentYear - $i;
+                            echo "<option value='$year'>$year</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
 
 
@@ -258,10 +274,6 @@
                 </div>
 
                 <!-- Tempat untuk memuat form dinamis -->
-
-
-
-
 
                 <script>
                     // Fungsi untuk menangani perubahan dropdown
@@ -365,7 +377,6 @@
                     @include('content.form.1100')
                 </div>
 
-
                 <script>
                     function generateYearOptions(startYear, endYear, selectedYear, elementId) {
                         let options = '';
@@ -445,10 +456,10 @@
                     </div>
                 </div>
 
-
-
                 <!-- Submit Button -->
                 <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+
         </form>
 
         <!-- /Default Icons Wizard -->
