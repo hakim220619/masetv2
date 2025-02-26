@@ -1,7 +1,7 @@
 <!-- BEGIN: Vendor JS-->
 
 @vite([
-'resources/assets/vendor/libs/jquery/jquery.js',
+
 'resources/assets/vendor/libs/popper/popper.js',
 'resources/assets/vendor/js/bootstrap.js',
 'resources/assets/vendor/libs/node-waves/node-waves.js',

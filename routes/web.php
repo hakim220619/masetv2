@@ -231,6 +231,8 @@ Route::middleware(['auth'])->group(function () {
 
     //Lihat Pembanding
     Route::get('/pembanding/lihat_pembanding', [Lihat_pembandingController::class, 'lihat_pembanding'])->name('pembanding-lihat-pembanding');
+    Route::get('/get-coordinates', [Lihat_pembandingController::class, 'getCoordinates']);
+    Route::get('/lihat-pembanding/data', [Lihat_pembandingController::class, 'getData'])->name('lihat.pembanding.data');
 
     Route::get('/pembanding/bangunanView', [Lihat_pembandingController::class, 'bangunanView'])->name('pembanding.bangunanView');
     Route::get('/pembanding/retailView', [Lihat_pembandingController::class, 'retailView'])->name('pembanding.retailView');
@@ -238,10 +240,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pembanding/bangunanLoadData', [Lihat_pembandingController::class, 'bangunanLoadData'])->name('pembanding.bangunanLoadData');
     Route::get('/pembanding/tanahKosongLoadData', [Lihat_pembandingController::class, 'tanahKosongLoadData'])->name('pembanding.tanahKosongLoadData');
     Route::get('/pembanding/retailLoadData', [Lihat_pembandingController::class, 'retailLoadData'])->name('pembanding.retailLoadData');
+    Route::get('/pembanding/laporan_pembanding', [Lihat_pembandingController::class, 'laporan_pembanding'])->name('pembanding.laporan_pembanding');
+
 
     // laporan
-    Route::get('/laporan', [LaporanController::class, 'laporan'])->name('laporan');
-    Route::get('/getCoordinates', [LaporanController::class, 'getCoordinates'])->name('getCoordinates');
+    // Route::get('/laporan', [LaporanController::class, 'laporan'])->name('laporan');
+    // Route::get('/getCoordinates', [LaporanController::class, 'getCoordinates'])->name('getCoordinates');
 
     // Laporan Penilaian
     Route::get('/laporan_penilaian/bangunan', [LaporanPenilaianController::class, 'laporan_bangunan'])->name('laporan-bangunan');
@@ -250,6 +254,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/laporan_penilaian/retail/store', [LaporanPenilaianController::class, 'store_laporan_retail'])->name('laporan-retail-store');
     Route::post('/laporan_penilaian/tanah_kosong/store', [LaporanPenilaianController::class, 'store_laporan_tanah_kosong'])->name('laporan-tanah_kosong-store');
     Route::post('/laporan_penilaian/bangunan/store', [LaporanPenilaianController::class, 'store_laporan_bangunan'])->name('laporan-bangunan-store');
+
 
     // masterdata
     // Jenis Dokumen Hak Tanah

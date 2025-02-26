@@ -14,6 +14,7 @@ class PembandingRetail extends Model
     protected $fillable = [
         'nama_retail',
         'nama_entitas',
+        'jenis_properti',
         'provinsi',
         'kode_pos',
         'alamat_lengkap',

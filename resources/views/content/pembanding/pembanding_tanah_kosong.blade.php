@@ -709,7 +709,7 @@ $configData = Helper::appClasses();
           var satelliteLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + accessToken, {
               attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a>',
               maxZoom: 30,
-              id: 'mapbox/satellite-streets-v12', // Ganti dengan jenis peta satelit yang diinginkan
+              id: 'mapbox/streets-v11', // Ganti dengan jenis peta satelit yang diinginkan
               tileSize: 512,
               zoomOffset: -1
   }).addTo(map);

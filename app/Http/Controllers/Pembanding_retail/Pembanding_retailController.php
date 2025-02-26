@@ -19,6 +19,7 @@ class Pembanding_retailController extends Controller
         $validated = $request->validate([
             'nama_retail' => 'required|string|max:255',
             'nama_entitas' => 'nullable|string|max:255',
+            'jenis_properti' => 'required|string|max:255',
             'provinsi' => 'nullable|string|max:255',
             'kode_pos' => 'nullable|string|max:10',
             'alamat_lengkap' => 'nullable|string',

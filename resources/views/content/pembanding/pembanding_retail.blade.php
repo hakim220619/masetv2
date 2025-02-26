@@ -45,12 +45,20 @@ $configData = Helper::appClasses();
               <div class="row g-3">                
                 <div>
                   <label class="form-label" for="nama_retail">Nama Office/ Retail/ Apartemen</label>
-                  <input type="text" id="nama_retail" name="nama_retail" class="form-control" placeholder="Retail Space - Lippo Plaza Jogja (Lantai 1) - Jl. Laksda Adisucipto No.32-34, Demangan, Kec. Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta" />
+                  <input type="text" id="nama_retail" name="nama_retail" class="form-control" placeholder="Retail Space - Lippo Plaza Jogja (Lantai 1) - Jl. Laksda Adisucipto No.32-34, Demangan, Kec. Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta" required />
                 </div>               
                 <div>
                   <label class="form-label" for="nama_entitas">Nama Entitas</label>
                   <input type="text" id="nama_entitas" name="nama_entitas" class="form-control"  />
                 </div>  
+                <div>
+                    <select class="form-select" name="jenis_properti" id="jenis_properti" aria-label="Default select example" required>
+                          <option value="" selected disabled>Pilih...</option>
+                          <option value="Office">Office</option>
+                          <option value="Retail">Retail</option>
+                          <option value="Apartemen">Apartemen</option>
+                    </select> 
+                </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="Lokasi Obyek">Lokasi Obyek</label>
                   <table class="table table-borderless">
@@ -790,7 +798,7 @@ $configData = Helper::appClasses();
           var satelliteLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + accessToken, {
               attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a>',
               maxZoom: 30,
-              id: 'mapbox/satellite-streets-v12', // Ganti dengan jenis peta satelit yang diinginkan
+              id: 'mapbox/streets-v11', // Ganti dengan jenis peta satelit yang diinginkan
               tileSize: 512,
               zoomOffset: -1
   }).addTo(map);
