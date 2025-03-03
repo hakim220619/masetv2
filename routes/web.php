@@ -243,7 +243,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pembanding/bangunanLoadData', [Lihat_pembandingController::class, 'bangunanLoadData'])->name('pembanding.bangunanLoadData');
     Route::get('/pembanding/tanahKosongLoadData', [Lihat_pembandingController::class, 'tanahKosongLoadData'])->name('pembanding.tanahKosongLoadData');
     Route::get('/pembanding/retailLoadData', [Lihat_pembandingController::class, 'retailLoadData'])->name('pembanding.retailLoadData');
-    Route::get('/pembanding/laporan_pembanding', [Lihat_pembandingController::class, 'laporan_pembanding'])->name('pembanding.laporan_pembanding');
+    Route::get('/pembanding/laporan/{id}/{sumber}', [Lihat_pembandingController::class, 'laporan_pembanding'])->name('pembanding.laporan_pembanding');
 
 
     // laporan
