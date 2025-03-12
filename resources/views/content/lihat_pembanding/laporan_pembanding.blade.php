@@ -8,13 +8,11 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="card mb-4">
             @if ($sumber == 'Tanah Kosong')
                 @include('content.lihat_pembanding.partials.tanah_kosong')
             @else
                 @include('content.lihat_pembanding.partials.bangunan')
             @endif
-        </div>
     </div>
 @endsection
 

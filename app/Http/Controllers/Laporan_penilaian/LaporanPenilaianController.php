@@ -379,4 +379,13 @@ class LaporanPenilaianController extends Controller
         return redirect()->route('laporan-bangunan')->with('success', 'Laporan Penilaian Tanah dan Bangunan berhasil disimpan!');
     }
 
+    public function lihat_laporan()
+    {
+        $reports = LaporanPenilaian::paginate(9);
+    return view('content.laporan_penilaian.all_laporan', compact('reports'));
+    }
+
+    public function getData(Request $request){
+
+    }
 }
