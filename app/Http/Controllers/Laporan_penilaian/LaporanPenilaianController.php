@@ -5,16 +5,21 @@ namespace App\Http\Controllers\Laporan_penilaian;
 use App\Http\Controllers\Controller;
 use App\Models\LaporanPenilaian;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class LaporanPenilaianController extends Controller
 {
-    public function laporan_bangunan() {
+    public function laporan_bangunan()
+    {
         return view('content.laporan_penilaian.laporan_bangunan');
     }
-    public function laporan_tanah_kosong() {
+    public function laporan_tanah_kosong()
+    {
         return view('content.laporan_penilaian.laporan_tanah_kosong');
     }
-    public function laporan_retail() {
+    public function laporan_retail()
+    {
         return view('content.laporan_penilaian.laporan_retail');
     }
     public function store_laporan_retail(Request $request)
@@ -116,8 +121,8 @@ class LaporanPenilaianController extends Controller
             'tingkat_suku_bunga_suku_bunga_pinjaman' =>  $request->tingkat_suku_bunga_suku_bunga_pinjaman,
             'sumberdata_suku_bunga_pinjaman' => $request->sumberdata_suku_bunga_pinjaman,
             'screenshoot_sumber_suku_bunga_pinjaman' => $request->screenshoot_sumber_suku_bunga_pinjaman,
-            'admin_tim_penilai'=> $request->admin_tim_penilai,
-            'penilai1_tim_penilai'=> $request->penilai1_tim_penilai,
+            'admin_tim_penilai' => $request->admin_tim_penilai,
+            'penilai1_tim_penilai' => $request->penilai1_tim_penilai,
             'penilai2_tim_penilai' => $request->penilai2_tim_penilai,
             'tim_penilai_qc' => $request->tim_penilai_qc,
             'reviewer_tim_penilai' => $request->reviewer_tim_penilai,
@@ -127,9 +132,9 @@ class LaporanPenilaianController extends Controller
             'status_pendamping_inpeksi' => $request->status_pendamping_inpeksi,
             'kelengkapan_dokumen' => json_encode($request->kelengkapan_dokumen),
             'tgl_izin_layak_huni' => $request->tgl_izin_layak_huni,
-            'no_izin_layak_huni' => $request->no_izin_layak_huni, 
-            'tgl_akta_pemisahan' => $request->tgl_akta_pemisahan,  
-            'no_akta_pemisahan' =>  $request->no_akta_pemisahan,  
+            'no_izin_layak_huni' => $request->no_izin_layak_huni,
+            'tgl_akta_pemisahan' => $request->tgl_akta_pemisahan,
+            'no_akta_pemisahan' =>  $request->no_akta_pemisahan,
             'dibuat_akta_pemisahan' => $request->dibuat_akta_pemisahan,
             'disahkan_oleh_akta_pemisahan' => $request->disahkan_oleh_akta_pemisahan,
             'tgl_disahkan_akta_pemisahan' => $request->tgl_disahkan_akta_pemisahan,
@@ -144,7 +149,7 @@ class LaporanPenilaianController extends Controller
     }
     public function store_laporan_tanah_kosong(Request $request)
     {
-        
+
         $request->validate([
             'judul_laporan' => 'required|string|max:255',
             'nama_entitas' => 'required|string|max:255',
@@ -194,7 +199,7 @@ class LaporanPenilaianController extends Controller
             'informasi_khusus' => 'nullable|string',
             'status_data' => 'required|string|in:draft,publish',
         ]);
-        
+
         // Simpan ke database
         LaporanPenilaian::create([
             'kategori_laporan_penilaian' => 'Tanah Kosong',
@@ -242,8 +247,8 @@ class LaporanPenilaianController extends Controller
             'tingkat_suku_bunga_suku_bunga_pinjaman' =>  $request->tingkat_suku_bunga_suku_bunga_pinjaman,
             'sumberdata_suku_bunga_pinjaman' => $request->sumberdata_suku_bunga_pinjaman,
             'screenshoot_sumber_suku_bunga_pinjaman' => $request->screenshoot_sumber_suku_bunga_pinjaman,
-            'admin_tim_penilai'=> $request->admin_tim_penilai,
-            'penilai1_tim_penilai'=> $request->penilai1_tim_penilai,
+            'admin_tim_penilai' => $request->admin_tim_penilai,
+            'penilai1_tim_penilai' => $request->penilai1_tim_penilai,
             'penilai2_tim_penilai' => $request->penilai2_tim_penilai,
             'tim_penilai_qc' => $request->tim_penilai_qc,
             'reviewer_tim_penilai' => $request->reviewer_tim_penilai,
@@ -251,13 +256,13 @@ class LaporanPenilaianController extends Controller
             'nama_pendamping_inpeksi' => $request->nama_pendamping_inpeksi,
             'telepon_pendamping_inpeksi' => $request->telepon_pendamping_inpeksi,
             'status_pendamping_inpeksi' => $request->status_pendamping_inpeksi,
-            'kelengkapan_dokumen' => json_encode($request->kelengkapan_dokumen),            
+            'kelengkapan_dokumen' => json_encode($request->kelengkapan_dokumen),
             'informasi_khusus' => $request->informasi_khusus,
             'status_data' => $request->status_data,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        
+
 
         return redirect()->route('laporan-tanah_kosong')->with('success', 'Laporan Penilaian Tanah Kosong berhasil disimpan!');
     }
@@ -360,8 +365,8 @@ class LaporanPenilaianController extends Controller
             'tingkat_suku_bunga_suku_bunga_pinjaman' =>  $request->tingkat_suku_bunga_suku_bunga_pinjaman,
             'sumberdata_suku_bunga_pinjaman' => $request->sumberdata_suku_bunga_pinjaman,
             'screenshoot_sumber_suku_bunga_pinjaman' => $request->screenshoot_sumber_suku_bunga_pinjaman,
-            'admin_tim_penilai'=> $request->admin_tim_penilai,
-            'penilai1_tim_penilai'=> $request->penilai1_tim_penilai,
+            'admin_tim_penilai' => $request->admin_tim_penilai,
+            'penilai1_tim_penilai' => $request->penilai1_tim_penilai,
             'penilai2_tim_penilai' => $request->penilai2_tim_penilai,
             'tim_penilai_qc' => $request->tim_penilai_qc,
             'reviewer_tim_penilai' => $request->reviewer_tim_penilai,
@@ -369,7 +374,7 @@ class LaporanPenilaianController extends Controller
             'nama_pendamping_inpeksi' => $request->nama_pendamping_inpeksi,
             'telepon_pendamping_inpeksi' => $request->telepon_pendamping_inpeksi,
             'status_pendamping_inpeksi' => $request->status_pendamping_inpeksi,
-            'kelengkapan_dokumen' => json_encode($request->kelengkapan_dokumen),            
+            'kelengkapan_dokumen' => json_encode($request->kelengkapan_dokumen),
             'informasi_khusus' => $request->informasi_khusus,
             'status_data' => $request->status_data,
             'created_at' => now(),
@@ -381,11 +386,77 @@ class LaporanPenilaianController extends Controller
 
     public function lihat_laporan()
     {
-        $reports = LaporanPenilaian::paginate(9);
-    return view('content.laporan_penilaian.all_laporan', compact('reports'));
+        $reports = LaporanPenilaian::orderBy('created_at', 'desc')
+            ->paginate(10);
+
+        return view('content.laporan_penilaian.all_laporan', compact('reports'));
+    }
+    public function destroy($id)
+    {
+        try {
+            $report = LaporanPenilaian::findOrFail($id);
+
+            // Hapus foto utama jika ada
+            if ($report->foto_utama) {
+                Storage::delete('public/' . $report->foto_utama);
+            }
+
+            $report->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Laporan berhasil dihapus'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal menghapus laporan: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
-    public function getData(Request $request){
+    public function edit($id)
+    {
+        $report = LaporanPenilaian::findOrFail($id);
+        return view('content.laporan_penilaian.edit_laporan', compact('report'));
+    }
 
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'judul_laporan' => 'required|string|max:255',
+            'lokasi_cabang_bank' => 'required|string|max:255',
+            'alamat_lokasi_obyek' => 'required|string',
+            'tgl_laporan_penilaian' => 'required|date',
+            'status_data' => 'required|in:draft,publish',
+            'foto_utama' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $report = LaporanPenilaian::findOrFail($id);
+
+        $data = $request->except('foto_utama');
+
+        if ($request->hasFile('foto_utama')) {
+            // Hapus foto lama
+            Storage::delete('public/' . $report->foto_utama);
+
+            // Simpan foto baru
+            $path = $request->file('foto_utama')->store('laporan/foto_utama', 'public');
+            $data['foto_utama'] = $path;
+        }
+
+        $report->update($data);
+
+        return redirect()->route('laporan.all')->with('success', 'Laporan berhasil diperbarui');
+    }
+
+    public function analisa($id)
+    {
+        try {
+            $laporan = LaporanPenilaian::with(['pembanding'])->findOrFail($id);
+            return view('content.laporan_penilaian.analisa_laporan', compact('laporan'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 }

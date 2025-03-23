@@ -70,18 +70,30 @@ class BangunanController extends Controller
     }
     public function listObject(Request $request)
     {
-        // Capture search and type parameters (optional)
-        $search = $request->input('search');
-        $type = $request->input('type');
+        try {
+            $search = $request->input('search');
+            $type = $request->input('type');
+            $page = max(1, intval($request->input('page', 1)));
+            $perPage = 6;
 
-        // Fetch objects based on optional filters
-        $data = BangunanModel::listObject($search, $type);
+            $result = BangunanModel::listObject($search, $type, $page, $perPage);
 
-        return response()->json([
-            'recordsTotal' => count($data),
-            'recordsFiltered' => count($data),
-            'data' => $data,
-        ]);
+            return response()->json([
+                'data' => $result['data'],
+                'current_page' => $result['current_page'],
+                'last_page' => $result['last_page'],
+                'total' => $result['total']
+            ]);
+        } catch (\Exception $e) {
+            Log::error('ListObject Controller Error: ' . $e->getMessage());
+            return response()->json([
+                'data' => [],
+                'total' => 0,
+                'current_page' => 1,
+                'last_page' => 1,
+                'error' => 'Terjadi kesalahan pada server'
+            ], 200);
+        }
     }
     public function destroy($id)
     {
@@ -189,7 +201,15 @@ class BangunanController extends Controller
 
             // Ambil semua input dari request
             $data = $request->all();
-            // dd($data);
+
+            // Proses data canvas jika ada
+            $canvasData = null;
+            if ($request->has('canvas_data')) {
+                $canvasData = json_decode($request->input('canvas_data'), true);
+                // Pastikan tipe_spek sesuai dengan form yang aktif
+                $canvasData['tipe_spek'] = $data['tipe_spek'] ?? 'tolol';
+            }
+
             // 1. Filter data untuk field biasa
             $fieldData = [
                 'nama_bangunan' => $data['nama_bangunan'],
@@ -224,6 +244,7 @@ class BangunanController extends Controller
                 'progres_pembangunan' => $data['progres_pembangunan'] ?? null,
                 'kondisi_bangunan' => $data['kondisi_bangunan'] ?? null,
                 'status_data' => $data['status_data'] ?? 'draft',
+                'canvas_data' => $canvasData ? json_encode($canvasData) : null,
             ];
 
             // Handle dynamic data for fields like arrays (JSON)

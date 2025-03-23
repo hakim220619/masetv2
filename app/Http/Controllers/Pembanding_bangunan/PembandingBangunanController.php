@@ -405,4 +405,70 @@ class PembandingBangunanController extends Controller
 
         return null;
     }
+
+    public function editBangunan($id)
+    {
+        $data = BangunanPembanding::findOrFail($id);
+
+        // Decode JSON fields
+        $data->foto_lainnya = json_decode($data->foto_lainnya, true);
+        $data->tahun_nilai_njop = json_decode($data->tahun_nilai_njop, true);
+        $data->kondisi_lingkungan_khusus = json_decode($data->kondisi_lingkungan_khusus, true);
+
+        return view('content.pembanding.edit.edit_bangunan', compact('data'));
+    }
+
+    public function updateBangunan(Request $request, $id)
+    {
+        try {
+            $data = BangunanPembanding::findOrFail($id);
+            $input = $request->all();
+
+            // Handle file uploads
+            $fileFields = [
+                'foto_tampak_depan',
+                'foto_tampak_sisi_kiri',
+                'foto_tampak_sisi_kanan'
+            ];
+
+            foreach ($fileFields as $field) {
+                if ($request->hasFile($field)) {
+                    // Delete old file
+                    if ($data->$field) {
+                        File::delete(public_path('storage/uploads/pembanding_bangunan/' . $data->$field));
+                    }
+                    // Upload new file
+                    $input[$field] = $this->uploadFile($request, $field);
+                }
+            }
+
+            // Handle foto lainnya
+            if ($request->has('judul_foto')) {
+                $newFotoLainnya = $this->processFotoLainnya($request);
+                $existingFoto = json_decode($data->foto_lainnya, true) ?? [];
+                $input['foto_lainnya'] = json_encode(array_merge($existingFoto, $newFotoLainnya));
+            }
+
+            // Process array fields
+            $arrayFields = [
+                'kondisi_lingkungan_khusus',
+                'perlengkapan_bangunan',
+                'tahun_nilai_njop'
+            ];
+
+            foreach ($arrayFields as $field) {
+                if ($request->has($field)) {
+                    $input[$field] = json_encode($request->$field);
+                }
+            }
+
+            // Update data
+            $data->update($input);
+
+            return redirect()->route('bangunan.index')->with('success', 'Data bangunan berhasil diperbarui');
+        } catch (\Exception $e) {
+            Log::error('Error updating bangunan: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Gagal memperbarui data');
+        }
+    }
 }

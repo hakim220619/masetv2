@@ -12,54 +12,61 @@ class ObjectController extends Controller
 {
     public function lihat_object()
     {
-
-
-        $objects = [
-            (object) [
-                'name' => 'Gudang Bu Fenny',
-                'type' => 'Bangunan',
-                'building_type' => 'Bangunan Gudang 1 Lantai',
-                'date' => '18 Dec 2024',
-                'status' => 'Published',
-                'image' => 'https://via.placeholder.com/300', // Gambar dummy
-            ],
-            (object) [
-                'name' => 'Pos Jaga Belakang (Jesicca)',
-                'type' => 'Bangunan',
-                'building_type' => 'Rumah Tinggal Sederhana 1 Lantai',
-                'date' => '17 Dec 2024',
-                'status' => 'Draft',
-                'image' => 'https://via.placeholder.com/300', // Gambar dummy
-            ],
-            (object) [
-                'name' => 'Mess 6 (Jesicca)',
-                'type' => 'Bangunan',
-                'building_type' => 'Rumah Tinggal Sederhana 1 Lantai',
-                'date' => '17 Dec 2024',
-                'status' => 'Draft',
-                'image' => 'https://via.placeholder.com/300', // Gambar dummy
-            ],
-            (object) [
-                'name' => 'Mess 5 (Jesicca)',
-                'type' => 'Bangunan',
-                'building_type' => 'Bangunan Perkebunan (Semi Permanen) 1 Lantai',
-                'date' => '17 Dec 2024',
-                'status' => 'Draft',
-                'image' => 'https://via.placeholder.com/300', // Gambar dummy
-            ],
-            (object) [
-                'name' => 'Mess 3 dan Mess 4 (Jesicca)',
-                'type' => 'Bangunan',
-                'building_type' => 'Rumah Tinggal Sederhana 1 Lantai',
-                'date' => '17 Dec 2024',
-                'status' => 'Draft',
-                'image' => 'https://via.placeholder.com/300', // Gambar dummy
-            ],
-        ];
-        //query tabel object
-
-        return view('content.object.lihat_object', compact('objects'));
+        // Kita akan menampilkan view saja, data akan diambil melalui AJAX
+        return view('content.object.lihat_object');
     }
 
-   
+    public function list_objects(Request $request)
+    {
+        $query = Bangunan::query();
+
+        // Filter berdasarkan pencarian
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('nama_bangunan', 'like', "%{$search}%")
+                    ->orWhere('jenis_bangunan', 'like', "%{$search}%")
+                    ->orWhere('alamat', 'like', "%{$search}%");
+            });
+        }
+
+        // Filter berdasarkan tipe objek jika ada
+        if ($request->has('type') && !empty($request->type)) {
+            $query->where('jenis_bangunan', $request->type);
+        }
+
+        // Hitung total data untuk pagination
+        $total = $query->count();
+
+        // Pagination - 6 items per page
+        $page = $request->input('page', 1);
+        $perPage = 6;
+
+        $data = $query->orderBy('created_at', 'desc')
+            ->skip(($page - 1) * $perPage)
+            ->take($perPage)
+            ->get();
+
+        // Pastikan data yang dikembalikan memiliki semua field yang diperlukan
+        $data = $data->map(function ($item) {
+            // Pastikan semua field yang digunakan di frontend tersedia
+            return [
+                'id' => $item->id,
+                'nama_bangunan' => $item->nama_bangunan,
+                'jenis_bangunan' => $item->jenis_bangunan,
+                'alamat' => $item->alamat,
+                'created_at' => $item->created_at->format('d-m-Y'),
+                'foto_depan' => $item->foto_depan ?? 'default.jpg',
+                'status_data' => $item->status_data ?? 'Aktif'
+            ];
+        });
+
+        return response()->json([
+            'data' => $data,
+            'total' => $total,
+            'current_page' => (int)$page,
+            'per_page' => $perPage,
+            'last_page' => ceil($total / $perPage)
+        ]);
+    }
 }

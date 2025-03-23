@@ -6,6 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\PembandingModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Exports\PembandingExport;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class Lihat_pembandingController extends Controller
 {
@@ -87,18 +93,37 @@ class Lihat_pembandingController extends Controller
                 DB::raw('NULL as narasumber')
             );
 
+        // Filter berdasarkan tahun jika parameter tahun ada
+        if ($request->has('tahun') && !empty($request->tahun)) {
+            $tahun = $request->tahun;
+            $tanah_kosong->whereYear('created_at', $tahun);
+            $retail->whereYear('created_at', $tahun);
+            $bangunan->whereYear('created_at', $tahun);
+        }
+
         // Union semua query
-        $data = $tanah_kosong->unionAll($retail)->unionAll($bangunan);
+        $unionQuery = $tanah_kosong->unionAll($retail)->unionAll($bangunan);
 
         // Server-side search
         if ($request->has('search') && !empty($request->search['value'])) {
             $search = $request->search['value'];
-            $data = $data->where(function ($query) use ($search) {
-                $query->where('jenis_aset', 'like', "%$search%")
-                    ->orWhere('alamat', 'like', "%$search%")
-                    ->orWhere('nama_narsum', 'like', "%$search%")
-                    ->orWhere('telepon', 'like', "%$search%");
-            });
+
+            // Gunakan subquery untuk menerapkan pencarian pada hasil union
+            $data = DB::table(DB::raw("({$unionQuery->toSql()}) as combined_data"))
+                ->mergeBindings($unionQuery)
+                ->where(function ($query) use ($search) {
+                    $query->where('nama_pembanding', 'like', "%$search%")
+                        ->orWhere('jenis_aset', 'like', "%$search%")
+                        ->orWhere('alamat', 'like', "%$search%")
+                        ->orWhere('nama_narsum', 'like', "%$search%")
+                        ->orWhere('telepon', 'like', "%$search%")
+                        ->orWhere('nama_entitas', 'like', "%$search%")
+                        ->orWhere('sumber', 'like', "%$search%")
+                        ->orWhere('id', 'like', "%$search%");
+                });
+        } else {
+            $data = DB::table(DB::raw("({$unionQuery->toSql()}) as combined_data"))
+                ->mergeBindings($unionQuery);
         }
 
         // Server-side ordering
@@ -138,6 +163,14 @@ class Lihat_pembandingController extends Controller
         // Format data untuk DataTables
         $formattedData = [];
         foreach ($data as $item) {
+            // Tentukan route edit berdasarkan sumber data
+            $editRoute = match ($item->sumber) {
+                'Tanah Kosong' => route('pembanding.tanah-kosong.edit', $item->id),
+                'Pembanding Retail' => route('pembanding.retail.edit', $item->id),
+                'Pembanding Bangunan' => route('pembanding.bangunan.edit', $item->id),
+                default => '#'
+            };
+
             $formattedData[] = [
                 'foto' => '<img src="' . asset('storage/' . $item->foto_tampak_depan) . '" alt="Foto" class="img-thumbnail" style="width:100px;">',
                 'id' => $item->id,
@@ -151,9 +184,14 @@ class Lihat_pembandingController extends Controller
                 'status_data_pembanding' => $item->status_data_pembanding,
                 'aksi' => '
                     <a href="' . route("pembanding.laporan_pembanding", ["id" => $item->id, "sumber" => $item->sumber]) . '" class="btn btn-primary btn-sm"><i class="bi bi-file-earmark-spreadsheet"></i></a>
-                    <button class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i></button>
-                    <button class="btn btn-success btn-sm"><i class="bi bi-download"></i></button>
-                    <button class="btn btn-danger btn-sm"><i class="bi bi-trash3"></i></button>
+                    <a href="' . $editRoute . '" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i></a>
+                    <a href="' . route("pembanding.download-item", ["id" => $item->id, "sumber" => $item->sumber]) . '" class="btn btn-success btn-sm"><i class="bi bi-download"></i></a>
+                    <form action="' . route('pembanding.delete') . '" method="POST" style="display:inline;">
+                        ' . csrf_field() . '
+                        <input type="hidden" name="id" value="' . $item->id . '">
+                        <input type="hidden" name="sumber" value="' . $item->sumber . '">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Apakah Anda yakin?\')"><i class="bi bi-trash3"></i></button>
+                    </form>
                 ',
             ];
         }
@@ -403,5 +441,175 @@ class Lihat_pembandingController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
+    }
+
+    public function deleteData(Request $request)
+    {
+        try {
+            $id = $request->id;
+            $sumber = $request->sumber;
+
+            // Tentukan tabel berdasarkan sumber data
+            $table = match ($sumber) {
+                'Tanah Kosong' => 'tanah_kosong',
+                'Pembanding Retail' => 'pembanding_retail',
+                'Pembanding Bangunan' => 'pembanding_bangunan',
+                default => throw new \Exception('Sumber data tidak valid')
+            };
+
+            $deleted = DB::table($table)->where('id', $id)->delete();
+
+            if ($deleted) {
+                return redirect()->back()->with('success', 'Data berhasil dihapus');
+            }
+            return redirect()->back()->with('error', 'Data tidak ditemukan');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menghapus data: ' . $e->getMessage());
+        }
+    }
+
+    public function exportExcel()
+    {
+        try {
+            Log::info('Memulai proses export excel');
+
+            $tanah_kosong = DB::table('tanah_kosong')
+                ->select(
+                    'id',
+                    'nama_tanah_kosong as nama_pembanding',
+                    'alamat',
+                    'jenis_aset',
+                    'nama_narsum',
+                    'telepon',
+                    'created_at',
+                    DB::raw("'Tanah Kosong' as sumber"),
+                    'status_data_pembanding',
+                    DB::raw("NULL as narasumber") // Tambah kolom dummy untuk menyamakan jumlah kolom
+                );
+
+            $retail = DB::table('pembanding_retail')
+                ->select(
+                    'id',
+                    'nama_retail as nama_pembanding',
+                    'alamat',
+                    'jenis_aset',
+                    DB::raw("NULL as nama_narsum"), // Kolom ke-5
+                    DB::raw("NULL as telepon"),      // Kolom ke-6
+                    'created_at',
+                    DB::raw("'Pembanding Retail' as sumber"),
+                    'status_data_pembanding',
+                    'narasumber' // Kolom ke-10 (harus sama dengan jumlah kolom tanah_kosong)
+                );
+
+            $bangunan = DB::table('pembanding_bangunan')
+                ->select(
+                    'id',
+                    'nama_bangunan as nama_pembanding',
+                    'alamat',
+                    'jenis_properti as jenis_aset',
+                    'nama_narsum',
+                    'telepon',
+                    'created_at',
+                    DB::raw("'Pembanding Bangunan' as sumber"),
+                    'status_data_pembanding',
+                    DB::raw("NULL as narasumber") // Tambah kolom dummy
+                );
+
+            $data = $tanah_kosong->unionAll($retail)->unionAll($bangunan)->get();
+            Log::info('Jumlah data untuk export: ' . $data->count());
+
+            // Process data untuk Excel
+            $data = $data->map(function ($item) {
+                if ($item->sumber == 'Pembanding Retail' && !empty($item->narasumber)) {
+                    $narsum = json_decode($item->narasumber, true);
+                    $item->nama_narsum = $narsum[0] ?? null;
+                    $item->telepon = $narsum[1] ?? null;
+                }
+                return $item;
+            });
+
+            Log::info('Mulai download excel');
+            return Excel::download(
+                new UsersExport($data),
+                'data-pembanding-' . date('Y-m-d') . '.xlsx'
+            );
+        } catch (\Exception $e) {
+            Log::error('Error pada export excel: ' . $e->getMessage());
+            Log::error('Stack trace: ' . $e->getTraceAsString());
+            return redirect()->back()->with('error', 'Gagal mengekspor data: ' . $e->getMessage());
+        }
+    }
+
+    public function exportItem($id, $sumber)
+    {
+        try {
+            // Decode URL parameter
+            $decodedSumber = urldecode($sumber);
+
+            // Mapping sumber ke tabel dengan case sensitive
+            $table = match ($decodedSumber) {
+                'Tanah Kosong' => 'tanah_kosong',
+                'Pembanding Retail' => 'pembanding_retail',
+                'Pembanding Bangunan' => 'pembanding_bangunan',
+                default => throw new \Exception('Sumber data tidak valid: ' . $decodedSumber)
+            };
+
+            // Validasi tabel exists
+            if (!Schema::hasTable($table)) {
+                throw new \Exception('Tabel ' . $table . ' tidak ditemukan');
+            }
+
+            // Query data
+            $data = DB::table($table)
+                ->when($table === 'pembanding_retail', function ($query) {
+                    return $query->select('*', DB::raw("NULL as nama_narsum"), DB::raw("NULL as telepon"));
+                })
+                ->when($table !== 'pembanding_retail', function ($query) {
+                    return $query->select('*', DB::raw("NULL as narasumber"));
+                })
+                ->where('id', $id)
+                ->first();
+
+            if (!$data) {
+                return redirect()->back()->with('error', 'Data tidak ditemukan');
+            }
+
+            // Process data khusus untuk retail
+            if ($table === 'pembanding_retail' && !empty($data->narasumber)) {
+                $narsum = json_decode($data->narasumber, true);
+                $data->nama_narsum = $narsum[0] ?? null;
+                $data->telepon = $narsum[1] ?? null;
+            }
+
+            // Mapping ke format Excel
+            $mappedData = [
+                'ID' => $data->id,
+                'Nama Pembanding' => $data->nama_pembanding ?? $data->nama_tanah_kosong ?? $data->nama_bangunan,
+                'Alamat' => $data->alamat,
+                'Jenis Aset' => $data->jenis_aset ?? $data->jenis_properti,
+                'Narasumber' => $data->nama_narsum,
+                'Telepon' => $data->telepon,
+                'Tanggal Input' => $data->created_at,
+                'Sumber Data' => $decodedSumber,
+                'Status Data' => $data->status_data_pembanding ? 'Aktif' : 'Non-Aktif'
+            ];
+
+            return Excel::download(
+                new PembandingExport(collect([$mappedData])),
+                'detail-pembanding-' . $id . '-' . Str::slug($decodedSumber) . '.xlsx'
+            );
+        } catch (\Exception $e) {
+            Log::error('Export Item Error: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Gagal mengunduh data: ' . $e->getMessage());
+        }
+    }
+    public function testExport()
+    {
+        $data = collect([
+            ['nama' => 'Test 1', 'alamat' => 'Alamat 1'],
+            ['nama' => 'Test 2', 'alamat' => 'Alamat 2']
+        ]);
+
+        return Excel::download(new PembandingExport($data), 'test.xlsx');
     }
 }

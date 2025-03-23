@@ -245,6 +245,22 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pembanding/retailLoadData', [Lihat_pembandingController::class, 'retailLoadData'])->name('pembanding.retailLoadData');
     Route::get('/pembanding/laporan/{id}/{sumber}', [Lihat_pembandingController::class, 'laporan_pembanding'])->name('pembanding.laporan_pembanding');
 
+    Route::post('/pembanding/delete', [Lihat_pembandingController::class, 'deleteData'])->name('pembanding.delete');
+    Route::get('/pembanding/export', [Lihat_pembandingController::class, 'exportExcel'])->name('pembanding.export');
+    Route::get('/pembanding/download/{id}/{sumber}', [Lihat_pembandingController::class, 'exportItem'])->name('pembanding.download-item');
+    Route::get('/pembanding/test-export', [Lihat_pembandingController::class, 'testExport'])->name('pembanding.test-export');
+
+    // Untuk Bangunan
+    Route::get('/pembanding/bangunan/{id}/edit', [PembandingBangunanController::class, 'editBangunan'])->name('pembanding.bangunan.edit');
+    Route::put('/pembanding/bangunan/{id}', [PembandingBangunanController::class, 'updateBangunan'])->name('pembanding.bangunan.update');
+
+    // Untuk Retail
+    Route::get('/pembanding/retail/{id}/edit', [Pembanding_retailController::class, 'editRetail'])->name('pembanding.retail.edit');
+    Route::put('/pembanding/retail/{id}', [Pembanding_retailController::class, 'updateRetail'])->name('pembanding.retail.update');
+
+    // Untuk Tanah Kosong
+    Route::get('/pembanding/tanah-kosong/{id}/edit', [Pembanding_tanah_kosongController::class, 'editTanahKosong'])->name('pembanding.tanah-kosong.edit');
+    Route::put('/pembanding/tanah-kosong/{id}', [Pembanding_tanah_kosongController::class, 'updateTanahKosong'])->name('pembanding.tanah-kosong.update');
 
     // laporan
     // Route::get('/laporan', [LaporanController::class, 'laporan'])->name('laporan');
@@ -258,7 +274,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/laporan_penilaian/tanah_kosong/store', [LaporanPenilaianController::class, 'store_laporan_tanah_kosong'])->name('laporan-tanah_kosong-store');
     Route::post('/laporan_penilaian/bangunan/store', [LaporanPenilaianController::class, 'store_laporan_bangunan'])->name('laporan-bangunan-store');
 
-    Route::get('/laporan_penilaian/semua_laporan', [LaporanPenilaianController::class, 'lihat_laporan'])->name('lihat-laporan');
+    Route::get('/laporan_penilaian/semua_laporan', [LaporanPenilaianController::class, 'lihat_laporan'])->name('laporan.all');
+    // Laporan Penilaian
+    Route::get('/laporan-penilaian/{id}/edit', [LaporanPenilaianController::class, 'edit'])->name('laporan.edit');
+    Route::put('/laporan-penilaian/{id}', [LaporanPenilaianController::class, 'update'])->name('laporan.update');
+    Route::get('/laporan-penilaian/{id}/analisa', [LaporanPenilaianController::class, 'analisa'])->name('laporan.analisa');
+    Route::delete('/laporan-penilaian/{id}', [LaporanPenilaianController::class, 'destroy'])->name('laporan.destroy');
 
     // masterdata
     // Jenis Dokumen Hak Tanah

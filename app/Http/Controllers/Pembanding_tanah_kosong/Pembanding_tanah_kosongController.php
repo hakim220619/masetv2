@@ -7,18 +7,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\TanahKosong; // Impor model TanahKosong
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 class Pembanding_tanah_kosongController extends Controller
 {
     public function tanah_kosong()
     {
-        
+
         return view('content.pembanding.pembanding_tanah_kosong');
     }
     public function store(Request $request)
     {
         // Validasi data
-    
+
         $validated = $request->validate([
             'nama_tanah_kosong' => 'required|string|max:255',
             'nama_entitas' => 'nullable|string|max:255',
@@ -113,7 +114,7 @@ class Pembanding_tanah_kosongController extends Controller
         if ($request->hasFile('foto')) {
             foreach ($request->file('foto') as $index => $file) {
                 $judulFoto = $request->input("judul_foto.{$index}");
-                
+
                 // Simpan file ke storage
                 $fileName = time() . "_{$index}_" . $file->getClientOriginalName();
                 $filePath = $file->storeAs('uploads/foto_lainnya', $fileName, 'public');
@@ -128,7 +129,7 @@ class Pembanding_tanah_kosongController extends Controller
         // Simpan JSON ke database atau sesuai kebutuhan
         $jsonFotoData = json_encode($fotoData);
 
-        
+
 
         // Simpan data
         TanahKosong::create([
@@ -209,5 +210,145 @@ class Pembanding_tanah_kosongController extends Controller
             'status_data_pembanding' => $request->status_data_pembanding,
         ]);
         return redirect()->back()->with('success', 'Data berhasil disimpan!');
+    }
+
+    public function editTanahKosong($id)
+    {
+        $data = TanahKosong::findOrFail($id);
+
+        // Decode JSON fields
+        $data->njop = json_decode($data->njop, true);
+        $data->foto_lainnya = json_decode($data->foto_lainnya, true);
+
+        return view('content.pembanding.edit.edit_tanah_kosong', compact('data'));
+    }
+
+    public function updateTanahKosong(Request $request, $id)
+    {
+        try {
+            $data = TanahKosong::findOrFail($id);
+
+            $validated = $request->validate([
+                'nama_tanah_kosong' => 'required|string|max:255',
+                'nama_entitas' => 'nullable|string|max:255',
+                'provinsi' => 'nullable|string|max:255',
+                'kode_pos' => 'nullable|string|max:10',
+                'alamat_lengkap' => 'nullable|string',
+                'keterangan_dasar_nilai' => 'nullable|string',
+                'alamat' => 'nullable|string',
+                'lat' => 'nullable|numeric',
+                'long' => 'nullable|numeric',
+                'foto_tampak_depan' => 'nullable|image|mimes:jpg,jpeg,png|max:6048',
+                'foto_tampak_sisi_kiri' => 'nullable|image|mimes:jpg,jpeg,png|max:6048',
+                'foto_tampak_sisi_kanan' => 'nullable|image|mimes:jpg,jpeg,png|max:6048',
+                'foto' => 'nullable|array',
+                'foto.*' => 'nullable|image|mimes:jpg,jpeg,png|max:6048',
+                'njop' => 'nullable|array',
+                'njop.*.tahun' => 'nullable|integer',
+                'njop.*.nilai_perolehan' => 'nullable|numeric',
+                'nama_narsum' => 'nullable|string|max:255',
+                'telepon' => 'nullable|string|max:15',
+                'jenis_dok_hak_tanah' => 'nullable|string',
+                'zona_lindung' => 'nullable|string',
+                'zona_budidaya' => 'nullable|string',
+                'jenis_data' => 'nullable|string',
+                'tgl_penawaran' => 'nullable|date',
+                'sumber_data' => 'nullable|string',
+                'luas_tanah' => 'nullable|integer',
+                'luas_tanah_terpotong' => 'nullable|integer',
+                'harga_penawaran' => 'nullable|numeric',
+                'diskon' => 'nullable|integer',
+                'harga_sewa_per_tahun' => 'nullable|numeric',
+                'skrap' => 'nullable|integer',
+                'kemunduran_fungsi' => 'nullable|integer',
+                'penjelasan_kemunduran_fungsi' => 'nullable|string',
+                'kemunduran_ekonomis' => 'nullable|integer',
+                'penjelasan_kemunduran_ekonomis' => 'nullable|string',
+                'maintenance' => 'nullable|integer',
+                'pep_pembiayaan' => 'nullable|string',
+                'pep_penjualan' => 'nullable|string',
+                'pep_pengeluaran' => 'nullable|string',
+                'pep_pasar' => 'nullable|string',
+                'kdb' => 'nullable|integer',
+                'klb' => 'nullable|integer',
+                'gsb' => 'nullable|integer',
+                'ketinggian' => 'nullable|integer',
+                'row_jalan' => 'nullable|integer',
+                'tipe_jalan' => 'nullable|string',
+                'kapasitas_jalan' => 'nullable|string',
+                'pengguna_lahan_lingkungan_eksisting' => 'nullable|string',
+                'letak_posisi_obyek' => 'nullable|string',
+                'letak_posisi_aset' => 'nullable|string',
+                'bentuk_tanah' => 'nullable|string',
+                'bentuk_tanah_lainnya' => 'nullable|string',
+                'lebar_muka_tanah' => 'nullable|integer',
+                'ketinggian_tanah_dr_muka_jln' => 'nullable|integer',
+                'topografi' => 'nullable|string',
+                'tingkat_hunian' => 'nullable|integer',
+                'kondisi_lingkungan_khusus' => 'nullable|string',
+                'kondisi_lingkungan_lainnya' => 'nullable|string',
+                'keterangan_tambahan_lainnya' => 'nullable|string',
+                'kualitas_pendapatan' => 'nullable|string',
+                'biaya_operasional' => 'nullable|string',
+                'ketentuan_sewa' => 'nullable|string',
+                'manajemen' => 'nullable|string',
+                'bauran_penyewa' => 'nullable|string',
+                'ffe' => 'nullable|string',
+                'mesin' => 'nullable|string',
+                'nama_pusat_kota' => 'nullable|string',
+                'nama_pusat_ekonomi' => 'nullable|string',
+                'nama_jalan' => 'nullable|string',
+                'kondisi_lingkungan' => 'nullable|string',
+                'faktor_view' => 'nullable|string',
+                'keterangan_jarak' => 'nullable|string',
+                'pengguanan_tnh_saat_ini' => 'nullable|string',
+                'pemberi_tugas' => 'nullable|string',
+                'jenis_aset' => 'nullable|string',
+                'peruntukan' => 'nullable|string',
+                'jabatan_narasumber' => 'nullable|string',
+                'status_data_pembanding' => 'nullable|string',
+            ]);
+
+            // Handle file uploads
+            $fileFields = [
+                'foto_tampak_depan',
+                'foto_tampak_sisi_kiri',
+                'foto_tampak_sisi_kanan'
+            ];
+
+            foreach ($fileFields as $field) {
+                if ($request->hasFile($field)) {
+                    // Delete old file
+                    Storage::delete($data->$field);
+                    // Store new file
+                    $validated[$field] = $request->file($field)->store('public/uploads');
+                }
+            }
+
+            // Handle foto lainnya
+            if ($request->hasFile('foto')) {
+                $newFoto = [];
+                foreach ($request->file('foto') as $index => $file) {
+                    $judulFoto = $request->input("judul_foto.{$index}");
+                    $path = $file->store('public/uploads');
+                    $newFoto[] = [
+                        'judul_foto' => $judulFoto,
+                        'file_path' => $path
+                    ];
+                }
+                $existingFoto = json_decode($data->foto_lainnya, true) ?? [];
+                $validated['foto_lainnya'] = json_encode(array_merge($existingFoto, $newFoto));
+            }
+
+            // Update NJOP
+            $validated['njop'] = json_encode($request->njop);
+
+            $data->update($validated);
+
+            return redirect()->route('tanah-kosong.index')->with('success', 'Data tanah kosong berhasil diperbarui');
+        } catch (\Exception $e) {
+            Log::error('Error updating tanah kosong: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Gagal memperbarui data');
+        }
     }
 }

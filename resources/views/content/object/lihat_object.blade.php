@@ -35,6 +35,17 @@
             <div class="row" id="objectList">
                 <!-- Dynamically populated content will appear here -->
             </div>
+
+            <!-- Pagination Container -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center" id="pagination">
+                            <!-- Pagination will be dynamically generated here -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </div>
     </div>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -49,18 +60,25 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
+            let currentPage = 1;
+
             // Function to load objects using Ajax
-            function loadObjects() {
+            function loadObjects(page = 1) {
+                $('#objectList').html(
+                    '<div class="col-12 text-center"><div class="spinner-border text-primary" role="status"></div></div>'
+                );
+
                 var searchKeyword = $('#searchInput').val();
                 var objectType = $('#objectType').val();
-                console.log('asd');
 
                 $.ajax({
                     url: '/object/list-objects',
                     method: 'GET',
                     data: {
                         search: searchKeyword,
-                        type: objectType
+                        type: objectType,
+                        page: page
                     },
                     success: function(response) {
                         var html = '';
@@ -95,15 +113,53 @@
                                 `;
                             });
                         } else {
-                            html = '<p>Tidak ada obyek yang ditemukan.</p>';
+                            html = '<div class="col-12"><p>Tidak ada obyek yang ditemukan.</p></div>';
                         }
 
-                        $('#objectList').html(html); // Update the HTML of the object list container
+                        $('#objectList').html(html);
+
+                        // Perbaikan render pagination dengan data yang benar
+                        renderPagination(response.current_page, response.last_page);
+                        currentPage = response.current_page;
                     },
                     error: function() {
-                        $('#objectList').html('<p>Terjadi kesalahan saat memuat data.</p>');
+                        $('#objectList').html(
+                            '<div class="col-12"><p>Terjadi kesalahan saat memuat data.</p></div>');
                     }
                 });
+            }
+
+            // Function to render pagination
+            function renderPagination(currentPage, lastPage) {
+                let pagination = '';
+                const maxVisiblePages = 5; // Batasi jumlah halaman yang ditampilkan
+
+                // Previous button
+                pagination += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                    <a class="page-link" href="#" data-page="${currentPage - 1}">&laquo;</a>
+                </li>`;
+
+                // Page numbers
+                let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+                let endPage = Math.min(lastPage, startPage + maxVisiblePages - 1);
+
+                // Adjust if we're at the end
+                if (endPage - startPage < maxVisiblePages - 1) {
+                    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+                }
+
+                for (let i = startPage; i <= endPage; i++) {
+                    pagination += `<li class="page-item ${i === currentPage ? 'active' : ''}">
+                        <a class="page-link" href="#" data-page="${i}">${i}</a>
+                    </li>`;
+                }
+
+                // Next button
+                pagination += `<li class="page-item ${currentPage === lastPage ? 'disabled' : ''}">
+                    <a class="page-link" href="#" data-page="${currentPage + 1}">&raquo;</a>
+                </li>`;
+
+                $('#pagination').html(pagination);
             }
 
             // Initial load
@@ -111,12 +167,21 @@
 
             // Handle search button click
             $('#searchButton').click(function() {
-                loadObjects();
+                loadObjects(1); // Reset to first page when searching
             });
 
             // Trigger search when the input or dropdown value changes
             $('#searchInput, #objectType').on('change', function() {
-                loadObjects();
+                loadObjects(1); // Reset to first page when filter changes
+            });
+
+            // Handle pagination click
+            $(document).on('click', '.page-link', function(e) {
+                e.preventDefault();
+                const page = $(this).data('page');
+                if (page) {
+                    loadObjects(page);
+                }
             });
 
             // Handle delete button click
@@ -136,8 +201,7 @@
                     if (result.isConfirmed) {
                         // Proceed with deletion
                         $.ajax({
-                            url: '/object/delete/' +
-                                objectId, // Assuming the delete URL follows this structure
+                            url: '/object/delete/' + objectId,
                             method: 'DELETE',
                             success: function(response) {
                                 // Reload objects after deletion
@@ -146,7 +210,7 @@
                                     'Obyek telah dihapus.',
                                     'success'
                                 );
-                                loadObjects();
+                                loadObjects(currentPage);
                             },
                             error: function() {
                                 Swal.fire(
@@ -164,6 +228,10 @@
                         );
                     }
                 });
+            });
+
+            $(document).ajaxComplete(function() {
+                $('[data-toggle="tooltip"]').tooltip();
             });
         });
     </script>

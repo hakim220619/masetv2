@@ -129,18 +129,18 @@
                                 
                                 for ($year = $currentYear; $year >= $startYear; $year--) {
                                     echo '
-                                                                                                                                                                    <div class="form-check me-3">
-                                                                                                                                                                        <input type="checkbox" class="form-check-input" id="t_' .
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="form-check me-3">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <input type="checkbox" class="form-check-input" id="t_' .
                                         $year .
                                         '" name="t_' .
                                         $year .
                                         '">
-                                                                                                                                                                        <label class="form-check-label" for="t_' .
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <label class="form-check-label" for="t_' .
                                         $year .
                                         '">' .
                                         $year .
                                         '</label>
-                                                                                                                                                                    </div>';
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>';
                                 }
                                 ?>
                             </div>
@@ -242,80 +242,6 @@
                 </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header">
-                <h4>Filter Data Pembanding</h4>
-            </div>
-            <div class="card-body">
-                <form action="">
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="cari_data">Cari Data</label>
-                            <input type="text" class="form-control" name="cari_data" id="cari_data">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="jenis_properti">Jenis Properti</label>
-                            <select name="jenis_properti" id="jenis_properti" class="form-select">
-                                <option value="" selected>Pilih..</option>
-                                <option value="ruko">Ruko</option>
-                                <option value="tanah kosong">Tanah Kosong</option>
-                                <option value="tanah dan bangunan">Tanah dan Bangunan</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="narasumber">Narasumber</label>
-                            <input type="text" class="form-control" name="narasumber" id="narasumber">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="tgl_penawaran">Tanggal Penawaran</label>
-                            <input type="date" class="form-control" name="tgl_penawaran" id="tgl_penawaran">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <div>
-                                <label for="status_data">Status Data</label>
-                            </div>
-                            <div class="d-flex flex-wrap">
-                                <div class="form-check me-3">
-                                    <input type="radio" class="form-check-input" id="lengkap" name="lengkap">
-                                    <label class="form-check-label" for="lengkap">Lengkap</label>
-                                </div>
-                                <div class="form-check me-3">
-                                    <input type="radio" class="form-check-input" id="tidak_lengkap"
-                                        name="tidak_lengkap">
-                                    <label class="form-check-label" for="tidak_lengkap">Tidak Lengkap</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="jenis_data">Jenis Data</label>
-                            <select name="jenis_data" id="jenis_data" class="form-select">
-                                <option value="" selected>Pilih..</option>
-                                <option value="Penawaran">penawaran</option>
-                                <option value="Transaksi">Transaksi</option>
-                                <option value="Price on offer">Price on offer</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6 mb-3">
-                            <label for="provinsi">Provinsi</label>
-                            <select name="provinsi" id="provinsi" class="form-select">
-                                <option value="" selected>Pilih..</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="kode_pos">Kode Pos</label>
-                            <input type="number" class="form-control" name="kode_pos" id="kode_pos">
-                        </div>
-                    </div>
-                    <button class="btn btn-primary">Cari</button>
-                </form>
-            </div>
-        </div>
         <div class="card mt-5">
             <div class="card-header">
                 <h2 class="mb-4">Semua Data Pembanding</h2>
@@ -337,6 +263,11 @@
                 </form>
             </div>
             <div class="card-body">
+                <div class="mb-3">
+                    <a href="{{ route('pembanding.export') }}" class="btn btn-success">
+                        <i class="bi bi-file-earmark-excel"></i> Export Excel
+                    </a>
+                </div>
                 <div class="row">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered" id="data-pembanding">
@@ -586,7 +517,10 @@
                 serverSide: true,
                 ajax: {
                     url: "{{ route('lihat.pembanding.data') }}",
-                    type: 'GET'
+                    type: 'GET',
+                    data: function(d) {
+                        d.tahun = $('#tahun').val();
+                    }
                 },
                 columns: [{
                         data: 'foto',
@@ -625,7 +559,22 @@
                         orderable: false,
                         searchable: false
                     }
-                ]
+                ],
+                dom: '<"d-flex justify-content-between align-items-center mb-3"<"d-flex align-items-center"l><"d-flex"f>>t<"d-flex justify-content-between"ip>',
+                language: {
+                    search: "Cari:",
+                    lengthMenu: "Tampilkan _MENU_ data",
+                    zeroRecords: "Data tidak ditemukan",
+                    info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                    infoEmpty: "Menampilkan 0 sampai 0 dari 0 data",
+                    infoFiltered: "(difilter dari _MAX_ total data)",
+                }
+            });
+
+            // Tambahkan event handler untuk form pencarian tahun
+            $('form[action=""]').on('submit', function(e) {
+                e.preventDefault();
+                $('#data-pembanding').DataTable().ajax.reload();
             });
         });
     </script>
