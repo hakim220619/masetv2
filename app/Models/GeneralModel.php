@@ -147,6 +147,45 @@ class GeneralModel extends Model
         $data = DB::table('broadcast_aplikasi')->where('uid', $uid)->first();
         return $data;
     }
+    public static function getCountUsers()
+    {
+        $role = auth()->user() ? auth()->user()->role : session('role');
+        if ($role == 4) {
+            $data = DB::select('SELECT COUNT(id) as tot_users FROM users');
+        } else {
+            $data = DB::select('SELECT COUNT(id) as tot_users FROM users WHERE role = ?', [$role]);
+        }
+        return $data[0];
+    }
+    public static function getCountObjPenilaian()
+    {
+        $role = auth()->user() ? auth()->user()->role : session('role');
+        if ($role == 4) {
+            $data = DB::select('SELECT COUNT(id) as total_objek FROM bangunan');
+            return $data[0];
+        }
+        return 0;
+    }
+    public static function getCountPembanding()
+    {
+        // Get the current user's role from the session or model
+        $role = auth()->user() ? auth()->user()->role : session('role');
+
+        if ($role == 4) {
+            // Count the number of records in each table and sum them
+            $totalPembanding = DB::table('tanah_kosong')->count()
+                + DB::table('pembanding_bangunan')->count()
+                + DB::table('pembanding_retail')->count();
+
+            // Return the total count directly
+            return $totalPembanding;
+        }
+
+        // If role is not 4, return 0 or handle as needed
+        return 0;
+    }
+
+
     public static function broadcastByAplikasiDelete($uid)
     {
         $data = DB::table('broadcast_aplikasi')->where('uid', $uid)->delete();
