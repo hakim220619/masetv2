@@ -126,7 +126,7 @@
                                 <?php
                                 $startYear = 2018; // Tahun awal
                                 $currentYear = date('Y'); // Tahun saat ini
-                                
+
                                 for ($year = $currentYear; $year >= $startYear; $year--) {
                                     echo '
                                                                                                                                                                     <div class="form-check me-3">
@@ -373,7 +373,7 @@
                                             <button class="btn btn-success btn-sm"><i class="bi bi-download"></i></button>
                                             <button class="btn btn-danger btn-sm"><i class="bi bi-trash3"></i></button>
                                         </td>
-                                    </tr>                                    
+                                    </tr>
                                 @endforeach --}}
                             </tbody>
                         </table>

@@ -127,9 +127,9 @@ class LaporanPenilaianController extends Controller
             'status_pendamping_inpeksi' => $request->status_pendamping_inpeksi,
             'kelengkapan_dokumen' => json_encode($request->kelengkapan_dokumen),
             'tgl_izin_layak_huni' => $request->tgl_izin_layak_huni,
-            'no_izin_layak_huni' => $request->no_izin_layak_huni, 
-            'tgl_akta_pemisahan' => $request->tgl_akta_pemisahan,  
-            'no_akta_pemisahan' =>  $request->no_akta_pemisahan,  
+            'no_izin_layak_huni' => $request->no_izin_layak_huni,
+            'tgl_akta_pemisahan' => $request->tgl_akta_pemisahan,
+            'no_akta_pemisahan' =>  $request->no_akta_pemisahan,
             'dibuat_akta_pemisahan' => $request->dibuat_akta_pemisahan,
             'disahkan_oleh_akta_pemisahan' => $request->disahkan_oleh_akta_pemisahan,
             'tgl_disahkan_akta_pemisahan' => $request->tgl_disahkan_akta_pemisahan,
@@ -144,7 +144,7 @@ class LaporanPenilaianController extends Controller
     }
     public function store_laporan_tanah_kosong(Request $request)
     {
-        
+
         $request->validate([
             'judul_laporan' => 'required|string|max:255',
             'nama_entitas' => 'required|string|max:255',
@@ -194,7 +194,7 @@ class LaporanPenilaianController extends Controller
             'informasi_khusus' => 'nullable|string',
             'status_data' => 'required|string|in:draft,publish',
         ]);
-        
+
         // Simpan ke database
         LaporanPenilaian::create([
             'kategori_laporan_penilaian' => 'Tanah Kosong',
@@ -251,13 +251,13 @@ class LaporanPenilaianController extends Controller
             'nama_pendamping_inpeksi' => $request->nama_pendamping_inpeksi,
             'telepon_pendamping_inpeksi' => $request->telepon_pendamping_inpeksi,
             'status_pendamping_inpeksi' => $request->status_pendamping_inpeksi,
-            'kelengkapan_dokumen' => json_encode($request->kelengkapan_dokumen),            
+            'kelengkapan_dokumen' => json_encode($request->kelengkapan_dokumen),
             'informasi_khusus' => $request->informasi_khusus,
             'status_data' => $request->status_data,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        
+
 
         return redirect()->route('laporan-tanah_kosong')->with('success', 'Laporan Penilaian Tanah Kosong berhasil disimpan!');
     }
@@ -369,7 +369,7 @@ class LaporanPenilaianController extends Controller
             'nama_pendamping_inpeksi' => $request->nama_pendamping_inpeksi,
             'telepon_pendamping_inpeksi' => $request->telepon_pendamping_inpeksi,
             'status_pendamping_inpeksi' => $request->status_pendamping_inpeksi,
-            'kelengkapan_dokumen' => json_encode($request->kelengkapan_dokumen),            
+            'kelengkapan_dokumen' => json_encode($request->kelengkapan_dokumen),
             'informasi_khusus' => $request->informasi_khusus,
             'status_data' => $request->status_data,
             'created_at' => now(),
@@ -382,7 +382,13 @@ class LaporanPenilaianController extends Controller
     public function lihat_laporan()
     {
         $reports = LaporanPenilaian::paginate(9);
-    return view('content.laporan_penilaian.all_laporan', compact('reports'));
+        // dd($reports);
+        return view('content.laporan_penilaian.all_laporan', compact('reports'));
+    }
+
+    public function analisa($id) {
+        $report = LaporanPenilaian::find($id);
+        return view('content.laporan_penilaian.analisa', compact('report'));
     }
 
     public function getData(Request $request){
