@@ -42,16 +42,24 @@ class BangunanModel extends Model
     public static function listObject($search = null, $type = null, $page = 1, $perPage = 6)
     {
         try {
+            // Pastikan page adalah integer dan minimal 1
+            $page = max(1, intval($page));
+            $perPage = intval($perPage);
+
             $query = DB::table('bangunan')->orderBy('created_at', 'desc');
 
-            // Pilih kolom yang pasti ada di tabel
-            $query->select('id', 'nama_bangunan', 'alamat', 'created_at');
+            // Pilih kolom yang dibutuhkan
+            $query->select('id', 'nama_bangunan', 'created_at');
 
-            // Tambahkan kolom opsional dengan pengecekan
+            // Tambahkan kolom opsional jika ada
             $columns = Schema::getColumnListing('bangunan');
 
             if (in_array('jenis_bangunan', $columns)) {
                 $query->addSelect('jenis_bangunan');
+            }
+
+            if (in_array('alamat', $columns)) {
+                $query->addSelect('alamat');
             }
 
             if (in_array('foto_depan', $columns)) {
@@ -84,17 +92,22 @@ class BangunanModel extends Model
                 $query->where('jenis_bangunan', $type);
             }
 
-            // Hitung total data untuk pagination
-            $total = $query->count();
+            // Clone query untuk mendapatkan total sebelum pagination
+            $countQuery = clone $query;
+            $total = $countQuery->count();
 
-            // Hitung offset dengan benar
+            // Hitung offset dengan benar untuk pagination
             $offset = ($page - 1) * $perPage;
 
+            // Tambahkan debug log
+            Log::info("Pagination untuk halaman {$page}, offset {$offset}, limit {$perPage}");
+
             // Ambil data dengan pagination
-            $data = $query->orderBy('created_at', 'desc')
-                ->offset($offset)
+            $data = $query->offset($offset)
                 ->limit($perPage)
                 ->get();
+
+            Log::info("Data yang diambil: " . count($data));
 
             // Format data untuk response
             $formattedData = [];
@@ -102,28 +115,14 @@ class BangunanModel extends Model
                 $formattedItem = [
                     'id' => $item->id,
                     'nama_bangunan' => $item->nama_bangunan,
-                    'alamat' => $item->alamat ?? 'Tidak ada alamat',
                     'created_at' => date('d-m-Y', strtotime($item->created_at)),
                 ];
 
                 // Tambahkan kolom opsional jika ada
-                if (isset($item->jenis_bangunan)) {
-                    $formattedItem['jenis_bangunan'] = $item->jenis_bangunan;
-                } else {
-                    $formattedItem['jenis_bangunan'] = 'Tidak ada jenis';
-                }
-
-                if (isset($item->foto_depan)) {
-                    $formattedItem['foto_depan'] = $item->foto_depan;
-                } else {
-                    $formattedItem['foto_depan'] = 'default.jpg';
-                }
-
-                if (isset($item->status_data)) {
-                    $formattedItem['status_data'] = $item->status_data;
-                } else {
-                    $formattedItem['status_data'] = 'Aktif';
-                }
+                $formattedItem['alamat'] = isset($item->alamat) ? $item->alamat : 'Tidak ada alamat';
+                $formattedItem['jenis_bangunan'] = isset($item->jenis_bangunan) ? $item->jenis_bangunan : 'Tidak ada jenis';
+                $formattedItem['foto_depan'] = isset($item->foto_depan) ? $item->foto_depan : 'default.jpg';
+                $formattedItem['status_data'] = isset($item->status_data) ? $item->status_data : 'Aktif';
 
                 $formattedData[] = $formattedItem;
             }
@@ -137,50 +136,17 @@ class BangunanModel extends Model
             ];
         } catch (\Exception $e) {
             // Log error untuk debugging
-            Log::error('ListObject Error: ' . $e->getMessage());
+            Log::error('ListObject Error: ' . $e->getMessage() . ' | ' . $e->getTraceAsString());
 
-            // Coba query paling sederhana sebagai fallback
-            try {
-                $simpleData = DB::table('bangunan')
-                    ->select('id', 'nama_bangunan', 'created_at')
-                    ->orderBy('created_at', 'desc')
-                    ->limit($perPage)
-                    ->get()
-                    ->map(function ($item) {
-                        return [
-                            'id' => $item->id,
-                            'nama_bangunan' => $item->nama_bangunan,
-                            'alamat' => 'Tidak tersedia',
-                            'jenis_bangunan' => 'Tidak tersedia',
-                            'created_at' => date('d-m-Y', strtotime($item->created_at)),
-                            'foto_depan' => 'default.jpg',
-                            'status_data' => 'Aktif'
-                        ];
-                    });
-
-                $total = DB::table('bangunan')->count();
-
-                return [
-                    'data' => $simpleData,
-                    'total' => $total,
-                    'current_page' => (int)$page,
-                    'per_page' => $perPage,
-                    'last_page' => ceil($total / $perPage),
-                    'note' => 'Data ditampilkan dalam mode sederhana karena terjadi error'
-                ];
-            } catch (\Exception $fallbackError) {
-                Log::error('Fallback query error: ' . $fallbackError->getMessage());
-
-                // Return empty data dengan format yang sama
-                return [
-                    'data' => [],
-                    'total' => 0,
-                    'current_page' => (int)$page,
-                    'per_page' => $perPage,
-                    'last_page' => 1,
-                    'error' => 'Terjadi kesalahan saat memuat data'
-                ];
-            }
+            // Return empty data dengan format yang sama
+            return [
+                'data' => [],
+                'total' => 0,
+                'current_page' => (int)$page,
+                'per_page' => $perPage,
+                'last_page' => 1,
+                'error' => 'Terjadi kesalahan saat memuat data'
+            ];
         }
     }
 }

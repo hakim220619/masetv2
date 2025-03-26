@@ -46,6 +46,12 @@
                     </nav>
                 </div>
             </div>
+
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <p id="pagination-info" class="text-muted"></p>
+                </div>
+            </div>
         </div>
     </div>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -65,6 +71,7 @@
 
             // Function to load objects using Ajax
             function loadObjects(page = 1) {
+                console.log('Loading page:', page); // Log untuk debugging
                 $('#objectList').html(
                     '<div class="col-12 text-center"><div class="spinner-border text-primary" role="status"></div></div>'
                 );
@@ -93,19 +100,18 @@
                                                     <a href="/object/edit/${object.id}" class="text-primary me-2">
                                                         <i class="fa fa-edit" title="Edit" style="font-size: 13px;"></i>
                                                     </a>
-                                                    <i class="fa fa-times" title="Delete" style="font-size: 13px;" data-object-id="${object.id}"></i>
+                                                    <i class="fa fa-times text-danger delete-object" title="Delete" style="font-size: 13px; cursor: pointer;" data-object-id="${object.id}"></i>
                                                 </span>
                                             </div>
-                                            <br>
                                             <div class="card-body d-flex align-items-start" style="font-size: 12px;">
                                                 <div class="me-3">
-                                                    <img src="{{ asset('storage/uploads/bangunan/') }}/${object.foto_depan}" class="img-thumbnail" alt="${object.nama_bangunan}" style="width: 100px; height: 100px;">
+                                                    <img src="${object.foto_depan ? '/storage/uploads/bangunan/' + object.foto_depan : '/images/default.jpg'}" class="img-thumbnail" alt="${object.nama_bangunan}" style="width: 100px; height: 100px; object-fit: cover;">
                                                 </div>
                                                 <div>
-                                                    <p class="mb-3"><strong>Jenis Obyek:</strong> <span class="fw-bold">${object.jenis_bangunan}</span></p>
-                                                    <p class="mb-3"><strong>Tipe Bangunan:</strong> ${object.jenis_bangunan}</p>
-                                                    <p class="mb-3"><strong>Tanggal:</strong> ${object.created_at}</p>
-                                                    <p class="mb-3"><strong>Status Data:</strong> ${object.status_data}</p>
+                                                    <p class="mb-2"><strong>Jenis Obyek:</strong> <span class="fw-bold">${object.jenis_bangunan}</span></p>
+                                                    <p class="mb-2"><strong>Alamat:</strong> ${object.alamat}</p>
+                                                    <p class="mb-2"><strong>Tanggal:</strong> ${object.created_at}</p>
+                                                    <p class="mb-2"><strong>Status Data:</strong> <span class="badge ${object.status_data === 'Aktif' ? 'bg-success' : 'bg-warning'}">${object.status_data}</span></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -113,30 +119,40 @@
                                 `;
                             });
                         } else {
-                            html = '<div class="col-12"><p>Tidak ada obyek yang ditemukan.</p></div>';
+                            html =
+                                '<div class="col-12 text-center"><p>Tidak ada obyek yang ditemukan.</p></div>';
                         }
 
                         $('#objectList').html(html);
 
-                        // Perbaikan render pagination dengan data yang benar
-                        renderPagination(response.current_page, response.last_page);
+                        // Render pagination dengan data yang benar
+                        renderPagination(response.current_page, response.last_page, response.total);
                         currentPage = response.current_page;
+
+                        // Tambahkan informasi tentang total halaman dan item
+                        $('#pagination-info').html(
+                            `Menampilkan halaman ${response.current_page} dari ${response.last_page} (Total: ${response.total} item)`
+                        );
                     },
-                    error: function() {
+                    error: function(xhr) {
+                        console.error('Error loading objects:', xhr);
                         $('#objectList').html(
-                            '<div class="col-12"><p>Terjadi kesalahan saat memuat data.</p></div>');
+                            '<div class="col-12 text-center"><p>Terjadi kesalahan saat memuat data. Silakan coba lagi.</p></div>'
+                        );
                     }
                 });
             }
 
             // Function to render pagination
-            function renderPagination(currentPage, lastPage) {
+            function renderPagination(currentPage, lastPage, total) {
                 let pagination = '';
                 const maxVisiblePages = 5; // Batasi jumlah halaman yang ditampilkan
 
                 // Previous button
                 pagination += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-                    <a class="page-link" href="#" data-page="${currentPage - 1}">&laquo;</a>
+                    <a class="page-link" href="#" data-page="${currentPage - 1}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
                 </li>`;
 
                 // Page numbers
@@ -148,15 +164,43 @@
                     startPage = Math.max(1, endPage - maxVisiblePages + 1);
                 }
 
+                // First page
+                if (startPage > 1) {
+                    pagination += `<li class="page-item">
+                        <a class="page-link" href="#" data-page="1">1</a>
+                    </li>`;
+
+                    if (startPage > 2) {
+                        pagination += `<li class="page-item disabled">
+                            <a class="page-link" href="#">...</a>
+                        </li>`;
+                    }
+                }
+
+                // Page numbers
                 for (let i = startPage; i <= endPage; i++) {
                     pagination += `<li class="page-item ${i === currentPage ? 'active' : ''}">
                         <a class="page-link" href="#" data-page="${i}">${i}</a>
                     </li>`;
                 }
 
+                // Last page link if needed
+                if (endPage < lastPage) {
+                    if (endPage < lastPage - 1) {
+                        pagination += `<li class="page-item disabled">
+                            <a class="page-link" href="#">...</a>
+                        </li>`;
+                    }
+                    pagination += `<li class="page-item">
+                        <a class="page-link" href="#" data-page="${lastPage}">${lastPage}</a>
+                    </li>`;
+                }
+
                 // Next button
                 pagination += `<li class="page-item ${currentPage === lastPage ? 'disabled' : ''}">
-                    <a class="page-link" href="#" data-page="${currentPage + 1}">&raquo;</a>
+                    <a class="page-link" href="#" data-page="${currentPage + 1}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
                 </li>`;
 
                 $('#pagination').html(pagination);
@@ -170,23 +214,27 @@
                 loadObjects(1); // Reset to first page when searching
             });
 
-            // Trigger search when the input or dropdown value changes
-            $('#searchInput, #objectType').on('change', function() {
-                loadObjects(1); // Reset to first page when filter changes
+            // Trigger search when the Enter key is pressed in search input
+            $('#searchInput').keypress(function(e) {
+                if (e.which === 13) { // Enter key
+                    loadObjects(1);
+                    return false; // Prevent form submission
+                }
             });
 
             // Handle pagination click
             $(document).on('click', '.page-link', function(e) {
                 e.preventDefault();
                 const page = $(this).data('page');
-                if (page) {
+                if (page && !$(this).parent().hasClass('disabled')) {
+                    console.log('Navigasi ke halaman:', page); // Log untuk debugging
                     loadObjects(page);
                 }
             });
 
             // Handle delete button click
-            $(document).on('click', '.fa-times', function() {
-                var objectId = $(this).data('object-id'); // Get the object ID from the data attribute
+            $(document).on('click', '.delete-object', function() {
+                var objectId = $(this).data('object-id');
 
                 // SweetAlert Confirmation
                 Swal.fire({
@@ -204,15 +252,21 @@
                             url: '/object/delete/' + objectId,
                             method: 'DELETE',
                             success: function(response) {
-                                // Reload objects after deletion
                                 Swal.fire(
                                     'Terhapus!',
                                     'Obyek telah dihapus.',
                                     'success'
                                 );
-                                loadObjects(currentPage);
+                                // Reload current page, unless we're on the first page and there's only one item
+                                if (currentPage > 1 && $('#objectList .card').length ===
+                                    1) {
+                                    loadObjects(currentPage - 1);
+                                } else {
+                                    loadObjects(currentPage);
+                                }
                             },
-                            error: function() {
+                            error: function(xhr) {
+                                console.error('Error deleting object:', xhr);
                                 Swal.fire(
                                     'Gagal!',
                                     'Terjadi kesalahan saat menghapus data.',
@@ -220,18 +274,8 @@
                                 );
                             }
                         });
-                    } else {
-                        Swal.fire(
-                            'Dibatalkan',
-                            'Obyek tidak jadi dihapus.',
-                            'info'
-                        );
                     }
                 });
-            });
-
-            $(document).ajaxComplete(function() {
-                $('[data-toggle="tooltip"]').tooltip();
             });
         });
     </script>

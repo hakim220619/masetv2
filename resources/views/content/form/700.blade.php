@@ -488,9 +488,13 @@
 
     <!-- Tambah Lantai Button -->
     <div class="mt-3">
-        <button type="button" class="btn btn-primary add-area-link" data-type="luas-bangunan-fisik">
-            Tambah Lantai
+        <button type="button" class="btn btn-primary" id="add-lantai-btn_700">
+            <i class="fas fa-plus-circle me-2"></i>Tambah Lantai
         </button>
+    </div>
+
+    <div id="lantai-container-wrapper_700">
+        <!-- Container untuk lantai tambahan akan dimasukkan di sini -->
     </div>
 
     <!-- Field Baru: Luas Bangunan Terpotong (m²) -->
@@ -545,302 +549,1133 @@
     }
 </script>
 
+<style>
+    .canvas-container {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 20px;
+        background: #fff;
+        height: 100%;
+    }
+
+    #drawingCanvas_700 {
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        cursor: grab;
+    }
+
+    #drawingCanvas_700:active {
+        cursor: grabbing;
+    }
+
+    .tools-container {
+        background: #fff;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .nav-controls .btn {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #dee2e6;
+    }
+
+    .input-group-text {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        border-radius: 4px;
+    }
+
+    .btn-check:checked+.btn-outline-primary {
+        background-color: #0d6efd;
+        color: #fff;
+    }
+
+    .form-control {
+        border: 1px solid #dee2e6;
+        padding: 8px 12px;
+    }
+
+    .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #495057;
+        margin-bottom: 8px;
+    }
+
+    .canvas-helper {
+        margin-top: 10px;
+        text-align: center;
+        color: #6c757d;
+    }
+
+    .nav-controls {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .nav-controls .btn {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #dee2e6;
+        background: white;
+        transition: all 0.2s;
+    }
+
+    .nav-controls .btn:hover {
+        background: #e9ecef;
+        border-color: #adb5bd;
+    }
+
+    .nav-controls .btn:active {
+        background: #dee2e6;
+        transform: translateY(1px);
+    }
+
+    .nav-controls .btn i {
+        font-size: 16px;
+        color: #495057;
+    }
+</style>
+
+<style>
+    .nav-button-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        margin: 2px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .nav-btn:hover {
+        background: #f8f9fa;
+        border-color: #adb5bd;
+    }
+
+    .nav-btn:active {
+        background: #e9ecef;
+        transform: translateY(1px);
+    }
+
+    .input-group-text {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        padding: 0.375rem 0.75rem;
+    }
+
+    .form-control {
+        border: 1px solid #dee2e6;
+        padding: 0.375rem 0.75rem;
+    }
+
+    .form-control:focus {
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+</style>
 <script>
+    // Menyimpan data untuk semua canvas
+    var points = []; // titik untuk canvas utama
+    var scale = 40; // 1 meter = 40 pixels
+    var zoomCenter = {
+        x: 400,
+        y: 300
+    };
+    var zoomLevel = 1; // level zoom untuk canvas utama
+    var offsetX = 0; // offset X untuk canvas utama
+    var offsetY = 0; // offset Y untuk canvas utama
+    var isPanning = false; // flag untuk drag pada canvas utama
+    var startPanX = 0;
+    var startPanY = 0;
+    var canvasData = {}; // Object untuk menyimpan data canvas tambahan
+    var isDragging = false;
+    var lastX = 0;
+    var lastY = 0;
+
     document.addEventListener('DOMContentLoaded', function() {
-        // Inisialisasi canvas dan context
-        const canvas = document.getElementById('drawingCanvas_700');
-        const ctx = canvas.getContext('2d');
-        let points = [];
-        let scale = 40; // 1 meter = 40 pixels
-        let zoomLevel = 1;
-        let isPanning = false;
-        let startPanX = 0;
-        let startPanY = 0;
-        let offsetX = 0;
-        let offsetY = 0;
+        // Verifikasi jika canvas utama ada
+        const mainCanvas = document.getElementById('drawingCanvas_700');
+        if (mainCanvas) {
+            // Set ukuran canvas sesuai dengan container
+            resizeCanvas_700(mainCanvas);
 
-        // Event listeners
-        canvas.addEventListener('mousedown', startPan_700);
-        canvas.addEventListener('mousemove', pan_700);
-        canvas.addEventListener('mouseup', endPan_700);
-        canvas.addEventListener('mouseleave', endPan_700);
-        canvas.addEventListener('wheel', handleZoom_700);
+            // Inisialisasi canvas utama di sini
+            setupCanvas_700('drawingCanvas_700');
 
-        // Fungsi untuk menginisialisasi canvas
-        window.initCanvas_700 = function() {
-            ctx.strokeStyle = 'red';
-            ctx.lineWidth = 2;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            points = [];
-            offsetX = 0;
-            offsetY = 0;
-            zoomLevel = 1;
+            // Tambahkan titik awal di tengah canvas untuk canvas utama
+            const ctx = mainCanvas.getContext('2d');
+            points = [{
+                x: mainCanvas.width / 2,
+                y: mainCanvas.height / 2
+            }];
 
-            // Mulai dari tengah
-            let startPoint = {
-                x: canvas.width / 2,
-                y: canvas.height / 2
-            };
-            points.push(startPoint);
-            redrawCanvas_700();
+            // Gambar canvas utama awal
+            redrawCanvas_700('drawingCanvas_700');
         }
 
-        // Fungsi untuk menggambar titik
-        function drawPoint_700(x, y) {
-            ctx.beginPath();
-            ctx.arc(x, y, 3, 0, 2 * Math.PI);
-            ctx.fillStyle = 'red';
-            ctx.fill();
-        }
+        // Fungsi untuk menambahkan lantai baru
+        const addLantaiBtn = document.getElementById('add-lantai-btn_700');
+        if (addLantaiBtn) {
+            addLantaiBtn.addEventListener('click', function() {
+                // Buat ID unik untuk canvas dan elemen baru
+                const uniqueId = 'canvas_' + Date.now();
 
-        // Fungsi untuk menggambar pengukuran
-        function drawMeasurement_700(startX, startY, endX, endY, distance) {
-            let midX = (startX + endX) / 2;
-            let midY = (startY + endY) / 2;
+                // Buat container baru untuk lantai
+                const newFloorContainer = document.createElement('div');
+                newFloorContainer.classList.add('form-group', 'mb-4', 'lantai-container');
+                newFloorContainer.setAttribute('data-type', 'luas-bangunan-fisik');
 
-            ctx.save();
-            ctx.font = '12px Arial';
-            ctx.fillStyle = 'blue';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
+                // Tambahkan HTML untuk lantai baru
+                newFloorContainer.innerHTML = `
+                    <hr class="my-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="mb-0">Lantai Baru</h5>
+                        <button type="button" class="btn btn-sm btn-outline-danger remove-lantai">
+                            <i class="fas fa-trash"></i> Hapus Lantai
+                        </button>
+                    </div>
+                    <div class="row g-4">
+                        <!-- Canvas Column -->
+                        <div class="col-md-8">
+                            <div class="canvas-container bg-white">
+                                <canvas id="${uniqueId}" width="800" height="600"></canvas>
+                                <div class="canvas-helper">
+                                    <small class="text-muted">
+                                        <i class="fas fa-info-circle me-1"></i>
+                                        Scroll untuk zoom, klik dan tahan untuk menggeser canvas
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Tools Column -->
+                        <div class="col-md-4">
+                            <div class="tools-container">
+                                <!-- Navigation Controls -->
+                                <div class="nav-controls mb-3">
+                                    <div class="d-flex justify-content-center">
+                                        <div class="nav-button-group">
+                                            <button type="button" class="nav-btn" onclick="setDirection_700('up', '${uniqueId}')">
+                                                <i class="fas fa-chevron-up"></i>
+                                            </button>
+                                            <div class="d-flex">
+                                                <button type="button" class="nav-btn" onclick="setDirection_700('left', '${uniqueId}')">
+                                                    <i class="fas fa-chevron-left"></i>
+                                                </button>
+                                                <button type="button" class="nav-btn" onclick="setDirection_700('down', '${uniqueId}')">
+                                                    <i class="fas fa-chevron-down"></i>
+                                                </button>
+                                                <button type="button" class="nav-btn" onclick="setDirection_700('right', '${uniqueId}')">
+                                                    <i class="fas fa-chevron-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <!-- Measurement Inputs -->
+                                <div class="measurement-inputs">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-arrows-alt-h"></i>
+                                        </span>
+                                        <input type="number" id="distance_${uniqueId}" class="form-control" placeholder="Jarak (m)">
+                                    </div>
+                                    <div class="input-group mb-4">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-drafting-compass"></i>
+                                        </span>
+                                        <input type="number" id="angle_${uniqueId}" class="form-control" placeholder="Sudut (°)">
+                                    </div>
+                                </div>
+        
+                                <!-- Action Buttons -->
+                                <div class="action-buttons mb-4">
+                                    <button type="button" class="btn btn-primary w-100 mb-2" onclick="drawLine_700('${uniqueId}')">
+                                        <i class="fas fa-pen me-2"></i>Gambar Garis
+                                    </button>
+                                    <button type="button" class="btn btn-success w-100 mb-2" onclick="closePolygon_700('${uniqueId}')">
+                                        <i class="fas fa-vector-square me-2"></i>Tutup Area
+                                    </button>
+                                    <button type="button" class="btn btn-outline-danger w-100" onclick="clearCanvas_700('${uniqueId}')">
+                                        <i class="fas fa-undo me-2"></i>Hapus Garis Terakhir
+                                    </button>
+                                </div>
+        
+                                <!-- Form Fields -->
+                                <div class="form-fields">
+                                    <div class="mb-3">
+                                        <label class="form-label d-flex align-items-center">
+                                            <i class="fas fa-tag me-2"></i>Nomor/Nama Lantai
+                                        </label>
+                                        <input type="text" class="form-control" name="nama_lantai[]"
+                                            placeholder="Contoh: Teras, Basement, Lantai 1">
+                                    </div>
+        
+                                    <div class="mb-3">
+                                        <label class="form-label d-flex align-items-center">
+                                            <i class="fas fa-calculator me-2"></i>Faktor Pengali
+                                        </label>
+                                        <div class="btn-group w-100" role="group">
+                                            <input type="radio" class="btn-check" name="faktor_pengali_${uniqueId}" id="pengali_1_${uniqueId}"
+                                                value="1" checked>
+                                            <label class="btn btn-outline-primary" for="pengali_1_${uniqueId}">1.0</label>
+                                            <input type="radio" class="btn-check" name="faktor_pengali_${uniqueId}" id="pengali_0.5_${uniqueId}"
+                                                value="0.5">
+                                            <label class="btn btn-outline-primary" for="pengali_0.5_${uniqueId}">0.5</label>
+                                        </div>
+                                        <input type="hidden" name="faktor_pengali_700[]" value="1" class="pengali-value-${uniqueId}">
+                                    </div>
+        
+                                    <div class="mb-3">
+                                        <label class="form-label d-flex align-items-center">
+                                            <i class="fas fa-ruler-combined me-2"></i>Luas Bangunan (m²)
+                                        </label>
+                                        <input type="number" class="form-control" name="luas_bangunan_700[]" id="luas_${uniqueId}" 
+                                            placeholder="0" step="0.01" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
 
-            let angle = Math.atan2(endY - startY, endX - startX);
-            let offset = 15;
-
-            midX += Math.sin(angle) * offset;
-            midY -= Math.cos(angle) * offset;
-
-            ctx.translate(midX, midY);
-            ctx.rotate(angle);
-            ctx.fillText(distance + ' m', 0, 0);
-            ctx.restore();
-        }
-
-        // Fungsi untuk menggambar garis
-        window.drawLine_700 = function() {
-            let distance = parseFloat(document.getElementById('distance_700').value);
-            let angle = parseFloat(document.getElementById('angle_700').value) || 0;
-
-            if (!distance || isNaN(distance)) {
-                alert('Masukkan jarak terlebih dahulu');
-                return;
-            }
-
-            let lastPoint = points[points.length - 1];
-            let angleRad = (angle - 90) * Math.PI / 180;
-
-            let newPoint = {
-                x: lastPoint.x + distance * scale * Math.cos(angleRad),
-                y: lastPoint.y + distance * scale * Math.sin(angleRad)
-            };
-
-            points.push(newPoint);
-            redrawCanvas_700();
-        }
-
-        // Fungsi untuk menutup polygon
-        window.closePolygon_700 = function() {
-            if (points.length < 3) {
-                alert('Minimal 3 titik diperlukan untuk membuat area');
-                return;
-            }
-
-            ctx.beginPath();
-            ctx.moveTo(points[0].x, points[0].y);
-            ctx.lineTo(points[points.length - 1].x, points[points.length - 1].y);
-            ctx.stroke();
-
-            // Hitung area
-            let area = 0;
-            for (let i = 0; i < points.length; i++) {
-                let j = (i + 1) % points.length;
-                area += points[i].x * points[j].y;
-                area -= points[j].x * points[i].y;
-            }
-            area = Math.abs(area / (2 * scale * scale));
-
-            // Update input luas bangunan
-            document.querySelector('input[name="luas_bangunan_700[]"]').value = area.toFixed(2);
-
-            // Reset points
-            points = [points[0]];
-            redrawCanvas_700();
-        }
-
-        // Fungsi untuk menggambar ulang canvas
-        function redrawCanvas_700() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawGrid_700();
-
-            if (points.length > 0) {
-                ctx.beginPath();
-                ctx.moveTo(points[0].x, points[0].y);
-
-                for (let i = 1; i < points.length; i++) {
-                    ctx.lineTo(points[i].x, points[i].y);
-
-                    // Draw measurement for each line
-                    let dx = points[i].x - points[i - 1].x;
-                    let dy = points[i].y - points[i - 1].y;
-                    let distance = Math.sqrt(dx * dx + dy * dy) / scale;
-                    drawMeasurement_700(points[i - 1].x, points[i - 1].y, points[i].x, points[i].y, distance
-                        .toFixed(2));
+                // Tambahkan container lantai baru ke wrapper
+                const wrapper = document.getElementById('lantai-container-wrapper_700');
+                if (wrapper) {
+                    wrapper.appendChild(newFloorContainer);
                 }
 
-                ctx.stroke();
+                // Inisialisasi canvas baru
+                setTimeout(() => {
+                    const newCanvas = document.getElementById(uniqueId);
+                    if (newCanvas) {
+                        // Set ukuran canvas sesuai container
+                        resizeCanvas_700(newCanvas);
 
-                // Draw points
-                points.forEach(point => drawPoint_700(point.x, point.y));
-            }
+                        // Inisialisasi data untuk canvas baru
+                        canvasData[uniqueId] = {
+                            points: [{
+                                x: newCanvas.width / 2,
+                                y: newCanvas.height / 2
+                            }],
+                            zoomLevel: 1,
+                            offsetX: 0,
+                            offsetY: 0,
+                            isPanning: false,
+                            startPanX: 0,
+                            startPanY: 0,
+                            scale: 40,
+                            zoomCenter: {
+                                x: newCanvas.width / 2,
+                                y: newCanvas.height / 2
+                            },
+                            isDragging: false,
+                            lastX: 0,
+                            lastY: 0,
+                            isClosed: false
+                        };
+
+                        // Setup event listeners untuk canvas baru
+                        setupCanvas_700(uniqueId);
+
+                        // Gambar canvas awal
+                        redrawCanvas_700(uniqueId);
+                    }
+                }, 100);
+
+                // Tambahkan event listener untuk tombol hapus lantai
+                const removeBtn = newFloorContainer.querySelector('.remove-lantai');
+                if (removeBtn) {
+                    removeBtn.addEventListener('click', function() {
+                        // Hapus data canvas
+                        if (canvasData[uniqueId]) {
+                            delete canvasData[uniqueId];
+                        }
+                        // Hapus elemen DOM
+                        newFloorContainer.remove();
+                    });
+                }
+            });
         }
-
-        // Fungsi untuk mengatur arah
-        window.setDirection_700 = function(direction) {
-            let angle = 0;
-            switch (direction) {
-                case 'right':
-                    angle = 0;
-                    break;
-                case 'down':
-                    angle = 90;
-                    break;
-                case 'left':
-                    angle = 180;
-                    break;
-                case 'up':
-                    angle = 270;
-                    break;
-            }
-            document.getElementById('angle_700').value = angle;
-        }
-
-        // Fungsi untuk menghapus garis terakhir
-        window.clearCanvas_700 = function() {
-            if (points.length > 1) {
-                points.pop();
-                redrawCanvas_700();
-            }
-        }
-
-        // Fungsi untuk pan
-        function startPan_700(e) {
-            isPanning = true;
-            startPanX = e.clientX - offsetX;
-            startPanY = e.clientY - offsetY;
-        }
-
-        function pan_700(e) {
-            if (!isPanning) return;
-            offsetX = e.clientX - startPanX;
-            offsetY = e.clientY - startPanY;
-            redrawCanvas_700();
-        }
-
-        function endPan_700() {
-            isPanning = false;
-        }
-
-        // Fungsi untuk zoom
-        function handleZoom_700(e) {
-            e.preventDefault();
-            const rect = canvas.getBoundingClientRect();
-            const mouseX = e.clientX - rect.left - offsetX;
-            const mouseY = e.clientY - rect.top - offsetY;
-
-            const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1;
-            zoomLevel *= zoomFactor;
-
-            zoomLevel = Math.min(Math.max(0.1, zoomLevel), 10);
-
-            offsetX += mouseX * (1 - zoomFactor);
-            offsetY += mouseY * (1 - zoomFactor);
-
-            redrawCanvas_700();
-        }
-
-        // Fungsi untuk menggambar grid
-        function drawGrid_700() {
-            const gridSize = 40 * zoomLevel;
-            const gridColor = '#ddd';
-
-            ctx.save();
-            ctx.strokeStyle = gridColor;
-            ctx.lineWidth = 0.5;
-
-            for (let x = offsetX % gridSize; x < canvas.width; x += gridSize) {
-                ctx.beginPath();
-                ctx.moveTo(x, 0);
-                ctx.lineTo(x, canvas.height);
-                ctx.stroke();
-            }
-
-            for (let y = offsetY % gridSize; y < canvas.height; y += gridSize) {
-                ctx.beginPath();
-                ctx.moveTo(0, y);
-                ctx.lineTo(canvas.width, y);
-                ctx.stroke();
-            }
-
-            ctx.restore();
-        }
-
-        // Inisialisasi canvas saat halaman dimuat
-        initCanvas_700();
-        drawGrid_700();
     });
-</script>
 
-<script>
+    // Fungsi untuk menyesuaikan ukuran canvas
+    function resizeCanvas_700(canvas) {
+        const container = canvas.parentElement;
+        if (container) {
+            const containerWidth = container.clientWidth;
+            canvas.width = containerWidth > 0 ? containerWidth : 800;
+            canvas.height = Math.min(window.innerHeight * 0.6, 600);
+        }
+    }
+
+    // Fungsi untuk menggambar titik - tanpa suffix 200
+    function drawPoint_700(x, y, ctx) {
+        ctx.beginPath();
+        ctx.arc(x, y, 3, 0, 2 * Math.PI);
+        ctx.fillStyle = 'red';
+        ctx.fill();
+    }
+
+    // Fungsi untuk menggambar pengukuran - tanpa suffix 200
+    function drawMeasurement_700(startX, startY, endX, endY, distance, ctx, zoom = 1) {
+        const midX = (startX + endX) / 2;
+        const midY = (startY + endY) / 2;
+
+        const angle = Math.atan2(endY - startY, endX - startX);
+        const perpAngle = angle + Math.PI / 2;
+        const offset = 15 / zoom;
+
+        const textX = midX + Math.cos(perpAngle) * offset;
+        const textY = midY + Math.sin(perpAngle) * offset;
+
+        ctx.save();
+        // Gambar garis offset
+        ctx.beginPath();
+        ctx.moveTo(midX, midY);
+        ctx.lineTo(textX, textY);
+        ctx.strokeStyle = 'rgba(0, 0, 255, 0.5)';
+        ctx.lineWidth = 1 / zoom;
+        ctx.stroke();
+
+        // Gambar kotak background untuk teks
+        const padding = 5 / zoom;
+        ctx.font = `bold ${12/zoom}px Arial`;
+        const textWidth = ctx.measureText(`${distance} m`).width;
+
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.fillRect(
+            textX - textWidth / 2 - padding,
+            textY - 12 / zoom - padding,
+            textWidth + padding * 2,
+            18 / zoom + padding * 2
+        );
+
+        // Gambar teks pengukuran
+        ctx.fillStyle = 'blue';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(`${distance} m`, textX, textY);
+        ctx.restore();
+    }
+
+    // Fungsi untuk mengkalkulasi area
+    function calculateArea_700(canvasId = 'drawingCanvas_700') {
+        let currentPoints;
+        let currentScale;
+        let currentZoom;
+
+        if (canvasId === 'drawingCanvas_700') {
+            currentPoints = points;
+            currentScale = scale;
+            currentZoom = zoomLevel;
+        } else {
+            if (!canvasData[canvasId]) return 0;
+            currentPoints = canvasData[canvasId].points;
+            currentScale = canvasData[canvasId].scale;
+            currentZoom = canvasData[canvasId].zoomLevel;
+        }
+
+        if (currentPoints.length < 3) return 0;
+
+        let area = 0;
+        for (let i = 0; i < currentPoints.length; i++) {
+            let j = (i + 1) % currentPoints.length;
+            area += currentPoints[i].x * currentPoints[j].y;
+            area -= currentPoints[j].x * currentPoints[i].y;
+        }
+        area = Math.abs(area) / (2 * currentScale * currentScale * currentZoom * currentZoom);
+        return area.toFixed(2);
+    }
+
+    // Fungsi untuk setup canvas dan event listeners
+    function setupCanvas_700(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) {
+            console.error('Canvas dengan ID ' + canvasId + ' tidak ditemukan');
+            return;
+        }
+
+        // Tambahkan event listeners untuk canvas - mouse events
+        canvas.addEventListener('mousedown', function(e) {
+            e.preventDefault(); // Mencegah default action
+            startPan_700(e, canvasId);
+        });
+
+        canvas.addEventListener('mousemove', function(e) {
+            e.preventDefault(); // Mencegah default action
+            pan_700(e, canvasId);
+        });
+
+        canvas.addEventListener('mouseup', function(e) {
+            e.preventDefault(); // Mencegah default action
+            endPan_700(canvasId);
+        });
+
+        canvas.addEventListener('mouseleave', function(e) {
+            e.preventDefault(); // Mencegah default action
+            endPan_700(canvasId);
+        });
+
+        // Event untuk zoom dengan wheel mouse
+        canvas.addEventListener('wheel', function(e) {
+            e.preventDefault(); // Mencegah scroll halaman
+
+            // Dapatkan posisi mouse relatif terhadap canvas
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            // Tentukan arah zoom (positif untuk zoom in, negatif untuk zoom out)
+            const zoomDirection = e.deltaY < 0 ? 1 : -1;
+            const zoomFactor = 1.1; // Faktor zoom
+
+            // Terapkan zoom ke canvas yang tepat
+            if (canvasId === 'drawingCanvas_700') {
+                // Zoom in atau out berdasarkan arah
+                if (zoomDirection > 0) {
+                    zoomLevel *= zoomFactor; // Zoom in
+                } else {
+                    zoomLevel /= zoomFactor; // Zoom out
+                }
+
+                // Batasi zoom level
+                zoomLevel = Math.min(Math.max(0.1, zoomLevel), 10);
+
+                // Update zoom center
+                zoomCenter = {
+                    x: mouseX,
+                    y: mouseY
+                };
+            } else {
+                if (!canvasData[canvasId]) return;
+
+                // Zoom in atau out berdasarkan arah
+                if (zoomDirection > 0) {
+                    canvasData[canvasId].zoomLevel *= zoomFactor; // Zoom in
+                } else {
+                    canvasData[canvasId].zoomLevel /= zoomFactor; // Zoom out
+                }
+
+                // Batasi zoom level
+                canvasData[canvasId].zoomLevel = Math.min(Math.max(0.1, canvasData[canvasId].zoomLevel), 10);
+
+                // Update zoom center
+                canvasData[canvasId].zoomCenter = {
+                    x: mouseX,
+                    y: mouseY
+                };
+            }
+
+            // Redraw canvas
+            redrawCanvas_700(canvasId);
+        }, {
+            passive: false
+        });
+
+        // Set style cursor awal untuk drag
+        canvas.style.cursor = 'grab';
+
+        // Redraw canvas awal
+        redrawCanvas_700(canvasId);
+
+        // Tambahkan event listener untuk resize window
+        window.addEventListener('resize', function() {
+            resizeCanvas_700(canvas);
+            redrawCanvas_700(canvasId);
+        });
+    }
+
+    // Fungsi untuk menggambar ulang canvas dengan perbaikan
+    function redrawCanvas_700(canvasId = 'drawingCanvas_700') {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+
+        // Clear canvas dengan ukuran yang benar
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Dapatkan data yang sesuai untuk canvas ini
+        let currentPoints, currentScale, currentZoom, currentOffsetX, currentOffsetY, isAreaClosed;
+
+        if (canvasId === 'drawingCanvas_700') {
+            currentPoints = points;
+            currentScale = scale;
+            currentZoom = zoomLevel;
+            currentOffsetX = offsetX;
+            currentOffsetY = offsetY;
+            isAreaClosed = points.length > 3 &&
+                points[0].x === points[points.length - 1].x &&
+                points[0].y === points[points.length - 1].y;
+        } else {
+            if (!canvasData[canvasId]) return;
+            currentPoints = canvasData[canvasId].points;
+            currentScale = canvasData[canvasId].scale;
+            currentZoom = canvasData[canvasId].zoomLevel;
+            currentOffsetX = canvasData[canvasId].offsetX;
+            currentOffsetY = canvasData[canvasId].offsetY;
+            isAreaClosed = canvasData[canvasId].isClosed;
+        }
+
+        // Tambahkan grid sebagai panduan
+        drawGrid_700(ctx, canvas.width, canvas.height, currentZoom, currentOffsetX, currentOffsetY, currentScale);
+
+        // Tampilkan info zoom untuk debugging
+        ctx.save();
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+        ctx.font = '10px Arial';
+        ctx.fillText(`Zoom: ${currentZoom.toFixed(2)}x`, 10, 15);
+        ctx.restore();
+
+        // Simpan transformasi
+        ctx.save();
+
+        // Terapkan transformasi untuk zoom dan pan
+        ctx.translate(currentOffsetX, currentOffsetY);
+        ctx.scale(currentZoom, currentZoom);
+
+        // Jika tidak ada titik, kembalikan
+        if (currentPoints.length === 0) {
+            ctx.restore();
+            return;
+        }
+
+        // Gambar titik dan garis
+        for (let i = 0; i < currentPoints.length; i++) {
+            // Gambar titik
+            ctx.beginPath();
+            ctx.arc(currentPoints[i].x, currentPoints[i].y, 5 / currentZoom, 0, 2 * Math.PI);
+            ctx.fillStyle = i === 0 ? 'blue' : 'red';
+            ctx.fill();
+
+            // Gambar garis jika ada titik sebelumnya
+            if (i > 0) {
+                ctx.beginPath();
+                ctx.moveTo(currentPoints[i - 1].x, currentPoints[i - 1].y);
+                ctx.lineTo(currentPoints[i].x, currentPoints[i].y);
+                ctx.strokeStyle = 'black';
+                ctx.lineWidth = 2 / currentZoom;
+                ctx.stroke();
+
+                // Hitung jarak untuk pengukuran
+                const dx = currentPoints[i].x - currentPoints[i - 1].x;
+                const dy = currentPoints[i].y - currentPoints[i - 1].y;
+                const distance = Math.sqrt(dx * dx + dy * dy) / currentScale;
+
+                // Tampilkan pengukuran dengan lebih jelas
+                drawMeasurement_700(currentPoints[i - 1].x, currentPoints[i - 1].y,
+                    currentPoints[i].x, currentPoints[i].y,
+                    distance.toFixed(2), ctx, currentZoom);
+            }
+        }
+
+        // Kembalikan transformasi
+        ctx.restore();
+
+        // Hitung dan tampilkan area jika area tertutup
+        if (isAreaClosed) {
+            const area = calculateArea_700(canvasId);
+
+            // Tampilkan area di canvas
+            ctx.save();
+            ctx.font = 'bold 14px Arial';
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+            ctx.textAlign = 'right';
+            ctx.fillText(`Area: ${area} m²`, canvas.width - 20, 30);
+            ctx.restore();
+
+            // Update input field jika ada
+            const luasInput = canvasId === 'drawingCanvas_700' ?
+                document.querySelector('input[name="luas_bangunan_700[]"]') :
+                document.getElementById(`luas_${canvasId}`);
+
+            if (luasInput) {
+                luasInput.value = area;
+            }
+        }
+    }
+
+    // Fungsi untuk menggambar grid yang lebih jelas
+    function drawGrid_700(ctx, width, height, zoom, offsetX, offsetY, gridSize) {
+        const effectiveGridSize = gridSize * zoom;
+
+        // Hitung batas grid yang terlihat
+        const startX = (-offsetX % effectiveGridSize + width) % effectiveGridSize;
+        const startY = (-offsetY % effectiveGridSize + height) % effectiveGridSize;
+
+        ctx.save();
+
+        // Gambar garis grid minor (lebih tipis)
+        ctx.strokeStyle = 'rgba(200, 200, 200, 0.3)';
+        ctx.lineWidth = 0.5;
+
+        // Garis vertikal minor
+        for (let x = startX; x < width; x += effectiveGridSize / 5) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, height);
+            ctx.stroke();
+        }
+
+        // Garis horizontal minor
+        for (let y = startY; y < height; y += effectiveGridSize / 5) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(width, y);
+            ctx.stroke();
+        }
+
+        // Gambar garis grid major (lebih tebal)
+        ctx.strokeStyle = 'rgba(150, 150, 150, 0.5)';
+        ctx.lineWidth = 1;
+
+        // Garis vertikal major
+        for (let x = startX; x < width; x += effectiveGridSize) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, height);
+            ctx.stroke();
+        }
+
+        // Garis horizontal major
+        for (let y = startY; y < height; y += effectiveGridSize) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(width, y);
+            ctx.stroke();
+        }
+
+        ctx.restore();
+    }
+
+    // Fungsi untuk mengatur arah
+    function setDirection_700(direction, canvasId = 'drawingCanvas_700') {
+        const distanceInput = document.getElementById(canvasId === 'drawingCanvas_700' ? 'distance_700' :
+            `distance_${canvasId}`);
+        const angleInput = document.getElementById(canvasId === 'drawingCanvas_700' ? 'angle_700' :
+            `angle_${canvasId}`);
+
+        if (!distanceInput || !angleInput) {
+            console.error('Input elemen tidak ditemukan');
+            return;
+        }
+
+        // Set nilai default untuk angle berdasarkan arah
+        switch (direction) {
+            case 'up':
+                angleInput.value = 270;
+                break;
+            case 'right':
+                angleInput.value = 0;
+                break;
+            case 'down':
+                angleInput.value = 90;
+                break;
+            case 'left':
+                angleInput.value = 180;
+                break;
+        }
+
+        // Focus ke input jarak
+        distanceInput.focus();
+    }
+
+    // Fungsi untuk mulai pan - perbaikan
+    function startPan_700(e, canvasId = 'drawingCanvas_700') {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+
+        const rect = canvas.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        canvas.style.cursor = 'grabbing';
+
+        if (canvasId === 'drawingCanvas_700') {
+            isPanning = true;
+            startPanX = mouseX - offsetX;
+            startPanY = mouseY - offsetY;
+        } else {
+            if (!canvasData[canvasId]) return;
+            canvasData[canvasId].isPanning = true;
+            canvasData[canvasId].startPanX = mouseX - canvasData[canvasId].offsetX;
+            canvasData[canvasId].startPanY = mouseY - canvasData[canvasId].offsetY;
+        }
+    }
+
+    // Fungsi untuk melakukan pan - perbaikan
+    function pan_700(e, canvasId = 'drawingCanvas_700') {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+
+        const rect = canvas.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        let isPanningCurrent;
+
+        if (canvasId === 'drawingCanvas_700') {
+            isPanningCurrent = isPanning;
+        } else {
+            if (!canvasData[canvasId]) return;
+            isPanningCurrent = canvasData[canvasId].isPanning;
+        }
+
+        if (!isPanningCurrent) return;
+
+        if (canvasId === 'drawingCanvas_700') {
+            offsetX = mouseX - startPanX;
+            offsetY = mouseY - startPanY;
+        } else {
+            canvasData[canvasId].offsetX = mouseX - canvasData[canvasId].startPanX;
+            canvasData[canvasId].offsetY = mouseY - canvasData[canvasId].startPanY;
+        }
+
+        redrawCanvas_700(canvasId);
+    }
+
+    // Fungsi untuk mengakhiri pan
+    function endPan_700(canvasId = 'drawingCanvas_700') {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+
+        canvas.style.cursor = 'grab';
+
+        if (canvasId === 'drawingCanvas_700') {
+            isPanning = false;
+        } else {
+            if (!canvasData[canvasId]) return;
+            canvasData[canvasId].isPanning = false;
+        }
+    }
+
+    // Fungsi untuk menggambar garis
+    function drawLine_700(canvasId = 'drawingCanvas_700') {
+        const distanceInput = document.getElementById(canvasId === 'drawingCanvas_700' ? 'distance_700' :
+            `distance_${canvasId}`);
+        const angleInput = document.getElementById(canvasId === 'drawingCanvas_700' ? 'angle_700' :
+            `angle_${canvasId}`);
+
+        if (!distanceInput || !angleInput) {
+            console.error('Input elemen tidak ditemukan');
+            return;
+        }
+
+        // Dapatkan nilai dari input
+        const distance = parseFloat(distanceInput.value);
+        const angle = parseFloat(angleInput.value);
+
+        if (isNaN(distance) || isNaN(angle)) {
+            alert('Mohon masukkan nilai jarak dan sudut yang valid');
+            return;
+        }
+
+        // Dapatkan data untuk canvas yang sesuai
+        let currentPoints, currentScale;
+
+        if (canvasId === 'drawingCanvas_700') {
+            currentPoints = points;
+            currentScale = scale;
+        } else {
+            if (!canvasData[canvasId]) return;
+            currentPoints = canvasData[canvasId].points;
+            currentScale = canvasData[canvasId].scale;
+        }
+
+        // Jika tidak ada titik, kembalikan
+        if (currentPoints.length === 0) return;
+
+        // Dapatkan titik terakhir
+        const lastPoint = currentPoints[currentPoints.length - 1];
+
+        // Kalkulasi titik baru berdasarkan jarak dan sudut
+        const angleRad = angle * Math.PI / 180;
+        const newX = lastPoint.x + Math.cos(angleRad) * distance * currentScale;
+        const newY = lastPoint.y + Math.sin(angleRad) * distance * currentScale;
+
+        // Tambahkan titik baru
+        if (canvasId === 'drawingCanvas_700') {
+            points.push({
+                x: newX,
+                y: newY
+            });
+        } else {
+            canvasData[canvasId].points.push({
+                x: newX,
+                y: newY
+            });
+        }
+
+        // Bersihkan input
+        distanceInput.value = '';
+        angleInput.value = '';
+
+        // Redraw canvas
+        redrawCanvas_700(canvasId);
+    }
+
+    // Fungsi untuk menutup polygon
+    function closePolygon_700(canvasId = 'drawingCanvas_700') {
+        // Dapatkan data untuk canvas yang sesuai
+        let currentPoints;
+
+        if (canvasId === 'drawingCanvas_700') {
+            currentPoints = points;
+        } else {
+            if (!canvasData[canvasId]) return;
+            currentPoints = canvasData[canvasId].points;
+        }
+
+        // Jika tidak cukup titik untuk membuat polygon yang berarti
+        if (currentPoints.length < 3) {
+            alert('Diperlukan minimal 3 titik untuk membuat area tertutup');
+            return;
+        }
+
+        // Tutup polygon dengan menambahkan titik pertama sebagai titik terakhir
+        if (canvasId === 'drawingCanvas_700') {
+            points.push({
+                ...points[0]
+            });
+        } else {
+            canvasData[canvasId].points.push({
+                ...canvasData[canvasId].points[0]
+            });
+            canvasData[canvasId].isClosed = true;
+        }
+
+        // Redraw canvas
+        redrawCanvas_700(canvasId);
+
+        // Hitung dan tampilkan area
+        const area = calculateArea_700(canvasId);
+
+        // Update input field jika ada
+        const luasInput = canvasId === 'drawingCanvas_700' ?
+            document.querySelector('input[name="luas_bangunan_700[]"]') :
+            document.getElementById(`luas_${canvasId}`);
+
+        if (luasInput) {
+            luasInput.value = area;
+        }
+    }
+
+    // Fungsi untuk menghapus garis terakhir
+    function clearCanvas_700(canvasId = 'drawingCanvas_700') {
+        // Dapatkan data untuk canvas yang sesuai
+        let currentPoints;
+
+        if (canvasId === 'drawingCanvas_700') {
+            // Jika hanya ada satu titik, jangan hapus
+            if (points.length <= 1) return;
+
+            // Hapus titik terakhir
+            points.pop();
+        } else {
+            if (!canvasData[canvasId]) return;
+
+            // Jika hanya ada satu titik, jangan hapus
+            if (canvasData[canvasId].points.length <= 1) return;
+
+            // Hapus titik terakhir
+            canvasData[canvasId].points.pop();
+
+            // Jika polygon tertutup dan menghapus titik terakhir, tandai sebagai tidak tertutup
+            if (canvasData[canvasId].isClosed) {
+                canvasData[canvasId].isClosed = false;
+            }
+        }
+
+        // Redraw canvas
+        redrawCanvas_700(canvasId);
+    }
+
     // Tambahkan fungsi untuk mengumpulkan data canvas
-    function getCanvasData() {
+    function getCanvasData_700() {
+        // Data untuk canvas utama
+        const mainCanvas = document.getElementById('drawingCanvas_700');
+        let mainData = {};
+
+        if (mainCanvas) {
+            mainData = {
+                points: points.map(p => ({
+                    x: p.x,
+                    y: p.y
+                })),
+                zoomLevel: zoomLevel,
+                offset: {
+                    x: offsetX,
+                    y: offsetY
+                }
+            };
+        }
+
+        // Data untuk canvas tambahan
+        const additionalData = {};
+        for (const canvasId in canvasData) {
+            if (document.getElementById(canvasId)) {
+                additionalData[canvasId] = {
+                    points: canvasData[canvasId].points.map(p => ({
+                        x: p.x,
+                        y: p.y
+                    })),
+                    zoomLevel: canvasData[canvasId].zoomLevel,
+                    offset: {
+                        x: canvasData[canvasId].offsetX,
+                        y: canvasData[canvasId].offsetY
+                    },
+                    isClosed: canvasData[canvasId].isClosed || false
+                };
+            }
+        }
+
         return {
-            points: points.map(p => ({
-                x: p.x,
-                y: p.y
-            })),
-            measurements: [], // Jika Anda menyimpan pengukuran
-            zoomLevel: zoomLevel,
-            offset: {
-                x: offsetX,
-                y: offsetY
-            },
-            tipe_spek: '700' // tambahkan tipe_spek
+            main: mainData,
+            additional: additionalData,
+            tipe_spek: document.querySelector('input[name="tipe_spek"]')?.value || '200'
         };
     }
 
     // Tambahkan event listener untuk form submit
-    document.querySelector('form').addEventListener('submit', function(e) {
-        // Dapatkan data canvas
-        const canvasData = getCanvasData();
+    document.addEventListener('DOMContentLoaded', function() {
+        const formElements = document.querySelectorAll('form');
+        if (formElements.length > 0) {
+            formElements.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    // Dapatkan data canvas
+                    const canvasDataToSave = getCanvasData_700();
+                    console.log('Data canvas yang akan disimpan:', canvasDataToSave);
 
-        // Tambahkan input hidden untuk menyimpan data canvas
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = 'canvas_data';
-        input.value = JSON.stringify(canvasData);
-        this.appendChild(input);
+                    // Hapus input hidden lama jika ada
+                    const existingInput = this.querySelector('input[name="canvas_data"]');
+                    if (existingInput) {
+                        existingInput.remove();
+                    }
+
+                    // Tambahkan input hidden untuk menyimpan data canvas
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'canvas_data';
+                    input.value = JSON.stringify(canvasDataToSave);
+                    this.appendChild(input);
+                });
+            });
+        }
     });
 </script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Jika ada data canvas yang tersimpan dan tipe_spek sesuai
-        @if (isset($bangunan->canvas_data) && $bangunan->tipe_spek === '700')
+        @if (isset($bangunan->canvas_data) && $bangunan->tipe_spek === '200')
             const savedData = @json($bangunan->canvas_data);
 
-            // Restore points
-            points = savedData.points.map(p => ({
-                x: p.x,
-                y: p.y
-            }));
+            // Restore data untuk canvas utama
+            if (savedData.main) {
+                points = savedData.main.points.map(p => ({
+                    x: p.x,
+                    y: p.y
+                }));
 
-            // Restore zoom dan offset
-            zoomLevel = savedData.zoomLevel || 1;
-            offsetX = savedData.offset?.x || 0;
-            offsetY = savedData.offset?.y || 0;
+                zoomLevel = savedData.main.zoomLevel || 1;
+                offsetX = savedData.main.offset?.x || 0;
+                offsetY = savedData.main.offset?.y || 0;
 
-            // Redraw canvas
-            redrawCanvas_700();
+                // Redraw canvas utama
+                if (document.getElementById('drawingCanvas_700')) {
+                    redrawCanvas_700('drawingCanvas_700');
+
+                    // Update luas bangunan jika polygon tertutup
+                    if (points.length > 3 &&
+                        points[0].x === points[points.length - 1].x &&
+                        points[0].y === points[points.length - 1].y) {
+                        const area = calculateArea_700('drawingCanvas_700');
+                        const luasBangunanInput = document.querySelector('input[name="luas_bangunan_700[]"]');
+                        if (luasBangunanInput) {
+                            luasBangunanInput.value = area;
+                        }
+                    }
+                }
+            }
+
+            // Restore data untuk canvas tambahan
+            if (savedData.additional) {
+                for (const canvasId in savedData.additional) {
+                    // Jika canvas belum ada, buat baru
+                    if (!document.getElementById(canvasId)) {
+                        const addLantaiBtn = document.getElementById('add-lantai-btn_700');
+                        if (addLantaiBtn) {
+                            addLantaiBtn.click();
+                        }
+                    }
+
+                    // Restore data
+                    setTimeout(() => {
+                        if (canvasData[canvasId]) {
+                            canvasData[canvasId].points = savedData.additional[canvasId].points.map(p =>
+                                ({
+                                    x: p.x,
+                                    y: p.y
+                                }));
+
+                            canvasData[canvasId].zoomLevel = savedData.additional[canvasId].zoomLevel ||
+                                1;
+                            canvasData[canvasId].offsetX = savedData.additional[canvasId].offset?.x ||
+                                0;
+                            canvasData[canvasId].offsetY = savedData.additional[canvasId].offset?.y ||
+                                0;
+                            canvasData[canvasId].isClosed = savedData.additional[canvasId].isClosed ||
+                                false;
+
+                            // Redraw canvas
+                            redrawCanvas_700(canvasId);
+
+                            // Update luas bangunan jika polygon tertutup
+                            if (canvasData[canvasId].isClosed) {
+                                const area = calculateArea_700(canvasId);
+                                const luasBangunanInput = document.getElementById(`luas_${canvasId}`);
+                                if (luasBangunanInput) {
+                                    luasBangunanInput.value = area;
+                                }
+                            }
+                        }
+                    }, 500);
+                }
+            }
         @endif
     });
 </script>

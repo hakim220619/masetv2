@@ -2341,10 +2341,10 @@
         const mainCanvas = document.getElementById('drawingCanvas_200');
         if (mainCanvas) {
             // Set ukuran canvas sesuai dengan container
-            resizeCanvas(mainCanvas);
+            resizeCanvas_200(mainCanvas);
 
             // Inisialisasi canvas utama di sini
-            setupCanvas('drawingCanvas_200');
+            setupCanvas_200('drawingCanvas_200');
 
             // Tambahkan titik awal di tengah canvas untuk canvas utama
             const ctx = mainCanvas.getContext('2d');
@@ -2354,7 +2354,7 @@
             }];
 
             // Gambar canvas utama awal
-            redrawCanvas('drawingCanvas_200');
+            redrawCanvas_200('drawingCanvas_200');
         }
 
         // Fungsi untuk menambahkan lantai baru
@@ -2468,14 +2468,14 @@
                                                 value="0.5">
                                             <label class="btn btn-outline-primary" for="pengali_0.5_${uniqueId}">0.5</label>
                                         </div>
-                                        <input type="hidden" name="faktor_pengali[]" value="1" class="pengali-value-${uniqueId}">
+                                        <input type="hidden" name="faktor_pengali_200[]" value="1" class="pengali-value-${uniqueId}">
                                     </div>
         
                                     <div class="mb-3">
                                         <label class="form-label d-flex align-items-center">
                                             <i class="fas fa-ruler-combined me-2"></i>Luas Bangunan (m²)
                                         </label>
-                                        <input type="number" class="form-control" name="luas_bangunan[]" id="luas_${uniqueId}" 
+                                        <input type="number" class="form-control" name="luas_bangunan_200[]" id="luas_${uniqueId}" 
                                             placeholder="0" step="0.01" readonly>
                                     </div>
                                 </div>
@@ -2495,7 +2495,7 @@
                     const newCanvas = document.getElementById(uniqueId);
                     if (newCanvas) {
                         // Set ukuran canvas sesuai container
-                        resizeCanvas(newCanvas);
+                        resizeCanvas_200(newCanvas);
 
                         // Inisialisasi data untuk canvas baru
                         canvasData[uniqueId] = {
@@ -2521,10 +2521,10 @@
                         };
 
                         // Setup event listeners untuk canvas baru
-                        setupCanvas(uniqueId);
+                        setupCanvas_200(uniqueId);
 
                         // Gambar canvas awal
-                        redrawCanvas(uniqueId);
+                        redrawCanvas_200(uniqueId);
                     }
                 }, 100);
 
@@ -2545,7 +2545,7 @@
     });
 
     // Fungsi untuk menyesuaikan ukuran canvas
-    function resizeCanvas(canvas) {
+    function resizeCanvas_200(canvas) {
         const container = canvas.parentElement;
         if (container) {
             const containerWidth = container.clientWidth;
@@ -2726,7 +2726,7 @@
 
         // Tambahkan event listener untuk resize window
         window.addEventListener('resize', function() {
-            resizeCanvas(canvas);
+            resizeCanvas_200(canvas);
             redrawCanvas_200(canvasId);
         });
     }
@@ -2832,7 +2832,7 @@
 
             // Update input field jika ada
             const luasInput = canvasId === 'drawingCanvas_200' ?
-                document.querySelector('input[name="luas_bangunan[]"]') :
+                document.querySelector('input[name="luas_bangunan_200[]"]') :
                 document.getElementById(`luas_${canvasId}`);
 
             if (luasInput) {
@@ -3098,7 +3098,7 @@
 
         // Update input field jika ada
         const luasInput = canvasId === 'drawingCanvas_200' ?
-            document.querySelector('input[name="luas_bangunan[]"]') :
+            document.querySelector('input[name="luas_bangunan_200[]"]') :
             document.getElementById(`luas_${canvasId}`);
 
         if (luasInput) {
@@ -3236,7 +3236,7 @@
                         points[0].x === points[points.length - 1].x &&
                         points[0].y === points[points.length - 1].y) {
                         const area = calculateArea_200('drawingCanvas_200');
-                        const luasBangunanInput = document.querySelector('input[name="luas_bangunan[]"]');
+                        const luasBangunanInput = document.querySelector('input[name="luas_bangunan_200[]"]');
                         if (luasBangunanInput) {
                             luasBangunanInput.value = area;
                         }
