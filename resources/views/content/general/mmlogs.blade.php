@@ -16,6 +16,7 @@
 
 @section('page-script')
     @vite('resources/assets/js/app-users-logs-activity.js')
+
 @endsection
 @section('content')
 
@@ -139,9 +140,7 @@
         </div>
         @include('content.general.detail-users')
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
-        integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script>
         function OpenModalDetailUsers(uid, image, nik, name, email, kontak, rs_name, ra_name, role_name, status, alamat) {
             $('#DetailUSers').modal('show');
@@ -164,8 +163,7 @@
             }
 
             $('#imageDetail').html(
-                '<img class="img-fluid rounded mb-3 pt-1 mt-4" src="{{ asset('') }}storage/images/users/' + image +
-                '" height="100" width="100" alt="User avatar" />'
+                `<img class="img-fluid rounded mb-3 pt-1 mt-4" src="{{ asset('') }}storage/images/users/' + image + '" height="100" width="100" alt="User avatar" />`
             );
             $('#alamatDetail').text(alamat);
 

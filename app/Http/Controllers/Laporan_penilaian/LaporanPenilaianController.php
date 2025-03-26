@@ -386,77 +386,17 @@ class LaporanPenilaianController extends Controller
 
     public function lihat_laporan()
     {
-        $reports = LaporanPenilaian::orderBy('created_at', 'desc')
-            ->paginate(10);
-
+        $reports = LaporanPenilaian::paginate(9);
+        // dd($reports);
         return view('content.laporan_penilaian.all_laporan', compact('reports'));
     }
-    public function destroy($id)
-    {
-        try {
-            $report = LaporanPenilaian::findOrFail($id);
 
-            // Hapus foto utama jika ada
-            if ($report->foto_utama) {
-                Storage::delete('public/' . $report->foto_utama);
-            }
-
-            $report->delete();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Laporan berhasil dihapus'
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Gagal menghapus laporan: ' . $e->getMessage()
-            ], 500);
-        }
+    public function analisa($id) {
+        $report = LaporanPenilaian::find($id);
+        return view('content.laporan_penilaian.analisa', compact('report'));
     }
 
-    public function edit($id)
-    {
-        $report = LaporanPenilaian::findOrFail($id);
-        return view('content.laporan_penilaian.edit_laporan', compact('report'));
-    }
+    public function getData(Request $request){
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'judul_laporan' => 'required|string|max:255',
-            'lokasi_cabang_bank' => 'required|string|max:255',
-            'alamat_lokasi_obyek' => 'required|string',
-            'tgl_laporan_penilaian' => 'required|date',
-            'status_data' => 'required|in:draft,publish',
-            'foto_utama' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
-
-        $report = LaporanPenilaian::findOrFail($id);
-
-        $data = $request->except('foto_utama');
-
-        if ($request->hasFile('foto_utama')) {
-            // Hapus foto lama
-            Storage::delete('public/' . $report->foto_utama);
-
-            // Simpan foto baru
-            $path = $request->file('foto_utama')->store('laporan/foto_utama', 'public');
-            $data['foto_utama'] = $path;
-        }
-
-        $report->update($data);
-
-        return redirect()->route('laporan.all')->with('success', 'Laporan berhasil diperbarui');
-    }
-
-    public function analisa($id)
-    {
-        try {
-            $laporan = LaporanPenilaian::with(['pembanding'])->findOrFail($id);
-            return view('content.laporan_penilaian.analisa_laporan', compact('laporan'));
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
-        }
     }
 }

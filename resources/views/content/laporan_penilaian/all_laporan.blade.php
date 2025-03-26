@@ -15,28 +15,51 @@
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-header">
-                            <h5 class="mb-0">{{ $report->judul_laporan }}</h5>
-                            <small class="text-muted">{{ $report->lokasi_cabang_bank }}</small>
+                            <h5 class="mb-0">{{ $report->judul_laporan .'-'. $report->nama_entitas .'-'. $report->alamat }}</h5>
+                            <div class="btn-group mt-2 d-flex justify-content-center">
+                                <button class="btn btn-danger btn-sm" title="Hapus">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                                <a href="" class="btn btn-warning btn-sm" title="Edit">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a href="{{ route('laporan-penilaian.show', $report->id) }}" class="btn btn-info btn-sm" title="Analisa">
+                                    <i class="bi bi-table"></i>
+                                </a>
+                            </div>
                         </div>
                         <img src="{{ asset('storage/' . $report->foto_utama) }}" class="card-img-top" alt="Foto Utama"
                             style="height: 200px; object-fit: cover;">
                         <div class="card-body">
+                          <img src="{{ isset($report->foto_utama) ? asset('storage/' . $report->foto_utama) : asset('assets/img/default.png') }}"
+                          class="card-img-top mb-3" alt="Foto Obyek">
                             <dl class="row">
                                 <dt class="col-sm-5">ID Laporan</dt>
                                 <dd class="col-sm-7">#{{ $report->id }}</dd>
 
-                                <dt class="col-sm-5">Tanggal Laporan</dt>
-                                <dd class="col-sm-7">{{ $report->tgl_laporan_penilaian->format('d M Y') }}</dd>
+                                <dt class="col-sm-5">Jenis Properti</dt>
+                                <dd class="col-sm-7">{{ $report->jenis_properti ?? '-' }}</dd>
 
-                                <dt class="col-sm-5">Lokasi Obyek</dt>
-                                <dd class="col-sm-7">{{ $report->alamat_lokasi_obyek }}</dd>
+                                <dt class="col-sm-5">No. Kontrak</dt>
+                                <dd class="col-sm-7">{{ $report->no_dokumen_kontrak ?? '-'  }}</dd>
+
+                                <dt class="col-sm-5">Pemberi Tugas</dt>
+                                <dd class="col-sm-7">{{ $report->nama_instansi_pemberi_tugas ?? '-' }}</dd>
+
+                                <dt class="col-sm-5">Contact Person</dt>
+                                <dd class="col-sm-7">{{ $report->cp_penugasan_pemberi_tugas ?? '-' }}</dd>
 
                                 <dt class="col-sm-5">Status</dt>
                                 <dd class="col-sm-7">
-                                    <span class="badge bg-{{ $report->status_data == 'publish' ? 'success' : 'warning' }}">
-                                        {{ strtoupper($report->status_data) }}
-                                    </span>
+                                    @if ($report->telepon_pemberi_tugas)
+                                        <a href="tel:{{ $report->telepon_pemberi_tugas }}">{{ $report->telepon_pemberi_tugas }}</a>
+                                    @else
+                                        -
+                                    @endif
                                 </dd>
+
+                                <dt class="col-sm-5">Lokasi Obyek</dt>
+                                <dd class="col-sm-7">{{ $report->alamat ?? '-' }}</dd>
                             </dl>
                         </div>
                         <div class="card-footer bg-transparent">
