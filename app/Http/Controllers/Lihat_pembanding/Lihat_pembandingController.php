@@ -102,7 +102,7 @@ class Lihat_pembandingController extends Controller
         }
 
         // Union semua query
-        $unionQuery = $tanah_kosong->unionAll($retail)->unionAll($bangunan);
+        $unionQuery = $tanah_kosong->unionAll($bangunan);
 
         // Server-side search
         if ($request->has('search') && !empty($request->search['value'])) {
@@ -325,7 +325,7 @@ class Lihat_pembandingController extends Controller
                 ->get();
 
             // Gabungkan hasil dari kedua tabel
-            $data = $tanah_kosong->merge($retail)->merge($bangunan);
+            $data = $tanah_kosong->merge($bangunan);
 
             return response()->json($data);
         } catch (\Exception $e) {
@@ -347,6 +347,7 @@ class Lihat_pembandingController extends Controller
                     ->select(
                         'id',
                         'nama_tanah_kosong as nama_pembanding',
+                        'provinsi',
                         'alamat',
                         'lat',
                         'long',
@@ -359,10 +360,70 @@ class Lihat_pembandingController extends Controller
                         'peruntukan',
                         'row_jalan',
                         'bentuk_tanah',
-                        'foto_tampak_depan'
+                        'foto_tampak_depan',
+                        'jenis_data',
+                        'tgl_penawaran',
+                        'letak_posisi_obyek',
+                        'maintenance',
+                        'kemunduran_fungsi',
+                        'penjelasan_kemunduran_fungsi',
+                        'kemunduran_ekonomis',
+                        'penjelasan_kemunduran_ekonomis'
                     )
                     ->where('id', $id)
                     ->first();
+
+                // Menghitung estimasi transaksi
+                if ($data) {
+                    $data->estimasi_transaksi = $data->harga_penawaran * (1 - ($data->diskon / 100));
+
+                    // Menghitung indikasi nilai pasar tanah
+                    // Asumsi nilai untuk demonstrasi (sesuaikan dengan logika bisnis yang sebenarnya)
+                    $data->indikasi_biaya_pengganti_baru_m2 = 5691000; // Contoh nilai
+                    $data->indikasi_biaya_pengganti_baru = $data->indikasi_biaya_pengganti_baru_m2 * $data->luas_tanah;
+
+                    // Menghitung depresiasi fisik (untuk demonstrasi)
+                    $tahun_sekarang = date('Y');
+                    $tahun_bangunan = 2009; // Default jika tidak ada di database
+                    $umur_ekonomis = 30; // Default jika tidak ada di database
+
+                    $umur_aktual = $tahun_sekarang - $tahun_bangunan;
+                    $data->depresiasi_fisik = min(100, round(($umur_aktual / $umur_ekonomis) * 100, 2));
+                    $data->tahun_bangunan = $tahun_bangunan;
+                    $data->umur_ekonomis = $umur_ekonomis;
+
+                    // Menyiapkan nilai depresiasi lainnya
+                    $data->depresiasi_maintenance = $data->maintenance ?? 0;
+                    $data->depresiasi_kemunduran_fungsi = $data->kemunduran_fungsi ?? 0;
+                    $data->depresiasi_kemunduran_ekonomis = $data->kemunduran_ekonomis ?? 0;
+
+                    // Total depresiasi
+                    $data->total_depresiasi = $data->depresiasi_fisik;
+
+                    // Menghitung nilai pasar bangunan
+                    $data->indikasi_nilai_pasar_bangunan_m2 = $data->indikasi_biaya_pengganti_baru_m2 * (1 - ($data->total_depresiasi / 100));
+                    $data->indikasi_nilai_pasar_bangunan = $data->indikasi_nilai_pasar_bangunan_m2 * $data->luas_tanah;
+
+                    // Indikasi nilai pasar tanah
+                    $data->indikasi_nilai_pasar_tanah = $data->estimasi_transaksi - $data->indikasi_nilai_pasar_bangunan;
+                    $data->indikasi_nilai_pasar_tanah_m2 = $data->luas_tanah > 0 ? $data->indikasi_nilai_pasar_tanah / $data->luas_tanah : 0;
+
+                    // Mendapatkan IKK dari database
+                    $provinsi_data = $data->provinsi; // Format: '1900_0.877'
+                    if (!empty($provinsi_data)) {
+                        // Ekstrak kode provinsi (angka sebelum underscore)
+                        $kode_provinsi = explode('_', $provinsi_data)[0];
+
+                        // Ambil data IKK dari database
+                        $ikk_data = DB::table('ikk')
+                            ->where('kode', $kode_provinsi)
+                            ->first();
+
+                        if ($ikk_data) {
+                            $data->ikk_mappi = $ikk_data->ikk_mappi;
+                        }
+                    }
+                }
             } else if ($sumber == 'Pembanding Retail') {
                 $data = DB::table('pembanding_retail')
                     ->select(
@@ -372,23 +433,91 @@ class Lihat_pembandingController extends Controller
                         'lat',
                         'long',
                         'jenis_aset',
+                        'peruntukan',
                         'narasumber',
                         'harga_penawaran',
                         'diskon',
-                        'luas_net as luas_tanah',
                         'luas_bangunan_total',
-                        'peruntukan',
+                        'luas_net',
+                        'jenis_data',
+                        'tgl_penawaran',
+                        'letak_posisi_obyek',
                         'row_jalan',
                         'bentuk_tanah',
-                        'foto_tampak_depan'
+                        'foto_tampak_depan',
+                        'foto_tampak_sisi_kiri',
+                        'foto_tampak_sisi_kanan',
+                        'foto_lainnya',
+                        'penyusutan',
+                        'kondisi_properti',
+                        'estimasi_properti',
+                        'spesifikasi_properti',
+                        'jumlah_lantai',
+                        'posisi_lantai',
+                        'tingkat_hunian',
+                        'tipe_jalan',
+                        'kapasitas_jalan',
+                        'kondisi_lingkungan_khusus',
+                        'kondisi_lingkungan_lainnya',
+                        'keterangan_tambahan_lainnya'
                     )
                     ->where('id', $id)
                     ->first();
 
                 if ($data) {
-                    $narsum = json_decode($data->narasumber, true);
-                    $data->nama_narsum = isset($narsum[0]) ? $narsum[0] : null;
-                    $data->telepon = isset($narsum[1]) ? $narsum[1] : null;
+                    // Decode narasumber JSON
+                    if (!empty($data->narasumber)) {
+                        $narsum = json_decode($data->narasumber, true);
+                        $data->nama_narsum = $narsum[0] ?? '-';
+                        $data->telepon = $narsum[1] ?? '-';
+                        $data->jabatan = $narsum[2] ?? '-';
+                    } else {
+                        $data->nama_narsum = '-';
+                        $data->telepon = '-';
+                        $data->jabatan = '-';
+                    }
+
+                    // Decode penyusutan JSON
+                    if (!empty($data->penyusutan)) {
+                        $penyusutan = json_decode($data->penyusutan, true);
+                        $data->penyusutan_fisik = $penyusutan['fisik'] ?? 0;
+                        $data->penyusutan_fungsi = $penyusutan['fungsi'] ?? 0;
+                        $data->penyusutan_ekonomis = $penyusutan['ekonomis'] ?? 0;
+                        $data->penjelasan_fisik = $penyusutan['penjelasan_fisik'] ?? '-';
+                        $data->penjelasan_fungsi = $penyusutan['penjelasan_fungsi'] ?? '-';
+                        $data->penjelasan_ekonomis = $penyusutan['penjelasan_ekonomis'] ?? '-';
+                    } else {
+                        $data->penyusutan_fisik = 0;
+                        $data->penyusutan_fungsi = 0;
+                        $data->penyusutan_ekonomis = 0;
+                        $data->penjelasan_fisik = '-';
+                        $data->penjelasan_fungsi = '-';
+                        $data->penjelasan_ekonomis = '-';
+                    }
+
+                    // Menghitung estimasi transaksi
+                    $data->estimasi_transaksi = $data->harga_penawaran * (1 - ($data->diskon / 100));
+
+                    // Menghitung indikasi nilai per m²
+                    $luas = $data->luas_bangunan_total > 0 ? $data->luas_bangunan_total : 1;
+                    $data->nilai_per_m2 = $data->estimasi_transaksi / $luas;
+
+                    // Total penyusutan
+                    $data->total_penyusutan = $data->penyusutan_fisik + $data->penyusutan_fungsi + $data->penyusutan_ekonomis;
+
+                    // Indikasi biaya pengganti baru
+                    $data->indikasi_biaya_pengganti_baru_m2 = 5500000; // Nilai contoh untuk retail
+                    $data->indikasi_biaya_pengganti_baru = $data->indikasi_biaya_pengganti_baru_m2 * $luas;
+
+                    // Indikasi nilai pasar bangunan
+                    $faktor_penyusutan = (100 - $data->total_penyusutan) / 100;
+                    $data->indikasi_nilai_pasar_bangunan_m2 = $data->indikasi_biaya_pengganti_baru_m2 * $faktor_penyusutan;
+                    $data->indikasi_nilai_pasar_bangunan = $data->indikasi_nilai_pasar_bangunan_m2 * $luas;
+
+                    // Indikasi nilai pasar tanah
+                    $data->indikasi_nilai_pasar_tanah = $data->estimasi_transaksi - $data->indikasi_nilai_pasar_bangunan;
+                    $luas_tanah = $data->luas_net > 0 ? $data->luas_net : 1;
+                    $data->indikasi_nilai_pasar_tanah_m2 = $data->indikasi_nilai_pasar_tanah / $luas_tanah;
                 }
             } else if ($sumber == 'Pembanding Bangunan') {
                 $data = DB::table('pembanding_bangunan')
@@ -408,10 +537,122 @@ class Lihat_pembandingController extends Controller
                         'peruntukan',
                         'row_jalan',
                         'bentuk_tanah',
-                        'foto_tampak_depan'
+                        'foto_tampak_depan',
+                        'tipe_spek',
+                        'jenis_data',
+                        'tgl_penawaran',
+                        'provinsi',
+                        'kode_pos',
+                        'jumlah_lantai',
+                        'tahun_dibangun',
+                        'tahun_renovasi',
+                        'bobot_renovasi',
+                        'kondisi_visual',
+                        'kondisi_bangunan',
+                        'catatan_khusus',
+                        'letak_posisi_obyek',
+                        'tipe_jalan',
+                        'kapasitas_jalan',
+                        'kondisi_lingkungan',
+                        'kondisi_lingkungan_lainnya',
+                        'harga_sewa_per_tahun',
+                        'maintenance',
+                        'kemunduran_fungsi',
+                        'kemunduran_ekonomis',
+                        'penjelasan_kemunduran_fungsi',
+                        'penjelasan_kemunduran_ekonomis'
                     )
                     ->where('id', $id)
                     ->first();
+
+                // Perhitungan untuk pembanding bangunan
+                if ($data) {
+                    // Konversi ke nilai numerik yang benar
+                    $data->harga_penawaran = floatval($data->harga_penawaran);
+                    $data->diskon = floatval($data->diskon);
+                    $data->luas_tanah = intval($data->luas_tanah);
+                    $data->luas_bangunan_total = intval($data->luas_bangunan_total);
+                    $data->bobot_renovasi = $data->bobot_renovasi ? floatval($data->bobot_renovasi) : 0;
+                    $data->kemunduran_fungsi = $data->kemunduran_fungsi ? floatval($data->kemunduran_fungsi) : 0;
+                    $data->kemunduran_ekonomis = $data->kemunduran_ekonomis ? floatval($data->kemunduran_ekonomis) : 0;
+
+                    // Hitung estimasi transaksi
+                    $data->estimasi_transaksi = $data->harga_penawaran * (1 - ($data->diskon / 100));
+
+                    // Indikasi biaya pengganti baru (BRB)
+                    $data->indikasi_biaya_pengganti_baru_m2 = 5691000; // Nilai default dari template
+                    $data->indikasi_biaya_pengganti_baru = $data->indikasi_biaya_pengganti_baru_m2 * $data->luas_bangunan_total;
+
+                    // Perhitungan depresiasi
+                    $tahun_sekarang = date('Y');
+                    $umur_bangunan = $tahun_sekarang - $data->tahun_dibangun;
+                    $umur_ekonomis = 30; // Standar umur ekonomis bangunan
+
+                    // Depresiasi fisik
+                    $data->depresiasi_fisik = min(($umur_bangunan / $umur_ekonomis) * 100, 100);
+                    if ($data->tahun_renovasi && $data->bobot_renovasi > 0) {
+                        $umur_efektif = $tahun_sekarang - $data->tahun_renovasi;
+                        $data->depresiasi_fisik = min(($umur_efektif / $umur_ekonomis) * 100 * (1 - $data->bobot_renovasi / 100) +
+                            ($umur_bangunan / $umur_ekonomis) * 100 * ($data->bobot_renovasi / 100), 100);
+                    }
+
+                    // Maintenance depresiasi
+                    $data->depresiasi_maintenance = $data->maintenance == 'Kurang Baik' ? 10 : 0;
+
+                    // Total depresiasi
+                    $data->total_depresiasi = min(
+                        $data->depresiasi_fisik +
+                            $data->depresiasi_maintenance +
+                            floatval($data->kemunduran_fungsi) +
+                            floatval($data->kemunduran_ekonomis),
+                        100
+                    );
+
+                    // Kondisi fisik bangunan dalam persentase
+                    $data->kondisi_fisik_persen = 100 - $data->total_depresiasi;
+
+                    // Nilai pasar bangunan
+                    $data->indikasi_nilai_pasar_bangunan_m2 = $data->indikasi_biaya_pengganti_baru_m2 *
+                        (1 - ($data->total_depresiasi / 100));
+                    $data->indikasi_nilai_pasar_bangunan = $data->indikasi_nilai_pasar_bangunan_m2 *
+                        $data->luas_bangunan_total;
+
+                    // Indikasi nilai pasar tanah
+                    $data->indikasi_nilai_pasar_tanah = $data->estimasi_transaksi - $data->indikasi_nilai_pasar_bangunan;
+                    $data->indikasi_nilai_pasar_tanah_m2 = $data->luas_tanah > 0 ?
+                        $data->indikasi_nilai_pasar_tanah / $data->luas_tanah : 0;
+
+                    // Mendapatkan IKK dari database
+                    $provinsi_data = $data->provinsi; // Format: '1900_0.877'
+                    if (!empty($provinsi_data)) {
+                        // Ekstrak kode provinsi (angka sebelum underscore)
+                        $kode_provinsi = explode('_', $provinsi_data)[0];
+
+                        // Ambil data IKK dari database
+                        $ikk_data = DB::table('ikk')
+                            ->where('kode', $kode_provinsi)
+                            ->first();
+
+                        if ($ikk_data) {
+                            $data->ikk_mappi = $ikk_data->ikk_mappi;
+                        }
+                    }
+
+                    // Mendapatkan ILM (Indeks Lantai) dari database
+                    if (!empty($data->jumlah_lantai) && !empty($data->tipe_spek)) {
+                        // Ambil data indeks lantai dari database
+                        $ilm_data = DB::table('indeks_lantai')
+                            ->where('jumlah_lantai', $data->jumlah_lantai)
+                            ->where('tipe_bangunan', $data->tipe_spek)
+                            ->first();
+
+                        if ($ilm_data) {
+                            $data->ilm = $ilm_data->indeks;
+                        }
+                    } else {
+                        $data->ilm = 0; // Nilai default
+                    }
+                }
             }
 
             if (!$data) {
@@ -421,21 +662,6 @@ class Lihat_pembandingController extends Controller
             // Tambahkan data tambahan yang diperlukan
             $data = (array)$data;
             $data['sumber'] = $sumber;
-
-            // Hitung estimasi transaksi jika belum ada
-            if (!isset($data['estimasi_transaksi'])) {
-                $data['estimasi_transaksi'] = $data['harga_penawaran'] * (1 - ($data['diskon'] / 100));
-            }
-
-            // // Hitung indikasi nilai tanah jika belum ada
-            // if (!isset($data['indikasi_nilai_tanah']) && isset($data['luas_tanah']) && $data['luas_tanah'] > 0) {
-            //     $data['indikasi_nilai_tanah'] = $data['estimasi_transaksi'] / $data['luas_tanah'];
-            // }
-
-            // Hitung indikasi nilai tanah
-            $data['indikasi_nilai_tanah'] = $data['luas_tanah'] > 0
-                ? $data['estimasi_transaksi'] / $data['luas_tanah']
-                : 0;
 
             return view('content.lihat_pembanding.laporan_pembanding', $data);
         } catch (\Exception $e) {

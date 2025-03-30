@@ -21,14 +21,12 @@ use App\Http\Controllers\Pembanding_bangunan\PembandingBangunanController;
 use App\Http\Controllers\Pembanding_retail\Pembanding_retailController;
 use App\Http\Controllers\Pembanding_tanah_kosong\Pembanding_tanah_kosongController;
 use App\Http\Controllers\Profile\ProfileController;
-use App\Http\Controllers\Retail\ReatailController;
-use App\Http\Controllers\Tanah_kosong\TanahkosongController;
-use App\Http\Controllers\Laporan\LaporanController;
 use App\Http\Controllers\Laporan_penilaian\LaporanPenilaianController;
 use App\Http\Controllers\Penilai\PenilaiController;
 use App\Http\Controllers\PenilaiPublic\PenilaiPublicController;
 use App\Http\Controllers\Reviewers\ReviewersController;
 use App\Http\Controllers\Users\UsersController;
+use App\Http\Controllers\Tanah_kosong;
 
 /*
 |--------------------------------------------------------------------------

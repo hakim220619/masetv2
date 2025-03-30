@@ -255,7 +255,7 @@
                     <label for="tipe_spek"><b>Tipikal Bangunan Sesuai Spek BTB MAPPI </b> <span
                             class="text-danger">*</span></label>
                     <select id="tipe_spek" name="tipe_spek" class="form-select" required>
-                        <option value="tolol" selected>- Select -</option>
+                        <option value="no-spek" selected>- Select -</option>
                         <option value="100">Rumah Tinggal Sederhana 1 Lantai</option>
                         <option value="200">Rumah Tinggal Menengah 2 Lantai</option>
                         <option value="300">Rumah Tinggal Mewah 2 Lantai</option>

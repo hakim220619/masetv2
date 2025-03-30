@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Pembanding_tanah_kosong;
+namespace App\Http\Controllers\Tanah_kosong;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TanahKosong; // Impor model TanahKosong
+
+class TanahkosongController extends Controller
 {
     public function store(Request $request)
     {

@@ -8,11 +8,13 @@
 
 @section('content')
     <div class="container-fluid">
-            @if ($sumber == 'Tanah Kosong')
-                @include('content.lihat_pembanding.partials.tanah_kosong')
-            @else
-                @include('content.lihat_pembanding.partials.bangunan')
-            @endif
+        @if ($sumber == 'Tanah Kosong')
+            @include('content.lihat_pembanding.partials.tanah_kosong')
+        @elseif ($sumber == 'Pembanding Retail')
+            @include('content.lihat_pembanding.partials.retail')
+        @elseif ($sumber == 'Pembanding Bangunan')
+            @include('content.lihat_pembanding.partials.bangunan')
+        @endif
     </div>
 @endsection
 

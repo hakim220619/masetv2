@@ -2,10 +2,10 @@
     <!-- Card Utama -->
     <div class="main-card">
         <div class="header-card text-center">
-            <h3 class="entry-title">Data Pembanding : {{ $nama_pembanding ?? 'Data Bangunan' }}</h3>
+            <h3 class="entry-title">Data Pembanding : Rumah Karangpawitan</h3>
             <div class="property-image">
-                <img src="{{ $foto_tampak_depan ?? '' }}" alt="Foto {{ $nama_pembanding ?? 'Bangunan' }}"
-                    class="img-fluid centered-image mb-3">
+                <img src="https://sip-zefapaskahalexa.radata.co.id/wp-content/uploads/2025/02/34-1486564546-67c076d8a7c74.jpeg"
+                    alt="Foto Rumah Karangpawitan" class="img-fluid centered-image mb-3">
             </div>
         </div>
 
@@ -19,15 +19,15 @@
                             <tbody>
                                 <tr>
                                     <td width="60%">Tipikal Bangunan (Spec Standart BTB)</td>
-                                    <td>{{ $tipe_spek ?? '-' }}</td>
+                                    <td>{{ $tipikal_bangunan ?? '-' }}</td>
                                 </tr>
                                 <tr>
                                     <td>Provinsi / Kabupaten</td>
-                                    <td>{{ $provinsi ?? 'Jawa Barat' }} / {{ $kode_pos ?? 'Kab. Garut' }}</td>
+                                    <td>Jawa Barat / Kab. Garut</td>
                                 </tr>
                                 <tr>
                                     <td>Jumlah Lantai</td>
-                                    <td>{{ $jumlah_lantai ?? '1' }} Lantai</td>
+                                    <td>1 Lantai</td>
                                 </tr>
                                 <tr>
                                     <td>Umur Ekonomis</td>
@@ -35,31 +35,31 @@
                                 </tr>
                                 <tr>
                                     <td>Index Lantai (ILM)</td>
-                                    <td>{{ $ilm ?? '0' }}</td>
+                                    <td>0.9174</td>
                                 </tr>
                                 <tr>
                                     <td>Index Kemahalan (IKK)</td>
-                                    <td>{{ $ikk_mappi ?? 'NULL' }}</td>
+                                    <td>0.826</td>
                                 </tr>
                                 <tr>
                                     <td>Tahun Dibangun</td>
-                                    <td>{{ $tahun_dibangun ?? 'NULL' }} <small class="text-muted"> Note: </small></td>
+                                    <td>2009 <small class="text-muted">Note: </small></td>
                                 </tr>
                                 <tr>
                                     <td>Tahun Renovasi</td>
-                                    <td>{{ $tahun_renovasi ?? '-' }} <small class="text-muted">Note: </small></td>
+                                    <td>- <small class="text-muted">Note: </small></td>
                                 </tr>
                                 <tr>
                                     <td>Bobot Renovasi</td>
-                                    <td>{{ $bobot_renovasi ?? '0' }}%</td>
+                                    <td>0%</td>
                                 </tr>
                                 <tr>
                                     <td>Kondisi Visual Pengamatan</td>
-                                    <td>{{ $kondisi_visual ?? ($kondisi_bangunan ?? 'Baik') }}</td>
+                                    <td>Baik</td>
                                 </tr>
                                 <tr>
                                     <td>Catatan Khusus Bangunan</td>
-                                    <td>{{ $catatan_khusus ?? '-' }}</td>
+                                    <td>-</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -73,19 +73,19 @@
                             <tbody>
                                 <tr>
                                     <td>Subtotal</td>
-                                    <td>{{ $luas_bangunan ?? '270' }} m²</td>
+                                    <td>270 m2</td>
                                 </tr>
                                 <tr>
                                     <td>Terpotong</td>
-                                    <td>{{ $luas_tanah_terpotong ?? '0' }} m²</td>
+                                    <td>0 m2</td>
                                 </tr>
                                 <tr>
                                     <td>Total</td>
-                                    <td>{{ $luas_bangunan ?? '270' }} m²</td>
+                                    <td>270 m2</td>
                                 </tr>
                                 <tr class="table-primary">
                                     <td>Pembulatan</td>
-                                    <td><strong>{{ $luas_bangunan ?? '270' }} m²</strong></td>
+                                    <td><strong>270 m2</strong></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -95,11 +95,11 @@
                             <tbody>
                                 <tr>
                                     <td>-</td>
-                                    <td>60.75 m²</td>
+                                    <td>60.75 m2</td>
                                 </tr>
                                 <tr class="table-primary">
                                     <td>Total</td>
-                                    <td><strong>60.75 m²</strong></td>
+                                    <td><strong>60.75 m2</strong></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -109,11 +109,11 @@
                             <tbody>
                                 <tr>
                                     <td>-</td>
-                                    <td>652.05 m²</td>
+                                    <td>652.05 m2</td>
                                 </tr>
                                 <tr class="table-primary">
                                     <td>Total (dikurangi luas pintu &amp; jendela)</td>
-                                    <td><strong>591.3 m²</strong></td>
+                                    <td><strong>591.3 m2</strong></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -549,7 +549,7 @@
                                 <td class="angka">128.037</td>
 
                                 <!-- Objek -->
-                                <td colspan="3" class="text-right bold">TOTAL BRB (A+B) (Rp/m²)</td>
+                                <td colspan="3" class="text-right bold">TOTAL BRB (A+B) (Rp/m2)</td>
                                 <td colspan="2" class="angka bold">3.979.885</td>
                                 <td class="angka bold">4.886.747</td>
                             </tr>
@@ -575,7 +575,7 @@
                                 <td class="angka">426.790</td>
 
                                 <!-- Objek -->
-                                <td colspan="3" class="text-right bold">TOTAL BRB Include PPn (Rp/m²)</td>
+                                <td colspan="3" class="text-right bold">TOTAL BRB Include PPn (Rp/m2)</td>
                                 <td colspan="2" class="angka bold">4.420.000</td>
                                 <td class="angka bold">5.420.000</td>
                             </tr>
@@ -612,7 +612,7 @@
                             </tr>
 
                             <tr class="total-row highlight-final">
-                                <td colspan="9" class="text-right bold">TOTAL BRB FINAL (Rp/m²)</td>
+                                <td colspan="9" class="text-right bold">TOTAL BRB FINAL (Rp/m2)</td>
                                 <td colspan="2" class="angka bold"><strong>4.640.000</strong></td>
                                 <td class="angka bold"><strong>5.691.000</strong></td>
                             </tr>
@@ -630,31 +630,31 @@
                         <tr class="table-primary">
                             <th width="40%" class="text-center">DESKRIPSI</th>
                             <th width="60%" colspan="4" class="text-center">ANALISA
-                                BANGUNAN<br>{{ $nama_pembanding ?? 'Rumah Karangpawitan' }}</th>
+                                RETAIL<br>{{ $nama_pembanding ?? 'Data Pembanding' }}</th>
                         </tr>
                         <tr>
                             <td class="text-left bold">Alamat Properti</td>
-                            <td colspan="4">{{ $alamat ?? 'Jl. Karangpawitan, Garut' }}</td>
+                            <td colspan="4">{{ $alamat ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Koordinat Latitude</td>
-                            <td colspan="4">{{ $lat ?? '-7.21726' }}</td>
+                            <td colspan="4">{{ $lat ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Koordinat Longitude</td>
-                            <td colspan="4">{{ $long ?? '107.90896' }}</td>
+                            <td colspan="4">{{ $long ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Nama</td>
-                            <td colspan="4">{{ $nama_narsum ?? 'Deni' }}</td>
+                            <td colspan="4">{{ $nama_narsum ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Telepon</td>
-                            <td colspan="4">{{ $telepon ?? '0812-1234-5678' }}</td>
+                            <td colspan="4">{{ $telepon ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Jabatan</td>
-                            <td colspan="4">{{ $jabatan_narasumber ?? 'Pemilik' }}</td>
+                            <td colspan="4">{{ $jabatan_narsum ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Jenis Data (Transaksi/ Penawaran)</td>
@@ -667,19 +667,46 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-left bold">Luas Tanah</td>
-                            <td colspan="4">{{ $luas_tanah ?? '450' }} m<sup>2</sup></td>
+                            <td class="text-left bold">Luas Bangunan Total</td>
+                            <td colspan="4">{{ $luas_bangunan_total ?? 0 }} m<sup>2</sup></td>
                         </tr>
                         <tr>
-                            <td class="text-left bold">Luas Bangunan</td>
-                            <td colspan="4">{{ $luas_bangunan ?? '270' }} m<sup>2</sup></td>
+                            <td class="text-left bold">Luas Semi-Gross</td>
+                            <td colspan="4">{{ $luas_semigross ?? 0 }} m<sup>2</sup></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left bold">Luas Net</td>
+                            <td colspan="4">{{ $luas_net ?? 0 }} m<sup>2</sup></td>
+                        </tr>
+                        <tr class="table-primary">
+                            <td bgcolor="#DDD" colspan="5" class="text-center bold">SPESIFIKASI BANGUNAN</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left bold">Jenis Aset</td>
+                            <td colspan="4">{{ $jenis_aset ?? '-' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left bold">Peruntukan</td>
+                            <td colspan="4">{{ $peruntukan ?? '-' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left bold">Kondisi Properti</td>
+                            <td colspan="4">{{ $kondisi_properti ?? '-' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left bold">Spesifikasi Properti</td>
+                            <td colspan="4">{{ $spesifikasi_properti ?? '-' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left bold">Posisi Lantai / Jumlah Lantai</td>
+                            <td colspan="4">{{ $posisi_lantai ?? '-' }} / {{ $jumlah_lantai ?? '-' }}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left bold">Tingkat Hunian</td>
+                            <td colspan="4">{{ $tingkat_hunian ?? '0' }}%</td>
                         </tr>
                         <tr class="table-primary">
                             <td bgcolor="#DDD" colspan="5" class="text-center bold">UNIT</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left bold">Unit</td>
-                            <td class="text-right" colspan="4">m<sup>2</sup></td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Mata Uang</td>
@@ -688,86 +715,48 @@
                         <tr>
                             <td class="text-left bold">Indikasi Harga Penawaran</td>
                             <td class="text-right" colspan="4">
-                                {{ number_format($harga_penawaran ?? 1500000000, 0, ',', '.') }}</td>
+                                {{ number_format($harga_penawaran ?? 0, 0, ',', '.') }}</td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Diskon</td>
-                            <td class="text-right" colspan="4">{{ $diskon ?? '10' }}%</td>
+                            <td class="text-right" colspan="4">{{ $diskon ?? 0 }}%</td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Kemungkinan Transaksi</td>
-                            <td class="text-right" colspan="4">935.000.000</td>
-                        </tr>
-                        <tr class="table-primary">
-                            <td bgcolor="#DDD" class="text-center bold">Residual Process (if needed)</td>
-                            <td colspan="4" bgcolor="#DDD" class="text-center">Metode Ektraksi</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left bold">Indikasi Biaya Pengganti Baru/m<sup>2</sup></td>
                             <td class="text-right" colspan="4">
-                                {{ number_format($indikasi_biaya_pengganti_baru_m2 ?? 5691000, 0, ',', '.') }}</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left bold">Indikasi Biaya Pengganti Baru Bangunan</td>
-                            <td class="text-right" colspan="4">
-                                {{ number_format($indikasi_biaya_pengganti_baru ?? 1536570000, 0, ',', '.') }}</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left bold">Tahun Bangunan / Indikasi Umur Ekonomis</td>
-                            <td class="text-right" colspan="2">{{ $tahun_dibangun ?? '2009' }}</td>
-                            <td class="text-right" colspan="2">30 thn</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left bold">Tahun Renovasi / Bobot Renov</td>
-                            <td class="text-right" colspan="2">{{ $tahun_renovasi ?? 'N/A' }}</td>
-                            <td class="text-right" colspan="2">{{ $bobot_renovasi ?? '0' }}%</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left bold">Depresiasi</td>
-                            <td colspan="4">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="text-left bold" style="padding-left:1.5rem">Fisik</td>
-                            <td colspan="2">Kondisi Fisik Bangunan :</td>
-                            <td class="text-right" colspan="1">{{ number_format($depresiasi_fisik ?? 46.67, 2) }}%
-                            </td>
-                            <td class="text-right" colspan="1">
-                                {{ number_format(100 - ($depresiasi_fisik ?? 46.67), 2) }}%
-                            </td>
+                                {{ number_format($estimasi_transaksi ?? 0, 0, ',', '.') }}</td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Harga Sewa Per Tahun</td>
                             <td class="text-right" colspan="4">
-                                {{ number_format($harga_sewa_per_tahun ?? 0, 0, ',', '.') }}
-                            </td>
+                                {{ number_format($harga_sewa_pertahun ?? 0, 0, ',', '.') }}</td>
                         </tr>
                         <tr class="table-primary">
                             <td bgcolor="#DDD" colspan="5" class="text-center bold">LOKASI & LINGKUNGAN</td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Letak/Posisi Objek</td>
-                            <td colspan="4">{{ $letak_posisi_obyek ?? 'Hook' }}</td>
+                            <td colspan="4">{{ $letak_posisi_obyek ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Bentuk Tanah</td>
-                            <td colspan="4">{{ $bentuk_tanah ?? 'Persegi Panjang' }}</td>
+                            <td colspan="4">{{ $bentuk_tanah ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Row Jalan</td>
-                            <td colspan="4">{{ $row_jalan ?? '8' }}</td>
+                            <td colspan="4">{{ $row_jalan ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Tipe Jalan</td>
-                            <td colspan="4">{{ $tipe_jalan ?? 'Aspal Hotmix' }}</td>
+                            <td colspan="4">{{ $tipe_jalan ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Kapasitas Jalan</td>
-                            <td colspan="4">{{ $kapasitas_jalan ?? '2 Jalur' }}</td>
+                            <td colspan="4">{{ $kapasitas_jalan ?? '-' }}</td>
                         </tr>
                         <tr>
                             <td class="text-left bold">Kondisi Lingkungan</td>
-                            <td colspan="4">
-                                {{ $kondisi_lingkungan_lainnya ?? ($kondisi_lingkungan ?? 'Pemukiman') }}</td>
+                            <td colspan="4">{{ $kondisi_lingkungan_lainnya ?? '-' }}</td>
                         </tr>
                     </table>
                 </div>
