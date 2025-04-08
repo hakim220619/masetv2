@@ -2208,7 +2208,6 @@ $configData = Helper::appClasses();
                 <input type="number" class="form-control" value="80456">
               </div>
 
-
               <h4 class="mt-4">Data Tanah Kosong Terpilih</h4>
 
               <div class="mb-3">
@@ -2231,12 +2230,12 @@ $configData = Helper::appClasses();
         </div>
 
 
-
+        {{-- NILAI TANAH --}}
         <div class="tab-pane fade" id="nilai-tanah">
           <h4>Nilai Tanah</h4>
           <div class="table-responsive">
-            <table class="table table-bordered table-striped text-center">
-              <thead class="thead-dark">
+            <table class="table table-bordered table-striped text-center" >
+              <thead class="table-primary">
                 <tr>
                   <th width="12%">DESKRIPSI</th>
                   <th colspan="4">OBYEK PENILAIAN</th>
@@ -2330,7 +2329,7 @@ $configData = Helper::appClasses();
                   <td colspan="4">110 m²</td>
                   <td colspan="4">0 m²</td>
                 </tr>
-                <tr>
+                <tr class="table-light">
                   <td><strong>UNIT PERBANDINGAN</strong></td>
                   <td colspan="4"></td>
                   <td colspan="4"><a href="#">Edit</a></td>
@@ -2356,514 +2355,753 @@ $configData = Helper::appClasses();
                   <td colspan="4">Rp 2.201.000.000</td>
                   <td colspan="4">Rp 599.000.000</td>
                   <td colspan="4">Rp 3.450.000.000</td>
+                  <td colspan="4"></td>
                 </tr>
                 <tr>
                   <td><strong>Diskon</strong></td>
                   <td colspan="4">22%</td>
                   <td colspan="4">10%</td>
                   <td colspan="4">5%</td>
+                  <td colspan="4"></td>
                 </tr>
                 <tr>
                   <td><strong>Kemungkinan Transaksi</strong></td>
                   <td colspan="4">Rp 1.716.780.000</td>
                   <td colspan="4">Rp 539.100.000</td>
                   <td colspan="4">Rp 3.277.500.000</td>
+                  <td colspan="4"></td>
                 </tr>
-                <tr>
+                <tr class="table-light">
                   <td><strong>Residual Process (if needed)</strong></td>
                   <td colspan="4">Metode Ekstraksi</td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
+                  <td colspan="4"></td>
                 </tr>
                 <tr>
-                  <td><strong>Indikasi Biaya Pengganti Baru/m2</strong></td>
+                  <td><strong>Indikasi Biaya Pengganti Baru/m2 coba</strong></td>
+                  <td colspan="4"></td>
                   <td colspan="4">3.683.058</td>
                   <td colspan="4">4.256.214</td>
                   <td colspan="4">-</td>
                 </tr>
                 <tr>
                   <td><strong>Indikasi Biaya Pengganti Baru Bangunan</strong></td>
+                  <td colspan="4"></td>
                   <td colspan="4">773.442.180</td>
                   <td colspan="4">468.183.540</td>
                   <td colspan="4">-</td>
                 </tr>
                 <tr>
                   <td><strong>Tahun Bangunan / Indikasi Umur Ekonomis</strong></td>
-                  <td colspan="4">2014 / 30 thn</td>
-                  <td colspan="4">2000 / 30 thn</td>
-                  <td colspan="4">-</td>
+                  <td colspan="4"></td>
+                  <td colspan="2">2014</td>
+                  <td colspan="2">30 thn</td>
+                  <td colspan="2">2000</td>
+                  <td colspan="2">30 thn</td>
+                  <td colspan="2">-</td>
+                  <td colspan="2">-</td>
                 </tr>
                 <tr>
                   <td><strong>Tahun Renovasi / Bobot Renov</strong></td>
-                  <td colspan="4">N/A / 0%</td>
-                  <td colspan="4">2010 / 35%</td>
-                  <td colspan="4">N/A / 0%</td>
+                  <td colspan="4"></td>
+                  <td colspan="2">N/A</td>
+                  <td colspan="2">0%</td>
+                  <td colspan="2">2010</td>
+                  <td colspan="2">35%</td>
+                  <td colspan="2">N/A</td>
+                  <td colspan="2">0%</td>
                 </tr>
                 <tr>
                   <td><strong>Depresiasi</strong></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
+                  <td colspan="4"></td>
                 </tr>
                 <tr>
                   <td><strong>Fisik</strong></td>
-                  <td colspan="4">Kondisi Fisik Bangunan: 63.33%</td>
-                  <td colspan="4">36.67%</td>
-                  <td colspan="4">Kondisi Fisik Bangunan: 71.67%</td>
-                  <td colspan="4">100%</td>
+                  <td colspan="4"></td>
+                  <td colspan="2">Kondisi Fisik Bangunan:</td>
+                  <td >63.33%</td>
+                  <td >36.67%</td>
+                  <td colspan="2">Kondisi Fisik Bangunan:</td>
+                  <td >71.67%%</td>
+                  <td >36.67%</td>
+                  <td colspan="2">Kondisi Fisik Bangunan:</td>
+                  <td >100%</td>
+                  <td >0%</td>
                 </tr>
                 <tr>
                   <td><strong>Kondisi Terlihat (Maintenance)</strong></td>
-                  <td colspan="4">Baik</td>
-                  <td colspan="4">0%</td>
-                  <td colspan="4">Baik</td>
-                  <td colspan="4">0%</td>
+                  <td colspan="4"></td>
+                  <td colspan="3">Baik</td>
+                  <td >0%</td>
+                  <td colspan="3">Baik</td>
+                  <td >0%</td>
+                  <td colspan="3">-</td>
+                  <td >0%</td>
                 </tr>
                 <tr>
                   <td><strong>Kemunduran Fungsi</strong></td>
-                  <td colspan="4">-</td>
-                  <td colspan="4">0%</td>
-                  <td colspan="4">-</td>
-                  <td colspan="4">0%</td>
+                  <td colspan="4"></td>
+                  <td colspan="3">-</td>
+                  <td >0%</td>
+                  <td colspan="3">-</td>
+                  <td >0%</td>
+                  <td colspan="3">-</td>
+                  <td >0%</td>
                 </tr>
                 <tr>
                   <td><strong>Kemunduran Ekonomis</strong></td>
-                  <td colspan="4">-</td>
-                  <td colspan="4">0%</td>
-                  <td colspan="4">-</td>
-                  <td colspan="4">0%</td>
+                  <td colspan="4"></td>
+                  <td colspan="3">-</td>
+                  <td >0%</td>
+                  <td colspan="3">-</td>
+                  <td >0%</td>
+                  <td colspan="3">-</td>
+                  <td >0%</td>
                 </tr>
                 <tr>
                   <td><strong>Total Depresiasi</strong></td>
+                  <td colspan="4"></td>
                   <td colspan="4">36.67%</td>
                   <td colspan="4">71.67%</td>
                   <td colspan="4">0%</td>
                 </tr>
                 <tr>
                   <td><strong>Indikasi Nilai Pasar Bangunan/m2</strong></td>
+                  <td colspan="4"></td>
                   <td colspan="4">2.332.481</td>
                   <td colspan="4">1.205.785</td>
                   <td colspan="4">-</td>
                 </tr>
                 <tr>
                   <td><strong>Indikasi Nilai Pasar Bangunan</strong></td>
+                  <td colspan="4"></td>
                   <td colspan="4">489.821.010</td>
                   <td colspan="4">132.636.350</td>
                   <td colspan="4">-</td>
                 </tr>
                 <tr>
                   <td><strong>Indikasi Nilai Pasar Tanah</strong></td>
+                  <td colspan="4"></td>
                   <td colspan="4">1.226.958.990</td>
                   <td colspan="4">406.463.650</td>
                   <td colspan="4">3.277.500.000</td>
                 </tr>
                 <tr>
                   <td><strong>Indikasi Nilai Pasar Tanah / m2</strong></td>
+                  <td colspan="4"></td>
                   <td colspan="4">3.957.932</td>
                   <td colspan="4">4.064.637</td>
                   <td colspan="4">2.850.000</td>
                 </tr>
+                <tr class="table-light fw-bold" >
+                  <td>ELEMEN PERBANDINGAN</td>
+                  <td colspan="2">Deskripsi</td>
+                  <td colspan="2"></td>
+                  <td colspan="2">Deskripsi</td>
+                  <td>%</td>
+                  <td>[+/-] Penyesuaian</td>
+                  <td colspan="2">Deskripsi</td>
+                  <td>%</td>
+                  <td>[+/-] Penyesuaian</td>
+                  <td colspan="2">Deskripsi</td>
+                  <td>%</td>
+                  <td>[+/-] Penyesuaian</td>
+                </tr>
                 <tr>
-                  <th>ELEMEN PERBANDINGAN</th>
-                  <th>Deskripsi</th>
-                  <th>%</th>
-                  <th>[+/-] Penyesuaian</th>
-                  <th>Deskripsi</th>
-                  <th>%</th>
-                  <th>[+/-] Penyesuaian</th>
-                  <th>Deskripsi</th>
-                  <th>%</th>
-                  <th>[+/-] Penyesuaian</th>
+                  <td><strong>(1) Hak atas properti yang dialihkan</strong></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">HGB, HGB</td>
+                  <td colspan="2">HGB</td>
+                  <td><input type="text" size="3" value="10" disabled style="cursor: not-allowed">%</td>
+                  <td>0</td>
+                  <td colspan="2">HGB</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">SHM</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><i>Adjusted Price</i></td>
+                  <td colspan="4"><i></i></td>
+                  <td colspan="4"><strong>3.957.932</strong></td>
+                  <td colspan="4"><strong>3.957.932</strong></td>
+                  <td colspan="4"><strong>3.957.932</strong></td>
+                </tr>
+                <tr>
+                <tr>
+                  <td><strong>(2) Syarat Pembiayaan</strong></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">Tunai</td>
+                  <td colspan="2">Tunai</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Tunai</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Tunai</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><i>Adjusted Price</i></td>
+                  <td colspan="4"><i></i></td>
+                  <td colspan="4"><strong>3.957.932</strong></td>
+                  <td colspan="4"><strong>3.957.932</strong></td>
+                  <td colspan="4"><strong>3.957.932</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>(3) Kondisi Penjualan</strong></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">Tunai</td>
+                  <td colspan="2">Tunai</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Tunai</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Tunai</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><i>Adjusted Price</i></td>
+                  <td colspan="4"><i></i></td>
+                  <td colspan="4"><strong>3.957.932</strong></td>
+                  <td colspan="4"><strong>3.957.932</strong></td>
+                  <td colspan="4"><strong>3.957.932</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>(4) Pengeluaran yang dilakukan segera setelah pembelian</strong></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">Tunai</td>
+                  <td colspan="2">Tunai</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Tunai</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Tunai</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><i>Adjusted Price</i></td>
+                  <td colspan="4"><i></i></td>
+                  <td colspan="4"><strong>3.957.932</strong></td>
+                  <td colspan="4"><strong>3.957.932</strong></td>
+                  <td colspan="4"><strong>3.957.932</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>(5) Kondisi Pasar</strong></td>
+                  <td colspan="2"></td>
+                  <td colspan="2">Tunai</td>
+                  <td colspan="2">Tunai</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Tunai</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Tunai</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><i>Adjusted Price</i></td>
+                  <td colspan="4"></td>
+                  <td colspan="4"><strong>3.957.932</strong></td>
+                  <td colspan="4"><strong>3.957.932</strong></td>
+                  <td colspan="4"><strong>3.957.932</strong></td>
                 </tr>
 
+                <tr class="table-light fw-bold">
+                  <td>Karakteristik Ekonomi (Jika Objek yang dinilai adalah Properti Komersial)</td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                </tr>
                 <tr>
-                  <td><strong>(6) Lokasi</strong></td>
-                  <td>Strategis, dekat pusat kota</td>
+                  <td><strong>Kualitas Pendapatan</strong></td>
+                  <td colspan="2">Kemampuan menghasilkan pendapatan (Aglomerasi yang ditimbulkan dari tempat atau kawasan terhadap pendapatan)</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
                   <td><input type="text" size="3">%</td>
                   <td>0</td>
-                  <td>Pinggiran kota</td>
+                  <td colspan="2"></td>
                   <td><input type="text" size="3">%</td>
                   <td>0</td>
-                  <td>Perumahan elite</td>
+                  <td colspan="2"></td>
                   <td><input type="text" size="3">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
-                  <td colspan="10"><strong>Adjusted Price</strong>: 3.957.932</td>
+                  <td><strong>Biaya Operasional</strong></td>
+                  <td colspan="2">Kemampuan menghasilkan pendapatan (Aglomerasi yang ditimbulkan dari tempat atau kawasan terhadap pendapatan)</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>Ketentuan Sewa</strong></td>
+                  <td colspan="2">Kemampuan menghasilkan pendapatan (Aglomerasi yang ditimbulkan dari tempat atau kawasan terhadap pendapatan)</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>Manajemen</strong></td>
+                  <td colspan="2">Kemampuan menghasilkan pendapatan (Aglomerasi yang ditimbulkan dari tempat atau kawasan terhadap pendapatan)</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>Bauran Penyewa</strong></td>
+                  <td colspan="2">Kemampuan menghasilkan pendapatan (Aglomerasi yang ditimbulkan dari tempat atau kawasan terhadap pendapatan)</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><i>Adjusted Price</i></td>
+                  <td colspan="2">Sub Total Lokasi Karakteristik Ekonomi (Jika Objek yang dinilai adalah Properti Komersial)</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td><strong>0%</strong></td>
+                  <td><strong>3.957.932</strong></td>
+                  <td colspan="2"></td>
+                  <td><strong>0%</strong></td>
+                  <td><strong>3.957.932</strong></td>
+                  <td colspan="2"></td>
+                  <td><strong>0%</strong></td>
+                  <td><strong>3.957.932</strong></td>
+                </tr>
+                <tr class="table-light fw-bold">
+                  <td>Penggunaan</td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                </tr>
+                <tr>
+                  <td><strong>Zoning</strong></td>
+                  <td colspan="2">Rencana Tata Ruang Wilayah</td>
+                  <td colspan="2">Pemukiman</td>
+                  <td colspan="2">Zona Perumahan</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Zona Perumahan</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Zona Perumahan</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>Ketentuan Umum Bangunan</strong></td>
+                  <td colspan="2">KDB, KLB, Ketinggian dan ketentuan umum lainnya</td>
+                  <td colspan="2">KDB -%, KLB - kali, GSB - meter, Ketinggian - lantai</td>
+                  <td colspan="2">KDB -%, KLB - kali, GSB - meter, Ketinggian - lantai</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">KDB -%, KLB - kali, GSB - meter, Ketinggian - lantai</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">KDB -%, KLB - kali, GSB - meter, Ketinggian - lantai</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>Penggunaan Existing</strong></td>
+                  <td colspan="2">Kondisi Existing Penggunaan Objek (Terkembangkan atau Tanah Kosong)</td>
+                  <td colspan="2">Pakai Sendiri
+                    Pakai Sendiri</td>
+                  <td colspan="2">Pakai Sendiri Rumah Tinggal</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Pakai Sendiri Rumah Tinggal</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Pakai Sendiri Rumah Tinggal</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><i>Adjusted Price</i></td>
+                  <td colspan="2">Sub Total Lokasi Penggunaan</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td><strong>0%</strong></td>
+                  <td><strong>3.957.932</strong></td>
+                  <td colspan="2"></td>
+                  <td><strong>0%</strong></td>
+                  <td><strong>3.957.932</strong></td>
+                  <td colspan="2"></td>
+                  <td><strong>0%</strong></td>
+                  <td><strong>3.957.932</strong></td>
+                </tr>
+                <tr class="table-light fw-bold">
+                  <td>Komponen non-reality dalam penjualan</td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                </tr>
+                <tr>
+                  <td><strong>FFE</strong></td>
+                  <td colspan="2">Dilengkapi dengan Fixture, Furniture, Fixture (Furnished)</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>Mesin</strong></td>
+                  <td colspan="2">Dilengkapi dengan tambahan mesin utilitas bangunan</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><i>Adjusted Price</i></td>
+                  <td colspan="2">Sub Total Lokasi Komponen non-realty dalam penjualan</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td><strong>0%</strong></td>
+                  <td><strong>3.957.932</strong></td>
+                  <td colspan="2"></td>
+                  <td><strong>0%</strong></td>
+                  <td><strong>3.957.932</strong></td>
+                  <td colspan="2"></td>
+                  <td><strong>0%</strong></td>
+                  <td><strong>3.957.932</strong></td>
+                </tr>
+                <tr class="table-light fw-bold">
+                  <td>Lokasi</td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                </tr>
+                <tr>
+                  <td rowspan="2"><strong>Jarak terhadap CBD (Central Business District) atau Pusat Ekonomi</strong></td>
+                  <td colspan="2">Dari Pusat Kota</td>
+                  <td colspan="2">10,7 km dari Alun Alun Utara Yogyakarta</td>
+                  <td colspan="2">10,7 km dari Alun Alun Utara Yogyakarta</td>
+                  <td rowspan="2"><input type="text" size="3">%</td>
+                  <td rowspan="2">0</td>
+                  <td colspan="2">11 km dari Alun Alun Utara Yogyakarta</td>
+                  <td rowspan="2"><input type="text" size="3">%</td>
+                  <td rowspan="2">0</td>
+                  <td colspan="2">12,4 km dari Alun Alun Utara Yogyakarta</td>
+                  <td rowspan="2"><input type="text" size="3">%</td>
+                  <td rowspan="2">0</td>
+                </tr>
+                <tr>
+                  <td colspan="2">Dari Pusat Ekonomi terdekat (Pasar/ Mall)</td>
+                  <td colspan="2">Pasar Condong Catur/ 1,7 KM</td>
+                  <td colspan="2">Pasar Condong Catur/ 1,7 KM</td>
+                  <td colspan="2">Pasar Condong Catur/ 2 KM</td>
+                  <td colspan="2">Pasar Condong Catur/ 3,3 KM</td>
+                </tr>
+                <tr>
+                  <td><strong>Kelas Jalan/Lebar Jalan</strong></td>
+                  <td colspan="2">Jalan lingkungan (row 4 m)</td>
+                  <td colspan="2">4 meter / Conblock</td>
+                  <td colspan="2">4 meter / Aspal</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">2.5 meter / Conblock</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">3 meter / Cor Beton</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>View</strong></td>
+                  <td colspan="2">Jalan lingkungan (row 4 m)</td>
+                  <td colspan="2">4 meter / Conblock</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>Aksesibilitas</strong></td>
+                  <td colspan="2">Kemudahan Pencapaian</td>
+                  <td colspan="2">Jl Candi Gebang/ 135 m</td>
+                  <td colspan="2">Jl Candi Gebang/ 350 m</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Jl Candi Gebang/ 30 m
+                  </td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Jl Stadion/ 750 m</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>Kondisi Lingkungan</strong></td>
+                  <td colspan="2">Gambaran atas kondisi spesifik	</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">
+                  </td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2"></td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><i>Adjusted Price</i></td>
+                  <td colspan="2">Sub Total Lokasi Lokasi</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td><strong>0%</strong></td>
+                  <td><strong>3.957.932</strong></td>
+                  <td colspan="2"></td>
+                  <td><strong>0%</strong></td>
+                  <td><strong>3.957.932</strong></td>
+                  <td colspan="2"></td>
+                  <td><strong>0%</strong></td>
+                  <td><strong>3.957.932</strong></td>
+                </tr>
+                <tr class="table-light fw-bold">
+                  <td>Karakteristik Fisik</td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                </tr>
+                <tr>
+                  <td><strong>Bentuk</strong></td>
+                  <td colspan="2">Bentuk Tanah</td>
+                  <td colspan="2">Persegipanjang</td>
+                  <td colspan="2">Menyerupai trapesium</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Beraturan</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Beraturan</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>Elevasi</strong></td>
+                  <td colspan="2">Ketinggian permukaan tanah terhadap jalan</td>
+                  <td colspan="2">0.1 meter</td>
+                  <td colspan="2">0.1 meter</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">0.1 meter</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">-0.1 meter</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>Topografi</strong></td>
+                  <td colspan="2">Bentuk Tanah</td>
+                  <td colspan="2">Persegipanjang</td>
+                  <td colspan="2">Menyerupai trapesium</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Beraturan</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Beraturan</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>Lebar Muka</strong></td>
+                  <td colspan="2">Bentuk Tanah</td>
+                  <td colspan="2">Persegipanjang</td>
+                  <td colspan="2">Menyerupai trapesium</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Beraturan</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Beraturan</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><strong>Posisi</strong></td>
+                  <td colspan="2">Bentuk Tanah</td>
+                  <td colspan="2">Persegipanjang</td>
+                  <td colspan="2">Menyerupai trapesium</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Beraturan</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                  <td colspan="2">Beraturan</td>
+                  <td><input type="text" size="3">%</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td><i>Adjusted Price</i></td>
+                  <td colspan="2">Sub Total Lokasi Karakteristik Fisik</td>
+                  <td colspan="2"></td>
+                  <td colspan="2"></td>
+                  <td><strong>0%</strong></td>
+                  <td><strong>3.957.932</strong></td>
+                  <td colspan="2"></td>
+                  <td><strong>0%</strong></td>
+                  <td><strong>3.957.932</strong></td>
+                  <td colspan="2"></td>
+                  <td><strong>0%</strong></td>
+                  <td><strong>3.957.932</strong></td>
                 </tr>
 
-                <tr>
-                  <td><strong>(7) Aksesibilitas</strong></td>
-                  <td>Mudah diakses dengan transportasi umum</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Akses jalan kecil</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Langsung ke jalan utama</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
+                <tr class="table-light fw-bold">
+                  <td >KESIMPULAN</td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
                 </tr>
                 <tr>
-                  <td colspan="10"><strong>Adjusted Price</strong>: 3.957.932</td>
-                </tr>
-
-                <tr>
-                  <td><strong>(8) Fasilitas Sekitar</strong></td>
-                  <td>Dekat dengan sekolah dan rumah sakit</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Jauh dari fasilitas umum</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Dekat dengan pusat perbelanjaan</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td colspan="10"><strong>Adjusted Price</strong>: 3.957.932</td>
-                </tr>
-
-                <tr>
-                  <td><strong>(9) Luas Tanah</strong></td>
-                  <td>500 m²</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>300 m²</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>700 m²</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td colspan="10"><strong>Adjusted Price</strong>: 3.957.932</td>
-                </tr>
-
-                <tr>
-                  <td><strong>(10) Bentuk dan Topografi</strong></td>
-                  <td>Datar, persegi panjang</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Menurun</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Datar, lebar lebih besar</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td colspan="10"><strong>Adjusted Price</strong>: 3.957.932</td>
-                </tr>
-                <tr>
-                  <th>Objek yang dinilai adalah Properti Komersial</th>
-                  <th>Deskripsi</th>
-                  <th>%</th>
-                  <th>[+/-] Penyesuaian</th>
-                  <th>Deskripsi</th>
-                  <th>%</th>
-                  <th>[+/-] Penyesuaian</th>
-                  <th>Deskripsi</th>
-                  <th>%</th>
-                  <th>[+/-] Penyesuaian</th>
-                </tr>
-
-                <tr>
-                  <td><strong>Faktor Permintaan</strong></td>
-                  <td>Potensi permintaan di wilayah tersebut</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Tingkat permintaan tinggi</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Tingkat permintaan sedang</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                </tr>
-
-                <tr>
-                  <td><strong>Faktor Persaingan</strong></td>
-                  <td>Jumlah properti sejenis di sekitar</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Kompetisi tinggi</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Kompetisi rendah</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                </tr>
-
-                <tr>
-                  <td><strong>Regulasi</strong></td>
-                  <td>Aturan yang mempengaruhi penggunaan properti</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Zonasi terbatas</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Zonasi fleksibel</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                </tr>
-
-                <tr>
-                  <td colspan="10"><strong>Adjusted Price</strong>: 3.957.932</td>
-                </tr>
-
-                <tr>
-                  <td><strong>Kondisi Bangunan</strong></td>
-                  <td>Struktur dan material bangunan</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Material standar</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Material premium</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                </tr>
-
-                <tr>
-                  <td><strong>Kesiapan Operasional</strong></td>
-                  <td>Kondisi properti siap pakai atau perlu renovasi</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Siap pakai</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>Perlu renovasi</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                </tr>
-
-                <tr>
-                  <td colspan="10"><strong>Adjusted Price</strong>: 3.957.932</td>
-                </tr>
-
-                <tr>
-                  <th>Lokasi</th>
-                  <th>Deskripsi</th>
-                  <th>%</th>
-                  <th>[+/-] Penyesuaian</th>
-                  <th>Deskripsi</th>
-                  <th>%</th>
-                  <th>[+/-] Penyesuaian</th>
-                  <th>Deskripsi</th>
-                  <th>%</th>
-                  <th>[+/-] Penyesuaian</th>
-                </tr>
-
-                <tr>
-                  <td>Jarak terhadap CBD (Central Business District) atau Pusat Ekonomi</td>
-                  <td>10.7 km dari Alun Alun Utara Yogyakarta</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>11 km dari Alun Alun Utara Yogyakarta</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>11.15 km dari Alun Alun Utara Yogyakarta</td>
-                  <td>-1%</td>
-                  <td>-31.350</td>
-                </tr>
-
-                <tr>
-                  <td>Kelas Jalan/Lebar Jalan</td>
-                  <td>4 meter / Conblock</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>2.5 meter / Conblock</td>
-                  <td>2%</td>
-                  <td>81.293</td>
-                  <td>4 meter / Conblock</td>
-                  <td>0%</td>
-                  <td>0</td>
-                </tr>
-
-                <tr>
-                  <td>View</td>
-                  <td>Pandangan atau Akses Pandangan</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>-</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>-</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                </tr>
-
-                <tr>
-                  <td>Aksesibilitas</td>
-                  <td>Jl Candi Gebang / 135 m</td>
-                  <td>2%</td>
-                  <td>79.159</td>
-                  <td>Jl Candi Gebang / 30 m</td>
-                  <td>-1%</td>
-                  <td>-40.646</td>
-                  <td>Jl Candi Gebang / 750 m</td>
-                  <td>5%</td>
-                  <td>156.750</td>
-                </tr>
-
-                <tr>
-                  <td>Kondisi Lingkungan</td>
-                  <td>-</td>
-                  <td><input type="text" size="3">%</td>
-                  <td>0</td>
-                  <td>-</td>
-                  <td>2%</td>
-                  <td>81.293</td>
-                  <td>Dekat dengan sungai</td>
-                  <td>12%</td>
-                  <td>376.200</td>
-                </tr>
-
-                <tr>
-                  <td colspan="10"><strong>Adjusted Price</strong>: 4.037.091 | 4.186.576 | 3.636.600</td>
-                </tr>
-
-                <tr>
-                  <th>Karakteristik Fisik</th>
-                  <th>Deskripsi</th>
-                  <th>%</th>
-                  <th>[+/-] Penyesuaian</th>
-                  <th>Deskripsi</th>
-                  <th>%</th>
-                  <th>[+/-] Penyesuaian</th>
-                  <th>Deskripsi</th>
-                  <th>%</th>
-                  <th>[+/-] Penyesuaian</th>
-                </tr>
-
-                <tr>
-                  <td>Bentuk</td>
-                  <td>Persegi panjang</td>
-                  <td>2%</td>
-                  <td>80.742</td>
-                  <td>Beraturan</td>
-                  <td>0%</td>
-                  <td>0</td>
-                  <td>Beraturan</td>
-                  <td>0%</td>
-                  <td>0</td>
-                </tr>
-
-                <tr>
-                  <td>Elevasi</td>
-                  <td>0.1 meter</td>
-                  <td>0%</td>
-                  <td>0</td>
-                  <td>0.1 meter</td>
-                  <td>0%</td>
-                  <td>0</td>
-                  <td>-0.5 meter</td>
-                  <td>5%</td>
-                  <td>181.830</td>
-                </tr>
-
-                <tr>
-                  <td>Lebar Muka</td>
-                  <td>9 meter</td>
-                  <td>-1%</td>
-                  <td>-40.371</td>
-                  <td>13 meter</td>
-                  <td>0%</td>
-                  <td>0</td>
-                  <td>8 meter</td>
-                  <td>0%</td>
-                  <td>0</td>
-                </tr>
-
-                <tr>
-                  <td>Posisi</td>
-                  <td>Interior</td>
-                  <td>0%</td>
-                  <td>0</td>
-                  <td>Interior</td>
-                  <td>0%</td>
-                  <td>0</td>
-                  <td>Interior</td>
-                  <td>0%</td>
-                  <td>0</td>
-                </tr>
-
-                <tr>
-                  <td>Luas Tanah</td>
-                  <td>132</td>
-                  <td>-178</td>
-                  <td>-524.086</td>
-                  <td>93.287</td>
-                  <td>-16.771</td>
-                  <td>-524.086</td>
-                  <td>32</td>
-                  <td>-1018</td>
-                  <td>-524.086</td>
-                </tr>
-
-                <tr>
-                  <td colspan="10"><strong>Adjusted Price</strong>: 4.077.462 | 4.171.244 | 4.171.180</td>
-                </tr>
-
-                <tr>
-                  <th colspan="10">KESIMPULAN</th>
-                </tr>
-
-                <tr>
-                  <td>Net Adjustment (max 15%)</td>
-                  <td>5%</td>
-                  <td>213.312</td>
+                  <td><strong>Net Adjustment (max 15%)</strong></td>
+                  <td colspan="4"></td>
+                  <td colspan="2"></td>
                   <td>3%</td>
                   <td>105.193</td>
+                  <td colspan="2"></td>
                   <td>46%</td>
                   <td>1.321.180</td>
-                </tr>
-
-                <tr>
-                  <td>Harga Setelah Penyesuaian</td>
-                  <td colspan="3">4.169.830</td>
-                  <td colspan="3">4.171.244</td>
-                  <td colspan="3">4.171.180</td>
-                </tr>
-
-                <tr>
-                  <th>Rekonsiliasi</th>
-                  <th>Gross Adjustment (max 25%)</th>
-                  <th>Bobot Absolut</th>
-                  <th>Inverse</th>
-                  <th>Bobot Inverse</th>
+                  <td colspan="2"></td>
+                  <td style="color: red">46%</td>
+                  <td>1.321.180</td>
                 </tr>
                 <tr>
-                  <td> </td>
-                  <td>65.4%</td>
+                  <td><strong>Harga Setelah Penyesuaian</strong></td>
+                  <td colspan="4"></td>
+                  <td colspan="4">4.169.830</td>
+                  <td colspan="4">4.171.244</td>
+                  <td colspan="4">4.171.180</td>
+                </tr>
+                <tr class="table-light fw-bold">
+                  <td >REKONSILIASI</td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                  <td colspan="4"></td>
+                </tr>
+                <tr>
+                  <td><strong>Gross Adjustment (max 25%)</strong></td>
+                  <td colspan="4"><strong>37%</strong></td>
+                  <td colspan="2"></td>
+                  <td><strong>6.5%</strong></td>
+                  <td></td>
+                  <td colspan="2"></td>
+                  <td><strong>9.3%</strong></td>
+                  <td></td>
+                  <td colspan="2"></td>
+                  <td><strong>21.2%</strong></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><strong>Bobot Absolut</strong></td>
+                  <td colspan="4">37%</td>
+                  <td colspan="2"></td>
+                  <td>6.5%</td>
+                  <td></td>
+                  <td colspan="2"></td>
+                  <td>9.3%</td>
+                  <td></td>
+                  <td colspan="2"></td>
+                  <td>21.2%</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><strong>Inverse</strong></td>
+                  <td colspan="4">37%</td>
+                  <td colspan="2"></td>
+                  <td>6.5%</td>
+                  <td></td>
+                  <td colspan="2"></td>
+                  <td>9.3%</td>
+                  <td></td>
+                  <td colspan="2"></td>
+                  <td>21.2%</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><strong>Bobot Inverse</strong></td>
+                  <td colspan="4">37%</td>
+                  <td colspan="2"></td>
                   <td>100%</td>
-                  <td>200%</td>
-                  <td>100%</td>
-                </tr>
-                <tr>
-                  <td> </td>
-                  <td>7.3%</td>
-                  <td>11.2%</td>
-                  <td>88.8%</td>
-                  <td>44.4%</td>
-                </tr>
-                <tr>
-                  <td> </td>
-                  <td>5.4%</td>
-                  <td>8.3%</td>
-                  <td>91.7%</td>
-                  <td>45.9%</td>
-                </tr>
-                <tr>
-                  <td> </td>
-                  <td style="color: red;">52.7%</td>
-                  <td>80.6%</td>
-                  <td>19.4%</td>
-                  <td>9.7%</td>
+                  <td>1.919.225	</td>
+                  <td colspan="2"></td>
+                  <td>41.2%</td>
+                  <td>1.745.857</td>
+                  <td colspan="2"></td>
+                  <td>21.2%</td>
+                  <td>996.287</td>
                 </tr>
               </tbody>
             </table>
-
           </div>
           <div class="mt-5">
             <table class="table table-bordered table-striped text-center">
@@ -2931,6 +3169,8 @@ $configData = Helper::appClasses();
         <div class="mt-10">
           <div id="map-tanah" style="height: 500px; width: 100%;"></div>
         </div>
+
+        {{-- Analisis --}}
         <div class="tab-pane fade" id="analisis">
           <h4>Analisis</h4>
           <p>Konten untuk Analisis...</p>
