@@ -2234,166 +2234,166 @@ $configData = Helper::appClasses();
         <div class="tab-pane fade" id="nilai-tanah">
           <h4>Nilai Tanah</h4>
           <div class="table-responsive">
-            <table class="table table-bordered table-striped text-center" >
-              <thead class="table-primary">
-                <tr>
-                  <th width="12%">DESKRIPSI</th>
-                  <th colspan="4">OBYEK PENILAIAN</th>
-                  <th width="21.5%" colspan="4">DATA PEMBANDING 1<br>Nomor ID : 245708<br>Rumah Tinggal – Dsn. Jetis, Desa Wedomartani, Kec. Ngemplak, Kabupaten Sleman, Prov. Daerah Istimewa Yogyakarta 55584, Indonesia</th>
-                  <th width="21.5%" colspan="4">DATA PEMBANDING 2<br>Nomor ID : 245738<br>Rumah Tinggal – Dsn. Krajan, Desa Wedomartani, Kec. Ngemplak, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55584, Indonesia</th>
-                  <th width="21.5%" colspan="4">DATA PEMBANDING 3<br>Nomor ID : 245711<br>Tanah Kosong – Dsn. Jetis, Desa Wedomartani, Kec. Ngemplak, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55584, Indonesia</th>
+            <table class="table table-sm table-bordered table-striped text-center" style="width: 180%;font-size: 12px">
+              <thead style="background-color: #162447;">
+                <tr class="align-middle" >
+                  <th width="12%" style="color: white;font-size: 12px" >DESKRIPSI</th>
+                  <th width="19%" colspan="4" style="color: white;font-size: 12px">OBYEK PENILAIAN</th>
+                  <th width="23%" colspan="4" style="color: white;font-size: 12px">DATA PEMBANDING 1<br>Nomor ID : 245708<br>Rumah Tinggal – Dsn. Jetis, Desa Wedomartani, Kec. Ngemplak, Kabupaten Sleman, Prov. Daerah Istimewa Yogyakarta 55584, Indonesia</th>
+                  <th width="23%" colspan="4" style="color: white;font-size: 12px">DATA PEMBANDING 2<br>Nomor ID : 245738<br>Rumah Tinggal – Dsn. Krajan, Desa Wedomartani, Kec. Ngemplak, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55584, Indonesia</th>
+                  <th width="23%" colspan="4" style="color: white;font-size: 12px">DATA PEMBANDING 3<br>Nomor ID : 245711<br>Tanah Kosong – Dsn. Jetis, Desa Wedomartani, Kec. Ngemplak, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55584, Indonesia</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>Alamat Properti</strong></td>
+                  <td class="text-start"><strong>Alamat Properti</strong></td>
                   <td colspan="4">Kampung Gebang, Dukuh Jetis RT.03 RW.44 (SHM NIB. 13.04.000001022.0), Wedomartani, Ngemplak, Kab. Sleman, Di Yogyakarta</td>
                   <td colspan="4">Dsn. Jetis, Desa Wedomartani, Kec. Ngemplak, Kab. Sleman, Prop. Daerah Istimewa Yogyakarta 55584, Indonesia</td>
                   <td colspan="4">Dsn. Krajan, Desa Wedomartani, Kec. Ngemplak, Kab. Sleman, Daerah Istimewa Yogyakarta 55584, Indonesia</td>
                   <td colspan="4">Dsn. Jetis, Desa Wedomartani, Kec. Ngemplak, Kabupaten Sleman, Yogyakarta 55584, Indonesia</td>
                 </tr>
                 <tr>
-                  <td><strong>Jarak dari Objek Penilaian</strong></td>
+                  <td class="text-start"><strong>Jarak dari Objek Penilaian</strong></td>
                   <td colspan="4"></td>
                   <td colspan="4">164 meter</td>
                   <td colspan="4">442 meter</td>
                   <td colspan="4">502 meter</td>
                 </tr>
                 <tr>
-                  <td><strong>Koordinat Latitude</strong></td>
+                  <td class="text-start"><strong>Koordinat Latitude</strong></td>
                   <td colspan="4">-7.74704838754155</td>
                   <td colspan="4">-7.7470483875415</td>
                   <td colspan="4">-7.7484655830141</td>
                   <td colspan="4">-7.7508334334178</td>
                 </tr>
                 <tr>
-                  <td><strong>Koordinat Longitude</strong></td>
+                  <td class="text-start"><strong>Koordinat Longitude</strong></td>
                   <td colspan="4">110.41352888460638</td>
                   <td colspan="4">110.41352888460638</td>
                   <td colspan="4">110.41394148223</td>
                   <td colspan="4">110.41601276057932</td>
                 </tr>
                 <tr>
-                  <td><strong>Nama</strong></td>
+                  <td class="text-start"><strong>Nama</strong></td>
                   <td colspan="4">Bpk. Suwandi</td>
                   <td colspan="4">Bpk. Suwandi</td>
                   <td colspan="4">Ibu Coming Partini</td>
                   <td colspan="4">Bok. Totok</td>
                 </tr>
                 <tr>
-                  <td><strong>Telepon</strong></td>
+                  <td class="text-start"><strong>Telepon</strong></td>
                   <td colspan="4">08522451000</td>
                   <td colspan="4">08522451000</td>
                   <td colspan="4">08222054348</td>
                   <td colspan="4">08985350173</td>
                 </tr>
                 <tr>
-                  <td><strong>Jenis Data (Transaksi/Penawaran)</strong></td>
+                  <td class="text-start"><strong>Jenis Data (Transaksi/Penawaran)</strong></td>
                   <td colspan="4">Penawaran</td>
                   <td colspan="4">Penawaran</td>
                   <td colspan="4">Penawaran</td>
                   <td colspan="4">Penawaran</td>
                 </tr>
                 <tr>
-                  <td><strong>Waktu Transaksi/Penawaran</strong></td>
+                  <td class="text-start"><strong>Waktu Transaksi/Penawaran</strong></td>
                   <td colspan="4">25 March 2025</td>
                   <td colspan="4">25 March 2025</td>
                   <td colspan="4">25 March 2025</td>
                   <td colspan="4">25 March 2025</td>
                 </tr>
                 <tr>
-                  <td><strong>Jenis Properti</strong></td>
+                  <td class="text-start"><strong>Jenis Properti</strong></td>
                   <td colspan="4">Rumah tinggal</td>
                   <td colspan="4">Rumah tinggal</td>
                   <td colspan="4">Rumah tinggal</td>
                   <td colspan="4">Tanah Kosong</td>
                 </tr>
                 <tr>
-                  <td><strong>Foto</strong></td>
+                  <td class="text-start"><strong>Foto</strong></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                 </tr>
                 <tr>
-                  <td><strong>Luas Tanah</strong></td>
+                  <td class="text-start"><strong>Luas Tanah</strong></td>
                   <td colspan="4">132 m²</td>
                   <td colspan="4">132 m²</td>
                   <td colspan="4">310 m²</td>
                   <td colspan="4">1150 m²</td>
                 </tr>
                 <tr>
-                  <td><strong>Luas Bangunan</strong></td>
+                  <td class="text-start"><strong>Luas Bangunan</strong></td>
                   <td colspan="4">210 m²</td>
                   <td colspan="4">210 m²</td>
                   <td colspan="4">110 m²</td>
                   <td colspan="4">0 m²</td>
                 </tr>
                 <tr class="table-light">
-                  <td><strong>UNIT PERBANDINGAN</strong></td>
+                  <td class="text-start"><strong>UNIT PERBANDINGAN</strong></td>
                   <td colspan="4"></td>
                   <td colspan="4"><a href="#">Edit</a></td>
                   <td colspan="4"><a href="#">Edit</a></td>
                   <td colspan="4"><a href="#">Edit</a></td>
                 </tr>
                 <tr>
-                  <td><strong>Unit</strong></td>
+                  <td class="text-start"><strong>Unit</strong></td>
                   <td colspan="4">m2</td>
                   <td colspan="4">m2</td>
                   <td colspan="4">m2</td>
                   <td colspan="4">m2</td>
                 </tr>
                 <tr>
-                  <td><strong>Mata Uang</strong></td>
+                  <td class="text-start"><strong>Mata Uang</strong></td>
                   <td colspan="4">Rp</td>
                   <td colspan="4">Rp</td>
                   <td colspan="4">Rp</td>
                   <td colspan="4">Rp</td>
                 </tr>
                 <tr>
-                  <td><strong>Indikasi Harga Penawaran</strong></td>
+                  <td class="text-start"><strong>Indikasi Harga Penawaran</strong></td>
                   <td colspan="4">Rp 2.201.000.000</td>
                   <td colspan="4">Rp 599.000.000</td>
                   <td colspan="4">Rp 3.450.000.000</td>
                   <td colspan="4"></td>
                 </tr>
                 <tr>
-                  <td><strong>Diskon</strong></td>
+                  <td class="text-start"><strong>Diskon</strong></td>
                   <td colspan="4">22%</td>
                   <td colspan="4">10%</td>
                   <td colspan="4">5%</td>
                   <td colspan="4"></td>
                 </tr>
                 <tr>
-                  <td><strong>Kemungkinan Transaksi</strong></td>
+                  <td class="text-start"><strong>Kemungkinan Transaksi</strong></td>
                   <td colspan="4">Rp 1.716.780.000</td>
                   <td colspan="4">Rp 539.100.000</td>
                   <td colspan="4">Rp 3.277.500.000</td>
                   <td colspan="4"></td>
                 </tr>
                 <tr class="table-light">
-                  <td><strong>Residual Process (if needed)</strong></td>
+                  <td class="text-start"><strong>Residual Process (if needed)</strong></td>
                   <td colspan="4">Metode Ekstraksi</td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                 </tr>
                 <tr>
-                  <td><strong>Indikasi Biaya Pengganti Baru/m2 coba</strong></td>
+                  <td class="text-start"><strong>Indikasi Biaya Pengganti Baru/m2 coba</strong></td>
                   <td colspan="4"></td>
                   <td colspan="4">3.683.058</td>
                   <td colspan="4">4.256.214</td>
                   <td colspan="4">-</td>
                 </tr>
                 <tr>
-                  <td><strong>Indikasi Biaya Pengganti Baru Bangunan</strong></td>
+                  <td class="text-start"><strong>Indikasi Biaya Pengganti Baru Bangunan</strong></td>
                   <td colspan="4"></td>
                   <td colspan="4">773.442.180</td>
                   <td colspan="4">468.183.540</td>
                   <td colspan="4">-</td>
                 </tr>
                 <tr>
-                  <td><strong>Tahun Bangunan / Indikasi Umur Ekonomis</strong></td>
+                  <td class="text-start"><strong>Tahun Bangunan / Indikasi Umur Ekonomis</strong></td>
                   <td colspan="4"></td>
                   <td colspan="2">2014</td>
                   <td colspan="2">30 thn</td>
@@ -2403,7 +2403,7 @@ $configData = Helper::appClasses();
                   <td colspan="2">-</td>
                 </tr>
                 <tr>
-                  <td><strong>Tahun Renovasi / Bobot Renov</strong></td>
+                  <td class="text-start"><strong>Tahun Renovasi / Bobot Renov</strong></td>
                   <td colspan="4"></td>
                   <td colspan="2">N/A</td>
                   <td colspan="2">0%</td>
@@ -2413,14 +2413,14 @@ $configData = Helper::appClasses();
                   <td colspan="2">0%</td>
                 </tr>
                 <tr>
-                  <td><strong>Depresiasi</strong></td>
+                  <td class="text-start"><strong>Depresiasi</strong></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                 </tr>
                 <tr>
-                  <td><strong>Fisik</strong></td>
+                  <td class="text-start"><strong>Fisik</strong></td>
                   <td colspan="4"></td>
                   <td colspan="2">Kondisi Fisik Bangunan:</td>
                   <td >63.33%</td>
@@ -2433,7 +2433,7 @@ $configData = Helper::appClasses();
                   <td >0%</td>
                 </tr>
                 <tr>
-                  <td><strong>Kondisi Terlihat (Maintenance)</strong></td>
+                  <td class="text-start"><strong>Kondisi Terlihat (Maintenance)</strong></td>
                   <td colspan="4"></td>
                   <td colspan="3">Baik</td>
                   <td >0%</td>
@@ -2443,7 +2443,7 @@ $configData = Helper::appClasses();
                   <td >0%</td>
                 </tr>
                 <tr>
-                  <td><strong>Kemunduran Fungsi</strong></td>
+                  <td class="text-start"><strong>Kemunduran Fungsi</strong></td>
                   <td colspan="4"></td>
                   <td colspan="3">-</td>
                   <td >0%</td>
@@ -2453,7 +2453,7 @@ $configData = Helper::appClasses();
                   <td >0%</td>
                 </tr>
                 <tr>
-                  <td><strong>Kemunduran Ekonomis</strong></td>
+                  <td class="text-start"><strong>Kemunduran Ekonomis</strong></td>
                   <td colspan="4"></td>
                   <td colspan="3">-</td>
                   <td >0%</td>
@@ -2463,42 +2463,42 @@ $configData = Helper::appClasses();
                   <td >0%</td>
                 </tr>
                 <tr>
-                  <td><strong>Total Depresiasi</strong></td>
+                  <td class="text-start"><strong>Total Depresiasi</strong></td>
                   <td colspan="4"></td>
                   <td colspan="4">36.67%</td>
                   <td colspan="4">71.67%</td>
                   <td colspan="4">0%</td>
                 </tr>
                 <tr>
-                  <td><strong>Indikasi Nilai Pasar Bangunan/m2</strong></td>
+                  <td class="text-start"><strong>Indikasi Nilai Pasar Bangunan/m2</strong></td>
                   <td colspan="4"></td>
                   <td colspan="4">2.332.481</td>
                   <td colspan="4">1.205.785</td>
                   <td colspan="4">-</td>
                 </tr>
                 <tr>
-                  <td><strong>Indikasi Nilai Pasar Bangunan</strong></td>
+                  <td class="text-start"><strong>Indikasi Nilai Pasar Bangunan</strong></td>
                   <td colspan="4"></td>
                   <td colspan="4">489.821.010</td>
                   <td colspan="4">132.636.350</td>
                   <td colspan="4">-</td>
                 </tr>
                 <tr>
-                  <td><strong>Indikasi Nilai Pasar Tanah</strong></td>
+                  <td class="text-start"><strong>Indikasi Nilai Pasar Tanah</strong></td>
                   <td colspan="4"></td>
                   <td colspan="4">1.226.958.990</td>
                   <td colspan="4">406.463.650</td>
                   <td colspan="4">3.277.500.000</td>
                 </tr>
                 <tr>
-                  <td><strong>Indikasi Nilai Pasar Tanah / m2</strong></td>
+                  <td class="text-start"><strong>Indikasi Nilai Pasar Tanah / m2</strong></td>
                   <td colspan="4"></td>
                   <td colspan="4">3.957.932</td>
                   <td colspan="4">4.064.637</td>
                   <td colspan="4">2.850.000</td>
                 </tr>
                 <tr class="table-light fw-bold" >
-                  <td>ELEMEN PERBANDINGAN</td>
+                  <td class="text-start">ELEMEN PERBANDINGAN</td>
                   <td colspan="2">Deskripsi</td>
                   <td colspan="2"></td>
                   <td colspan="2">Deskripsi</td>
@@ -2512,17 +2512,17 @@ $configData = Helper::appClasses();
                   <td>[+/-] Penyesuaian</td>
                 </tr>
                 <tr>
-                  <td><strong>(1) Hak atas properti yang dialihkan</strong></td>
+                  <td class="text-start"><strong>(1) Hak atas properti yang dialihkan</strong></td>
                   <td colspan="2"></td>
                   <td colspan="2">HGB, HGB</td>
                   <td colspan="2">HGB</td>
-                  <td><input type="text" size="3" value="10" disabled style="cursor: not-allowed">%</td>
+                  <td><input type="text" size="2" value="10" disabled style="cursor: not-allowed">%</td>
                   <td>0</td>
                   <td colspan="2">HGB</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">SHM</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
@@ -2534,17 +2534,17 @@ $configData = Helper::appClasses();
                 </tr>
                 <tr>
                 <tr>
-                  <td><strong>(2) Syarat Pembiayaan</strong></td>
+                  <td class="text-start"><strong>(2) Syarat Pembiayaan</strong></td>
                   <td colspan="2"></td>
                   <td colspan="2">Tunai</td>
                   <td colspan="2">Tunai</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Tunai</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Tunai</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
@@ -2555,17 +2555,17 @@ $configData = Helper::appClasses();
                   <td colspan="4"><strong>3.957.932</strong></td>
                 </tr>
                 <tr>
-                  <td><strong>(3) Kondisi Penjualan</strong></td>
+                  <td class="text-start"><strong>(3) Kondisi Penjualan</strong></td>
                   <td colspan="2"></td>
                   <td colspan="2">Tunai</td>
                   <td colspan="2">Tunai</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Tunai</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Tunai</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
@@ -2576,17 +2576,17 @@ $configData = Helper::appClasses();
                   <td colspan="4"><strong>3.957.932</strong></td>
                 </tr>
                 <tr>
-                  <td><strong>(4) Pengeluaran yang dilakukan segera setelah pembelian</strong></td>
+                  <td class="text-start"><strong>(4) Pengeluaran yang dilakukan segera setelah pembelian</strong></td>
                   <td colspan="2"></td>
                   <td colspan="2">Tunai</td>
                   <td colspan="2">Tunai</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Tunai</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Tunai</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
@@ -2597,17 +2597,17 @@ $configData = Helper::appClasses();
                   <td colspan="4"><strong>3.957.932</strong></td>
                 </tr>
                 <tr>
-                  <td><strong>(5) Kondisi Pasar</strong></td>
+                  <td class="text-start"><strong>(5) Kondisi Pasar</strong></td>
                   <td colspan="2"></td>
                   <td colspan="2">Tunai</td>
                   <td colspan="2">Tunai</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Tunai</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Tunai</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
@@ -2619,80 +2619,80 @@ $configData = Helper::appClasses();
                 </tr>
 
                 <tr class="table-light fw-bold">
-                  <td>Karakteristik Ekonomi (Jika Objek yang dinilai adalah Properti Komersial)</td>
+                  <td class="text-start"><strong>Karakteristik Ekonomi (Jika Objek yang dinilai adalah Properti Komersial)</strong></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                 </tr>
                 <tr>
-                  <td><strong>Kualitas Pendapatan</strong></td>
+                  <td class="text-start"><strong>Kualitas Pendapatan</strong></td>
                   <td colspan="2">Kemampuan menghasilkan pendapatan (Aglomerasi yang ditimbulkan dari tempat atau kawasan terhadap pendapatan)</td>
                   <td colspan="2"></td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
-                  <td><strong>Biaya Operasional</strong></td>
+                  <td class="text-start"><strong>Biaya Operasional</strong></td>
                   <td colspan="2">Kemampuan menghasilkan pendapatan (Aglomerasi yang ditimbulkan dari tempat atau kawasan terhadap pendapatan)</td>
                   <td colspan="2"></td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
-                  <td><strong>Ketentuan Sewa</strong></td>
+                  <td class="text-start"><strong>Ketentuan Sewa</strong></td>
                   <td colspan="2">Kemampuan menghasilkan pendapatan (Aglomerasi yang ditimbulkan dari tempat atau kawasan terhadap pendapatan)</td>
                   <td colspan="2"></td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
-                  <td><strong>Manajemen</strong></td>
+                  <td class="text-start"><strong>Manajemen</strong></td>
                   <td colspan="2">Kemampuan menghasilkan pendapatan (Aglomerasi yang ditimbulkan dari tempat atau kawasan terhadap pendapatan)</td>
                   <td colspan="2"></td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
-                  <td><strong>Bauran Penyewa</strong></td>
+                  <td class="text-start"><strong>Bauran Penyewa</strong></td>
                   <td colspan="2">Kemampuan menghasilkan pendapatan (Aglomerasi yang ditimbulkan dari tempat atau kawasan terhadap pendapatan)</td>
                   <td colspan="2"></td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
@@ -2710,53 +2710,53 @@ $configData = Helper::appClasses();
                   <td><strong>3.957.932</strong></td>
                 </tr>
                 <tr class="table-light fw-bold">
-                  <td>Penggunaan</td>
+                  <td class="text-start">Penggunaan</td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                 </tr>
                 <tr>
-                  <td><strong>Zoning</strong></td>
+                  <td class="text-start"><strong>Zoning</strong></td>
                   <td colspan="2">Rencana Tata Ruang Wilayah</td>
                   <td colspan="2">Pemukiman</td>
                   <td colspan="2">Zona Perumahan</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Zona Perumahan</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Zona Perumahan</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
-                  <td><strong>Ketentuan Umum Bangunan</strong></td>
+                  <td class="text-start"><strong>Ketentuan Umum Bangunan</strong></td>
                   <td colspan="2">KDB, KLB, Ketinggian dan ketentuan umum lainnya</td>
                   <td colspan="2">KDB -%, KLB - kali, GSB - meter, Ketinggian - lantai</td>
                   <td colspan="2">KDB -%, KLB - kali, GSB - meter, Ketinggian - lantai</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">KDB -%, KLB - kali, GSB - meter, Ketinggian - lantai</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">KDB -%, KLB - kali, GSB - meter, Ketinggian - lantai</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
-                  <td><strong>Penggunaan Existing</strong></td>
+                  <td class="text-start"><strong>Penggunaan Existing</strong></td>
                   <td colspan="2">Kondisi Existing Penggunaan Objek (Terkembangkan atau Tanah Kosong)</td>
                   <td colspan="2">Pakai Sendiri
                     Pakai Sendiri</td>
                   <td colspan="2">Pakai Sendiri Rumah Tinggal</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Pakai Sendiri Rumah Tinggal</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Pakai Sendiri Rumah Tinggal</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
@@ -2774,38 +2774,38 @@ $configData = Helper::appClasses();
                   <td><strong>3.957.932</strong></td>
                 </tr>
                 <tr class="table-light fw-bold">
-                  <td>Komponen non-reality dalam penjualan</td>
+                  <td class="text-start">Komponen non-reality dalam penjualan</td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                 </tr>
                 <tr>
-                  <td><strong>FFE</strong></td>
+                  <td class="text-start"><strong>FFE</strong></td>
                   <td colspan="2">Dilengkapi dengan Fixture, Furniture, Fixture (Furnished)</td>
                   <td colspan="2"></td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
-                  <td><strong>Mesin</strong></td>
+                  <td class="text-start"><strong>Mesin</strong></td>
                   <td colspan="2">Dilengkapi dengan tambahan mesin utilitas bangunan</td>
                   <td colspan="2"></td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
@@ -2823,24 +2823,24 @@ $configData = Helper::appClasses();
                   <td><strong>3.957.932</strong></td>
                 </tr>
                 <tr class="table-light fw-bold">
-                  <td>Lokasi</td>
+                  <td class="text-start">Lokasi</td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                 </tr>
                 <tr>
-                  <td rowspan="2"><strong>Jarak terhadap CBD (Central Business District) atau Pusat Ekonomi</strong></td>
+                  <td rowspan="2" class="text-start"><strong>Jarak terhadap CBD (Central Business District) atau Pusat Ekonomi</strong></td>
                   <td colspan="2">Dari Pusat Kota</td>
                   <td colspan="2">10,7 km dari Alun Alun Utara Yogyakarta</td>
                   <td colspan="2">10,7 km dari Alun Alun Utara Yogyakarta</td>
-                  <td rowspan="2"><input type="text" size="3">%</td>
+                  <td rowspan="2"><input type="text" size="2">%</td>
                   <td rowspan="2">0</td>
                   <td colspan="2">11 km dari Alun Alun Utara Yogyakarta</td>
-                  <td rowspan="2"><input type="text" size="3">%</td>
+                  <td rowspan="2"><input type="text" size="2">%</td>
                   <td rowspan="2">0</td>
                   <td colspan="2">12,4 km dari Alun Alun Utara Yogyakarta</td>
-                  <td rowspan="2"><input type="text" size="3">%</td>
+                  <td rowspan="2"><input type="text" size="2">%</td>
                   <td rowspan="2">0</td>
                 </tr>
                 <tr>
@@ -2851,61 +2851,61 @@ $configData = Helper::appClasses();
                   <td colspan="2">Pasar Condong Catur/ 3,3 KM</td>
                 </tr>
                 <tr>
-                  <td><strong>Kelas Jalan/Lebar Jalan</strong></td>
+                  <td class="text-start"><strong>Kelas Jalan/Lebar Jalan</strong></td>
                   <td colspan="2">Jalan lingkungan (row 4 m)</td>
                   <td colspan="2">4 meter / Conblock</td>
                   <td colspan="2">4 meter / Aspal</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">2.5 meter / Conblock</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">3 meter / Cor Beton</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
-                  <td><strong>View</strong></td>
+                  <td class="text-start"><strong>View</strong></td>
                   <td colspan="2">Jalan lingkungan (row 4 m)</td>
                   <td colspan="2">4 meter / Conblock</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
-                  <td><strong>Aksesibilitas</strong></td>
+                  <td class="text-start"><strong>Aksesibilitas</strong></td>
                   <td colspan="2">Kemudahan Pencapaian</td>
                   <td colspan="2">Jl Candi Gebang/ 135 m</td>
                   <td colspan="2">Jl Candi Gebang/ 350 m</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Jl Candi Gebang/ 30 m
                   </td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Jl Stadion/ 750 m</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
-                  <td><strong>Kondisi Lingkungan</strong></td>
+                  <td class="text-start"><strong>Kondisi Lingkungan</strong></td>
                   <td colspan="2">Gambaran atas kondisi spesifik	</td>
                   <td colspan="2"></td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">
                   </td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2"></td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
@@ -2923,80 +2923,80 @@ $configData = Helper::appClasses();
                   <td><strong>3.957.932</strong></td>
                 </tr>
                 <tr class="table-light fw-bold">
-                  <td>Karakteristik Fisik</td>
+                  <td class="text-start">Karakteristik Fisik</td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                 </tr>
                 <tr>
-                  <td><strong>Bentuk</strong></td>
+                  <td class="text-start"><strong>Bentuk</strong></td>
                   <td colspan="2">Bentuk Tanah</td>
                   <td colspan="2">Persegipanjang</td>
                   <td colspan="2">Menyerupai trapesium</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Beraturan</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Beraturan</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
-                  <td><strong>Elevasi</strong></td>
+                  <td class="text-start"><strong>Elevasi</strong></td>
                   <td colspan="2">Ketinggian permukaan tanah terhadap jalan</td>
                   <td colspan="2">0.1 meter</td>
                   <td colspan="2">0.1 meter</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">0.1 meter</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">-0.1 meter</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
-                  <td><strong>Topografi</strong></td>
+                  <td class="text-start"><strong>Topografi</strong></td>
                   <td colspan="2">Bentuk Tanah</td>
                   <td colspan="2">Persegipanjang</td>
                   <td colspan="2">Menyerupai trapesium</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Beraturan</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Beraturan</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
-                  <td><strong>Lebar Muka</strong></td>
+                  <td class="text-start"><strong>Lebar Muka</strong></td>
                   <td colspan="2">Bentuk Tanah</td>
                   <td colspan="2">Persegipanjang</td>
                   <td colspan="2">Menyerupai trapesium</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Beraturan</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Beraturan</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
-                  <td><strong>Posisi</strong></td>
+                  <td class="text-start"><strong>Posisi</strong></td>
                   <td colspan="2">Bentuk Tanah</td>
                   <td colspan="2">Persegipanjang</td>
                   <td colspan="2">Menyerupai trapesium</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Beraturan</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                   <td colspan="2">Beraturan</td>
-                  <td><input type="text" size="3">%</td>
+                  <td><input type="text" size="2">%</td>
                   <td>0</td>
                 </tr>
                 <tr>
@@ -3015,14 +3015,14 @@ $configData = Helper::appClasses();
                 </tr>
 
                 <tr class="table-light fw-bold">
-                  <td >KESIMPULAN</td>
+                  <td class="text-start">KESIMPULAN</td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                 </tr>
                 <tr>
-                  <td><strong>Net Adjustment (max 15%)</strong></td>
+                  <td class="text-start"><strong>Net Adjustment (max 15%)</strong></td>
                   <td colspan="4"></td>
                   <td colspan="2"></td>
                   <td>3%</td>
@@ -3035,21 +3035,21 @@ $configData = Helper::appClasses();
                   <td>1.321.180</td>
                 </tr>
                 <tr>
-                  <td><strong>Harga Setelah Penyesuaian</strong></td>
+                  <td class="text-start"><strong>Harga Setelah Penyesuaian</strong></td>
                   <td colspan="4"></td>
                   <td colspan="4">4.169.830</td>
                   <td colspan="4">4.171.244</td>
                   <td colspan="4">4.171.180</td>
                 </tr>
                 <tr class="table-light fw-bold">
-                  <td >REKONSILIASI</td>
+                  <td class="text-start">REKONSILIASI</td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                   <td colspan="4"></td>
                 </tr>
                 <tr>
-                  <td><strong>Gross Adjustment (max 25%)</strong></td>
+                  <td class="text-start"><strong>Gross Adjustment (max 25%)</strong></td>
                   <td colspan="4"><strong>37%</strong></td>
                   <td colspan="2"></td>
                   <td><strong>6.5%</strong></td>
@@ -3062,7 +3062,7 @@ $configData = Helper::appClasses();
                   <td></td>
                 </tr>
                 <tr>
-                  <td><strong>Bobot Absolut</strong></td>
+                  <td class="text-start"><strong>Bobot Absolut</strong></td>
                   <td colspan="4">37%</td>
                   <td colspan="2"></td>
                   <td>6.5%</td>
@@ -3075,7 +3075,7 @@ $configData = Helper::appClasses();
                   <td></td>
                 </tr>
                 <tr>
-                  <td><strong>Inverse</strong></td>
+                  <td class="text-start"><strong>Inverse</strong></td>
                   <td colspan="4">37%</td>
                   <td colspan="2"></td>
                   <td>6.5%</td>
@@ -3088,7 +3088,7 @@ $configData = Helper::appClasses();
                   <td></td>
                 </tr>
                 <tr>
-                  <td><strong>Bobot Inverse</strong></td>
+                  <td class="text-start"><strong>Bobot Inverse</strong></td>
                   <td colspan="4">37%</td>
                   <td colspan="2"></td>
                   <td>100%</td>
@@ -3104,69 +3104,63 @@ $configData = Helper::appClasses();
             </table>
           </div>
           <div class="mt-5">
-            <table class="table table-bordered table-striped text-center">
+            <table class="table table-sm table-bordered align-top text-start" style="width: 70%; font-size:13px;">
               <tr>
-                <th colspan="5">Notes</th>
+                <td rowspan="3" class="p-2 w-60"><strong>Notes</strong><br>Jika besaran penyesuaian lebih besar dibandingkan batas maksimal, maka harus terdapat dasar yang kuat mengapa besaran penyesuaian diberikan</td>
+                <td class="p-2 w-15">Intercept</td>
+                <td class="p-2 text-end">3.474.943,155</td>
               </tr>
               <tr>
-                <td colspan="5">
-                  Jika besaran penyesuaian lebih besar dibandingkan batas maksimal, maka harus terdapat dasar yang kuat mengapa besaran penyesuaian diberikan.
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="mt-5">
-            <table class="table table-bordered table-striped text-center">
-              <tr>
-                <th>Kisaran Nilai</th>
-                <th>Max</th>
-                <th>Min</th>
-                <th>Deviasi (max 10%)</th>
-                <th> </th>
+                <td class="p-2 w-15">Slope</td>
+                <td class="p-2 text-end">-1.015,356</td>
               </tr>
               <tr>
-                <td> </td>
-                <td>4.171.244</td>
-                <td>4.169.830</td>
-                <td>0%</td>
-                <td> </td>
+                <td class="p-2 w-15">R-squared</td>
+                <td class="p-2 text-end">0.993</td>
               </tr>
             </table>
           </div>
           <div class="mt-5">
-            <table class="table table-bordered table-striped text-center">
-              <tr>
-                <th colspan="5">Nilai Pasar</th>
+            <table class="table table-bordered table-striped text-start" style="width:45%; font-size:13px;">
+              <tr class="table-light fw-bold">
+                <td colspan="2">Kisaran Nilai</td>
               </tr>
+              <tr>
+                <td>Max</td>
+                <td class="text-end">4.171.244</td>
+              </tr>
+              <tr>
+                <td>Min</td>
+                <td class="text-end">4.169.830</td>
+              </tr>
+              <tr class="fw-bold">
+                <td>Deviasi (max 10%)</td>
+                <td class="text-end">0%</td>
+              </tr>
+            </table>
+          </div>
+          <div class="mt-5">
+            <table class="table table-bordered table-striped text-start fw-bold" style="width:55%; font-size:13px">
               <tr>
                 <td>Nilai Pasar per m2</td>
-                <td colspan="4">4.170.589</td>
+                <td>4.170.589</td>
               </tr>
               <tr>
                 <td>Nilai Pasar per m2 (Dibulatkan)</td>
-                <td colspan="4">4.171.000</td>
+                <td>4.171.000</td>
               </tr>
               <tr>
                 <td>Nilai Pasar</td>
-                <td colspan="4">550.517.717</td>
+                <td>550.517.717</td>
               </tr>
               <tr>
                 <td>Dibulatkan</td>
-                <td colspan="4">550.572.000</td>
-              </tr>
-
-              <tr>
-                <th colspan="5">Harga Setelah Penyesuaian</th>
-              </tr>
-              <tr>
-                <td colspan="3">4.169.830</td>
-                <td colspan="3">4.171.244</td>
-                <td colspan="3">4.171.180</td>
+                <td>550.572.000</td>
               </tr>
             </table>
           </div>
         </div>
-        <div class="mt-10">
+        <div class="mt-5">
           <div id="map-tanah" style="height: 500px; width: 100%;"></div>
         </div>
 
