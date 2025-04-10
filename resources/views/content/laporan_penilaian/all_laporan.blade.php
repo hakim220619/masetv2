@@ -64,13 +64,13 @@
                         </div>
                         <div class="card-footer bg-transparent">
                             <div class="btn-group w-100">
-                                <a href="{{ route('laporan.edit', $report->id) }}" class="btn btn-sm btn-warning">
+                                <a href="#" class="btn btn-sm btn-warning">
                                     <i class="bi bi-pencil"></i> Edit
                                 </a>
                                 <button class="btn btn-sm btn-danger hapus-btn" data-id="{{ $report->id }}">
                                     <i class="bi bi-trash"></i> Hapus
                                 </button>
-                                <a href="{{ route('laporan.analisa', $report->id) }}" class="btn btn-sm btn-info">
+                                <a href="{{ route('laporan-penilaian.show', $report->id) }}" class="btn btn-sm btn-info">
                                     <i class="bi bi-table"></i> Analisa
                                 </a>
                             </div>

@@ -10,6 +10,7 @@ $configData = Helper::appClasses();
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css" />
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <div class="container">
   <h3 class="entry-title mb-4">{{ $report->judul_laporan . '-' . $report->nama_entitas . '-' . $report->alamat }}</h3>
 
@@ -20,43 +21,43 @@ $configData = Helper::appClasses();
           <tbody>
             <tr>
               <td><strong>Pemberi Tugas:</strong></td>
-              <td><strong>PT Bank Central Asia Tbk Kanwil II Semarang</strong></td>
+              <td><strong>{{ $report->nama_instansi_pemberi_tugas }}</strong></td>
             </tr>
             <tr>
               <td><strong>Tgl. Inspeksi:</strong></td>
-              <td>24 March 2025</td>
+              <td>{{ $report->tanggal_inspeksi->format('d F Y') }}</td>
             </tr>
             <tr>
               <td><strong>Tgl. Penilaian:</strong></td>
-              <td>24 March 2025</td>
+              <td>{{ $report->tanggal_penilaian->format('d F Y') }}</td>
             </tr>
             <tr>
               <td><strong>Tujuan Penilaian:</strong></td>
-              <td>Penilaian untuk kepentingan penjaminan utang</td>
+              <td>{{ $report->tujuan_penilaian }}</td>
             </tr>
             <tr>
               <td><strong>Tujuan Spesifik:</strong></td>
-              <td>Penjaminan Utang di PT Bank Central Asia Tbk KCU Yogyakarta</td>
+              <td>{{ $report->spesifik }}</td>
             </tr>
             <tr>
               <td><strong>Dasar Nilai:</strong></td>
-              <td>Nilai Pasar</td>
+              <td>{{ $report->dasar_nilai_spesifik }}</td>
             </tr>
             <tr>
               <td><strong>Tahun Penilaian:</strong></td>
-              <td>2025</td>
+              <td>{{ $report->tanggal_inspeksi->format('Y') }}</td>
             </tr>
             <tr>
               <td><strong>Prov/Kab/Kota:</strong></td>
-              <td>3402 Kab. Bantul</td>
+              <td>3402 Kab. Bantul (Statis)</td>
             </tr>
             <tr>
               <td><strong>IKK:</strong></td>
-              <td>89.1%</td>
+              <td>89.1% (Statis)</td>
             </tr>
             <tr>
               <td><strong>Lokasi Obyek:</strong></td>
-              <td>Perumahan Villa Tambak Kav.2, Jalan Tambak, Ngestiharjo, Kasihan, Kab. Bantul, Di Yogyakarta</td>
+              <td>{{ $report->alamat }}</td>
             </tr>
           </tbody>
         </table>
@@ -2196,6 +2197,13 @@ $configData = Helper::appClasses();
             <h4>Data Rumah/Bangunan Terpilih</h4>
             <form>
               <div class="mb-3">
+                <label class="form-label">Nomor ID Data Bangunan/Retail</label>
+                <select class="js-example-basic-multiple form-control" name="states[]" multiple="multiple">
+                  <option value="AL">ID Unique 1</option>
+                  <option value="AL">ID Unique 2</option>
+                </select>
+              </div>
+              <div class="mb-3">
                 <label class="form-label">Nomor ID Data 1</label>
                 <input type="number" class="form-control" value="245615">
               </div>
@@ -2223,7 +2231,6 @@ $configData = Helper::appClasses();
                 <input type="number" class="form-control" value="80456">
               </div>
             </form>
-
             <button type="button" class="btn btn-primary mt-3">Simpan Data Terpilih</button>
           </div>
           <div id="map" style="height: 500px; width: 100%;" class="mt-5"></div>
@@ -3160,14 +3167,262 @@ $configData = Helper::appClasses();
             </table>
           </div>
         </div>
-        <div class="mt-5">
-          <div id="map-tanah" style="height: 500px; width: 100%;"></div>
-        </div>
-
         {{-- Analisis --}}
         <div class="tab-pane fade" id="analisis">
           <h4>Analisis</h4>
-          <p>Konten untuk Analisis...</p>
+          <table class="table table-sm table-borderless mb-0" style="width: 35%;font-size:13px">
+            <tbody>
+              <tr>
+                <td style="width:68%">Skrap Bangunan :</td>
+                <td>
+                  <div  class="d-flex align-start">
+                    <input type="number" class="form-control form-control-sm" style="width:75%">%
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="width:68%">Skrap Sarana Pelengkap :</td>
+                <td>
+                  <div  class="d-flex align-start">
+                    <input type="number" class="form-control form-control-sm" style="width:75%">%
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mt-4">
+            <table class="table table-sm table-borderless mb-0" style="width: 35%;font-size:13px">
+              <tbody>
+                <tr>
+                  <td colspan="2"><strong>Indikasi Likuidasi</strong></td>
+                </tr>
+                <tr>
+                  <td style="width:68%">Tanah :</td>
+                  <td>
+                    <div  class="d-flex align-start">
+                      <input type="number" class="form-control form-control-sm" style="width:75%">%
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width:68%">Bangunan :</td>
+                  <td>
+                    <div  class="d-flex align-start">
+                      <input type="number" class="form-control form-control-sm" style="width:75%">%
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width:68%">Sarana Pelengkap :</td>
+                  <td>
+                    <div  class="d-flex align-start">
+                      <input type="number" class="form-control form-control-sm" style="width:75%">%
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width:68%">Mesin dan Peralatan :</td>
+                  <td>
+                    <div  class="d-flex align-start">
+                      <input type="number" class="form-control form-control-sm" style="width:75%">%
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-4">
+            <div class="table-responsive">
+              <table class="table table-sm table-bordered table-striped text-center" style="width: 200%;font-size: 12px">
+                <thead class="fw-bold" style="background-color: #162447;">
+                  <tr style="background-color: #162447;">
+                    <td rowspan="2" style="color: white;">No.</td>
+                    <td rowspan="2" style="color: white">Deskripsi</td>
+                    <td colspan="3" style="color: white">Tahun Bangunan</td>
+                    <td colspan="4" style="color: white">Umur</td>
+                    <td rowspan="2" style="color: white">SU Eko</td>
+                    <td rowspan="2" style="color: white">Qty</td>
+                    <td rowspan="2" style="color: white">Satuan</td>
+                    <td rowspan="2" style="color: white">RCN<br>Rp/Satuan</td>
+                    <td rowspan="2" style="color: white">Indikasi Nilai<br>Rp/Satuan</td>
+                    <td colspan="5" style="color: white">Penyusutan</td>
+                    <td colspan="2" rowspan="2" style="color: white">Kondisi Fisik</td>
+                    <td rowspan="2" style="color: white">RCN Total<br>Rp</td>
+                    <td rowspan="2" style="color: white">Nilai Pasar<br>Rp</td>
+                    <td rowspan="2" style="color: white">Indikasi Nilai Likuidasi<br>Rp</td>
+                  </tr>
+                  <tr>
+                    <td style="color: white">Aktual</td>
+                    <td style="color: white">Indikasi</td>
+                    <td style="color: white">Adjust</td>
+                    <td style="color: white">Ekonom</td>
+                    <td style="color: white">Aktual</td>
+                    <td style="color: white">Adjust</td>
+                    <td style="color: white">Efektif</td>
+                    <td style="color: white">Fisik</td>
+                    <td style="color: white">Fungsi</td>
+                    <td style="color: white">Ekonom</td>
+                    <td style="color: white">Maint</td>
+                    <td style="color: white">Total</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="fw-bold text-end">
+                    <td colspan="21">JUMLAH TANAH</td>
+                    <td>1.026.780.000</td>
+                    <td>1.026.780.000</td>
+                    <td>718.746.000</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="fw-bold text-end">
+                    <td colspan="21">JUMLAH BANGUNAN</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="fw-bold text-end">
+                    <td colspan="21">JUMLAH SARANA PELENGKAP LAINNYA</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                  </tr>
+                  <tr class="fw-bold text-end">
+                    <td colspan="21">JUMLAH</td>
+                    <td>1.026.780.000</td>
+                    <td>1.026.780.000</td>
+                    <td>718.746.000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="mt-5">
+            <form action="">
+              @csrf
+              <div class="row g-3">
+                <div class="form-group">
+                  <label><b>Status Input Data dari Reviewer</b></label><br>
+                  <div style="display: flex; gap: 10px;">
+                      <div>
+                          <input type="radio" id="draft" name="status_data" value="draft" checked>
+                          <label for="draft">Draft</label>
+                      </div>
+                      <div>
+                          <input type="radio" id="publish" name="status_data" value="publish">
+                          <label for="publish">Publish</label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-submit" type="submit">Update Data</button>
+            </form>
+          </div>
+        </div>
+        <div class="mt-5">
+          <div id="map-tanah" style="height: 500px; width: 100%;"></div>
         </div>
       </div>
     </div>
@@ -3176,7 +3431,6 @@ $configData = Helper::appClasses();
 
   </div>
 </div>
-
 <script>
         // Wait for the DOM to be fully loaded
         document.addEventListener('DOMContentLoaded', function() {
@@ -3226,6 +3480,7 @@ $configData = Helper::appClasses();
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var map = L.map('map').setView([1.966576931124596, 100.049384575934738], 13)
@@ -3273,4 +3528,11 @@ $configData = Helper::appClasses();
     map.invalidateSize();
   });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+  });
+</script>
+
 @endsection
