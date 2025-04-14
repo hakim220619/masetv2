@@ -20,7 +20,7 @@
                                 <button class="btn btn-danger btn-sm" title="Hapus">
                                     <i class="bi bi-trash"></i>
                                 </button>
-                                <a href="" class="btn btn-warning btn-sm" title="Edit">
+                                <a href="{{ route('laporan-penilaian.edit', $report->id) }}" class="btn btn-warning btn-sm" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </a>
                                 <a href="{{ route('laporan-penilaian.show', $report->id) }}" class="btn btn-info btn-sm" title="Analisa">

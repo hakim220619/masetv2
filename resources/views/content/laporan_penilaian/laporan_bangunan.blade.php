@@ -33,11 +33,11 @@ $configData = Helper::appClasses();
 <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css" />
 <h4>Tambah Laporan Penilaian – Tanah dan Bangunan</h4>
   <!-- Default -->
-  <div class="row">  
+  <div class="row">
     <!-- Default Icons Wizard -->
     <div class="col-12 mb-4">
       <div class="wizard-icons wizard-icons-example mt-2">
-        
+
         <div class="content">
           <form method="POST" action="{{ route('laporan-bangunan-store') }}" enctype="multipart/form-data">
             <!-- Account Details -->
@@ -47,21 +47,21 @@ $configData = Helper::appClasses();
                 <div class="form-group">
                   <label class="form-label" for="judul_laporan">Judul Laporan</label>
                   <input type="text" id="judul_laporan" name="judul_laporan" class="form-control"  />
-                </div>   
+                </div>
                 <div class="form-group">
                   <label class="form-label" for="nama_entitas">Nama Entitas</label>
                   <input type="text" id="nama_entitas" name="nama_entitas" class="form-control"  />
-                </div>                 
+                </div>
                 <div class="form-group">
                   <label class="form-label" for="judul_print_cover">Judul Print Cover Laporan untuk Umum</label>
                   <textarea class="form-control" name="judul_print_cover" id="judul_print_cover" cols="30" rows="10"></textarea>
-                </div>                 
+                </div>
                 <div class="form-group">
                     <label class="form-label" for="versi_btb">Versi BTP</label>
                     <?php
                     $currentYear = date("Y");
                     ?>
-  
+
                     <select class="form-select" name="versi_btb" id="versi_btb" aria-label="Default select example">
                         <?php
                         for ($i = 0; $i < 5; $i++) {
@@ -70,8 +70,8 @@ $configData = Helper::appClasses();
                         }
                         ?>
                     </select>
-                </div> 
-                
+                </div>
+
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="laporan_penilaian">Laporan Penilaian</label>
                   <table class="table table-borderless">
@@ -185,13 +185,13 @@ $configData = Helper::appClasses();
                     <select id="pengguna_laporan_khusus" name="pengguna_laporan_khusus" class="form-control" required>
                         <option value="" selected>- Select -</option>
                         <option value="Otoritas Jasa Keuangan">Otoritas Jasa Keuangan</option>
-                        <option value="Bursa Efek Indonesia">Bursa Efek Indonesia</option>                        
+                        <option value="Bursa Efek Indonesia">Bursa Efek Indonesia</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="kategori_kredit"><b>Kategori Kredit</b></label>
                     <input type="text" id="kategori_kredit" name="kategori_kredit" class="form-control" placeholder="Konsumer (KPR)" >
-                </div>                
+                </div>
                 <div class="form-group">
                     <label for="kategori_kredit_bca"><b>Kategori Kredit (khusus BCA)</b></label>
                     <select id="kategori_kredit_bca" name="kategori_kredit_bca" class="form-control" required>
@@ -199,11 +199,11 @@ $configData = Helper::appClasses();
                         <option value="Produktif">Produktif</option>
                         <option value="Konsumer">Konsumer</option>
                     </select>
-                </div>                
+                </div>
                 <div class="form-group">
                     <label for="tipe_jaminan"><b>Tipe Jaminan</b></label>
                     <input type="text" id="tipe_jaminan" name="tipe_jaminan" class="form-control" placeholder="Rumah Tinggal" >
-                </div>                
+                </div>
                 <div class="form-group">
                     <label for="lokasi_cabang_bank"><b>Lokasi Cabang Bank</b></label>
                     <input type="text" id="lokasi_cabang_bank" name="lokasi_cabang_bank" class="form-control" placeholder="BCA KCU Madiun" >
@@ -224,7 +224,7 @@ $configData = Helper::appClasses();
                 <div class="form-group">
                     <label for="dasar_nilai_spesifik"><b>Dasar Nilai Spesifik</b></label>
                     <input type="text" id="dasar_nilai_spesifik" name="dasar_nilai_spesifik" class="form-control" placeholder="">
-                </div>                
+                </div>
                 <div class="form-group">
                     <label><b>Pendekatan Penilaian</b></label>
                     <div>
@@ -282,15 +282,15 @@ $configData = Helper::appClasses();
                           <td><textarea type="text" id="alamat_lokasi_obyek" name="alamat_lokasi_obyek" class="form-control" > </textarea></td>
                       </tr>
                     </table>
-                </div>  
+                </div>
                 <div class="form-group">
                     <label for="tanggal_inspeksi"><b>Tanggal Inspeksi</b></label>
                     <input type="date" id="tanggal_inspeksi" name="tanggal_inspeksi" class="form-control">
-                </div>                
+                </div>
                 <div class="form-group">
                     <label for="tanggal_penilaian"><b>Tanggal Penilaian</b></label>
                     <input type="date" id="tanggal_penilaian" name="tanggal_penilaian" class="form-control">
-                </div> 
+                </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                     <label class="form-label" for="suku_bunga_pinjaman">Suku Bunga Pinjaman (Interest During Construction)</label>
                     <table class="table table-borderless">
@@ -310,7 +310,7 @@ $configData = Helper::appClasses();
                         <td><input type="file" id="screenshoot_sumber_suku_bunga_pinjaman" name="screenshoot_sumber_suku_bunga_pinjaman" class="form-control" /></td>
                       </tr>
                     </table>
-                </div>              
+                </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                     <label class="form-label" for="tim_penilai">Tim Penilai</label>
                     <table class="table table-borderless">
@@ -339,7 +339,7 @@ $configData = Helper::appClasses();
                         <td><input type="text" id="pj_tim_penilai" name="pj_tim_penilai" class="form-control"/></td>
                       </tr>
                     </table>
-                </div>  
+                </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                     <label class="form-label" for="pendamping_inpeksi">Pendamping Inspeksi</label>
                     <table class="table table-borderless">
@@ -359,7 +359,7 @@ $configData = Helper::appClasses();
                       </tr>
                       <tr>
                     </table>
-                </div>    
+                </div>
                 <div class="form-group">
                     <label><b>Kelengkapan Dokumen Yang Diterima</b></label><br>
                     <div>
@@ -378,14 +378,14 @@ $configData = Helper::appClasses();
                         <input type="checkbox" id="lainnya" name="kelengkapan_dokumen[]" value="Lainnya">
                         <label for="lainnya">Lainnya</label>
                     </div>
-                </div>                
+                </div>
                 <div class="form-group">
                     <label for="informasi_khusus"><b>Informasi Khusus</b></label><br>
                     <small class="form-text text-muted">
                         Informasi khusus terkait penugasan, kondisi objek, kendala inspeksi, dll (Sebagai pertimbangan reviewer)
                     </small>
                     <textarea id="informasi_khusus" name="informasi_khusus" class="form-control" rows="4"></textarea>
-                </div>                
+                </div>
                 <div class="form-group">
                     <label><b>Status Input Data dari Admin</b></label><br>
                     <div style="display: flex; gap: 10px;">
@@ -398,25 +398,25 @@ $configData = Helper::appClasses();
                             <label for="publish">Publish</label>
                         </div>
                     </div>
-                </div>         
+                </div>
               </div>
             </div>
-            </div>      
-             
+            </div>
+
             <button class="btn btn-success btn-submit" type="submit">Submit</button>
-          </form>        
+          </form>
     </div>
     <!-- /Default Icons Wizard -->
   </div>
-  
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="crossorigin=""></script>
 <script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
   var map = L.map('map').setView([1.966576931124596, 100.049384575934738], 13)
-          
+
           var accessToken = 'pk.eyJ1IjoicmVkb2syNSIsImEiOiJjbG1zdzZ1Y2MwZHA2MmxxYzdvYm12cTlwIn0.2GTgMV076x87YJQJzM34jg';
-  
+
           var satelliteLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' + accessToken, {
               attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a>',
               maxZoom: 30,

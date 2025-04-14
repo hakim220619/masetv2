@@ -237,10 +237,10 @@ class Lihat_pembandingController extends Controller
                     DB::raw("'foto' as foto"),
                     DB::raw("'link' as link"),
                     DB::raw("'tanah_kosong' as sumber"),
-                    DB::raw("6371 * acos(cos(radians(?)) 
-                    * cos(radians(lat)) 
-                    * cos(radians(`long`) - radians(?)) 
-                    + sin(radians(?)) 
+                    DB::raw("6371 * acos(cos(radians(?))
+                    * cos(radians(lat))
+                    * cos(radians(`long`) - radians(?))
+                    + sin(radians(?))
                     * sin(radians(lat))) AS distance")
                 )
                 ->addBinding([$lat, $lng, $lat]) // Binding untuk keamanan
@@ -272,10 +272,10 @@ class Lihat_pembandingController extends Controller
                     DB::raw("'foto' as foto"),
                     DB::raw("'link' as link"),
                     DB::raw("'pembanding_retail' as sumber"),
-                    DB::raw("6371 * acos(cos(radians(?)) 
-                    * cos(radians(lat)) 
-                    * cos(radians(`long`) - radians(?)) 
-                    + sin(radians(?)) 
+                    DB::raw("6371 * acos(cos(radians(?))
+                    * cos(radians(lat))
+                    * cos(radians(`long`) - radians(?))
+                    + sin(radians(?))
                     * sin(radians(lat))) AS distance")
                 )
                 ->addBinding([$lat, $lng, $lat]) // Binding untuk keamanan
@@ -314,10 +314,10 @@ class Lihat_pembandingController extends Controller
                     DB::raw("'foto' as foto"),
                     DB::raw("'link' as link"),
                     DB::raw("'pembanding_bangunan' as sumber"),
-                    DB::raw("6371 * acos(cos(radians(?)) 
-                    * cos(radians(lat)) 
-                    * cos(radians(`long`) - radians(?)) 
-                    + sin(radians(?)) 
+                    DB::raw("6371 * acos(cos(radians(?))
+                    * cos(radians(lat))
+                    * cos(radians(`long`) - radians(?))
+                    + sin(radians(?))
                     * sin(radians(lat))) AS distance")
                 )
                 ->addBinding([$lat, $lng, $lat]) // Binding untuk keamanan

@@ -391,6 +391,18 @@ class LaporanPenilaianController extends Controller
         return view('content.laporan_penilaian.all_laporan', compact('reports'));
     }
 
+    public function edit_laporan($id)
+    {
+        $report = LaporanPenilaian::find($id);
+        if ($report->kategori_laporan_penilaian == "Tanah dan Bangunan"){
+          return view('content.laporan_penilaian.edit.bangunan', compact('report'));
+        } elseif ($report->kategori_laporan_penilaian == "Tanah Kosong"){
+          return view('content.laporan_penilaian.edit.tanah_kosong', compact('report'));
+        } else {
+          return view('content.laporan_penilaian.edit.retail', compact('report'));
+        }
+    }
+
     public function analisa($id) {
         $report = LaporanPenilaian::find($id);
         return view('content.laporan_penilaian.analisa', compact('report'));

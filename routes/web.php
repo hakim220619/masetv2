@@ -274,6 +274,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/laporan_penilaian/semua_laporan', [LaporanPenilaianController::class, 'lihat_laporan'])->name('semua_laporan');
     Route::get('/laporan_penilaian/analisa/{id}', [LaporanPenilaianController::class, 'analisa'])->name('laporan-penilaian.show');
+    Route::get('/laporan_penilaian/edit/{id}', [LaporanPenilaianController::class, 'edit_laporan'])->name('laporan-penilaian.edit');
 
     // masterdata
     // Jenis Dokumen Hak Tanah
