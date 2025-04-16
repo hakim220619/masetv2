@@ -143,25 +143,6 @@ $configData = Helper::appClasses();
                    <input type="text" id="tujuan_spesifik" name="tujuan_spesifik" class="form-control" value="{{ old('tujuan_spesifik', $report->tujuan_spesifik) }}" />
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
-                    <label class="form-label" for="Debitur">Debitur</label>
-                    <table class="table table-borderless">
-                      <tr>
-                        <th>Nama Debitur</th>
-                        <th>Nama Yang Dihubungi</th>
-                      </tr>
-                      <tr>
-                        <td><input type="text" id="nama_debitur" name="nama_debitur" class="form-control" value="{{ old('nama_debitur', $report->nama_debitur) }}" /></td>
-                        <td><input type="text" id="nama_yang_dihubungi_debitur" name="nama_yang_dihubungi_debitur" class="form-control" value="{{ old('nama_yang_dihubungi_debitur', $report->nama_yang_dihubungi_debitur) }}"/></td>
-                      </tr>
-                      <tr>
-                          <th>No Telepon</th>
-                      </tr>
-                      <tr>
-                          <td><input type="text" id="no_telepon_debitur" name="no_telepon_debitur" class="form-control"no_telepon_debitur value="{{ old('telepon_pemberi_tugas', $report->telepon_pemberi_tugas) }}" /></td>
-                      </tr>
-                    </table>
-                </div>
-                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                     <label class="form-label" for="pengguna_laporan">Pengguna Laporan</label>
                     <table class="table table-borderless">
                       <tr>
@@ -177,46 +158,6 @@ $configData = Helper::appClasses();
                       </tr>
                       <tr>
                           <td><textarea type="text" id="alamat" name="alamat" class="form-control" >{{ old('alamat', $report->alamat) }}</textarea></td>
-                      </tr>
-                    </table>
-                </div>
-                <div class="form-group">
-                    <label for="pengguna_laporan_khusus"><b>Pengguna Laporan Khusus</b></label>
-                    <select id="pengguna_laporan_khusus" name="pengguna_laporan_khusus" class="form-control" required>
-                        <option value="Otoritas Jasa Keuangan" {{ old('pengguna_laporan_khusus', $report->pengguna_laporan_khusus) == "Otoritas Jasa Keuangan" ? 'selected' : '' }}>Otoritas Jasa Keuangan</option>
-                        <option value="Bursa Efek Indonesia" {{ old('pengguna_laporan_khusus', $report->pengguna_laporan_khusus) == 'Bursa Efek Indonesia' ? 'selected' : '' }}>Bursa Efek Indonesia</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="kategori_kredit"><b>Kategori Kredit</b></label>
-                    <input type="text" id="kategori_kredit" name="kategori_kredit" class="form-control" value="{{ old('kategori_kredit', $report->kategori_kredit) }}" placeholder="Konsumer (KPR)" >
-                </div>
-                <div class="form-group">
-                    <label for="kategori_kredit_bca"><b>Kategori Kredit (khusus BCA)</b></label>
-                    <select id="kategori_kredit_bca" name="kategori_kredit_bca" class="form-control" required>
-                        <option value="" selected>- Select -</option>
-                        <option value="Produktif">Produktif</option>
-                        <option value="Konsumer">Konsumer</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="tipe_jaminan"><b>Tipe Jaminan</b></label>
-                    <input type="text" id="tipe_jaminan" name="tipe_jaminan" class="form-control" placeholder="Rumah Tinggal" value="{{ old('tipe_jaminan', $report->tipe_jaminan) }}">
-                </div>
-                <div class="form-group">
-                    <label for="lokasi_cabang_bank"><b>Lokasi Cabang Bank</b></label>
-                    <input type="text" id="lokasi_cabang_bank" name="lokasi_cabang_bank" class="form-control" placeholder="BCA KCU Madiun" value="{{ old('lokasi_cabang_bank', $report->lokasi_cabang_bank) }}">
-                </div>
-                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
-                    <label class="form-label" for="bap_final">BAP / Final</label>
-                    <table class="table table-borderless">
-                      <tr>
-                        <th>Kota / Daerah</th>
-                        <th>Pilih Nama / Instansi</th>
-                      </tr>
-                      <tr>
-                        <td><input type="text" id="kota_bap_final" name="kota_bap_final" class="form-control" value="{{ old('kota_bap_final', $report->kota_bap_final) }}" /></td>
-                        <td><input type="text" id="pilih_nama_instansi_daerah_bap_final" name="pilih_nama_instansi_daerah_bap_final" class="form-control" value="{{ old('pilih_nama_instansi_daerah_bap_final', $report->pilih_nama_instansi_daerah_bap_final) }}"/></td>
                       </tr>
                     </table>
                 </div>
@@ -272,7 +213,7 @@ $configData = Helper::appClasses();
                       </tr>
                       <tr>
                         <td><input type="text" id="wil_admint2_lokasi_obyek" name="wil_admint2_lokasi_obyek" class="form-control" value="{{ old('wil_admint2_lokasi_obyek', $report->wil_admint2_lokasi_obyek) }}" /></td>
-                        <td><input type="text" id="wil_admint4_lokasi_obyek" name="wil_admint4_lokasi_obyek" class="form-control" value="{{ old('wil_admint_4_lokasi_obyek', $report->wil_admint_4_lokasi_obyek) }}" /></td>
+                        <td><input type="text" id="wil_admint4_lokasi_obyek" name="wil_admint4_lokasi_obyek" class="form-control" value="{{ old('wil_admint_4_lokasi_obyek', $report->wil_admint4_lokasi_obyek) }}" /></td>
                       </tr>
                       <tr>
                           <th>Alamat Lengkap (Laporan)</th>
@@ -284,7 +225,7 @@ $configData = Helper::appClasses();
                 </div>
                 <div class="form-group">
                     <label for="tanggal_inspeksi"><b>Tanggal Inspeksi</b></label>
-                    <input type="date" id="tanggal_inspeksi" name="tanggal_inspeksi" class="form-control">
+                    <input type="date" id="tanggal_inspeksi" name="tanggal_inspeksi" class="form-control" value="{{ old('tanggal_inspeksi', \Carbon\Carbon::parse($report->tanggal_inspeksi)->format('Y-m-d')) }}">
                 </div>
                 <div class="form-group">
                     <label for="tanggal_penilaian"><b>Tanggal Penilaian</b></label>
@@ -427,6 +368,237 @@ $configData = Helper::appClasses();
                     </small>
                     <textarea id="informasi_khusus" name="informasi_khusus" class="form-control" rows="4"></textarea>
                 </div>
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                  <label class="form-label" for="batas">Batas batas</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Timur</th>
+                      <th>Tenggara</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_timur" name="batas_timur" class="form-control" /></td>
+                      <td><input type="text" id="batas_tenggara" name="batas_tenggara" class="form-control"/></td>
+                    </tr>
+                    <tr>
+                      <th>Selatan</th>
+                      <th>Barat Daya</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_selatan" name="batas_selatan" class="form-control" /></td>
+                      <td><input type="text" id="batas_barat_daya" name="batas_barat_daya" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                      <th>Barat</th>
+                      <th>Barat Laut</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_barat" name="batas_barat" class="form-control" /></td>
+                      <td><input type="text" id="batas_barat_daya" name="batas_barat_daya" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                      <th>Utara</th>
+                      <th>Timur Laut</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_utara" name="batas_utara" class="form-control" /></td>
+                      <td><input type="text" id="batas_timur_laut" name="batas_timur_laut" class="form-control" /></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="form-group">
+                  <label for="dasar_nilai_spesifik"><b>Bentuk Kepemilikan</b></label>
+                  <input type="text" id="bentuk_kepemilikan" name="bentuk_kepemilikan" class="form-control" placeholder="Bentuk Kepemilikan">
+                </div>
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                  <label class="form-label" for="batas">Dokumen Tanah</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Jenis Dokumen Hak Tanah</th>
+                      <th>Nomor</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_timur" name="batas_timur" class="form-control" /></td>
+                      <td><input type="text" id="batas_tenggara" name="batas_tenggara" class="form-control"/></td>
+                    </tr>
+                    <tr>
+                      <th>Nama Pemegang Hak</th>
+                      <th>Tanggal Diterbitkan</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_selatan" name="batas_selatan" class="form-control" /></td>
+                      <td><input type="text" id="batas_barat_daya" name="batas_barat_daya" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                      <th>Tanggal Berakhir</th>
+                      <th>Nomor SU/GS</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_barat" name="batas_barat" class="form-control" /></td>
+                      <td><input type="text" id="batas_barat_daya" name="batas_barat_daya" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                      <th>Tanggal SU/GS</th>
+                      <th>Luas Tanah(m2)</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_utara" name="batas_utara" class="form-control" /></td>
+                      <td><input type="text" id="batas_timur_laut" name="batas_timur_laut" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                      <th>Kantor Agraria</th>
+                      <th>Kondisi Khusus (jika ada)</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_utara" name="batas_utara" class="form-control" /></td>
+                      <td><input type="text" id="batas_timur_laut" name="batas_timur_laut" class="form-control" /></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="form-group">
+                  <label for="dokumen_hak_tanah_print"><b>Dokumen Hak Tanah (print)</b></label><br>
+                  <small class="form-text text-muted">
+                      Informasi khusus terkait penugasan, kondisi objek, kendala inspeksi, dll (Sebagai pertimbangan reviewer)
+                  </small>
+                  <input type="text" id="dokumen_hak_tanah_print" name="dokumen_hak_tanah_print" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label for="keterangan_dokumen_tanah"><b>Keterangan Dokumen Tanah</b></label>
+                  <textarea id="keterangan_dokumen_tanah" name="keterangan_dokumen_tanah" class="form-control" rows="4"></textarea>
+                </div>
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                  <label class="form-label" for="batas">Dokumen IMB</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Nomor IMB</th>
+                      <th>Tanggal IMB</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_timur" name="batas_timur" class="form-control" /></td>
+                      <td><input type="text" id="batas_tenggara" name="batas_tenggara" class="form-control"/></td>
+                    </tr>
+                    <tr>
+                      <th>Diterbitkan Oleh</th>
+                      <th>Status IMB</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_selatan" name="batas_selatan" class="form-control" /></td>
+                      <td><input type="text" id="batas_barat_daya" name="batas_barat_daya" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                      <th>Nama Pemegang Ijin</th>
+                      <th>Peruntukan Bangunan Sesuai IMB</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_barat" name="batas_barat" class="form-control" /></td>
+                      <td><input type="text" id="batas_barat_daya" name="batas_barat_daya" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                      <th>Lokasi Bangunan Sesuai IMB</th>
+                      <th>No. Sertifikat Tanah atas hak tersebut di IMB</th>
+                    </tr>
+                    <tr class="align-top">
+                      <td><textarea id="keterangan_dokumen_tanah" name="keterangan_dokumen_tanah" class="form-control" rows="3"></textarea></td>
+                      <td><input type="text" id="batas_timur_laut" name="batas_timur_laut" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label class="form-label" for="Luas Bangunan Sesuai IMB">Luas Bangunan Sesuai IMB</label>
+                      </td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th>Nama Bangunan</th>
+                      <th>Luas(m2)</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_timur" name="batas_timur" class="form-control" /></td>
+                      <td><input type="text" id="batas_tenggara" name="batas_tenggara" class="form-control"/></td>
+                    </tr>
+                    <tr>
+                      <th>Keterangan</th>
+                    </tr>
+                    <tr>
+                      <td><textarea type="text" id="alamat_lokasi_obyek" name="alamat_lokasi_obyek" class="form-control" ></textarea></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="form-group">
+                  <label for="keterangan_dokumen_tanah"><b>Keterangan Dokumen IMB</b></label>
+                  <textarea id="keterangan_dokumen_tanah" name="keterangan_dokumen_tanah" class="form-control" rows="4"></textarea>
+                </div>
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                  <label class="form-label" for="lokasi_obyek">Peraturan Kawasan</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Peruntukan Kawasan</th>
+                      <th>Koefisien Dasar Bangunan(KDB)(%)</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="provinsi_obyek" name="provinsi_obyek" class="form-control" value="{{ old('provinsi_obyek', $report->provinsi_obyek) }}" /></td>
+                      <td><input type="text" id="kabupaten_lokasi_obyek" name="kabupaten_lokasi_obyek" class="form-control"  value="{{ old('kabupaten_lokasi_obyek', $report->kabupaten_lokasi_obyek) }}"/></td>
+                    </tr>
+                    <tr>
+                      <th>Koefisien Lantai Bangunan(KLB)</th>
+                      <th>Garis Sempadan Bangunan(GSB)(meter)</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="kecamatan_lokasi_obyek" name="kecamatan_lokasi_obyek" class="form-control" value="{{ old('kecamatan_lokasi_obyek', $report->kecamatan_lokasi_obyek) }}" /></td>
+                      <td><input type="text" id="kelurahan_lokasi_obyek" name="kelurahan_lokasi_obyek" class="form-control" value="{{ old('kelurahan_lokasi_obyek', $report->kelurahan_lokasi_obyek) }}"/></td>
+                    </tr>
+                    <tr>
+                      <th>Ketinggian(lantai)</th>
+                      <th>Terkena Rencana Jalan</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="kecamatan_lokasi_obyek" name="kecamatan_lokasi_obyek" class="form-control" value="{{ old('kecamatan_lokasi_obyek', $report->kecamatan_lokasi_obyek) }}" /></td>
+                      <td><input type="text" id="kelurahan_lokasi_obyek" name="kelurahan_lokasi_obyek" class="form-control" value="{{ old('kelurahan_lokasi_obyek', $report->kelurahan_lokasi_obyek) }}"/></td>
+                    </tr>
+                    <tr>
+                        <th>Penjelasan</th>
+                    </tr>
+                    <tr>
+                        <td><textarea type="text" id="alamat_lokasi_obyek" name="alamat_lokasi_obyek" class="form-control" ></textarea></td>
+                    </tr>
+                  </table>
+                </div>
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                  <label class="form-label" for="batas">Analisis Data</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>HBU</th>
+                      <th>Pendekatan Penilaian</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_timur" name="batas_timur" class="form-control" /></td>
+                      <td><input type="text" id="batas_tenggara" name="batas_tenggara" class="form-control"/></td>
+                    </tr>
+                  </table>
+                </div>
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                  <label class="form-label" for="batas">Asumsi Penilaian sesuai dengan Basis Nilai</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Syarat pembiayaan</th>
+                      <th>Kondisi penjualan</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_timur" name="batas_timur" class="form-control" /></td>
+                      <td><input type="text" id="batas_tenggara" name="batas_tenggara" class="form-control"/></td>
+                    </tr>
+                    <tr>
+                      <th>Pengeluaran yg dilakukan segera setelah pembelian</th>
+                      <th>Kondisi pasar</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="batas_timur" name="batas_timur" class="form-control" /></td>
+                      <td><input type="text" id="batas_tenggara" name="batas_tenggara" class="form-control"/></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="form-group">
+                  <label for="dokumen_hak_tanah_print"><b>Jenis Properti</b></label>
+                  <input type="text" id="dokumen_hak_tanah_print" name="dokumen_hak_tanah_print" class="form-control" />
+                </div>
                 <div class="form-group">
                     <label><b>Status Input Data dari Admin</b></label><br>
                     <div style="display: flex; gap: 10px;">
@@ -440,9 +612,9 @@ $configData = Helper::appClasses();
                         </div>
                     </div>
                 </div>
-              </div>
             </div>
-            </div>
+          </div>
+          </div>
 
             <button class="btn btn-success btn-submit" type="submit">Submit</button>
           </form>
