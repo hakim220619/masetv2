@@ -265,12 +265,14 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('/getCoordinates', [LaporanController::class, 'getCoordinates'])->name('getCoordinates');
 
     // Laporan Penilaian
+    Route::get('/laporan_penilaian/get_kabupaten', [LaporanPenilaianController::class, 'get_kabupaten'])->name('get-kabupaten');
     Route::get('/laporan_penilaian/bangunan', [LaporanPenilaianController::class, 'laporan_bangunan'])->name('laporan-bangunan');
     Route::get('/laporan_penilaian/tanah_kosong', [LaporanPenilaianController::class, 'laporan_tanah_kosong'])->name('laporan-tanah_kosong');
     Route::get('/laporan_penilaian/retail', [LaporanPenilaianController::class, 'laporan_retail'])->name('laporan-retail');
     Route::post('/laporan_penilaian/retail/store', [LaporanPenilaianController::class, 'store_laporan_retail'])->name('laporan-retail-store');
     Route::post('/laporan_penilaian/tanah_kosong/store', [LaporanPenilaianController::class, 'store_laporan_tanah_kosong'])->name('laporan-tanah_kosong-store');
     Route::post('/laporan_penilaian/bangunan/store', [LaporanPenilaianController::class, 'store_laporan_bangunan'])->name('laporan-bangunan-store');
+
 
     Route::get('/laporan_penilaian/semua_laporan', [LaporanPenilaianController::class, 'lihat_laporan'])->name('semua_laporan');
     Route::get('/laporan_penilaian/analisa/{id}', [LaporanPenilaianController::class, 'analisa'])->name('laporan-penilaian.show');
