@@ -12,7 +12,22 @@ class LaporanPenilaianController extends Controller
 {
     public function laporan_bangunan()
     {
-        return view('content.laporan_penilaian.laporan_bangunan');
+      $provinsi = DB::table('ikk')
+        ->select('nama_provinsi')
+        ->distinct()
+        ->get();
+      return view('content.laporan_penilaian.laporan_bangunan',compact('provinsi'));
+    }
+
+    public function get_kabupaten(Request $request){
+      $nama_provinsi = $request->input('nama_provinsi');
+      $kabupaten = DB::table('ikk')
+        ->select('nama_kabupaten_kota')
+        ->where('nama_provinsi', $nama_provinsi)
+        ->where('nama_kabupaten_kota', '!=', $nama_provinsi)
+        ->get();
+      return response()->json($kabupaten);
+
     }
     public function laporan_tanah_kosong()
     {
