@@ -248,8 +248,19 @@ $configData = Helper::appClasses();
                         <th>Kabupaten</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="provinsi_obyek" name="provinsi_obyek" class="form-control" /></td>
-                        <td><input type="text" id="kabupaten_lokasi_obyek" name="kabupaten_lokasi_obyek" class="form-control"/></td>
+                        <td>
+                          <select id="provinsi_obyek" name="provinsi_obyek" class="form-select">
+                            <option value="" selected>- Pilih Provinsi -</option>
+                            @foreach ($provinsi as $item)
+                              <option value="{{ $item->nama_provinsi }}">{{ $item->nama_provinsi }}</option>
+                            @endforeach
+                          </select>
+                        </td>
+                        <td>
+                          <select id="kabupaten_obyek" name="kabupaten_obyek" class="form-select">
+                            <option value="">- Pilih Kabupaten -</option>
+                          </select>
+                        </td>
                       </tr>
                       <tr>
                         <th>Kecamatan</th>
@@ -411,6 +422,8 @@ $configData = Helper::appClasses();
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="crossorigin=""></script>
 <script src="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
   var map = L.map('map').setView([1.966576931124596, 100.049384575934738], 13)
@@ -557,5 +570,33 @@ $configData = Helper::appClasses();
     });
 </script>
 @endif
+
+<script>
+  $('#provinsi_obyek').on('change', function() {
+    let provinsi = $(this).val();
+
+    if (provinsi !== '') {
+
+      $.ajax({
+        url: "{{ route('get-kabupaten') }}",
+        type: 'GET',
+        data: { nama_provinsi: provinsi },
+        success: function(response) {
+          let options = '<option value="">-- Pilih Kabupaten --</option>';
+          response.forEach(function(item) {
+            options += `<option value="${item.kode}">${item.nama_kabupaten_kota}</option>`;
+          });
+
+          $('#kabupaten_obyek').html(options);
+        },
+        error: function(xhr) {
+          console.log('Gagal ambil data:', xhr.responseText);
+        }
+      });
+    } else {
+      $('#kabupaten_obyek').html('<option value="">-- Pilih Kabupaten --</option>');
+    }
+  });
+</script>
 
 @endsection
