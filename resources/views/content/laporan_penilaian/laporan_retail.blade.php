@@ -33,11 +33,11 @@ $configData = Helper::appClasses();
 <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css" />
 <h4>Tambah Laporan Penilaian – Office/Retail/Apartemen</h4>
   <!-- Default -->
-  <div class="row">  
+  <div class="row">
     <!-- Default Icons Wizard -->
     <div class="col-12 mb-4">
       <div class="wizard-icons wizard-icons-example mt-2">
-        
+
         <div class="content">
           <form method="POST" action="{{ route('laporan-retail-store') }}" enctype="multipart/form-data">
             <!-- Account Details -->
@@ -47,21 +47,21 @@ $configData = Helper::appClasses();
                 <div class="form-group">
                   <label class="form-label" for="judul_laporan">Judul Laporan</label>
                   <input type="text" id="judul_laporan" name="judul_laporan" class="form-control"  />
-                </div>   
+                </div>
                 <div class="form-group">
                   <label class="form-label" for="nama_entitas">Nama Entitas</label>
                   <input type="text" id="nama_entitas" name="nama_entitas" class="form-control"  />
-                </div>                 
+                </div>
                 <div class="form-group">
                   <label class="form-label" for="judul_print_cover">Judul Print Cover Laporan untuk Umum</label>
                   <textarea class="form-control" name="judul_print_cover" id="judul_print_cover" cols="30" rows="10"></textarea>
-                </div>                 
+                </div>
                 <div class="form-group">
                     <label class="form-label" for="versi_btb">Versi BTP</label>
                     <?php
                     $currentYear = date("Y");
                     ?>
-  
+
                     <select class="form-select" name="versi_btb" id="versi_btb" aria-label="Default select example">
                         <?php
                         for ($i = 0; $i < 5; $i++) {
@@ -70,8 +70,8 @@ $configData = Helper::appClasses();
                         }
                         ?>
                     </select>
-                </div> 
-                
+                </div>
+
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="laporan_penilaian">Laporan Penilaian</label>
                   <table class="table table-borderless">
@@ -185,13 +185,13 @@ $configData = Helper::appClasses();
                     <select id="pengguna_laporan_khusus" name="pengguna_laporan_khusus" class="form-control" required>
                         <option value="" selected>- Select -</option>
                         <option value="Otoritas Jasa Keuangan">Otoritas Jasa Keuangan</option>
-                        <option value="Bursa Efek Indonesia">Bursa Efek Indonesia</option>                        
+                        <option value="Bursa Efek Indonesia">Bursa Efek Indonesia</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="kategori_kredit"><b>Kategori Kredit</b></label>
                     <input type="text" id="kategori_kredit" name="kategori_kredit" class="form-control"  placeholder="Konsumer (KPR)">
-                </div>                
+                </div>
                 <div class="form-group">
                     <label for="kategori_kredit_bca"><b>Kategori Kredit (khusus BCA)</b></label>
                     <select id="kategori_kredit_bca" name="kategori_kredit_bca" class="form-control" required>
@@ -199,11 +199,11 @@ $configData = Helper::appClasses();
                         <option value="Produktif">Produktif</option>
                         <option value="Konsumer">Konsumer</option>
                     </select>
-                </div>                
+                </div>
                 <div class="form-group">
                     <label for="tipe_jaminan"><b>Tipe Jaminan</b></label>
                     <input type="text" id="tipe_jaminan" name="tipe_jaminan" class="form-control" placeholder="Rumah Tinggal">
-                </div>                
+                </div>
                 <div class="form-group">
                     <label for="lokasi_cabang_bank"><b>Lokasi Cabang Bank</b></label>
                     <input type="text" id="lokasi_cabang_bank" name="lokasi_cabang_bank" class="form-control" placeholder="BCA KCU Madiun">
@@ -224,7 +224,7 @@ $configData = Helper::appClasses();
                 <div class="form-group">
                     <label for="dasar_nilai_spesifik"><b>Dasar Nilai Spesifik</b></label>
                     <input type="text" id="dasar_nilai_spesifik" name="dasar_nilai_spesifik" class="form-control" placeholder="">
-                </div>                
+                </div>
                 <div class="form-group">
                     <label><b>Pendekatan Penilaian</b></label>
                     <div>
@@ -241,56 +241,67 @@ $configData = Helper::appClasses();
                     </div>
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
-                    <label class="form-label" for="lokasi_obyek">Lokasi Obyek</label>
-                    <table class="table table-borderless">
-                      <tr>
-                        <th>Provinsi</th>
-                        <th>Kabupaten</th>
-                      </tr>
-                      <tr>
-                        <td><input type="text" id="provinsi_obyek" name="provinsi_obyek" class="form-control" /></td>
-                        <td><input type="text" id="kabupaten_lokasi_obyek" name="kabupaten_lokasi_obyek" class="form-control"/></td>
-                      </tr>
-                      <tr>
-                        <th>Kecamatan</th>
-                        <th>Kelurahan</th>
-                      </tr>
-                      <tr>
-                        <td><input type="text" id="kecamatan_lokasi_obyek" name="kecamatan_lokasi_obyek" class="form-control" /></td>
-                        <td><input type="text" id="kelurahan_lokasi_obyek" name="kelurahan_lokasi_obyek" class="form-control"/></td>
-                      </tr>
-                      <tr>
-                        <th>Jalan/No/RT/RW</th>
-                        <th>Kode Pos</th>
-                      </tr>
-                      <tr>
-                        <td><input type="text" id="rt_rw_lokasi_obyek" name="rt_rw_lokasi_obyek" class="form-control" /></td>
-                        <td><input type="text" id="kode_pos_rt_rw_lokasi_obyek" name="kode_pos_rt_rw_lokasi_obyek" class="form-control"/></td>
-                      </tr>
-                      <tr>
-                        <th>Wilayah Administratif Tingkat II (Laporan)</th>
-                        <th>Wilayah Administratif Tingkat IV (Laporan)</th>
-                      </tr>
-                      <tr>
-                        <td><input type="text" id="wil_admint2_lokasi_obyek" name="wil_admint2_lokasi_obyek" class="form-control" /></td>
-                        <td><input type="text" id="wil_admint4_lokasi_obyek" name="wil_admint4_lokasi_obyek" class="form-control"/></td>
-                      </tr>
-                      <tr>
-                          <th>Alamat Lengkap (Laporan)</th>
-                      </tr>
-                      <tr>
-                          <td><textarea type="text" id="alamat_lokasi_obyek" name="alamat_lokasi_obyek" class="form-control" > </textarea></td>
-                      </tr>
-                    </table>
-                </div>  
+                  <label class="form-label" for="lokasi_obyek">Lokasi Obyek</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Provinsi</th>
+                      <th>Kabupaten</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <select id="provinsi_obyek" name="provinsi_obyek" class="form-select">
+                          <option value="" selected>- Pilih Provinsi -</option>
+                          @foreach ($provinsi as $item)
+                            <option value="{{ $item->nama_provinsi }}">{{ $item->nama_provinsi }}</option>
+                          @endforeach
+                        </select>
+                      </td>
+                      <td>
+                        <select id="kabupaten_obyek" name="kabupaten_lokasi_obyek" class="form-select">
+                          <option value="">- Pilih Kabupaten -</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Kecamatan</th>
+                      <th>Kelurahan</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="kecamatan_lokasi_obyek" name="kecamatan_lokasi_obyek" class="form-control" /></td>
+                      <td><input type="text" id="kelurahan_lokasi_obyek" name="kelurahan_lokasi_obyek" class="form-control"/></td>
+                    </tr>
+                    <tr>
+                      <th>Jalan/No/RT/RW</th>
+                      <th>Kode Pos</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="rt_rw_lokasi_obyek" name="rt_rw_lokasi_obyek" class="form-control" /></td>
+                      <td><input type="text" id="kode_pos_rt_rw_lokasi_obyek" name="kode_pos_rt_rw_lokasi_obyek" class="form-control"/></td>
+                    </tr>
+                    <tr>
+                      <th>Wilayah Administratif Tingkat II (Laporan)</th>
+                      <th>Wilayah Administratif Tingkat IV (Laporan)</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="wil_admint2_lokasi_obyek" name="wil_admint2_lokasi_obyek" class="form-control" /></td>
+                      <td><input type="text" id="wil_admint4_lokasi_obyek" name="wil_admint4_lokasi_obyek" class="form-control"/></td>
+                    </tr>
+                    <tr>
+                        <th>Alamat Lengkap (Laporan)</th>
+                    </tr>
+                    <tr>
+                        <td><textarea type="text" id="alamat_lokasi_obyek" name="alamat_lokasi_obyek" class="form-control" > </textarea></td>
+                    </tr>
+                  </table>
+                </div>
                 <div class="form-group">
                     <label for="tanggal_inspeksi"><b>Tanggal Inspeksi</b></label>
                     <input type="date" id="tanggal_inspeksi" name="tanggal_inspeksi" class="form-control">
-                </div>                
+                </div>
                 <div class="form-group">
                     <label for="tanggal_penilaian"><b>Tanggal Penilaian</b></label>
                     <input type="date" id="tanggal_penilaian" name="tanggal_penilaian" class="form-control">
-                </div> 
+                </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                     <label class="form-label" for="suku_bunga_pinjaman">Suku Bunga Pinjaman (Interest During Construction)</label>
                     <table class="table table-borderless">
@@ -310,7 +321,7 @@ $configData = Helper::appClasses();
                         <td><input type="file" id="screenshoot_sumber_suku_bunga_pinjaman" name="screenshoot_sumber_suku_bunga_pinjaman" class="form-control" /></td>
                       </tr>
                     </table>
-                </div>              
+                </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                     <label class="form-label" for="tim_penilai">Tim Penilai</label>
                     <table class="table table-borderless">
@@ -339,7 +350,7 @@ $configData = Helper::appClasses();
                         <td><input type="text" id="pj_tim_penilai" name="pj_tim_penilai" class="form-control"/></td>
                       </tr>
                     </table>
-                </div>  
+                </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                     <label class="form-label" for="pendamping_inpeksi">Pendamping Inspeksi</label>
                     <table class="table table-borderless">
@@ -359,7 +370,7 @@ $configData = Helper::appClasses();
                       </tr>
                       <tr>
                     </table>
-                </div>    
+                </div>
                 <div class="form-group">
                     <label><b>Kelengkapan Dokumen Yang Diterima</b></label><br>
                     <div>
@@ -378,7 +389,7 @@ $configData = Helper::appClasses();
                         <input type="checkbox" id="lainnya" name="kelengkapan_dokumen[]" value="Lainnya">
                         <label for="lainnya">Lainnya</label>
                     </div>
-                </div>    
+                </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="izin_layak_huni">Izin Layak Huni</label>
                   <table class="table table-borderless">
@@ -391,7 +402,7 @@ $configData = Helper::appClasses();
                       <td><input type="text" id="no_izin_layak_huni" name="no_izin_layak_huni" class="form-control"/></td>
                     </tr>
                   </table>
-                </div>  
+                </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="akta_pemisahan">Akta Pemisahan</label>
                   <table class="table table-borderless">
@@ -420,14 +431,14 @@ $configData = Helper::appClasses();
                       <td><input type="text" id="no_pengesahan_akta_pemisahan" name="no_pengesahan_akta_pemisahan" class="form-control"/></td>
                     </tr>
                   </table>
-                </div>            
+                </div>
                 <div class="form-group">
                     <label for="informasi_khusus"><b>Informasi Khusus</b></label><br>
                     <small class="form-text text-muted">
                         Informasi khusus terkait penugasan, kondisi objek, kendala inspeksi, dll (Sebagai pertimbangan reviewer)
                     </small>
                     <textarea id="informasi_khusus" name="informasi_khusus" class="form-control" rows="4"></textarea>
-                </div>                
+                </div>
                 <div class="form-group">
                     <label><b>Status Input Data dari Admin</b></label><br>
                     <div style="display: flex; gap: 10px;">
@@ -440,13 +451,13 @@ $configData = Helper::appClasses();
                             <label for="publish">Publish</label>
                         </div>
                     </div>
-                </div>         
+                </div>
               </div>
             </div>
-            </div>      
-             
+            </div>
+
             <button class="btn btn-success btn-submit" type="submit">Submit</button>
-          </form>        
+          </form>
     </div>
     <!-- /Default Icons Wizard -->
   </div>
@@ -463,5 +474,35 @@ $configData = Helper::appClasses();
     });
 </script>
 @endif
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+  $('#provinsi_obyek').on('change', function() {
+    let provinsi = $(this).val();
+
+    if (provinsi !== '') {
+
+      $.ajax({
+        url: "{{ route('get-kabupaten') }}",
+        type: 'GET',
+        data: { nama_provinsi: provinsi },
+        success: function(response) {
+          let options = '<option value="">-- Pilih Kabupaten --</option>';
+          response.forEach(function(item) {
+            options += `<option value="${item.kode}">${item.nama_kabupaten_kota}</option>`;
+          });
+
+          $('#kabupaten_obyek').html(options);
+        },
+        error: function(xhr) {
+          console.log('Gagal ambil data:', xhr.responseText);
+        }
+      });
+    } else {
+      $('#kabupaten_obyek').html('<option value="">-- Pilih Kabupaten --</option>');
+    }
+  });
+</script>
 
 @endsection

@@ -22,7 +22,7 @@ class LaporanPenilaianController extends Controller
     public function get_kabupaten(Request $request){
       $nama_provinsi = $request->input('nama_provinsi');
       $kabupaten = DB::table('ikk')
-        ->select('nama_kabupaten_kota')
+        ->select('kode','nama_kabupaten_kota')
         ->where('nama_provinsi', $nama_provinsi)
         ->where('nama_kabupaten_kota', '!=', $nama_provinsi)
         ->get();
@@ -31,11 +31,19 @@ class LaporanPenilaianController extends Controller
     }
     public function laporan_tanah_kosong()
     {
-        return view('content.laporan_penilaian.laporan_tanah_kosong');
+      $provinsi = DB::table('ikk')
+        ->select('nama_provinsi')
+        ->distinct()
+        ->get();
+      return view('content.laporan_penilaian.laporan_tanah_kosong',compact('provinsi'));
     }
     public function laporan_retail()
     {
-        return view('content.laporan_penilaian.laporan_retail');
+      $provinsi = DB::table('ikk')
+        ->select('nama_provinsi')
+        ->distinct()
+        ->get();
+      return view('content.laporan_penilaian.laporan_retail',compact('provinsi'));
     }
     public function store_laporan_retail(Request $request)
     {
@@ -420,7 +428,12 @@ class LaporanPenilaianController extends Controller
 
     public function analisa($id) {
         $report = LaporanPenilaian::find($id);
-        return view('content.laporan_penilaian.analisa', compact('report'));
+        $ikk = DB::table('ikk')
+        ->select('ikk_mappi','nama_kabupaten_kota')
+        ->where('kode',$report->kabupaten_lokasi_obyek)
+        ->first();
+        $ikk->ikk_mappi = $ikk->ikk_mappi*100;
+        return view('content.laporan_penilaian.analisa', compact('report','ikk'));
     }
 
     public function getData(Request $request){

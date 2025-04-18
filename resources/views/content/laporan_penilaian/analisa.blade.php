@@ -37,7 +37,7 @@ $configData = Helper::appClasses();
             </tr>
             <tr>
               <td><strong>Tujuan Spesifik:</strong></td>
-              <td>{{ $report->spesifik }}</td>
+              <td>{{ $report->tujuan_spesifik }}</td>
             </tr>
             <tr>
               <td><strong>Dasar Nilai:</strong></td>
@@ -49,11 +49,11 @@ $configData = Helper::appClasses();
             </tr>
             <tr>
               <td><strong>Prov/Kab/Kota:</strong></td>
-              <td>3402 Kab. Bantul (Statis)</td>
+              <td>{{ $report->provinsi_obyek }}/{{ $ikk->nama_kabupaten_kota }}</td>
             </tr>
             <tr>
               <td><strong>IKK:</strong></td>
-              <td>89.1% (Statis)</td>
+              <td>{{ $ikk->ikk_mappi }}%</td>
             </tr>
             <tr>
               <td><strong>Lokasi Obyek:</strong></td>
