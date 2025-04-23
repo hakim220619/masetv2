@@ -4,7 +4,7 @@ $configData = Helper::appClasses();
 
 @extends('layouts/layoutMaster')
 
-@section('title', 'Bangunan')
+@section('title', 'Retail')
 
 @section('vendor-style')
 @vite([

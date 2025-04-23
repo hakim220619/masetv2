@@ -80,8 +80,9 @@
             @endforeach
         </div>
 
-        <div class="mt-4 d-flex justify-content-center">
-            {{ $reports->links() }}
+        <div class="mt-4">
+            {{ $reports->links('pagination::bootstrap-5') }}
+
         </div>
     </div>
 @endsection

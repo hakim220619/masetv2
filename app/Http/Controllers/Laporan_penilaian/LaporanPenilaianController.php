@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Laporan_penilaian;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bangunan;
 use App\Models\LaporanPenilaian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -417,12 +418,13 @@ class LaporanPenilaianController extends Controller
     public function edit_laporan($id)
     {
         $report = LaporanPenilaian::find($id);
+        $objects = Bangunan::all();
         if ($report->kategori_laporan_penilaian == "Tanah dan Bangunan"){
-          return view('content.laporan_penilaian.edit.bangunan', compact('report'));
+          return view('content.laporan_penilaian.edit.bangunan', compact('report','objects'));
         } elseif ($report->kategori_laporan_penilaian == "Tanah Kosong"){
-          return view('content.laporan_penilaian.edit.tanah_kosong', compact('report'));
+          return view('content.laporan_penilaian.edit.tanah_kosong', compact('report','objects'));
         } else {
-          return view('content.laporan_penilaian.edit.retail', compact('report'));
+          return view('content.laporan_penilaian.edit.retail', compact('report','objects'));
         }
     }
 

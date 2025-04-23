@@ -49,7 +49,7 @@ $configData = Helper::appClasses();
             </tr>
             <tr>
               <td><strong>Prov/Kab/Kota:</strong></td>
-              <td>{{ $report->provinsi_obyek }}/{{ $ikk->nama_kabupaten_kota }}</td>
+              <td>{{ $report->kabupaten_lokasi_obyek }} {{ $ikk->nama_kabupaten_kota }}</td>
             </tr>
             <tr>
               <td><strong>IKK:</strong></td>
@@ -3432,48 +3432,48 @@ $configData = Helper::appClasses();
   </div>
 </div>
 <script>
-        // Wait for the DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize the map
-            var map = L.map('map-tanah').setView([-7.7470, 110.4135], 13); // Adjusted zoom level
+    // Wait for the DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize the map
+        var map = L.map('map-tanah').setView([-7.7470, 110.4135], 13); // Adjusted zoom level
 
-            // Mapbox Streets tile layer with access token
-            var accessToken = 'pk.eyJ1IjoicmVkb2syNSIsImEiOiJjbG1zdzZ1Y2MwZHA2MmxxYzdvYm12cTlwIn0.2GTgMV076x87YJQJzM34jg';
-            L.tileLayer(`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${accessToken}`, {
-                attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-                tileSize: 512,
-                maxZoom: 18,
-                zoomOffset: -1
-            }).addTo(map);
+        // Mapbox Streets tile layer with access token
+        var accessToken = 'pk.eyJ1IjoicmVkb2syNSIsImEiOiJjbG1zdzZ1Y2MwZHA2MmxxYzdvYm12cTlwIn0.2GTgMV076x87YJQJzM34jg';
+        L.tileLayer(`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${accessToken}`, {
+            attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            tileSize: 512,
+            maxZoom: 18,
+            zoomOffset: -1
+        }).addTo(map);
 
-            // Marker Locations based on the data in the table
-            var locations = [
-                { lat: -7.7470483875415, lng: 110.41352888460638, label: "LOKASI ASET (Data Pembanding 1)" },
-                { lat: -7.7484655830141, lng: 110.41394148223, label: "LOKASI DATA PEMBANDING 2" },
-                { lat: -7.7508334334178, lng: 110.41601276057932, label: "LOKASI DATA PEMBANDING 3" }
-            ];
+        // Marker Locations based on the data in the table
+        var locations = [
+            { lat: -7.7470483875415, lng: 110.41352888460638, label: "LOKASI ASET (Data Pembanding 1)" },
+            { lat: -7.7484655830141, lng: 110.41394148223, label: "LOKASI DATA PEMBANDING 2" },
+            { lat: -7.7508334334178, lng: 110.41601276057932, label: "LOKASI DATA PEMBANDING 3" }
+        ];
 
-            // Add Markers and Popups
-            locations.forEach(function(location, index) {
-                var markerColor = index === 0 ? 'red' : 'blue'; // First marker in red, others in blue
-                var icon = L.divIcon({
-                    className: 'custom-marker',
-                    html: `<div style="background-color:${markerColor};width:20px;height:20px;border-radius:50%;border:2px solid white;"></div>`,
-                    iconSize: [20, 20],
-                    iconAnchor: [10, 10]
-                });
-
-                L.marker([location.lat, location.lng], {icon: icon}).addTo(map)
-                    .bindPopup(`<div class="custom-label">${location.label}</div>`)
-                    .openPopup(); // Show labels by default
+        // Add Markers and Popups
+        locations.forEach(function(location, index) {
+            var markerColor = index === 0 ? 'red' : 'blue'; // First marker in red, others in blue
+            var icon = L.divIcon({
+                className: 'custom-marker',
+                html: `<div style="background-color:${markerColor};width:20px;height:20px;border-radius:50%;border:2px solid white;"></div>`,
+                iconSize: [20, 20],
+                iconAnchor: [10, 10]
             });
 
-            // Ensure map resizes correctly
-            setTimeout(function() {
-                map.invalidateSize();
-            }, 400);
+            L.marker([location.lat, location.lng], {icon: icon}).addTo(map)
+                .bindPopup(`<div class="custom-label">${location.label}</div>`)
+                .openPopup(); // Show labels by default
         });
-    </script>
+
+        // Ensure map resizes correctly
+        setTimeout(function() {
+            map.invalidateSize();
+        }, 400);
+    });
+</script>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
   integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
