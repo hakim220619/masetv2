@@ -33,7 +33,7 @@ $configData = Helper::appClasses();
       <div class="wizard-icons wizard-icons-example mt-2">
 
         <div class="content">
-          <form method="POST" action="#" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('laporan-penilaian.edit.bangunan', $report->id) }}" enctype="multipart/form-data">
             <!-- Account Details -->
             @csrf
             <div id="account-details" class="content">
@@ -115,7 +115,7 @@ $configData = Helper::appClasses();
                 </div>
                 <div class="form-group">
                     <label for="tujuan_penilaian"><b>Tujuan Penilaian sesuai SPI</b></label>
-                    <select id="tujuan_penilaian" name="tujuan_penilaian" class="form-control" required>
+                    <select id="tujuan_penilaian" name="tujuan_penilaian" class="form-control" >
                         <option value="">- Select -</option>
                         <option value="jual_beli" {{ old('tujuan_penilaian', $report->tujuan_penilaian) == "jual_beli" ? 'selected' : '' }}>Penilaian untuk kepentingan jual beli</option>
                         <option value="lelang_jual_beli_terbatas" {{ old('tujuan_penilaian', $report->tujuan_penilaian) == "lelang_jual_beli_terbatas" ? 'selected' : '' }}>Penilaian untuk tujuan lelang atau kepentingan jual beli dalam waktu terbatas</option>
@@ -380,7 +380,7 @@ $configData = Helper::appClasses();
                           <!-- Isi baris input seperti sebelumnya -->
                           <tr>
                             <td>
-                              <select name="dokumen_hak_tanah_jenis[]" class="form-control" required>
+                              <select name="dokumen_hak_tanah_jenis[]" class="form-control" >
                                 <option value="">- Select -</option>
                                 <option value="Hak Milik">Hak Milik</option>
                                 <option value="Hak Guna Bangunan">Hak Guna Bangunan</option>
@@ -416,7 +416,7 @@ $configData = Helper::appClasses();
                             <th>Luas Tanah(m2)</th>
                           </tr>
                           <tr>
-                            <td><input type="text" name="dokumen_hak_tanah_tanggal_su/sg[]" class="form-control" /></td>
+                            <td><input type="text" name="dokumen_hak_tanah_tgl_su/sg[]" class="form-control" /></td>
                             <td><input type="text" name="dokumen_hak_tanah_luas_tanah[]" class="form-control" /></td>
                           </tr>
                           <tr>
@@ -585,7 +585,7 @@ $configData = Helper::appClasses();
                 </div>
                 <div class="form-group">
                   <label for="jenis_bangunan"><b>Jenis Bangunan</b></label><br>
-                  <input type="checkbox" id="rukoCheckbox" name="jenis_bangunan" value="ruko_rukan">
+                  <input type="checkbox" id="rukoCheckbox" name="jenis_bangunan[]" value="ruko_rukan">
                   Ruko / Rukan
                 </div>
                 <!-- Container untuk input tambahan -->
@@ -646,8 +646,8 @@ $configData = Helper::appClasses();
                       <tbody>
                           <tr>
                               <td class="row-number">1</td>
-                              <td><input type="number" name="tahun[]" class="form-control" /></td>
-                              <td><input type="number" name="nilai_perolehan[]" class="form-control" />
+                              <td><input type="number" name="njop_tahun[]" class="form-control" /></td>
+                              <td><input type="number" name="njop_nilai_perolehan[]" class="form-control" />
                               </td>
                               <td>
                                 <button type="button" class="btn btn-sm btn-action" onclick="addRowNjop()" style="color: rgb(0, 132, 255)">+</button><br>
@@ -676,7 +676,7 @@ $configData = Helper::appClasses();
                 </div>
                 <div class="form-group">
                   <label for="penggunaan_lahan"><b>Penggunaan Lahan Lingkungan Eksisting</b></label>
-                  <select id="penggunaan_lahan" name="penggunaan_lahan" class="form-control" required>
+                  <select id="penggunaan_lahan" name="penggunaan_lahan" class="form-control" >
                       <option value="">- Select -</option>
                       <option value="perumahan_pemukiman" {{ old('penggunaan_lahan') == "perumahan_pemukiman" ? 'selected' : '' }}>Perumahan / Pemukiman</option>
                       <option value="campuran" {{ old('penggunaan_lahan') == "campuran" ? 'selected' : '' }}>Campuran</option>
@@ -684,7 +684,7 @@ $configData = Helper::appClasses();
                 </div>
                 <div class="form-group">
                   <label for="posisi_obyek"><b>Letak / Posisi Obyek</b></label>
-                  <select id="posisi_obyek" name="posisi_obyek" class="form-control" required>
+                  <select id="posisi_obyek" name="posisi_obyek" class="form-control" >
                       <option value="">- Select -</option>
                       <option value="Kuldesak" {{ old('posisi_obyek') == "Kuldesak" ? 'selected' : '' }}>Kuldesak</option>
                       <option value="Interior" {{ old('posisi_obyek') == "Interior" ? 'selected' : '' }}>Interior</option>
@@ -701,7 +701,7 @@ $configData = Helper::appClasses();
                         Untuk menggambarkan kondisi Aset pada kawasan Ex. Perumahan, Ruko, Industri
                       </i>
                   </small>
-                  <select id="lokasi_aset" name="lokasi_aset" class="form-control" required>
+                  <select id="lokasi_aset" name="lokasi_aset" class="form-control" >
                       <option value="">- Select -</option>
                       <option value="Depan" {{ old('lokasi_aset') == "Depan" ? 'selected' : '' }}>Depan</option>
                       <option value="Tengah" {{ old('lokasi_aset') == "Tengah" ? 'selected' : '' }}>Tengah</option>
@@ -710,7 +710,7 @@ $configData = Helper::appClasses();
                 </div>
                 <div class="form-group">
                   <label for="bentuk_tanah"><b>Bentuk Tanah</b></label>
-                  <select id="bentuk_tanah" name="bentuk_tanah" class="form-control" required>
+                  <select id="bentuk_tanah" name="bentuk_tanah" class="form-control" >
                       <option value="">- Select -</option>
                       <option value="Beraturan" {{ old('bentuk_tanah') == "Beraturan" ? 'selected' : '' }}>Beraturan</option>
                       <option value="Tidak Beraturan" {{ old('bentuk_tanah') == "tidak_beraturanTidak Beraturan" ? 'selected' : '' }}>Tidak Beraturan</option>
@@ -739,7 +739,7 @@ $configData = Helper::appClasses();
                 </div>
                 <div class="form-group">
                   <label for="topografi"><b>Topografi / Elevasi</b></label>
-                  <select id="topografi" name="topografi" class="form-control" required>
+                  <select id="topografi" name="topografi" class="form-control" >
                       <option value="">- Select -</option>
                       <option value="Rata" {{ old('bentuk_tanah') == "Rata" ? 'selected' : '' }}>Rata</option>
                       <option value="Bergelombang" {{ old('bentuk_tanah') == "Bergelombang" ? 'selected' : '' }}>Bergelombang</option>
@@ -804,7 +804,7 @@ $configData = Helper::appClasses();
                     </tr>
                     <tr>
                       <td>
-                        <select id="karakteristik_ekonomi_kualitas_pendapatan" name="karakteristik_ekonomi_kualitas_pendapatan" class="form-control" required>
+                        <select id="karakteristik_ekonomi_kualitas_pendapatan" name="karakteristik_ekonomi_kualitas_pendapatan" class="form-control" >
                             <option value="">- Select -</option>
                             <option value="Rendah" {{ old('karakteristik_ekonomi_kualitas_pendapatan') == "Rendah" ? 'selected' : '' }}>Rendah</option>
                             <option value="Sedang" {{ old('karakteristik_ekonomi_kualitas_pendapatan') == "Sedang" ? 'selected' : '' }}>Sedang</option>
@@ -812,7 +812,7 @@ $configData = Helper::appClasses();
                         </select>
                       </td>
                       <td>
-                        <select id="karakteristik_ekonomi_biaya_operasional" name="karakteristik_ekonomi_biaya_operasional" class="form-control" required>
+                        <select id="karakteristik_ekonomi_biaya_operasional" name="karakteristik_ekonomi_biaya_operasional" class="form-control" >
                             <option value="">- Select -</option>
                             <option value="Rendah" {{ old('karakteristik_ekonomi_biaya_operasional') == "Rendah" ? 'selected' : '' }}>Rendah</option>
                             <option value="Normal" {{ old('karakteristik_ekonomi_biaya_operasional') == "Normal" ? 'selected' : '' }}>Normal</option>
@@ -826,7 +826,7 @@ $configData = Helper::appClasses();
                     </tr>
                     <tr>
                       <td>
-                        <select id="karakteristik_ekonomi_ketentuan_sewa" name="karakteristik_ekonomi_ketentuan_sewa" class="form-control" required>
+                        <select id="karakteristik_ekonomi_ketentuan_sewa" name="karakteristik_ekonomi_ketentuan_sewa" class="form-control" >
                             <option value="">- Select -</option>
                             <option value="Mudah" {{ old('karakteristik_ekonomi_ketentuan_sewa') == "Mudah" ? 'selected' : '' }}>Mudah</option>
                             <option value="Normal" {{ old('karakteristik_ekonomi_ketentuan_sewa') == "Normal" ? 'selected' : '' }}>Normal</option>
@@ -834,7 +834,7 @@ $configData = Helper::appClasses();
                         </select>
                       </td>
                       <td>
-                        <select id="karakteristik_ekonomi_manajemen" name="karakteristik_ekonomi_manajemen" class="form-control" required>
+                        <select id="karakteristik_ekonomi_manajemen" name="karakteristik_ekonomi_manajemen" class="form-control" >
                             <option value="">- Select -</option>
                             <option value="Kecil" {{ old('karakteristik_ekonomi_manajemen') == "Kecil" ? 'selected' : '' }}>Kecil</option>
                             <option value="Menengah" {{ old('karakteristik_ekonomi_manajemen') == "Menengah" ? 'selected' : '' }}>Menengah</option>
@@ -848,7 +848,7 @@ $configData = Helper::appClasses();
                     </tr>
                     <tr>
                       <td>
-                        <select id="karakteristik_ekonomi_bauran_penyewa" name="karakteristik_ekonomi_bauran_penyewa" class="form-control" required>
+                        <select id="karakteristik_ekonomi_bauran_penyewa" name="karakteristik_ekonomi_bauran_penyewa" class="form-control" >
                             <option value="">- Select -</option>
                             <option value="Terbatas" {{ old('karakteristik_ekonomi_bauran_penyewa') == "Terbatas" ? 'selected' : '' }}>Terbatas</option>
                             <option value="Normal" {{ old('karakteristik_ekonomi_bauran_penyewa') == "Normal" ? 'selected' : '' }}>Normal</option>
@@ -861,7 +861,7 @@ $configData = Helper::appClasses();
                   </table>
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
-                  <label class="form-label" for="lokasi_obyek">Komponen Non-Realty dalam Penjualan</label>
+                  <label class="form-label">Komponen Non-Realty dalam Penjualan</label>
                   <table class="table table-borderless">
                     <tr>
                       <th>FFE</th>
@@ -878,7 +878,7 @@ $configData = Helper::appClasses();
                   </table>
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
-                  <label class="form-label" for="lokasi_obyek">Gambaran Objek terhadap Wilayah dan Lingkungan</label>
+                  <label class="form-label">Gambaran Objek terhadap Wilayah dan Lingkungan</label>
                   <table class="table table-borderless">
                     <tr>
                       <th>Jarak dengan CBD (Pusat Ekonomi) dari Pusat Kota. Nama Pusat Kota / Jarak</th>
@@ -1342,7 +1342,7 @@ $configData = Helper::appClasses();
                       Upload gambar denah bangunan
                     </i>
                   </small>
-                  <input type="file" class="form-control" name="denah_tanah" id="imgDenah">
+                  <input type="file" class="form-control" name="denah_bangunan" id="imgDenah">
                 </div>
                 <div class="form-group">
                   <label><b>Peta Lokasi Obyek Penilaian dan Data Pembanding</b></label><br>
@@ -1351,7 +1351,7 @@ $configData = Helper::appClasses();
                       Upload gambar peta lokasi obyek dan data pembanding
                     </i>
                   </small>
-                  <input type="file" class="form-control" name="denah_tanah" id="imgDenah">
+                  <input type="file" class="form-control" name="gambar_peta_lokasi" id="imgDenah">
                 </div>
                 <div class="form-group">
                   <label><b>Verifikasi Sentuh Tanahku</b></label><br>
@@ -1360,7 +1360,7 @@ $configData = Helper::appClasses();
                     Upload foto / screenshot Sentuh Tanahku (untuk Bank BCA).
                     </i>
                   </small>
-                  <input type="file" class="form-control" name="denah_tanah" id="imgDenah">
+                  <input type="file" class="form-control" name="sentuh_tanahku" id="imgDenah">
                 </div>
                 <div class="form-group">
                   <label><b>Tata Kota GISTARU</b></label><br>
@@ -1369,7 +1369,7 @@ $configData = Helper::appClasses();
                       Upload foto / screenshot Tata Kota Gistaru (untuk Bank BCA).
                     </i>
                   </small>
-                  <input type="file" class="form-control" name="denah_tanah" id="imgDenah">
+                  <input type="file" class="form-control" name="gistaru" id="imgDenah">
                 </div>
                 <div class="form-group">
                   <label><b>Upload Laporan Terinci</b></label><br>
@@ -1378,7 +1378,7 @@ $configData = Helper::appClasses();
                       Maksimum 50 MB
                     </i>
                   </small>
-                  <input type="file" class="form-control" name="denah_tanah" id="imgDenah">
+                  <input type="file" class="form-control" name="laporan_terinci" id="imgDenah">
                 </div>
                 <div class="form-group">
                   <label><b>Upload Kertas Kerja</b></label><br>
@@ -1387,7 +1387,7 @@ $configData = Helper::appClasses();
                       Maksimum 50 MB
                     </i>
                   </small>
-                  <input type="file" class="form-control" name="denah_tanah" id="imgDenah">
+                  <input type="file" class="form-control" name="kertas_kerja" id="imgDenah">
                 </div>
                 <div class="form-group">
                   <label><b>Pilih Pemberi Tugas</b></label><br>
@@ -1575,8 +1575,8 @@ $configData = Helper::appClasses();
 
       newRow.innerHTML = `
     <td class="row-number">${rowCount}</td>
-    <td><input type="number" name="tahun[]" class="form-control" /></td>
-    <td><input type="number" name="nilai_perolehan[]" class="form-control" /></td>
+    <td><input type="number" name="njop_tahun[]" class="form-control" /></td>
+    <td><input type="number" name="njop_nilai_perolehan[]" class="form-control" /></td>
     <td>
         <button type="button" class="btn btn-sm btn-action" onclick="addRowNjop()" style="color: rgb(0, 132, 255)">+</button><br>
                                 <button type="button" class="btn btn-sm btn-action" onclick="removeRowNjop(this)" style="color: rgb(0, 132, 255)">-</button>

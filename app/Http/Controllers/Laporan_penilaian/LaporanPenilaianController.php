@@ -428,6 +428,10 @@ class LaporanPenilaianController extends Controller
         }
     }
 
+    public function update_laporan_bangunan($id, Request $request){
+      dd($request['njop_tahun']);
+    }
+
     public function analisa($id) {
         $report = LaporanPenilaian::find($id);
         $ikk = DB::table('ikk')
