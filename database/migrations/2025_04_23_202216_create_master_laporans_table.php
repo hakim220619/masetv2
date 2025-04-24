@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('master_laporans', function (Blueprint $table) {
+        Schema::create('master_laporan', function (Blueprint $table) {
             $table->id();
             // Data Umum
             $table->unsignedInteger('laporan_id');
@@ -20,14 +20,14 @@ return new class extends Migration
             $table->unsignedBigInteger('tanah_kosong_uid');
 
             // Batas Batas
-            $table->string('batas_timur')->nullable();
-            $table->string('batas_tenggara')->nullable();
-            $table->string('batas_selatan')->nullable();
-            $table->string('batas_barat_daya')->nullable();
-            $table->string('batas_barat')->nullable();
-            $table->string('batas_barat_laut')->nullable();
-            $table->string('batas_utara')->nullable();
-            $table->string('batas_timur_laut')->nullable();
+            $table->string('batas_timur',100)->nullable();
+            $table->string('batas_tenggara',100)->nullable();
+            $table->string('batas_selatan',100)->nullable();
+            $table->string('batas_barat_daya',100)->nullable();
+            $table->string('batas_barat',100)->nullable();
+            $table->string('batas_barat_laut',100)->nullable();
+            $table->string('batas_utara',100)->nullable();
+            $table->string('batas_timur_laut',100)->nullable();
 
             // Bentuk Kepemilikan
             $table->string('bentuk_kepemilikan')->nullable();
@@ -57,7 +57,7 @@ return new class extends Migration
             $table->string('dokumen_imb_status')->nullable();
             $table->string('dokumen_imb_nama_pemegang_ijin')->nullable();
             $table->string('dokumen_imb_peruntukan_bangunan')->nullable();
-            $table->string('dokumen_imb_lokasi_bangunan')->nullable();
+            $table->text('dokumen_imb_lokasi_bangunan')->nullable();
             $table->string('dokumen_imb_no_sertifikat_tanah')->nullable();
             $table->json('dokumen_imb_nama_bangunan')->nullable();
             $table->json('dokumen_imb_luas')->nullable();
@@ -76,14 +76,14 @@ return new class extends Migration
             $table->text('peraturan_kawasan_penjelasan')->nullable();
 
             // Analisis Data
-            $table->string('analisis_data_hbu')->nullable();
+            $table->string('analisis_data_hbu',100)->nullable();
             $table->string('analisis_data_pendekatan_penilaian')->nullable();
 
             // Asumsi Penilaian sesuai dengan Basis Nilai
-            $table->string('asumsi_penilaian_syarat_pembiayaan')->nullable();
-            $table->string('asumsi_penilaian_kondisi_penjualan')->nullable();
-            $table->string('asumsi_penilaian_pengeluaran')->nullable();
-            $table->string('asumsi_penilaian_kondisi_pasar')->nullable();
+            $table->string('asumsi_penilaian_syarat_pembiayaan',50)->nullable();
+            $table->string('asumsi_penilaian_kondisi_penjualan',50)->nullable();
+            $table->string('asumsi_penilaian_pengeluaran',50)->nullable();
+            $table->string('asumsi_penilaian_kondisi_pasar',50)->nullable();
 
             // Properti
             $table->string('jenis_properti')->nullable();
@@ -98,13 +98,13 @@ return new class extends Migration
             $table->string('keterangan_dasar_nilai_tabel_analisis')->nullable();
 
             // Koordinat
-            $table->string('lat')->nullable();
-            $table->string('long')->nullable();
+            $table->string('lat',100)->nullable();
+            $table->string('long',100)->nullable();
 
             // Foto (Selain Bangunan)
-            $table->string('foto_tampak_depan')->nullable();
-            $table->string('foto_tampak_sisi_kiri')->nullable();
-            $table->string('foto_tampak_sisi_kanan')->nullable();
+            $table->string('foto_tampak_depan',150)->nullable();
+            $table->string('foto_tampak_sisi_kiri',150)->nullable();
+            $table->string('foto_tampak_sisi_kanan',150)->nullable();
             $table->text('foto_lainnya')->nullable();
 
             // Nilai Perolehan / NJOP
@@ -112,56 +112,55 @@ return new class extends Migration
             $table->json('njop_nilai_perolehan')->nullable();
 
             //Properti (khusus retail)
-            $table->string('jenis_properti_retail')->nullable();
-            $table->string('kondisi_properti')->nullable();
-            $table->string('spesifikasi_properti')->nullable();
-            $table->string('tipe_apartemen')->nullable();
-            $table->string('posisi_lantai')->nullable();
+            $table->string('jenis_properti_retail',10)->nullable();
+            $table->string('kondisi_properti',15)->nullable();
+            $table->string('spesifikasi_properti',30)->nullable();
+            $table->string('tipe_apartemen',15)->nullable();
+            $table->integer('posisi_lantai')->nullable();
             $table->decimal('biaya_properti_service_charge')->nullable();
             $table->decimal('biaya_properti_parkir')->nullable();
             $table->decimal('biaya_properti_utilitas')->nullable();
             $table->decimal('biaya_properti_overtime')->nullable();
-            $table->string('grade_bangunan')->nullable();
+            $table->char('grade_bangunan',1)->nullable();
             $table->string('fasilitas_bangunan')->nullable();
             $table->decimal('row_koridor')->nullable();
             $table->string('tipe_akses_koridor')->nullable();
-            $table->string('luas_gross_bangunan_total')->nullable();
+            $table->decimal('luas_gross_bangunan_total')->nullable();
             $table->integer('jumlah_lantai')->nullable();
-
 
             // Jalan
             $table->decimal('row_jalan')->nullable();
-            $table->string('tipe_jalan')->nullable();
-            $table->string('kapasitas_jalan')->nullable();
+            $table->string('tipe_jalan',30)->nullable();
+            $table->string('kapasitas_jalan',50)->nullable();
 
             // Lahan
-            $table->string('penggunaan_lahan')->nullable();
-            $table->string('posisi_obyek')->nullable();
-            $table->string('lokasi_aset')->nullable();
+            $table->string('penggunaan_lahan',50)->nullable();
+            $table->string('posisi_obyek',20)->nullable();
+            $table->string('lokasi_aset',20)->nullable();
 
             // Tanah
-            $table->string('bentuk_tanah')->nullable();
+            $table->string('bentuk_tanah',20)->nullable();
             $table->decimal('lebar_muka_tanah')->nullable();
             $table->decimal('ketinggian_muka_jalan')->nullable();
-            $table->string('topografi')->nullable();
+            $table->string('topografi',20)->nullable();
             $table->decimal('tingkat_hunian')->nullable();
 
             // Kondisi Lingkungan Khusus
             $table->json('kondisi_lingkungan_khusus')->nullable();
 
             // Keterangan Tambahan Lainnya
-            $table->string('keterangan_tambahan_lainnya')->nullable();
+            $table->text('keterangan_tambahan_lainnya')->nullable();
 
             // Karakteristik Ekonomi (Jika objek yang dinilai adalah Properti Komersial)
-            $table->string('karakteristik_ekonomi_kualitas_pendapatan')->nullable();
-            $table->string('karakteristik_ekonomi_biaya_operasional')->nullable();
-            $table->string('karakteristik_ekonomi_ketentuan_sewa')->nullable();
-            $table->string('karakteristik_ekonomi_manajemen')->nullable();
-            $table->string('karakteristik_ekonomi_bauran_penyewa')->nullable();
+            $table->string('karakteristik_ekonomi_kualitas_pendapatan',10)->nullable();
+            $table->string('karakteristik_ekonomi_biaya_operasional',10)->nullable();
+            $table->string('karakteristik_ekonomi_ketentuan_sewa',10)->nullable();
+            $table->string('karakteristik_ekonomi_manajemen',10)->nullable();
+            $table->string('karakteristik_ekonomi_bauran_penyewa',10)->nullable();
 
             // Komponen Non-Realty dalam Penjualan
-            $table->string('komponen_non_realty_ffe')->nullable();
-            $table->string('komponen_non_realty_mesin')->nullable();
+            $table->string('komponen_non_realty_ffe',100)->nullable();
+            $table->string('komponen_non_realty_mesin',100)->nullable();
 
             // Gambaran Objek terhadap Wilayah dan Lingkungan
             $table->string('gambaran_objek_dari_pusat_kota')->nullable();
@@ -174,22 +173,22 @@ return new class extends Migration
             $table->json('obyek')->nullable();
 
             // Penggunaan tanah saat ini (khusus tanah kosong)
-            $table->string('penggunaan_tanah_saat_ini')->nullable();
+            $table->string('penggunaan_tanah_saat_ini',100)->nullable();
 
             // Penggunaan saat ini (khusus retail)
-            $table->string('penggunaan_saat_ini')->nullable();
+            $table->string('penggunaan_saat_ini',100)->nullable();
             $table->string('bentuk_bangunan')->nullable();
-            $table->string('basement')->nullable();
-            $table->string('konstruksi_bangunan')->nullable();
-            $table->string('konstruksi_lantai')->nullable();
-            $table->string('konstruksi_dinding')->nullable();
-            $table->string('konstruksi_atap')->nullable();
-            $table->string('konstruksi_pondasi')->nullable();
-            $table->string('retail_tahun_dibangun')->nullable();
-            $table->string('retail_tahun_renovasi')->nullable();
-            $table->string('penggunaan_bangunan_saat_ini')->nullable();
+            $table->string('basement',15)->nullable();
+            $table->string('konstruksi_bangunan',30)->nullable();
+            $table->string('konstruksi_lantai',30)->nullable();
+            $table->string('konstruksi_dinding',30)->nullable();
+            $table->string('konstruksi_atap',30)->nullable();
+            $table->string('konstruksi_pondasi',30)->nullable();
+            $table->string('retail_tahun_dibangun',5)->nullable();
+            $table->string('retail_tahun_renovasi',5)->nullable();
+            $table->string('penggunaan_bangunan_saat_ini',30)->nullable();
             $table->json('perlengkapan_bangunan')->nullable();
-            $table->string('penggunaan_bangunan')->nullable();
+            $table->string('penggunaan_bangunan',30)->nullable();
 
             // Sarana Pelengkap PAGAR - BUT MAPPI
             $table->json('pagar_sarana_pelengkap')->nullable();
