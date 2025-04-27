@@ -13,6 +13,7 @@ $configData = Helper::appClasses();
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <div class="container">
   <h3 class="entry-title mb-4">{{ $report->judul_laporan . '-' . $report->nama_entitas . '-' . $report->alamat }}</h3>
+  <a href="{{ route('laporan-penilaian.edit', $report->id) }}"><u>Edit</u></a>
 
   <div class="row">
     <div class="card p-3 border-2">
@@ -79,6 +80,9 @@ $configData = Helper::appClasses();
       <!-- Tabs Content -->
       <div class="tab-content mt-3">
         <div class="tab-pane fade show active" id="wb">
+          @foreach ($obyek_penilaian as $item)
+          <p>obyek penilaian {{ $item->nama_bangunan }}</p>
+          @endforeach
           <h4>Obyek Penilaian : Rumah Tinggal (Anthony Indramawan)</h4>
           <div class="container-fluid mt-4 table-responsive">
             <div class="row">
@@ -3431,6 +3435,18 @@ $configData = Helper::appClasses();
 
   </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if(session('success'))
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: '{{ session("success") }}',
+        showConfirmButton: false,
+        timer: 2000
+    });
+</script>
+@endif
 <script>
     // Wait for the DOM to be fully loaded
     document.addEventListener('DOMContentLoaded', function() {

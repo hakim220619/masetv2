@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('master_laporan', function (Blueprint $table) {
+        Schema::create('master_laporans', function (Blueprint $table) {
             $table->id();
             // Data Umum
             $table->unsignedInteger('laporan_id');
-            $table->unsignedBigInteger('obyek_id');
-            $table->unsignedBigInteger('bangunan_retail_uid');
-            $table->unsignedBigInteger('tanah_kosong_uid');
+            $table->json('obyek_id')->nullable();
+            $table->json('bangunan_retail_uid')->nullable();
+            $table->json('tanah_kosong_uid')->nullable();
 
             // Batas Batas
             $table->string('batas_timur',100)->nullable();
@@ -105,7 +105,7 @@ return new class extends Migration
             $table->string('foto_tampak_depan',150)->nullable();
             $table->string('foto_tampak_sisi_kiri',150)->nullable();
             $table->string('foto_tampak_sisi_kanan',150)->nullable();
-            $table->text('foto_lainnya')->nullable();
+            $table->json('foto_lainnya')->nullable();
 
             // Nilai Perolehan / NJOP
             $table->json('njop_tahun')->nullable();
@@ -184,8 +184,8 @@ return new class extends Migration
             $table->string('konstruksi_dinding',30)->nullable();
             $table->string('konstruksi_atap',30)->nullable();
             $table->string('konstruksi_pondasi',30)->nullable();
-            $table->string('retail_tahun_dibangun',5)->nullable();
-            $table->string('retail_tahun_renovasi',5)->nullable();
+            $table->year('retail_tahun_dibangun',5)->nullable();
+            $table->year('retail_tahun_renovasi',5)->nullable();
             $table->string('penggunaan_bangunan_saat_ini',30)->nullable();
             $table->json('perlengkapan_bangunan')->nullable();
             $table->string('penggunaan_bangunan',30)->nullable();

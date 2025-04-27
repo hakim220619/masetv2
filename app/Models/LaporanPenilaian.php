@@ -19,7 +19,7 @@ class LaporanPenilaian extends Model
         'versi_btb',
         'no_laporan_penilaian',
         'tgl_laporan_penilaian',
-        'no_doumen_kontrak',
+        'no_dokumen_kontrak',
         'tgl_dokumen_kontrak',
         'nama_instansi_pemberi_tugas',
         'key_kcp_pemberi_tugas',

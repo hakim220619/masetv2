@@ -87,7 +87,7 @@ $configData = Helper::appClasses();
                       <th>Tanggal</th>
                     </tr>
                     <tr>
-                      <td><input type="text" id="no_dokumen_kontrak" name="no_dokumen_kontrak" class="form-control" value="{{ old('no_dokumen_kontrak', $report->no_dokumen_kontrak) }}" /></td>
+                      <td><input type="text" name="no_dokumen_kontrak" class="form-control" value="{{ old('no_dokumen_kontrak', $report->no_dokumen_kontrak) }}" /></td>
                       <td><input type="date" id="tgl_dokumen_kontrak" name="tgl_dokumen_kontrak" class="form-control" value="{{ old('tgl_dokumen_kontrak', \Carbon\Carbon::parse($report->tgl_laporan_penilaian)->format('Y-m-d')) }}"/></td>
                     </tr>
                   </table>
@@ -159,18 +159,21 @@ $configData = Helper::appClasses();
                     <label for="dasar_nilai_spesifik"><b>Dasar Nilai Spesifik</b></label>
                     <input type="text" id="dasar_nilai_spesifik" name="dasar_nilai_spesifik" class="form-control" placeholder="" value="{{ old('dasar_nilai_spesifik', $report->dasar_nilai_spesifik) }}">
                 </div>
+                @php
+                    $pendekatan = old('pendekatan_penilaian', $report->pendekatan_penilaian ?? []);
+                @endphp
                 <div class="form-group">
                     <label><b>Pendekatan Penilaian</b></label>
                     <div>
-                        <input type="checkbox" id="pendekatan_pasar" name="pendekatan_penilaian[]" value="Pendekatan Pasar" >
+                        <input type="checkbox" id="pendekatan_pasar" name="pendekatan_penilaian[]" value="Pendekatan Pasar (Market Approach)" {{ in_array('Pendekatan Pasar (Market Approach)', $pendekatan) ? 'checked' : '' }}>
                         <label for="pendekatan_pasar">Pendekatan Pasar (Market Approach)</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="pendekatan_biaya" name="pendekatan_penilaian[]" value="Pendekatan Biaya">
+                        <input type="checkbox" id="pendekatan_biaya" name="pendekatan_penilaian[]" value="Pendekatan Biaya (Cost Approach)" {{ in_array('Pendekatan Biaya (Cost Approach)', $pendekatan) ? 'checked' : '' }}>
                         <label for="pendekatan_biaya">Pendekatan Biaya (Cost Approach)</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="pendekatan_pendapatan" name="pendekatan_penilaian[]" value="Pendekatan Pendapatan">
+                        <input type="checkbox" id="pendekatan_pendapatan" name="pendekatan_penilaian[]" value="Pendekatan Pendapatan (Income Approach)" {{ in_array('Pendekatan Pendapatan (Income Approach)', $pendekatan) ? 'checked' : '' }}>
                         <label for="pendekatan_pendapatan">Pendekatan Pendapatan (Income Approach)</label>
                     </div>
                 </div>
@@ -223,7 +226,7 @@ $configData = Helper::appClasses();
                 </div>
                 <div class="form-group">
                     <label for="tanggal_penilaian"><b>Tanggal Penilaian</b></label>
-                    <input type="date" id="tanggal_penilaian" name="tanggal_penilaian" class="form-control">
+                    <input type="date" id="tanggal_penilaian" name="tanggal_penilaian" class="form-control" value="{{ old('tanggal_inspeksi', \Carbon\Carbon::parse($report->tanggal_penilaian)->format('Y-m-d')) }}">
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                     <label class="form-label" for="suku_bunga_pinjaman">Suku Bunga Pinjaman (Interest During Construction)</label>
@@ -234,8 +237,8 @@ $configData = Helper::appClasses();
                         <th>Sumber Data Suku Bunga</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="tingkat_suku_bunga_suku_bunga_pinjaman" name="tingkat_suku_bunga_suku_bunga_pinjaman" class="form-control" /></td>
-                        <td><input type="text" id="sumberdata_suku_bunga_pinjaman" name="sumberdata_suku_bunga_pinjaman" class="form-control"/></td>
+                        <td><input type="text" id="tingkat_suku_bunga_suku_bunga_pinjaman" name="tingkat_suku_bunga_suku_bunga_pinjaman" class="form-control" value="{{ old('tingkat_suku_bunga_suku_bunga_pinjaman', $report->tingkat_suku_bunga_suku_bunga_pinjaman) }}"/></td>
+                        <td><input type="text" id="sumberdata_suku_bunga_pinjaman" name="sumberdata_suku_bunga_pinjaman" class="form-control" value="{{ old('sumberdata_suku_bunga_pinjaman', $report->sumberdata_suku_bunga_pinjaman) }}"/></td>
                       </tr>
                       <tr>
                         <th>Screenshot Sumber Data Suku Bunga (jika ada)</th>
@@ -253,24 +256,24 @@ $configData = Helper::appClasses();
                         <th>Quality Control / Quality Assurance</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="admin_tim_penilai" name="admin_tim_penilai" class="form-control" /></td>
-                        <td><input type="text" id="tim_penilai_qc" name="tim_penilai_qc" class="form-control"/></td>
+                        <td><input type="text"name="admin_tim_penilai" class="form-control" value="{{ old('tim_penilai_qc', $report->admin_tim_penilai) }}"/></td>
+                        <td><input type="text" name="tim_penilai_qc" class="form-control" value="{{ old('tim_penilai_qc', $report->tim_penilai_qc) }}"/></td>
                       </tr>
                       <tr>
                         <th>Penilai 1</th>
                         <th>Penilai 2</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="penilai1_tim_penilai" name="penilai1_tim_penilai" class="form-control" /></td>
-                        <td><input type="text" id="penilai2_tim_penilai" name="penilai2_tim_penilai" class="form-control"/></td>
+                        <td><input type="text" name="penilai1_tim_penilai" class="form-control" value="{{ old('penilai1_tim_penilai', $report->penilai1_tim_penilai) }}"/></td>
+                        <td><input type="text" name="penilai2_tim_penilai" class="form-control" value="{{ old('penilai2_tim_penilai', $report->penilai2_tim_penilai) }}"/></td>
                       </tr>
                       <tr>
                         <th>Reviewer</th>
                         <th>Penanggung Jawab (Penilai Publik)</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="reviewer_tim_penilai" name="reviewer_tim_penilai" class="form-control" /></td>
-                        <td><input type="text" id="pj_tim_penilai" name="pj_tim_penilai" class="form-control"/></td>
+                        <td><input type="text" name="reviewer_tim_penilai" class="form-control" value="{{ old('penilai2_tim_penilai', $report->penilai2_tim_penilai) }}"/></td>
+                        <td><input type="text" name="pj_tim_penilai" class="form-control" value="{{ old('penilai2_tim_penilai', $report->penilai2_tim_penilai) }}"/></td>
                       </tr>
                     </table>
                 </div>
@@ -282,34 +285,45 @@ $configData = Helper::appClasses();
                         <th>Telepon</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="nama_pendamping_inpeksi" name="nama_pendamping_inpeksi" class="form-control" /></td>
-                        <td><input type="text" id="telepon_pendamping_inpeksi" name="telepon_pendamping_inpeksi" class="form-control"/></td>
+                        <td><input type="text" name="nama_pendamping_inpeksi" class="form-control" value="{{ old('nama_pendamping_inpeksi', $report->nama_pendamping_inpeksi) }}"/></td>
+                        <td><input type="text" name="telepon_pendamping_inpeksi" class="form-control" value="{{ old('telepon_pendamping_inpeksi', $report->telepon_pendamping_inpeksi) }}"/></td>
                       </tr>
                       <tr>
                         <th>Status</th>
                       </tr>
                       <tr>
-                        <td><input type="text" id="status_pendamping_inpeksi" name="status_pendamping_inpeksi" class="form-control" /></td>
+                        <td><input type="text" name="status_pendamping_inpeksi" class="form-control" value="{{ old('status_pendamping_inpeksi', $report->status_pendamping_inpeksi) }}" /></td>
                       </tr>
                       <tr>
                     </table>
                 </div>
+                @php
+                    $kelengkapan = old('kelengkapan_dokumen', $report->kelengkapan_dokumen ?? []);
+                @endphp
+
                 <div class="form-group">
                     <label><b>Kelengkapan Dokumen Yang Diterima</b></label><br>
+
                     <div>
-                        <input type="checkbox" id="sertifikat" name="kelengkapan_dokumen[]" value="Sertifikat/ Dokumen Hak Tanah">
+                        <input type="checkbox" id="sertifikat" name="kelengkapan_dokumen[]" value="Sertifikat/ Dokumen Hak Tanah"
+                            {{ in_array('Sertifikat/ Dokumen Hak Tanah', $kelengkapan) ? 'checked' : '' }}>
                         <label for="sertifikat">Sertifikat/ Dokumen Hak Tanah</label>
                     </div>
+
                     <div>
-                        <input type="checkbox" id="ijin_mendirikan" name="kelengkapan_dokumen[]" value="Ijin Mendirikan Bangunan">
+                        <input type="checkbox" id="ijin_mendirikan" name="kelengkapan_dokumen[]" value="Ijin Mendirikan Bangunan"
+                            {{ in_array('Ijin Mendirikan Bangunan', $kelengkapan) ? 'checked' : '' }}>
                         <label for="ijin_mendirikan">Ijin Mendirikan Bangunan</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="invoice" name="kelengkapan_dokumen[]" value="Invoice/ Pernyataan Kepemilikan">
+                        <input type="checkbox" id="invoice" name="kelengkapan_dokumen[]" value="Invoice/ Pernyataan Kepemilikan"
+                            {{ in_array('Invoice/ Pernyataan Kepemilikan', $kelengkapan) ? 'checked' : '' }}>
                         <label for="invoice">Invoice/ Pernyataan Kepemilikan</label>
                     </div>
+
                     <div>
-                        <input type="checkbox" id="lainnya" name="kelengkapan_dokumen[]" value="Lainnya">
+                        <input type="checkbox" id="lainnya" name="kelengkapan_dokumen[]" value="Lainnya"
+                            {{ in_array('Lainnya', $kelengkapan) ? 'checked' : '' }}>
                         <label for="lainnya">Lainnya</label>
                     </div>
                 </div>
@@ -318,7 +332,7 @@ $configData = Helper::appClasses();
                     <small class="form-text text-muted">
                         Informasi khusus terkait penugasan, kondisi objek, kendala inspeksi, dll (Sebagai pertimbangan reviewer)
                     </small>
-                    <textarea id="informasi_khusus" name="informasi_khusus" class="form-control" rows="4"></textarea>
+                    <textarea id="informasi_khusus" name="informasi_khusus" class="form-control" rows="4">{{ old('informasi_khusus', $report->informasi_khusus) }}</textarea>
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="batas">Batas batas</label>
@@ -328,38 +342,38 @@ $configData = Helper::appClasses();
                       <th>Tenggara</th>
                     </tr>
                     <tr>
-                      <td><input type="text" id="batas_timur" name="batas_timur" class="form-control" /></td>
-                      <td><input type="text" id="batas_tenggara" name="batas_tenggara" class="form-control"/></td>
+                      <td><input type="text" name="batas_timur" class="form-control" value="{{ old('batas_timur', $master_report->batas_timur) }}"/></td>
+                      <td><input type="text" name="batas_tenggara" class="form-control" value="{{ old('batas_tenggara', $master_report->batas_tenggara) }}" /></td>
                     </tr>
                     <tr>
                       <th>Selatan</th>
                       <th>Barat Daya</th>
                     </tr>
                     <tr>
-                      <td><input type="text" id="batas_selatan" name="batas_selatan" class="form-control" /></td>
-                      <td><input type="text" id="batas_barat_daya" name="batas_barat_daya" class="form-control" /></td>
+                      <td><input type="text" name="batas_selatan" class="form-control" value="{{ old('batas_selatan', $master_report->batas_selatan) }}" /></td>
+                      <td><input type="text" name="batas_barat_daya" class="form-control" value="{{ old('batas_barat_daya', $master_report->batas_barat_daya) }}"/></td>
                     </tr>
                     <tr>
                       <th>Barat</th>
                       <th>Barat Laut</th>
                     </tr>
                     <tr>
-                      <td><input type="text" id="batas_barat" name="batas_barat" class="form-control" /></td>
-                      <td><input type="text" id="batas_barat_laut" name="batas_barat_laut" class="form-control" /></td>
+                      <td><input type="text" name="batas_barat" class="form-control" value="{{ old('batas_barat', $master_report->batas_barat) }}" /></td>
+                      <td><input type="text" name="batas_barat_laut" class="form-control" value="{{ old('batas_barat_laut', $master_report->batas_barat_laut) }}"/></td>
                     </tr>
                     <tr>
                       <th>Utara</th>
                       <th>Timur Laut</th>
                     </tr>
                     <tr>
-                      <td><input type="text" id="batas_utara" name="batas_utara" class="form-control" /></td>
-                      <td><input type="text" id="batas_timur_laut" name="batas_timur_laut" class="form-control" /></td>
+                      <td><input type="text" name="batas_utara" class="form-control" value="{{ old('batas_utara', $master_report->batas_utara) }}" /></td>
+                      <td><input type="text" name="batas_timur_laut" class="form-control" value="{{ old('batas_timur_laut', $master_report->batas_timur_laut) }}" /></td>
                     </tr>
                   </table>
                 </div>
                 <div class="form-group">
-                  <label for="dasar_nilai_spesifik"><b>Bentuk Kepemilikan</b></label>
-                  <input type="text" id="bentuk_kepemilikan" name="bentuk_kepemilikan" class="form-control" placeholder="Bentuk Kepemilikan">
+                  <label for="Bentuk Kepemilikan"><b>Bentuk Kepemilikan</b></label>
+                  <input type="text" id="bentuk_kepemilikan" name="bentuk_kepemilikan" class="form-control" placeholder="Bentuk Kepemilikan" value="{{ old('bentuk_kepemilikan', $master_report->bentuk_kepemilikan) }}">
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" >Dokumen Hak Tanah</label>
@@ -401,14 +415,14 @@ $configData = Helper::appClasses();
                           </tr>
                           <tr>
                             <td><input type="text" name="dokumen_hak_tanah_nama_pemegang_hak[]" class="form-control" /></td>
-                            <td><input type="text" name="dokumen_hak_tanah_tgl_diterbitkan[]" class="form-control" /></td>
+                            <td><input type="date" name="dokumen_hak_tanah_tgl_diterbitkan[]" class="form-control" /></td>
                           </tr>
                           <tr>
                             <th>Tanggal Berakhir</th>
                             <th>Nomor SU/GS</th>
                           </tr>
                           <tr>
-                            <td><input type="text" name="dokumen_hak_tanah_tgl_berakhir[]" class="form-control" /></td>
+                            <td><input type="date" name="dokumen_hak_tanah_tgl_berakhir[]" class="form-control" /></td>
                             <td><input type="text" name="dokumen_hak_tanah_nomor_su/sg[]" class="form-control" /></td>
                           </tr>
                           <tr>
@@ -416,8 +430,8 @@ $configData = Helper::appClasses();
                             <th>Luas Tanah(m2)</th>
                           </tr>
                           <tr>
-                            <td><input type="text" name="dokumen_hak_tanah_tgl_su/sg[]" class="form-control" /></td>
-                            <td><input type="text" name="dokumen_hak_tanah_luas_tanah[]" class="form-control" /></td>
+                            <td><input type="date" name="dokumen_hak_tanah_tgl_su/sg[]" class="form-control" /></td>
+                            <td><input type="number" name="dokumen_hak_tanah_luas_tanah[]" class="form-control" /></td>
                           </tr>
                           <tr>
                             <th>Kantor Agraria</th>
@@ -452,7 +466,7 @@ $configData = Helper::appClasses();
                     </tr>
                     <tr>
                       <td><input type="text" name="dokumen_imb_nomor" class="form-control" /></td>
-                      <td><input type="text" name="dokumen_imb_tgl_imb" class="form-control"/></td>
+                      <td><input type="date" name="dokumen_imb_tgl_imb" class="form-control"/></td>
                     </tr>
                     <tr>
                       <th>Diterbitkan Oleh</th>
@@ -495,7 +509,7 @@ $configData = Helper::appClasses();
                       </tr>
                       <tr>
                         <td><input type="text" name="dokumen_imb_nama_bangunan[]" class="form-control" /></td>
-                        <td><input type="text" name="dokumen_imb_luas[]" class="form-control" /></td>
+                        <td><input type="number" name="dokumen_imb_luas[]" class="form-control" /></td>
                       </tr>
                     </tbody>
                     <tr>
@@ -519,22 +533,22 @@ $configData = Helper::appClasses();
                     </tr>
                     <tr>
                       <td><input type="text" name="peraturan_kawasan_peruntukan_kawasan" class="form-control" value="{{ old('peraturan_kawasan_peruntukan_kawasan',$report->peraturan_kawasan_peruntukan_kawasan) }}"/></td>
-                      <td><input type="text" name="peraturan_kawasan_kdb" class="form-control"  value="{{ old('peraturan_kawasan_kdb',$report->peraturan_kawasan_kdb) }}"/></td>
+                      <td><input type="number" name="peraturan_kawasan_kdb" class="form-control"  value="{{ old('peraturan_kawasan_kdb',$report->peraturan_kawasan_kdb) }}"/></td>
                     </tr>
                     <tr>
                       <th>Koefisien Lantai Bangunan(KLB)</th>
                       <th>Garis Sempadan Bangunan(GSB)(meter)</th>
                     </tr>
                     <tr>
-                      <td><input type="text" name="peraturan_kawasan_klb" class="form-control" value="{{ old('peraturan_kawasan_klb', $report->peraturan_kawasan_klb) }}" /></td>
-                      <td><input type="text" name="peraturan_kawasan_gsb" class="form-control" value="{{ old('peraturan_kawasan_gsb', $report->peraturan_kawasan_gsb) }}"/></td>
+                      <td><input type="number" name="peraturan_kawasan_klb" class="form-control" value="{{ old('peraturan_kawasan_klb', $report->peraturan_kawasan_klb) }}" /></td>
+                      <td><input type="number" name="peraturan_kawasan_gsb" class="form-control" value="{{ old('peraturan_kawasan_gsb', $report->peraturan_kawasan_gsb) }}"/></td>
                     </tr>
                     <tr>
                       <th>Ketinggian(lantai)</th>
                       <th>Terkena Rencana Jalan</th>
                     </tr>
                     <tr>
-                      <td><input type="text" name="peraturan_kawasan_ketinggian" class="form-control" value="{{ old('peraturan_kawasan_ketinggian', $report->peraturan_kawasan_ketinggian) }}" /></td>
+                      <td><input type="number" name="peraturan_kawasan_ketinggian" class="form-control" value="{{ old('peraturan_kawasan_ketinggian', $report->peraturan_kawasan_ketinggian) }}" /></td>
                       <td><input type="text" name="peraturan_kawasan_terkena_rencana_jalan" class="form-control" value="{{ old('peraturan_kawasan_terkena_rencana_jalan', $report->peraturan_kawasan_terkena_rencana_jalan) }}"/></td>
                     </tr>
                     <tr>
@@ -585,7 +599,7 @@ $configData = Helper::appClasses();
                 </div>
                 <div class="form-group">
                   <label for="jenis_bangunan"><b>Jenis Bangunan</b></label><br>
-                  <input type="checkbox" id="rukoCheckbox" name="jenis_bangunan[]" value="ruko_rukan">
+                  <input type="checkbox" id="rukoCheckbox" name="jenis_bangunan" value="Ruko / Rukan">
                   Ruko / Rukan
                 </div>
                 <!-- Container untuk input tambahan -->
@@ -927,7 +941,7 @@ $configData = Helper::appClasses();
                         Obyek tidak tersedia?<a href="{{ route('object-bangunan') }}"> <u>Tambah obyek bangunan</u></a>
                       </i>
                     </small>
-                  <select class="js-example-basic-multiple form-control" name="obyek[]" multiple="multiple">
+                  <select class="js-example-basic-multiple form-control" name="obyek_id[]" multiple="multiple">
                     @foreach ($objects as $object)
                     <option value="{{ $object->id }}">{{ $object->nama_bangunan }}</option>
                     @endforeach
