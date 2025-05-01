@@ -451,11 +451,11 @@ $configData = Helper::appClasses();
                   <small class="form-text text-muted">
                       Informasi khusus terkait penugasan, kondisi objek, kendala inspeksi, dll (Sebagai pertimbangan reviewer)
                   </small>
-                  <input type="text" id="dokumen_hak_tanah_print" name="dokumen_hak_tanah_print" class="form-control" />
+                  <input type="text" id="dokumen_hak_tanah_print" name="dokumen_hak_tanah_print" class="form-control" value="{{ old('dokumen_hak_tanah_print', $master_report->dokumen_hak_tanah_print) }}" />
                 </div>
                 <div class="form-group">
                   <label for="keterangan_dokumen_tanah"><b>Keterangan Dokumen Tanah</b></label>
-                  <textarea id="keterangan_dokumen_tanah" name="keterangan_dokumen_tanah" class="form-control" rows="4"></textarea>
+                  <textarea id="keterangan_dokumen_tanah" name="keterangan_dokumen_tanah" class="form-control" rows="4">{{ old('keterangan_dokumen_tanah', $master_report->keterangan_dokumen_tanah) }}</textarea>
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="batas">Dokumen IMB</label>
@@ -465,32 +465,32 @@ $configData = Helper::appClasses();
                       <th>Tanggal IMB</th>
                     </tr>
                     <tr>
-                      <td><input type="text" name="dokumen_imb_nomor" class="form-control" /></td>
-                      <td><input type="date" name="dokumen_imb_tgl_imb" class="form-control"/></td>
+                      <td><input type="text" name="dokumen_imb_nomor" class="form-control" value="{{ old('dokumen_imb_nomor',$report->dokumen_imb_nomor) }}" /></td>
+                      <td><input type="date" name="dokumen_imb_tgl_imb" class="form-control" value="{{ old('dokumen_imb_tgl_imb',$report->dokumen_imb_tgl_imb) }}"/></td>
                     </tr>
                     <tr>
                       <th>Diterbitkan Oleh</th>
                       <th>Status IMB</th>
                     </tr>
                     <tr>
-                      <td><input type="text" name="dokumen_imb_diterbitkan_oleh" class="form-control" /></td>
-                      <td><input type="text" name="dokumen_imb_status_imb" class="form-control" /></td>
+                      <td><input type="text" name="dokumen_imb_diterbitkan_oleh" class="form-control" value="{{ old('dokumen_imb_diterbitkan_oleh',$report->dokumen_imb_diterbitkan_oleh) }}" /></td>
+                      <td><input type="text" name="dokumen_imb_status_imb" class="form-control" value="{{ old('dokumen_imb_status_imb',$report->dokumen_imb_status_imb) }}" /></td>
                     </tr>
                     <tr>
                       <th>Nama Pemegang Ijin</th>
                       <th>Peruntukan Bangunan Sesuai IMB</th>
                     </tr>
                     <tr>
-                      <td><input type="text" name="dokumen_imb_nama_pemegang_ijin" class="form-control" /></td>
-                      <td><input type="text" name="dokumen_imb_peruntukan_bangunan" class="form-control" /></td>
+                      <td><input type="text" name="dokumen_imb_nama_pemegang_ijin" class="form-control" value="{{ old('dokumen_imb_nama_pemegang_ijin',$report->dokumen_imb_nama_pemegang_ijin) }}" /></td>
+                      <td><input type="text" name="dokumen_imb_peruntukan_bangunan" class="form-control" value="{{ old('dokumen_imb_peruntukan_bangunan',$report->dokumen_imb_peruntukan_bangunan) }}" /></td>
                     </tr>
                     <tr>
                       <th>Lokasi Bangunan Sesuai IMB</th>
                       <th>No. Sertifikat Tanah atas hak tersebut di IMB</th>
                     </tr>
                     <tr class="align-top">
-                      <td><textarea name="dokumen_imb_lokasi_bangunan" class="form-control" rows="3"></textarea></td>
-                      <td><input type="text" name="dokumen_imb_no_sertifikat_tanah" class="form-control" /></td>
+                      <td><textarea name="dokumen_imb_lokasi_bangunan" class="form-control" rows="3">{{ old('dokumen_imb_lokasi_bangunan',$report->dokumen_imb_lokasi_bangunan) }}</textarea></td>
+                      <td><input type="text" name="dokumen_imb_no_sertifikat_tanah" class="form-control" value="{{ old('dokumen_imb_no_sertifikat_tanah',$report->dokumen_imb_no_sertifikat_tanah) }}" /></td>
                     </tr>
                     <tr>
                       <td>
@@ -516,13 +516,13 @@ $configData = Helper::appClasses();
                       <th>Keterangan</th>
                     </tr>
                     <tr>
-                      <td><textarea type="text" name="dokumen_imb_keterangan" class="form-control" ></textarea></td>
+                      <td><textarea type="text" name="dokumen_imb_keterangan" class="form-control" >{{ old('dokumen_imb_keterangan',$report->dokumen_imb_keterangan) }}</textarea></td>
                     </tr>
                   </table>
                 </div>
                 <div class="form-group">
                   <label for="keterangan_dokumen_imb"><b>Keterangan Dokumen IMB</b></label>
-                  <textarea id="keterangan_dokumen_imb" name="keterangan_dokumen_imb" class="form-control" rows="4"></textarea>
+                  <textarea id="keterangan_dokumen_imb" name="keterangan_dokumen_imb" class="form-control" rows="4">{{ old('keterangan_dokumen_imb',$report->keterangan_dokumen_imb) }}</textarea>
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="lokasi_obyek">Peraturan Kawasan</label>
@@ -555,7 +555,7 @@ $configData = Helper::appClasses();
                         <th>Penjelasan</th>
                     </tr>
                     <tr>
-                        <td><textarea type="text" name="peraturan_kawasan_penjelasan" class="form-control" ></textarea></td>
+                        <td><textarea type="text" name="peraturan_kawasan_penjelasan" class="form-control" >{{ old('peraturan_kawasan_penjelasan', $report->peraturan_kawasan_penjelasan) }}</textarea></td>
                     </tr>
                   </table>
                 </div>
@@ -567,8 +567,8 @@ $configData = Helper::appClasses();
                       <th>Pendekatan Penilaian</th>
                     </tr>
                     <tr>
-                      <td><input type="text" name="analisis_data_hbu" class="form-control" /></td>
-                      <td><input type="text" name="analisis_data_pendekatan_penilaian" class="form-control"/></td>
+                      <td><input type="text" name="analisis_data_hbu" class="form-control" value="{{ old('analisis_data_hbu',$master_report->analisis_data_hbu) }}"/></td>
+                      <td><input type="text" name="analisis_data_pendekatan_penilaian" class="form-control" value="{{ old('analisis_data_hbu',$master_report->analisis_data_hbu) }}"/></td>
                     </tr>
                   </table>
                 </div>
@@ -580,31 +580,38 @@ $configData = Helper::appClasses();
                       <th>Kondisi penjualan</th>
                     </tr>
                     <tr>
-                      <td><input type="text" name="asumsi_penilaian_syarat_pembiayaan" class="form-control" /></td>
-                      <td><input type="text" name="asumsi_penilaian_kondisi_penjualan" class="form-control"/></td>
+                      <td><input type="text" name="asumsi_penilaian_syarat_pembiayaan" class="form-control" value="{{ old('asumsi_penilaian_syarat_pembiayaan',$master_report->asumsi_penilaian_syarat_pembiayaan) }}" /></td>
+                      <td><input type="text" name="asumsi_penilaian_kondisi_penjualan" class="form-control" value="{{ old('asumsi_penilaian_kondisi_penjualan',$master_report->asumsi_penilaian_kondisi_penjualan) }}"/></td>
                     </tr>
                     <tr>
                       <th>Pengeluaran yg dilakukan segera setelah pembelian</th>
                       <th>Kondisi pasar</th>
                     </tr>
                     <tr>
-                      <td><input type="text" name="asumsi_penilaian_pengeluaran" class="form-control" /></td>
-                      <td><input type="text" name="asumsi_penilaian_kondisi_pasar" class="form-control"/></td>
+                      <td><input type="text" name="asumsi_penilaian_pengeluaran" class="form-control" value="{{ old('asumsi_penilaian_pengeluaran',$master_report->asumsi_penilaian_pengeluaran) }}"/></td>
+                      <td><input type="text" name="asumsi_penilaian_kondisi_pasar" class="form-control" value="{{ old('asumsi_penilaian_pengeluaran',$master_report->asumsi_penilaian_pengeluaran) }}" /></td>
                     </tr>
                   </table>
                 </div>
                 <div class="form-group">
                   <label for="jenis_properti"><b>Jenis Properti</b></label>
-                  <input type="text" id="jenis_properti" name="jenis_properti" class="form-control" />
+                  <input type="text" id="jenis_properti" name="jenis_properti" class="form-control" value="{{ old('jenis_properti',$master_report->jenis_properti) }}" />
                 </div>
                 <div class="form-group">
                   <label for="jenis_bangunan"><b>Jenis Bangunan</b></label><br>
-                  <input type="checkbox" id="rukoCheckbox" name="jenis_bangunan" value="Ruko / Rukan">
+                  <input type="checkbox" id="rukoCheckbox" name="jenis_bangunan" value="Ruko / Rukan" {{ old('jenis_bangunan',$master_report->jenis_bangunan) == 'Ruko / Rukan' ? 'checked' : '' }}>
                   Ruko / Rukan
                 </div>
-                <!-- Container untuk input tambahan -->
-                <div id="inputTambahanContainer"></div>
-
+                <div id="inputTambahanContainer">
+                  @if ($master_report->jenis_bangunan)
+                    <div id="rukoInputGroup">
+                      <div class="form-group">
+                        <label for="peruntukan_tanah_tabel_analisis"><b>Keterangan Peruntukan Tanah pada Tabel Analisis Ruko</b></label>
+                        <input type="text" name="peruntukan_tanah_tabel_analisis" class="form-control" placeholder="berperuntukan ruko" value="{{ old('peruntukan_tanah_tabel_analisis',$master_report->peruntukan_tanah_tabel_analisis) }}">
+                      </div>
+                    </div>
+                  @endif
+                </div>
                 <script>
                   const checkbox = document.getElementById('rukoCheckbox');
                   const container = document.getElementById('inputTambahanContainer');
@@ -617,7 +624,7 @@ $configData = Helper::appClasses();
                       inputGroup.innerHTML = `
                         <div class="form-group">
                           <label for="peruntukan_tanah_tabel_analisis"><b>Keterangan Peruntukan Tanah pada Tabel Analisis Ruko</b></label>
-                          <input type="text" name="peruntukan_tanah_tabel_analisis" class="form-control" placeholder="berperuntukan ruko">
+                          <input type="text" name="peruntukan_tanah_tabel_analisis" class="form-control" placeholder="berperuntukan ruko" value="{{ old('peruntukan_tanah_tabel_analisis',$master_report->peruntukan_tanah_tabel_analisis) }}">
                         </div>
                       `;
                       container.appendChild(inputGroup);
@@ -632,7 +639,7 @@ $configData = Helper::appClasses();
                 </script>
                 <div class="form-group">
                   <label for="keterangan_dasar_nilai_tabel_analisis"><b>Keterangan Dasar Nilai pada Tabel Analisis</b></label>
-                  <input type="text" id="keterangan_dasar_nilai_tabel_analisis" name="keterangan_dasar_nilai_tabel_analisis" class="form-control" />
+                  <input type="text" id="keterangan_dasar_nilai_tabel_analisis" name="keterangan_dasar_nilai_tabel_analisis" class="form-control" value="{{ old('keterangan_dasar_nilai_tabel_analisis',$master_report->keterangan_dasar_nilai_tabel_analisis) }}" />
                 </div>
                 <div class="form-group">
                   <label for="koordinat"><b>Koordinat Obyek</b></label>
@@ -658,19 +665,41 @@ $configData = Helper::appClasses();
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                              <td class="row-number">1</td>
-                              <td><input type="number" name="njop_tahun[]" class="form-control" /></td>
-                              <td><input type="number" name="njop_nilai_perolehan[]" class="form-control" />
-                              </td>
-                              <td>
-                                <button type="button" class="btn btn-sm btn-action" onclick="addRowNjop()" style="color: rgb(0, 132, 255)">+</button><br>
-                                <button type="button" class="btn btn-sm btn-action" onclick="removeRowNjop(this)" style="color: rgb(0, 132, 255)">-</button>
-                              </td>
-                          </tr>
+                        @if(old('njop_tahun', $master_report->njop_tahun))
+                            @foreach(old('njop_tahun', $master_report->njop_tahun) as $index => $tahun)
+                                <tr>
+                                    <td class="row-number">{{ $index + 1 }}</td>
+                                    <td>
+                                        <input type="number" name="njop_tahun[]" class="form-control" value="{{ $tahun }}" />
+                                    </td>
+                                    <td>
+                                        <input type="number" name="njop_nilai_perolehan[]" class="form-control"
+                                               value="{{ old('njop_nilai_perolehan.'.$index, isset($master_report->njop_nilai_perolehan[$index]) ? $master_report->njop_nilai_perolehan[$index] : '') }}" />
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-action" onclick="addRowNjop()" style="color: rgb(0, 132, 255)">+</button><br>
+                                        <button type="button" class="btn btn-sm btn-action" onclick="removeRowNjop(this)" style="color: rgb(0, 132, 255)">-</button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td class="row-number">1</td>
+                                <td>
+                                    <input type="number" name="njop_tahun[]" class="form-control" />
+                                </td>
+                                <td>
+                                    <input type="number" name="njop_nilai_perolehan[]" class="form-control" />
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-action" onclick="addRowNjop()" style="color: rgb(0, 132, 255)">+</button><br>
+                                    <button type="button" class="btn btn-sm btn-action" onclick="removeRowNjop(this)" style="color: rgb(0, 132, 255)">-</button>
+                                </td>
+                            </tr>
+                        @endif
                       </tbody>
                   </table>
-              </div>
+                </div>
                 <div class="form-group">
                   <label for="row_jalan"><b>Row Jalan(m)</b></label><br>
                   <small class="form-text text-muted">
@@ -678,34 +707,34 @@ $configData = Helper::appClasses();
                         Dalam satuan meter
                       </i>
                   </small>
-                  <input type="number" id="row_jalan" name="row_jalan" class="form-control"/>
+                  <input type="number" id="row_jalan" name="row_jalan" class="form-control" value="{{ old('row_jalan',$master_report->row_jalan) }}"/>
                 </div>
                 <div class="form-group">
                   <label for="tipe_jalan"><b>Tipe Jalan</b></label>
-                  <input type="text" id="tipe_jalan" name="tipe_jalan" class="form-control"/>
+                  <input type="text" id="tipe_jalan" name="tipe_jalan" class="form-control" value="{{ old('tipe_jalan',$master_report->tipe_jalan) }}"/>
                 </div>
                 <div class="form-group">
                   <label for="kapasitas_jalan"><b>Kapasistas Jalan</b></label>
-                  <input type="text" id="kapasitas_jalan" name="kapasitas_jalan" class="form-control" />
+                  <input type="text" id="kapasitas_jalan" name="kapasitas_jalan" class="form-control" value="{{ old('kapasitas_jalan',$master_report->kapasitas_jalan) }}" />
                 </div>
                 <div class="form-group">
                   <label for="penggunaan_lahan"><b>Penggunaan Lahan Lingkungan Eksisting</b></label>
                   <select id="penggunaan_lahan" name="penggunaan_lahan" class="form-control" >
                       <option value="">- Select -</option>
-                      <option value="perumahan_pemukiman" {{ old('penggunaan_lahan') == "perumahan_pemukiman" ? 'selected' : '' }}>Perumahan / Pemukiman</option>
-                      <option value="campuran" {{ old('penggunaan_lahan') == "campuran" ? 'selected' : '' }}>Campuran</option>
+                      <option value="perumahan_pemukiman" {{ old('penggunaan_lahan',$master_report->penggunaan_lahan) == "perumahan_pemukiman" ? 'selected' : '' }}>Perumahan / Pemukiman</option>
+                      <option value="campuran" {{ old('penggunaan_lahan',$master_report->penggunaan_lahan) == "campuran" ? 'selected' : '' }}>Campuran</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="posisi_obyek"><b>Letak / Posisi Obyek</b></label>
                   <select id="posisi_obyek" name="posisi_obyek" class="form-control" >
                       <option value="">- Select -</option>
-                      <option value="Kuldesak" {{ old('posisi_obyek') == "Kuldesak" ? 'selected' : '' }}>Kuldesak</option>
-                      <option value="Interior" {{ old('posisi_obyek') == "Interior" ? 'selected' : '' }}>Interior</option>
-                      <option value="Tusuk Sate" {{ old('posisi_obyek') == "Tusuk Sate" ? 'selected' : '' }}>Tusuk Sate</option>
-                      <option value="Sudut" {{ old('posisi_obyek') == "Sudut" ? 'selected' : '' }}>Sudut (Corner)</option>
-                      <option value="Key" {{ old('posisi_obyek') == "Key" ? 'selected' : '' }}>Key</option>
-                      <option value="Flag" {{ old('posisi_obyek') == "Flag" ? 'selected' : '' }}>Flag</option>
+                      <option value="Kuldesak" {{ old('posisi_obyek',$master_report->posisi_obyek) == "Kuldesak" ? 'selected' : '' }}>Kuldesak</option>
+                      <option value="Interior" {{ old('posisi_obyek',$master_report->posisi_obyek) == "Interior" ? 'selected' : '' }}>Interior</option>
+                      <option value="Tusuk Sate" {{ old('posisi_obyek',$master_report->posisi_obyek) == "Tusuk Sate" ? 'selected' : '' }}>Tusuk Sate</option>
+                      <option value="Sudut" {{ old('posisi_obyek',$master_report->posisi_obyek) == "Sudut" ? 'selected' : '' }}>Sudut (Corner)</option>
+                      <option value="Key" {{ old('posisi_obyek',$master_report->posisi_obyek) == "Key" ? 'selected' : '' }}>Key</option>
+                      <option value="Flag" {{ old('posisi_obyek',$master_report->posisi_obyek) == "Flag" ? 'selected' : '' }}>Flag</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -717,20 +746,20 @@ $configData = Helper::appClasses();
                   </small>
                   <select id="lokasi_aset" name="lokasi_aset" class="form-control" >
                       <option value="">- Select -</option>
-                      <option value="Depan" {{ old('lokasi_aset') == "Depan" ? 'selected' : '' }}>Depan</option>
-                      <option value="Tengah" {{ old('lokasi_aset') == "Tengah" ? 'selected' : '' }}>Tengah</option>
-                      <option value="Belakang" {{ old('lokasi_aset') == "Belakang" ? 'selected' : '' }}>Belakang</option>
+                      <option value="Depan" {{ old('lokasi_aset',$master_report->lokasi_aset) == "Depan" ? 'selected' : '' }}>Depan</option>
+                      <option value="Tengah" {{ old('lokasi_aset',$master_report->lokasi_aset) == "Tengah" ? 'selected' : '' }}>Tengah</option>
+                      <option value="Belakang" {{ old('lokasi_aset',$master_report->lokasi_aset) == "Belakang" ? 'selected' : '' }}>Belakang</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="bentuk_tanah"><b>Bentuk Tanah</b></label>
                   <select id="bentuk_tanah" name="bentuk_tanah" class="form-control" >
                       <option value="">- Select -</option>
-                      <option value="Beraturan" {{ old('bentuk_tanah') == "Beraturan" ? 'selected' : '' }}>Beraturan</option>
-                      <option value="Tidak Beraturan" {{ old('bentuk_tanah') == "tidak_beraturanTidak Beraturan" ? 'selected' : '' }}>Tidak Beraturan</option>
-                      <option value="Persegipanjang" {{ old('bentuk_tanah') == "Persegipanjang" ? 'selected' : '' }}>Persegipanjang</option>
-                      <option value="Persegiempat" {{ old('bentuk_tanah') == "Persegiempat" ? 'selected' : '' }}>Persegiempat</option>
-                      <option value="Lainnya" {{ old('bentuk_tanah') == "Lainnya" ? 'selected' : '' }}>Lainnya</option>
+                      <option value="Beraturan" {{ old('bentuk_tanah',$master_report->bentuk_tanah) == "Beraturan" ? 'selected' : '' }}>Beraturan</option>
+                      <option value="Tidak Beraturan" {{ old('bentuk_tanah',$master_report->bentuk_tanah) == "Tidak Beraturan" ? 'selected' : '' }}>Tidak Beraturan</option>
+                      <option value="Persegipanjang" {{ old('bentuk_tanah',$master_report->bentuk_tanah) == "Persegipanjang" ? 'selected' : '' }}>Persegipanjang</option>
+                      <option value="Persegiempat" {{ old('bentuk_tanah',$master_report->bentuk_tanah) == "Persegiempat" ? 'selected' : '' }}>Persegiempat</option>
+                      <option value="Lainnya" {{ old('bentuk_tanah',$master_report->bentuk_tanah) == "Lainnya" ? 'selected' : '' }}>Lainnya</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -740,7 +769,7 @@ $configData = Helper::appClasses();
                         Dalam satuan meter
                       </i>
                   </small>
-                  <input type="number" name="lebar_muka_tanah" id="lebar_muka_tanah" class="form-control">
+                  <input type="number" name="lebar_muka_tanah" id="lebar_muka_tanah" class="form-control" value="{{ old('lebar_muka_tanah',$master_report->lebar_muka_tanah) }}">
                 </div>
                 <div class="form-group">
                   <label for="ketinggian_muka_jalan"><b>Ketinggian Tanah dari Muka Jalan (m)</b></label><br>
@@ -749,14 +778,14 @@ $configData = Helper::appClasses();
                         Dalam satuan meter
                       </i>
                   </small>
-                  <input type="number" name="ketinggian_muka_jalan" id="ketinggian_muka_jalan" class="form-control">
+                  <input type="number" name="ketinggian_muka_jalan" id="ketinggian_muka_jalan" class="form-control" value="{{ old('ketinggian_muka_jalan',$master_report->ketinggian_muka_jalan) }}">
                 </div>
                 <div class="form-group">
                   <label for="topografi"><b>Topografi / Elevasi</b></label>
                   <select id="topografi" name="topografi" class="form-control" >
                       <option value="">- Select -</option>
-                      <option value="Rata" {{ old('bentuk_tanah') == "Rata" ? 'selected' : '' }}>Rata</option>
-                      <option value="Bergelombang" {{ old('bentuk_tanah') == "Bergelombang" ? 'selected' : '' }}>Bergelombang</option>
+                      <option value="Rata" {{ old('topografi',$master_report->topografi) == "Rata" ? 'selected' : '' }}>Rata</option>
+                      <option value="Bergelombang" {{ old('topografi',$master_report->topografi) == "Bergelombang" ? 'selected' : '' }}>Bergelombang</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -766,48 +795,51 @@ $configData = Helper::appClasses();
                         Dalam satuan meter
                       </i>
                   </small>
-                  <input type="number" name="tingkat_hunian" id="tingkat_hunian" class="form-control">
+                  <input type="number" name="tingkat_hunian" id="tingkat_hunian" class="form-control" value="{{ old('tingkat_hunian',$master_report->tingkat_hunian) }}">
                 </div>
+                @php
+                    $kondisi_lingkungan = old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? []);
+                @endphp
                 <div class="form-group">
                   <label><b>Kondisi Lingkungan Khusus</b></label><br>
-                  <input type="checkbox" id="bebas_banjir" name="kondisi_lingkungan_khusus[]" value="Bebas Banjir">
+                  <input type="checkbox" id="bebas_banjir" name="kondisi_lingkungan_khusus[]" value="Bebas Banjir" {{ in_array('Bebas Banjir', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="bebas_banjir">Bebas Banjir</label> <br>
-                  <input type="checkbox" id="banjir_musiman" name="kondisi_lingkungan_khusus[]" value="Banjir Musiman">
+                  <input type="checkbox" id="banjir_musiman" name="kondisi_lingkungan_khusus[]" value="Banjir Musiman" {{ in_array('Banjir Musiman', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="banjir_musiman">Banjir Musiman</label> <br>
-                  <input type="checkbox" id="rawan_banjir" name="kondisi_lingkungan_khusus[]" value="Rawan Banjir">
+                  <input type="checkbox" id="rawan_banjir" name="kondisi_lingkungan_khusus[]" value="Rawan Banjir" {{ in_array('Rawan Banjir', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="rawan_banjir">Rawan Banjir</label> <br>
-                  <input type="checkbox" id="rawan_kebakaran" name="kondisi_lingkungan_khusus[]" value="Rawan Kebakaran">
+                  <input type="checkbox" id="rawan_kebakaran" name="kondisi_lingkungan_khusus[]" value="Rawan Kebakaran" {{ in_array('Rawan Kebakaran', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="rawan_kebakaran">Rawan Kebakaran</label> <br>
-                  <input type="checkbox" id="rawan_bencana_alam" name="kondisi_lingkungan_khusus[]" value="Rawan Bencana Alam">
+                  <input type="checkbox" id="rawan_bencana_alam" name="kondisi_lingkungan_khusus[]" value="Rawan Bencana Alam" {{ in_array('Rawan Bencana Alam', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="rawan_bencana_alam">Rawan Bencana Alam</label> <br>
-                  <input type="checkbox" id="rawan_huru_hara" name="kondisi_lingkungan_khusus[]" value="Rawan Huru-Hara">
+                  <input type="checkbox" id="rawan_huru_hara" name="kondisi_lingkungan_khusus[]" value="Rawan Huru-Hara" {{ in_array('Rawan Huru-Hara', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="rawan_huru_hara">Rawan Huru-Hara</label> <br>
-                  <input type="checkbox" id="Dekat Kuburan" name="kondisi_lingkungan_khusus[]" value="Dekat Kuburan">
+                  <input type="checkbox" id="Dekat Kuburan" name="kondisi_lingkungan_khusus[]" value="Dekat Kuburan" {{ in_array('Dekat Kuburan', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="Dekat Kuburan">Dekat Kuburan</label> <br>
-                  <input type="checkbox" id="dekat_sekolahan" name="kondisi_lingkungan_khusus[]" value="Dekat Sekolahan/Pasar">
+                  <input type="checkbox" id="dekat_sekolahan" name="kondisi_lingkungan_khusus[]" value="Dekat Sekolahan/Pasar" {{ in_array('Dekat Sekolahan/Pasar', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="dekat_sekolahan">Dekat Sekolahan/Pasar</label> <br>
-                  <input type="checkbox" id="lokasi_tusuk_sate" name="kondisi_lingkungan_khusus[]" value="Lokasi Tusuk Sate">
+                  <input type="checkbox" id="lokasi_tusuk_sate" name="kondisi_lingkungan_khusus[]" value="Lokasi Tusuk Sate" {{ in_array('Lokasi Tusuk Sate', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="lokasi_tusuk_sate">Lokasi Tusuk Sate</label> <br>
-                  <input type="checkbox" id="dekat_tempat_ibadah" name="kondisi_lingkungan_khusus[]" value="Dekat Tempat Ibadah">
+                  <input type="checkbox" id="dekat_tempat_ibadah" name="kondisi_lingkungan_khusus[]" value="Dekat Tempat Ibadah" {{ in_array('Dekat Tempat Ibadah', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="dekat_tempat_ibadah">Dekat Tempat Ibadah</label> <br>
-                  <input type="checkbox" id="dekat_kumpulan_bangunan_liar" name="kondisi_lingkungan_khusus[]" value="Dekat Kumpulan Bangunan Liar">
+                  <input type="checkbox" id="dekat_kumpulan_bangunan_liar" name="kondisi_lingkungan_khusus[]" value="Dekat Kumpulan Bangunan Liar" {{ in_array('Dekat Kumpulan Bangunan Liar', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="dekat_kumpulan_bangunan_liar">Dekat Kumpulan Bangunan Liar</label> <br>
-                  <input type="checkbox" id="dekat_jurang" name="kondisi_lingkungan_khusus[]" value="Dekat Jurang/ Rawan Longsor">
+                  <input type="checkbox" id="dekat_jurang" name="kondisi_lingkungan_khusus[]" value="Dekat Jurang/ Rawan Longsor" {{ in_array('Dekat Jurang/ Rawan Longsor', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="dekat_jurang">Dekat Jurang/ Rawan Longsor</label> <br>
-                  <input type="checkbox" id="dekat_pasar" name="kondisi_lingkungan_khusus[]" value="Dekat Pasar">
+                  <input type="checkbox" id="dekat_pasar" name="kondisi_lingkungan_khusus[]" value="Dekat Pasar" {{ in_array('Dekat Pasar', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="dekat_pasar">Dekat Pasar</label> <br>
-                  <input type="checkbox" id="dekat_tegangan_tinggi" name="kondisi_lingkungan_khusus[]" value="Dekat Tegangan Tinggi">
+                  <input type="checkbox" id="dekat_tegangan_tinggi" name="kondisi_lingkungan_khusus[]" value="Dekat Tegangan Tinggi" {{ in_array('Dekat Tegangan Tinggi', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="dekat_tegangan_tinggi">Dekat Tegangan Tinggi</label> <br>
-                  <input type="checkbox" id="dekat_terminal" name="kondisi_lingkungan_khusus[]" value="Dekat Terminal">
+                  <input type="checkbox" id="dekat_terminal" name="kondisi_lingkungan_khusus[]" value="Dekat Terminal"{{ in_array('Dekat Terminal', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="dekat_terminal">Dekat Terminal</label> <br>
-                  <input type="checkbox" id="dekat_saluran_irigasi" name="kondisi_lingkungan_khusus[]" value="Dekat Saluran Irigasi">
+                  <input type="checkbox" id="dekat_saluran_irigasi" name="kondisi_lingkungan_khusus[]" value="Dekat Saluran Irigasi" {{ in_array('Dekat Saluran Irigasi', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="dekat_saluran_irigasi">Dekat Saluran Irigasi</label> <br>
-                  <input type="checkbox" id="lain_lain" name="kondisi_lingkungan_khusus[]" value="Lain-lain">
+                  <input type="checkbox" id="lain_lain" name="kondisi_lingkungan_khusus[]" value="Lain-lain" {{ in_array('Lain-lain', old('kondisi_lingkungan_khusus', $master_report->kondisi_lingkungan_khusus ?? [])) ? 'checked' : '' }}>
                   <label for="lain_lain">Lain-lain</label> <br>
                 </div>
                 <div class="form-group">
                   <label for="keterangan_tambahan_lainnya"><b>Keterangan Tambahan Lainnya</b></label>
-                  <textarea id="keterangan_tambahan_lainnya" name="keterangan_tambahan_lainnya" class="form-control" rows="4"></textarea>
+                  <textarea id="keterangan_tambahan_lainnya" name="keterangan_tambahan_lainnya" class="form-control" rows="4">{{ old('keterangan_tambahan_lainnya',$master_report->keterangan_tambahan_lainnya) }}</textarea>
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="lokasi_obyek">Karakteristik Ekonomi (Jika objek yang dinilai adalah Properti Komersial)</label>
@@ -820,17 +852,17 @@ $configData = Helper::appClasses();
                       <td>
                         <select id="karakteristik_ekonomi_kualitas_pendapatan" name="karakteristik_ekonomi_kualitas_pendapatan" class="form-control" >
                             <option value="">- Select -</option>
-                            <option value="Rendah" {{ old('karakteristik_ekonomi_kualitas_pendapatan') == "Rendah" ? 'selected' : '' }}>Rendah</option>
-                            <option value="Sedang" {{ old('karakteristik_ekonomi_kualitas_pendapatan') == "Sedang" ? 'selected' : '' }}>Sedang</option>
-                            <option value="Tinggi" {{ old('karakteristik_ekonomi_kualitas_pendapatan') == "Tinggi" ? 'selected' : '' }}>Tinggi</option>
+                            <option value="Rendah" {{ old('karakteristik_ekonomi_kualitas_pendapatan', $master_report->karakteristik_ekonomi_kualitas_pendapatan) == "Rendah" ? 'selected' : '' }}>Rendah</option>
+                            <option value="Sedang" {{ old('karakteristik_ekonomi_kualitas_pendapatan', $master_report->karakteristik_ekonomi_kualitas_pendapatan) == "Sedang" ? 'selected' : '' }}>Sedang</option>
+                            <option value="Tinggi" {{ old('karakteristik_ekonomi_kualitas_pendapatan', $master_report->karakteristik_ekonomi_kualitas_pendapatan) == "Tinggi" ? 'selected' : '' }}>Tinggi</option>
                         </select>
                       </td>
                       <td>
                         <select id="karakteristik_ekonomi_biaya_operasional" name="karakteristik_ekonomi_biaya_operasional" class="form-control" >
                             <option value="">- Select -</option>
-                            <option value="Rendah" {{ old('karakteristik_ekonomi_biaya_operasional') == "Rendah" ? 'selected' : '' }}>Rendah</option>
-                            <option value="Normal" {{ old('karakteristik_ekonomi_biaya_operasional') == "Normal" ? 'selected' : '' }}>Normal</option>
-                            <option value="Tinggi" {{ old('karakteristik_ekonomi_biaya_operasional') == "Tinggi" ? 'selected' : '' }}>Tinggi</option>
+                            <option value="Rendah" {{ old('karakteristik_ekonomi_biaya_operasional',$master_report->karakteristik_ekonomi_biaya_operasional) == "Rendah" ? 'selected' : '' }}>Rendah</option>
+                            <option value="Normal" {{ old('karakteristik_ekonomi_biaya_operasional',$master_report->karakteristik_ekonomi_biaya_operasional) == "Normal" ? 'selected' : '' }}>Normal</option>
+                            <option value="Tinggi" {{ old('karakteristik_ekonomi_biaya_operasional',$master_report->karakteristik_ekonomi_biaya_operasional) == "Tinggi" ? 'selected' : '' }}>Tinggi</option>
                         </select>
                       </td>
                     </tr>
@@ -842,17 +874,17 @@ $configData = Helper::appClasses();
                       <td>
                         <select id="karakteristik_ekonomi_ketentuan_sewa" name="karakteristik_ekonomi_ketentuan_sewa" class="form-control" >
                             <option value="">- Select -</option>
-                            <option value="Mudah" {{ old('karakteristik_ekonomi_ketentuan_sewa') == "Mudah" ? 'selected' : '' }}>Mudah</option>
-                            <option value="Normal" {{ old('karakteristik_ekonomi_ketentuan_sewa') == "Normal" ? 'selected' : '' }}>Normal</option>
-                            <option value="Ketat" {{ old('karakteristik_ekonomi_ketentuan_sewa') == "Ketat" ? 'selected' : '' }}>Ketat</option>
+                            <option value="Mudah" {{ old('karakteristik_ekonomi_ketentuan_sewa',$master_report->karakteristik_ekonomi_ketentuan_sewa) == "Mudah" ? 'selected' : '' }}>Mudah</option>
+                            <option value="Normal" {{ old('karakteristik_ekonomi_ketentuan_sewa',$master_report->karakteristik_ekonomi_ketentuan_sewa) == "Normal" ? 'selected' : '' }}>Normal</option>
+                            <option value="Ketat" {{ old('karakteristik_ekonomi_ketentuan_sewa',$master_report->karakteristik_ekonomi_ketentuan_sewa) == "Ketat" ? 'selected' : '' }}>Ketat</option>
                         </select>
                       </td>
                       <td>
                         <select id="karakteristik_ekonomi_manajemen" name="karakteristik_ekonomi_manajemen" class="form-control" >
                             <option value="">- Select -</option>
-                            <option value="Kecil" {{ old('karakteristik_ekonomi_manajemen') == "Kecil" ? 'selected' : '' }}>Kecil</option>
-                            <option value="Menengah" {{ old('karakteristik_ekonomi_manajemen') == "Menengah" ? 'selected' : '' }}>Menengah</option>
-                            <option value="Besar" {{ old('karakteristik_ekonomi_manajemen') == "Besar" ? 'selected' : '' }}>Besar</option>
+                            <option value="Kecil" {{ old('karakteristik_ekonomi_manajemen',$master_report->karakteristik_ekonomi_manajemen) == "Kecil" ? 'selected' : '' }}>Kecil</option>
+                            <option value="Menengah" {{ old('karakteristik_ekonomi_manajemen',$master_report->karakteristik_ekonomi_manajemen) == "Menengah" ? 'selected' : '' }}>Menengah</option>
+                            <option value="Besar" {{ old('karakteristik_ekonomi_manajemen',$master_report->karakteristik_ekonomi_manajemen) == "Besar" ? 'selected' : '' }}>Besar</option>
                         </select>
                       </td>
                     </tr>
@@ -864,9 +896,9 @@ $configData = Helper::appClasses();
                       <td>
                         <select id="karakteristik_ekonomi_bauran_penyewa" name="karakteristik_ekonomi_bauran_penyewa" class="form-control" >
                             <option value="">- Select -</option>
-                            <option value="Terbatas" {{ old('karakteristik_ekonomi_bauran_penyewa') == "Terbatas" ? 'selected' : '' }}>Terbatas</option>
-                            <option value="Normal" {{ old('karakteristik_ekonomi_bauran_penyewa') == "Normal" ? 'selected' : '' }}>Normal</option>
-                            <option value="Beragam" {{ old('karakteristik_ekonomi_bauran_penyewa') == "Beragam" ? 'selected' : '' }}>Beragam</option>
+                            <option value="Terbatas" {{ old('karakteristik_ekonomi_bauran_penyewa',$master_report->karakteristik_ekonomi_bauran_penyewa) == "Terbatas" ? 'selected' : '' }}>Terbatas</option>
+                            <option value="Normal" {{ old('karakteristik_ekonomi_bauran_penyewa',$master_report->karakteristik_ekonomi_bauran_penyewa) == "Normal" ? 'selected' : '' }}>Normal</option>
+                            <option value="Beragam" {{ old('karakteristik_ekonomi_bauran_penyewa',$master_report->karakteristik_ekonomi_bauran_penyewa) == "Beragam" ? 'selected' : '' }}>Beragam</option>
                         </select>
                       </td>
                       <td>
@@ -883,10 +915,10 @@ $configData = Helper::appClasses();
                     </tr>
                     <tr>
                       <td>
-                        <input type="text" id="komponen_non_realty_ffe" name="komponen_non_realty_ffe" class="form-control" />
+                        <input type="text" id="komponen_non_realty_ffe" name="komponen_non_realty_ffe" class="form-control" value="{{ old('komponen_non_realty_ffe',$master_report->komponen_non_realty_ffe) }}"/>
                       </td>
                       <td>
-                        <input type="text" id="komponen_non_realty_mesin" name="komponen_non_realty_mesin" class="form-control" />
+                        <input type="text" id="komponen_non_realty_mesin" name="komponen_non_realty_mesin" class="form-control" value="{{ old('komponen_non_realty_mesin',$master_report->komponen_non_realty_mesin) }}"/>
                       </td>
                     </tr>
                   </table>
@@ -901,10 +933,10 @@ $configData = Helper::appClasses();
                     </tr>
                     <tr>
                       <td>
-                        <input type="text" id="gambaran_objek_dari_pusat_kota" name="gambaran_objek_dari_pusat_kota" class="form-control" />
+                        <input type="text" name="gambaran_objek_dari_pusat_kota" class="form-control" value="{{ old('gambaran_objek_dari_pusat_kota',$master_report->gambaran_objek_dari_pusat_kota) }}" />
                       </td>
                       <td>
-                        <input type="text" id="gambaran_objek_dari_pusat_ekonomi" name="gambaran_objek_dari_pusat_ekonomi" class="form-control" />
+                        <input type="text" name="gambaran_objek_dari_pusat_ekonomi" class="form-control" value="{{ old('gambaran_objek_dari_pusat_ekonomi',$master_report->gambaran_objek_dari_pusat_ekonomi) }}" />
                       </td>
                     </tr>
                     <tr>
@@ -914,10 +946,10 @@ $configData = Helper::appClasses();
                     </tr>
                     <tr>
                       <td>
-                        <input type="text" id="gambaran_objek_dari_jalan_utama" name="gambaran_objek_dari_jalan_utama" class="form-control" />
+                        <input type="text" name="gambaran_objek_dari_jalan_utama" class="form-control" value="{{ old('gambaran_objek_dari_jalan_utama',$master_report->gambaran_objek_dari_jalan_utama) }}" />
                       </td>
                       <td>
-                        <input type="text" id="gambaran_objek_kondisi_lingkungan_khusus" name="gambaran_objek_kondisi_lingkungan_khusus" class="form-control" />
+                        <input type="text" name="gambaran_objek_kondisi_lingkungan_khusus" class="form-control" value="{{ old('gambaran_objek_kondisi_lingkungan_khusus',$master_report->gambaran_objek_kondisi_lingkungan_khusus) }}" />
                       </td>
                     </tr>
                     <tr>
@@ -927,7 +959,7 @@ $configData = Helper::appClasses();
                     </tr>
                     <tr>
                       <td>
-                        <input type="text" id="gambaran_objek_faktor_view" name="gambaran_objek_faktor_view" class="form-control" />
+                        <input type="text" name="gambaran_objek_faktor_view" class="form-control" value="{{ old('gambaran_objek_faktor_view',$master_report->gambaran_objek_faktor_view) }}" />
                       </td>
                       <td>
                       </td>
@@ -941,11 +973,14 @@ $configData = Helper::appClasses();
                         Obyek tidak tersedia?<a href="{{ route('object-bangunan') }}"> <u>Tambah obyek bangunan</u></a>
                       </i>
                     </small>
-                  <select class="js-example-basic-multiple form-control" name="obyek_id[]" multiple="multiple">
-                    @foreach ($objects as $object)
-                    <option value="{{ $object->id }}">{{ $object->nama_bangunan }}</option>
-                    @endforeach
-                  </select>
+                    <select class="js-example-basic-multiple form-control" name="obyek_id[]" multiple="multiple">
+                      @foreach ($objects as $object)
+                          <option value="{{ $object->id }}"
+                              {{ in_array($object->id, old('obyek_id', $master_report->obyek_id ?? [])) ? 'selected' : '' }}>
+                              {{ $object->nama_bangunan }}
+                          </option>
+                      @endforeach
+                   </select>
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label">Sarana Pelengkap PAGAR - BUT MAPPI</label>
@@ -963,29 +998,34 @@ $configData = Helper::appClasses();
                         <td style="width:4%" class="align-top" rowspan="4">
                           <button type="button" class="btn btn-sm btn-action" onclick="addRowPagar()" style="color: rgb(0, 132, 255)">+</button><br>
                           <button type="button" class="btn btn-sm btn-action" onclick="removeRowPagar(this)" style="color: rgb(0, 132, 255)">-</button>
-                        </td>
+                       </td>
                       </tr>
                       <tr>
                         <td>
-                          <select name="pagar_sarana_pelengkap[]" class="form-control" >
-                            <option value="">- Select -</option>
-                            <option value="Rusak" {{ old('pagar_sarana_pelengkap') == "Rusak" ? 'selected' : '' }}>Rusak</option>
-                            <option value="Kurang Baik" {{ old('pagar_sarana_pelengkap') == "Kurang Baik" ? 'selected' : '' }}>Kurang Baik</option>
-                            <option value="Cukup" {{ old('pagar_sarana_pelengkap') == "Cukup" ? 'selected' : '' }}>Cukup</option>
-                            <option value="Baik" {{ old('pagar_sarana_pelengkap') == "Baik" ? 'selected' : '' }}>Baik</option>
-                            <option value="Baik Sekali" {{ old('pagar_sarana_pelengkap') == "Baik Sekali" ? 'selected' : '' }}>Baik Sekali</option>
-                            <option value="Baru" {{ old('pagar_sarana_pelengkap') == "Baru" ? 'selected' : '' }}>Baru</option>
-                          </select>
+                            <select name="pagar_sarana_pelengkap[]" class="form-control">
+                                <option value="">- Select -</option>
+                                @foreach(['Rusak', 'Kurang Baik', 'Cukup', 'Baik', 'Baik Sekali', 'Baru'] as $option)
+                                    <option value="{{ $option }}">
+                                        {{ $option }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </td>
-                        <td><input type="number" name="pagar_bobot[]" class="form-control" placeholder="100" /></td>
+                        <td>
+                            <input type="number" name="pagar_bobot[]" class="form-control" placeholder="100"
+                                 />
+                        </td>
                       </tr>
                       <tr>
-                        <th>Adjustment Lain</th>
-                        <th></th>
+                          <th>Adjustment Lain</th>
+                          <th></th>
                       </tr>
                       <tr>
-                        <td><input type="number" name="pagar_adjustment_lain[]" class="form-control" /></td>
-                        <td></td>
+                          <td>
+                              <input type="number" name="pagar_adjusment_lain[]" class="form-control"
+                                  />
+                          </td>
+                          <td></td>
                       </tr>
                     </tbody>
                     <tr>

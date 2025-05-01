@@ -38,7 +38,7 @@
                                 <dd class="col-sm-7">#{{ $report->id }}</dd>
 
                                 <dt class="col-sm-5">Jenis Properti</dt>
-                                <dd class="col-sm-7">{{ $report->jenis_properti ?? '-' }}</dd>
+                                <dd class="col-sm-7">{{ $report->kategori_laporan_penilaian ?? '-' }}</dd>
 
                                 <dt class="col-sm-5">No. Kontrak</dt>
                                 <dd class="col-sm-7">{{ $report->no_dokumen_kontrak ?? '-'  }}</dd>
@@ -64,7 +64,7 @@
                         </div>
                         <div class="card-footer bg-transparent">
                             <div class="btn-group w-100">
-                                <a href="#" class="btn btn-sm btn-warning">
+                                <a href="{{ route('laporan-penilaian.edit', $report->id) }}" class="btn btn-sm btn-warning">
                                     <i class="bi bi-pencil"></i> Edit
                                 </a>
                                 <button class="btn btn-sm btn-danger hapus-btn" data-id="{{ $report->id }}">
