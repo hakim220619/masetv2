@@ -25,7 +25,7 @@ $configData = Helper::appClasses();
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css" />
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<h4>Edit Laporan Penilaian – Tanah Kosong</h4>
+<h4>Edit Laporan Penilaian – Office / Retail / Apartemen</h4>
   <!-- Default -->
   <div class="row">
     <!-- Default Icons Wizard -->
@@ -33,7 +33,7 @@ $configData = Helper::appClasses();
       <div class="wizard-icons wizard-icons-example mt-2">
 
         <div class="content">
-          <form method="POST" action="{{ route('laporan-penilaian.edit.retail', $report->id) }}" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('laporan-penilaian.update.retail', $report->id) }}" enctype="multipart/form-data">
             <!-- Account Details -->
             @csrf
             <div id="account-details" class="content">
@@ -300,7 +300,6 @@ $configData = Helper::appClasses();
                 @php
                     $kelengkapan = old('kelengkapan_dokumen', $report->kelengkapan_dokumen ?? []);
                 @endphp
-
                 <div class="form-group">
                     <label><b>Kelengkapan Dokumen Yang Diterima</b></label><br>
 
@@ -326,6 +325,48 @@ $configData = Helper::appClasses();
                             {{ in_array('Lainnya', $kelengkapan) ? 'checked' : '' }}>
                         <label for="lainnya">Lainnya</label>
                     </div>
+                </div>
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                  <label class="form-label" for="izin_layak_huni">Izin Layak Huni</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Tanggal</th>
+                      <th>Nomor</th>
+                    </tr>
+                    <tr>
+                      <td><input type="date" id="tgl_izin_layak_huni" name="tgl_izin_layak_huni" class="form-control" /></td>
+                      <td><input type="text" id="no_izin_layak_huni" name="no_izin_layak_huni" class="form-control"/></td>
+                    </tr>
+                  </table>
+                </div>
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                  <label class="form-label" for="akta_pemisahan">Akta Pemisahan</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Tanggal</th>
+                      <th>Nomor</th>
+                    </tr>
+                    <tr>
+                      <td><input type="date" id="tgl_akta_pemisahan" name="tgl_akta_pemisahan" class="form-control" /></td>
+                      <td><input type="text" id="no_akta_pemisahan" name="no_akta_pemisahan" class="form-control"/></td>
+                    </tr>
+                    <tr>
+                      <th>Dibuat</th>
+                      <th>Disahkan Oleh</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" id="dibuat_akta_pemisahan" name="dibuat_akta_pemisahan" class="form-control" /></td>
+                      <td><input type="text" id="disahkan_oleh_akta_pemisahan" name="disahkan_oleh_akta_pemisahan" class="form-control"/></td>
+                    </tr>
+                    <tr>
+                      <th>Tanggal Disahkan</th>
+                      <th>Nomor Pengesahan</th>
+                    </tr>
+                    <tr>
+                      <td><input type="date" id="tgl_disahkan_akta_pemisahan" name="tgl_disahkan_akta_pemisahan" class="form-control" /></td>
+                      <td><input type="text" id="no_pengesahan_akta_pemisahan" name="no_pengesahan_akta_pemisahan" class="form-control"/></td>
+                    </tr>
+                  </table>
                 </div>
                 <div class="form-group">
                     <label for="informasi_khusus"><b>Informasi Khusus</b></label><br>
@@ -376,13 +417,13 @@ $configData = Helper::appClasses();
                   <input type="text" id="bentuk_kepemilikan" name="bentuk_kepemilikan" class="form-control" placeholder="Bentuk Kepemilikan" value="{{ old('bentuk_kepemilikan', $master_report->bentuk_kepemilikan) }}">
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
-                  <label class="form-label" >Dokumen Hak Tanah</label>
+                  <label class="form-label" >Dokumen Hak Properti</label>
                   <div id="containerDokumen">
                     <div class="dokumen-set">
                       <table class="table table-borderless">
                         <thead>
                           <tr>
-                            <th>Jenis Dokumen Hak Tanah</th>
+                            <th>Jenis Hak Kepemilikan</th>
                             <th>Nomor</th>
                             <td style="width:4%" class="align-top" rowspan="10">
                               <button type="button" class="btn btn-sm btn-action" onclick="addTable()" style="color: rgb(0, 132, 255)">+</button><br>
@@ -474,7 +515,7 @@ $configData = Helper::appClasses();
                     </tr>
                     <tr>
                       <td><input type="text" name="dokumen_imb_diterbitkan_oleh" class="form-control" value="{{ old('dokumen_imb_diterbitkan_oleh',$report->dokumen_imb_diterbitkan_oleh) }}" /></td>
-                      <td><input type="text" name="dokumen_imb_status_imb" class="form-control" value="{{ old('dokumen_imb_status_imb',$report->dokumen_imb_status_imb) }}" /></td>
+                      <td><input type="text" name="dokumen_imb_status" class="form-control" value="{{ old('dokumen_imb_status',$report->dokumen_imb_status) }}" /></td>
                     </tr>
                     <tr>
                       <th>Nama Pemegang Ijin</th>
@@ -589,7 +630,7 @@ $configData = Helper::appClasses();
                     </tr>
                     <tr>
                       <td><input type="text" name="asumsi_penilaian_pengeluaran" class="form-control" value="{{ old('asumsi_penilaian_pengeluaran',$master_report->asumsi_penilaian_pengeluaran) }}"/></td>
-                      <td><input type="text" name="asumsi_penilaian_kondisi_pasar" class="form-control" value="{{ old('asumsi_penilaian_pengeluaran',$master_report->asumsi_penilaian_pengeluaran) }}" /></td>
+                      <td><input type="text" name="asumsi_penilaian_kondisi_pasar" class="form-control" value="{{ old('asumsi_penilaian_kondisi_pasar',$master_report->asumsi_penilaian_kondisi_pasar) }}" /></td>
                     </tr>
                   </table>
                 </div>
@@ -597,46 +638,6 @@ $configData = Helper::appClasses();
                   <label for="jenis_properti"><b>Jenis Properti</b></label>
                   <input type="text" id="jenis_properti" name="jenis_properti" class="form-control" value="{{ old('jenis_properti',$master_report->jenis_properti) }}" />
                 </div>
-                <div class="form-group">
-                  <label for="jenis_bangunan"><b>Jenis Bangunan</b></label><br>
-                  <input type="checkbox" id="rukoCheckbox" name="jenis_bangunan" value="Ruko / Rukan" {{ old('jenis_bangunan',$master_report->jenis_bangunan) == 'Ruko / Rukan' ? 'checked' : '' }}>
-                  Ruko / Rukan
-                </div>
-                <div id="inputTambahanContainer">
-                  @if ($master_report->jenis_bangunan)
-                    <div id="rukoInputGroup">
-                      <div class="form-group">
-                        <label for="peruntukan_tanah_tabel_analisis"><b>Keterangan Peruntukan Tanah pada Tabel Analisis Ruko</b></label>
-                        <input type="text" name="peruntukan_tanah_tabel_analisis" class="form-control" placeholder="berperuntukan ruko" value="{{ old('peruntukan_tanah_tabel_analisis',$master_report->peruntukan_tanah_tabel_analisis) }}">
-                      </div>
-                    </div>
-                  @endif
-                </div>
-                <script>
-                  const checkbox = document.getElementById('rukoCheckbox');
-                  const container = document.getElementById('inputTambahanContainer');
-
-                  checkbox.addEventListener('change', function () {
-                    if (this.checked) {
-                      // Jika diceklis, tambahkan input baru
-                      const inputGroup = document.createElement('div');
-                      inputGroup.setAttribute('id', 'rukoInputGroup');
-                      inputGroup.innerHTML = `
-                        <div class="form-group">
-                          <label for="peruntukan_tanah_tabel_analisis"><b>Keterangan Peruntukan Tanah pada Tabel Analisis Ruko</b></label>
-                          <input type="text" name="peruntukan_tanah_tabel_analisis" class="form-control" placeholder="berperuntukan ruko" value="{{ old('peruntukan_tanah_tabel_analisis',$master_report->peruntukan_tanah_tabel_analisis) }}">
-                        </div>
-                      `;
-                      container.appendChild(inputGroup);
-                    } else {
-                      // Jika tidak diceklis, hapus input tambahan
-                      const inputGroup = document.getElementById('rukoInputGroup');
-                      if (inputGroup) {
-                        container.removeChild(inputGroup);
-                      }
-                    }
-                  });
-                </script>
                 <div class="form-group">
                   <label for="keterangan_dasar_nilai_tabel_analisis"><b>Keterangan Dasar Nilai pada Tabel Analisis</b></label>
                   <input type="text" id="keterangan_dasar_nilai_tabel_analisis" name="keterangan_dasar_nilai_tabel_analisis" class="form-control" value="{{ old('keterangan_dasar_nilai_tabel_analisis',$master_report->keterangan_dasar_nilai_tabel_analisis) }}" />
@@ -652,6 +653,42 @@ $configData = Helper::appClasses();
                       placeholder="-8.9897878" hidden />
                   <input type="text" id="long" name="long" class="form-control"
                       placeholder="89.8477748" hidden />
+                </div>
+                <div class="form-group">
+                  <label><b>Foto Tampak Depan</b></label><br>
+                  <small class="form-text text-muted">
+                    <i>
+                    Upload foto
+                    </i>
+                  </small>
+                  <input type="file" class="form-control" name="foto_tampak_depan">
+                </div>
+                <div class="form-group">
+                  <label><b>Foto Tampak Sisi Kiri</b></label><br>
+                  <small class="form-text text-muted">
+                    <i>
+                    Upload foto
+                    </i>
+                  </small>
+                  <input type="file" class="form-control" name="foto_tampak_sisi_kiri">
+                </div>
+                <div class="form-group">
+                  <label><b>Foto Tampak Sisi Kanan</b></label><br>
+                  <small class="form-text text-muted">
+                    <i>
+                    Upload foto
+                    </i>
+                  </small>
+                  <input type="file" class="form-control" name="foto_tampak_sisi_kanan">
+                </div>
+                <div class="form-group">
+                  <label><b>Foto Lainnya</b></label><br>
+                  <small class="form-text text-muted">
+                    <i>
+                    Upload foto
+                    </i>
+                  </small>
+                  <input type="file" class="form-control" name="foto_lainnya">
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="Nilai Perolehan">Nilai Perolehan / NJOP / PBB</label>
@@ -699,6 +736,98 @@ $configData = Helper::appClasses();
                         @endif
                       </tbody>
                   </table>
+                </div>
+                <div class="form-group">
+                  <label><b>Jenis Properti</b></label><br>
+                  <input type="radio" id="office" name="jenis_properti_retail" value="Office" checked>
+                  <label for="office">Office</label>
+                  <input type="radio" id="retail" name="jenis_properti_retail" value="Retail">
+                  <label for="retail">Retail</label>
+                  <input type="radio" id="apartemen" name="jenis_properti_retail" value="Apartemen">
+                  <label for="apartemen">Apartemen</label>
+                </div>
+                <div class="form-group">
+                  <label><b>Kondisi Properti</b></label><br>
+                  <input type="radio" id="available" name="kondisi_properti" value="Available" checked>
+                  <label for="available">Available</label>
+                  <input type="radio" id="on_progress" name="kondisi_properti" value="On Progress">
+                  <label for="on_progress">On Progress</label>
+                </div>
+                <div class="form-group">
+                  <label><b>Spesifikasi Properti</b></label><br>
+                  <input type="radio" id="bare" name="spesifikasi_properti" value="Bare" checked>
+                  <label for="bare">Bare</label>
+                  <input type="radio" id="semi_furnished" name="spesifikasi_properti" value="Semi Furnished">
+                  <label for="semi_furnished">Semi Furnished</label>
+                  <input type="radio" id="fully_furnished" name="spesifikasi_properti" value="Fully Furnished">
+                  <label for="fully_furnished">Fully Furnished</label>
+                </div>
+                <div class="form-group">
+                  <label><b>Tipe Apartemen (Jika bangunan apartemen)</b></label><br>
+                  <input type="radio" id="1_br" name="tipe_apartemen" value="1 BR" checked>
+                  <label for="1_br">1 BR</label>
+                  <input type="radio" id="2_br" name="tipe_apartemen" value="2 BR">
+                  <label for="2_br">2 BR</label>
+                  <input type="radio" id="3_br" name="tipe_apartemen" value="3 BR">
+                  <label for="3_br">3 BR</label>
+                  <input type="radio" id="penthouse" name="tipe_apartemen" value="Penthouse">
+                  <label for="penthouse">Penthouse</label>
+                </div>
+                <div class="form-group">
+                  <label for="posisi_lantai"><b>Posisi Lantai</b></label>
+                  <input type="number" id="posisi_lantai" name="posisi_lantai" class="form-control" value="{{ old('posisi_lantai',$master_report->posisi_lantai) }}"/>
+                </div>
+                <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
+                  <label class="form-label">Biaya Properti</label>
+                  <table class="table table-borderless">
+                    <tr>
+                      <th>Service Charge (Rp)</th>
+                      <th>Parkir (Rp)</th>
+                    </tr>
+                    <tr>
+                      <td><input type="number" name="biaya_properti_service_charge" class="form-control" value="{{ old('biaya_properti_service_charge',$master_report->biaya_properti_service_charge) }}" /></td>
+                      <td><input type="number" name="biaya_properti_parkir" class="form-control" value="{{ old('biaya_properti_parkir',$master_report->biaya_properti_parkir) }}"/></td>
+                    </tr>
+                    <tr>
+                      <th>Utilitas (Rp)</th>
+                      <th>Overtime (Rp)</th>
+                    </tr>
+                    <tr>
+                      <td><input type="number" name="biaya_properti_utilitas" class="form-control" value="{{ old('biaya_properti_utilitas',$master_report->biaya_properti_utilitas) }}"/></td>
+                      <td><input type="number" name="biaya_properti_overtime" class="form-control" value="{{ old('biaya_properti_overtime',$master_report->biaya_properti_overtime) }}" /></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="form-group">
+                  <label><b>Grade Bangunan</b></label><br>
+                  <input type="radio" id="A" name="grade_bangunan" value="A" checked>
+                  <label for="A">A</label>
+                  <input type="radio" id="B" name="grade_bangunan" value="B">
+                  <label for="B">B</label>
+                  <input type="radio" id="C" name="grade_bangunan" value="C">
+                  <label for="C">C</label>
+                  <input type="radio" id="D" name="grade_bangunan" value="D">
+                  <label for="D">D</label>
+                </div>
+                <div class="form-group">
+                  <label for="fasilitas_bangunan"><b>Fasilitas Bangunan</b></label>
+                  <input type="text" id="fasilitas_bangunan" name="fasilitas_bangunan" class="form-control" value="{{ old('fasilitas_bangunan',$master_report->fasilitas_bangunan) }}"/>
+                </div>
+                <div class="form-group">
+                  <label for="row_koridor"><b>Row Koridor (meter)</b></label>
+                  <input type="number" id="row_koridor" name="row_koridor" class="form-control" value="{{ old('row_koridor',$master_report->row_koridor) }}"/>
+                </div>
+                <div class="form-group">
+                  <label for="tipe_akses_koridor"><b>Tipe Akses Koridor</b></label>
+                  <input type="text" id="tipe_akses_koridor" name="tipe_akses_koridor" class="form-control" value="{{ old('tipe_akses_koridor',$master_report->tipe_akses_koridor) }}"/>
+                </div>
+                <div class="form-group">
+                  <label for="luas_gross_bangunan_total"><b>Luas Gross Bangunan Total (m2)</b></label>
+                  <input type="number" id="luas_gross_bangunan_total" name="luas_gross_bangunan_total" class="form-control" value="{{ old('luas_gross_bangunan_total',$master_report->luas_gross_bangunan_total) }}"/>
+                </div>
+                <div class="form-group">
+                  <label for="jumlah_lantai"><b>Jumlah Lantai</b></label>
+                  <input type="number" id="jumlah_lantai" name="jumlah_lantai" class="form-control" value="{{ old('jumlah_lantai',$master_report->jumlah_lantai) }}"/>
                 </div>
                 <div class="form-group">
                   <label for="row_jalan"><b>Row Jalan(m)</b></label><br>
@@ -967,20 +1096,89 @@ $configData = Helper::appClasses();
                   </table>
                 </div>
                 <div class="form-group">
-                  <label><b>Obyek Penilaian</b></label><br>
-                    <small class="form-text text-muted">
-                      <i>
-                        Obyek tidak tersedia?<a href="{{ route('object-bangunan') }}"> <u>Tambah obyek bangunan</u></a>
-                      </i>
-                    </small>
-                    <select class="js-example-basic-multiple form-control" name="obyek_id[]" multiple="multiple">
-                      @foreach ($objects as $object)
-                          <option value="{{ $object->id }}"
-                              {{ in_array($object->id, old('obyek_id', $master_report->obyek_id ?? [])) ? 'selected' : '' }}>
-                              {{ $object->nama_bangunan }}
-                          </option>
-                      @endforeach
-                   </select>
+                  <label for="penggunaan_saat_ini"><b>Penggunaan Saat Ini</b></label>
+                  <input type="text" id="penggunaan_saat_ini" name="penggunaan_saat_ini" class="form-control" value="{{ old('penggunaan_saat_ini',$master_report->penggunaan_saat_ini) }}"/>
+                </div>
+                <div class="form-group">
+                  <label for="bentuk_bangunan"><b>Bentuk Bangunan</b></label>
+                  <input type="text" id="bentuk_bangunan" name="bentuk_bangunan" class="form-control" value="{{ old('bentuk_bangunan',$master_report->bentuk_bangunan) }}"/>
+                </div>
+                <div class="form-group">
+                  <label for="basement"><b>Basement</b></label><br>
+                  <input type="checkbox" id="basement" name="basement" value="Ada Basement">
+                  <label for="basement">Ada Basement</label>
+                </div>
+                <div class="form-group">
+                  <label for="konstruksi_bangunan"><b>Konstruksi Bangunan</b></label>
+                  <input type="text" id="konstruksi_bangunan" name="konstruksi_bangunan" class="form-control" value="{{ old('konstruksi_bangunan',$master_report->konstruksi_bangunan) }}"/>
+                </div>
+                <div class="form-group">
+                  <label for="konstruksi_lantai"><b>Konstruksi Lantai</b></label>
+                  <input type="text" id="konstruksi_lantai" name="konstruksi_lantai" class="form-control" value="{{ old('konstruksi_lantai',$master_report->konstruksi_lantai) }}"/>
+                </div>
+                <div class="form-group">
+                  <label for="konstruksi_dinding"><b>Konstruksi Dinding</b></label>
+                  <input type="text" id="konstruksi_dinding" name="konstruksi_dinding" class="form-control" value="{{ old('konstruksi_dinding',$master_report->konstruksi_dinding) }}"/>
+                </div>
+                <div class="form-group">
+                  <label for="konstruksi_atap"><b>Konstruksi Atap</b></label>
+                  <input type="text" id="konstruksi_atap" name="konstruksi_atap" class="form-control" value="{{ old('konstruksi_atap',$master_report->konstruksi_atap) }}"/>
+                </div>
+                <div class="form-group">
+                  <label for="konstruksi_pondasi"><b>Konstruksi Pondasi</b></label>
+                  <input type="text" id="konstruksi_pondasi" name="konstruksi_pondasi" class="form-control" value="{{ old('konstruksi_pondasi',$master_report->konstruksi_pondasi) }}"/>
+                </div>
+                <div class="form-group">
+                  <label for="retail_tahun_dibangun"><b>Tahun Dibangun</b></label>
+                  <input type="number" id="retail_tahun_dibangun" name="retail_tahun_dibangun" class="form-control" value="{{ old('retail_tahun_dibangun',$master_report->retail_tahun_dibangun) }}"/>
+                </div>
+                <div class="form-group">
+                  <label for="retail_tahun_renovasi"><b>Tahun Renovasi</b></label>
+                  <input type="number" id="retail_tahun_renovasi" name="retail_tahun_renovasi" class="form-control" value="{{ old('retail_tahun_renovasi',$master_report->retail_tahun_renovasi) }}"/>
+                </div>
+                <div class="form-group">
+                  <label for="penggunaan_bangunan_saat_ini"><b>Penggunaan Bangunan Saat Ini</b></label>
+                  <input type="text" id="penggunaan_bangunan_saat_ini" name="penggunaan_bangunan_saat_ini" class="form-control" value="{{ old('penggunaan_bangunan_saat_ini',$master_report->penggunaan_bangunan_saat_ini) }}"/>
+                </div>
+                @php
+                    $kelengkapan_bangunan = old('perlengkapan_bangunan', $report->perlengkapan_bangunan ?? []);
+                @endphp
+                <div class="form-group">
+                    <label><b>Perlengkapan Bangunan</b></label><br>
+                    <div>
+                        <input type="checkbox" id="listrik" name="perlengkapan_bangunan[]" value="Listrik"
+                            {{ in_array('Listrik', $kelengkapan_bangunan) ? 'checked' : '' }}>
+                        <label for="listrik">Listrik</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="telepon" name="perlengkapan_bangunan[]" value="Telepon"
+                            {{ in_array('Telepon', $kelengkapan_bangunan) ? 'checked' : '' }}>
+                        <label for="telepon">Telepon</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="pdam" name="perlengkapan_bangunan[]" value="PDAM"
+                            {{ in_array('PDAM', $kelengkapan_bangunan) ? 'checked' : '' }}>
+                        <label for="pdam">PDAM</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="gas" name="perlengkapan_bangunan[]" value="Gas"
+                            {{ in_array('Gas', $kelengkapan_bangunan) ? 'checked' : '' }}>
+                        <label for="gas">Gas</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="ac" name="perlengkapan_bangunan[]" value="Ac"
+                            {{ in_array('Ac', $kelengkapan_bangunan) ? 'checked' : '' }}>
+                        <label for="ac">Ac</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="sumur" name="perlengkapan_bangunan[]" value="Sumur Gali / Pompa"
+                            {{ in_array('Sumur Gali/Pompa', $kelengkapan_bangunan) ? 'checked' : '' }}>
+                        <label for="sumur">Sumur Gali / Pompa</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="penggunaan_bangunan"><b>Penggunaan Bangunan</b></label>
+                  <input type="text" id="penggunaan_bangunan" name="penggunaan_bangunan" class="form-control" value="{{ old('penggunaan_bangunan',$master_report->penggunaan_bangunan) }}"/>
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label">Sarana Pelengkap PAGAR - BUT MAPPI</label>
@@ -1388,15 +1586,6 @@ $configData = Helper::appClasses();
                     </i>
                   </small>
                   <input type="file" class="form-control" name="denah_tanah" id="imgDenah">
-                </div>
-                <div class="form-group">
-                  <label><b>Denah Bangunan</b></label><br>
-                  <small class="form-text text-muted">
-                    <i>
-                      Upload gambar denah bangunan
-                    </i>
-                  </small>
-                  <input type="file" class="form-control" name="denah_bangunan" id="imgDenah">
                 </div>
                 <div class="form-group">
                   <label><b>Peta Lokasi Obyek Penilaian dan Data Pembanding</b></label><br>

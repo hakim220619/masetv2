@@ -17,15 +17,18 @@
                         <div class="card-header">
                             <h5 class="mb-0">{{ $report->judul_laporan .'-'. $report->nama_entitas .'-'. $report->alamat }}</h5>
                             <div class="btn-group mt-2 d-flex justify-content-center">
-                                <button class="btn btn-danger btn-sm" title="Hapus">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                                <a href="{{ route('laporan-penilaian.edit', $report->id) }}" class="btn btn-warning btn-sm" title="Edit">
+                                <form action="{{ route('laporan-penilaian.destroy', $report->id) }}" method="POST" style="display:inline;">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')"><i class="bi bi-trash"></i></button>
+
+                                  <a href="{{ route('laporan-penilaian.edit', $report->id) }}" class="btn btn-warning btn-sm" title="Edit">
                                     <i class="bi bi-pencil"></i>
-                                </a>
-                                <a href="{{ route('laporan-penilaian.show', $report->id) }}" class="btn btn-info btn-sm" title="Analisa">
+                                  </a>
+                                  <a href="{{ route('laporan-penilaian.show', $report->id) }}" class="btn btn-info btn-sm" title="Analisa">
                                     <i class="bi bi-table"></i>
-                                </a>
+                                  </a>
+                                </form>
                             </div>
                         </div>
                         <img src="{{ asset('storage/' . $report->foto_utama) }}" class="card-img-top" alt="Foto Utama"
@@ -111,16 +114,14 @@
             color: #343a40;
         }
     </style>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Handle delete button
             document.querySelectorAll('.hapus-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const reportId = this.dataset.id;
-
                     if (confirm('Apakah Anda yakin ingin menghapus laporan ini?')) {
-                        fetch(`/laporan-penilaian/${reportId}`, {
+                        fetch(`/laporan_penilaian/${reportId}`, {
                                 method: 'DELETE',
                                 headers: {
                                     'X-CSRF-TOKEN': '{{ csrf_token() }}',

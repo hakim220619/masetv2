@@ -455,7 +455,6 @@ $configData = Helper::appClasses();
               </div>
             </div>
             </div>
-
             <button class="btn btn-success btn-submit" type="submit">Submit</button>
           </form>
     </div>

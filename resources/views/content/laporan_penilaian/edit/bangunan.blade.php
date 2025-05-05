@@ -33,7 +33,7 @@ $configData = Helper::appClasses();
       <div class="wizard-icons wizard-icons-example mt-2">
 
         <div class="content">
-          <form method="POST" action="{{ route('laporan-penilaian.edit.bangunan', $report->id) }}" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('laporan-penilaian.update.bangunan', $report->id) }}" enctype="multipart/form-data">
             <!-- Account Details -->
             @csrf
             <div id="account-details" class="content">
@@ -474,7 +474,7 @@ $configData = Helper::appClasses();
                     </tr>
                     <tr>
                       <td><input type="text" name="dokumen_imb_diterbitkan_oleh" class="form-control" value="{{ old('dokumen_imb_diterbitkan_oleh',$report->dokumen_imb_diterbitkan_oleh) }}" /></td>
-                      <td><input type="text" name="dokumen_imb_status_imb" class="form-control" value="{{ old('dokumen_imb_status_imb',$report->dokumen_imb_status_imb) }}" /></td>
+                      <td><input type="text" name="dokumen_imb_status" class="form-control" value="{{ old('dokumen_imb_status',$report->dokumen_imb_status) }}" /></td>
                     </tr>
                     <tr>
                       <th>Nama Pemegang Ijin</th>

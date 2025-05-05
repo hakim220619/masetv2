@@ -33,7 +33,7 @@ $configData = Helper::appClasses();
       <div class="wizard-icons wizard-icons-example mt-2">
 
         <div class="content">
-          <form method="POST" action="{{ route('laporan-penilaian.edit.tanah-kosong', $report->id) }}" enctype="multipart/form-data">
+          <form method="POST" action="{{ route('laporan-penilaian.update.tanah-kosong', $report->id) }}" enctype="multipart/form-data">
             <!-- Account Details -->
             @csrf
             <div id="account-details" class="content">
@@ -474,7 +474,7 @@ $configData = Helper::appClasses();
                     </tr>
                     <tr>
                       <td><input type="text" name="dokumen_imb_diterbitkan_oleh" class="form-control" value="{{ old('dokumen_imb_diterbitkan_oleh',$report->dokumen_imb_diterbitkan_oleh) }}" /></td>
-                      <td><input type="text" name="dokumen_imb_status_imb" class="form-control" value="{{ old('dokumen_imb_status_imb',$report->dokumen_imb_status_imb) }}" /></td>
+                      <td><input type="text" name="dokumen_imb_status" class="form-control" value="{{ old('dokumen_imb_status',$report->dokumen_imb_status) }}" /></td>
                     </tr>
                     <tr>
                       <th>Nama Pemegang Ijin</th>
@@ -598,46 +598,6 @@ $configData = Helper::appClasses();
                   <input type="text" id="jenis_properti" name="jenis_properti" class="form-control" value="{{ old('jenis_properti',$master_report->jenis_properti) }}" />
                 </div>
                 <div class="form-group">
-                  <label for="jenis_bangunan"><b>Jenis Bangunan</b></label><br>
-                  <input type="checkbox" id="rukoCheckbox" name="jenis_bangunan" value="Ruko / Rukan" {{ old('jenis_bangunan',$master_report->jenis_bangunan) == 'Ruko / Rukan' ? 'checked' : '' }}>
-                  Ruko / Rukan
-                </div>
-                <div id="inputTambahanContainer">
-                  @if ($master_report->jenis_bangunan)
-                    <div id="rukoInputGroup">
-                      <div class="form-group">
-                        <label for="peruntukan_tanah_tabel_analisis"><b>Keterangan Peruntukan Tanah pada Tabel Analisis Ruko</b></label>
-                        <input type="text" name="peruntukan_tanah_tabel_analisis" class="form-control" placeholder="berperuntukan ruko" value="{{ old('peruntukan_tanah_tabel_analisis',$master_report->peruntukan_tanah_tabel_analisis) }}">
-                      </div>
-                    </div>
-                  @endif
-                </div>
-                <script>
-                  const checkbox = document.getElementById('rukoCheckbox');
-                  const container = document.getElementById('inputTambahanContainer');
-
-                  checkbox.addEventListener('change', function () {
-                    if (this.checked) {
-                      // Jika diceklis, tambahkan input baru
-                      const inputGroup = document.createElement('div');
-                      inputGroup.setAttribute('id', 'rukoInputGroup');
-                      inputGroup.innerHTML = `
-                        <div class="form-group">
-                          <label for="peruntukan_tanah_tabel_analisis"><b>Keterangan Peruntukan Tanah pada Tabel Analisis Ruko</b></label>
-                          <input type="text" name="peruntukan_tanah_tabel_analisis" class="form-control" placeholder="berperuntukan ruko" value="{{ old('peruntukan_tanah_tabel_analisis',$master_report->peruntukan_tanah_tabel_analisis) }}">
-                        </div>
-                      `;
-                      container.appendChild(inputGroup);
-                    } else {
-                      // Jika tidak diceklis, hapus input tambahan
-                      const inputGroup = document.getElementById('rukoInputGroup');
-                      if (inputGroup) {
-                        container.removeChild(inputGroup);
-                      }
-                    }
-                  });
-                </script>
-                <div class="form-group">
                   <label for="keterangan_dasar_nilai_tabel_analisis"><b>Keterangan Dasar Nilai pada Tabel Analisis</b></label>
                   <input type="text" id="keterangan_dasar_nilai_tabel_analisis" name="keterangan_dasar_nilai_tabel_analisis" class="form-control" value="{{ old('keterangan_dasar_nilai_tabel_analisis',$master_report->keterangan_dasar_nilai_tabel_analisis) }}" />
                 </div>
@@ -652,6 +612,42 @@ $configData = Helper::appClasses();
                       placeholder="-8.9897878" hidden />
                   <input type="text" id="long" name="long" class="form-control"
                       placeholder="89.8477748" hidden />
+                </div>
+                <div class="form-group">
+                  <label><b>Foto Tampak Depan</b></label><br>
+                  <small class="form-text text-muted">
+                    <i>
+                    Upload foto
+                    </i>
+                  </small>
+                  <input type="file" class="form-control" name="foto_tampak_depan">
+                </div>
+                <div class="form-group">
+                  <label><b>Foto Tampak Sisi Kiri</b></label><br>
+                  <small class="form-text text-muted">
+                    <i>
+                    Upload foto
+                    </i>
+                  </small>
+                  <input type="file" class="form-control" name="foto_tampak_sisi_kiri">
+                </div>
+                <div class="form-group">
+                  <label><b>Foto Tampak Sisi Kanan</b></label><br>
+                  <small class="form-text text-muted">
+                    <i>
+                    Upload foto
+                    </i>
+                  </small>
+                  <input type="file" class="form-control" name="foto_tampak_sisi_kanan">
+                </div>
+                <div class="form-group">
+                  <label><b>Foto Lainnya</b></label><br>
+                  <small class="form-text text-muted">
+                    <i>
+                    Upload foto
+                    </i>
+                  </small>
+                  <input type="file" class="form-control" name="foto_lainnya">
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label" for="Nilai Perolehan">Nilai Perolehan / NJOP / PBB</label>
@@ -967,20 +963,8 @@ $configData = Helper::appClasses();
                   </table>
                 </div>
                 <div class="form-group">
-                  <label><b>Obyek Penilaian</b></label><br>
-                    <small class="form-text text-muted">
-                      <i>
-                        Obyek tidak tersedia?<a href="{{ route('object-bangunan') }}"> <u>Tambah obyek bangunan</u></a>
-                      </i>
-                    </small>
-                    <select class="js-example-basic-multiple form-control" name="obyek_id[]" multiple="multiple">
-                      @foreach ($objects as $object)
-                          <option value="{{ $object->id }}"
-                              {{ in_array($object->id, old('obyek_id', $master_report->obyek_id ?? [])) ? 'selected' : '' }}>
-                              {{ $object->nama_bangunan }}
-                          </option>
-                      @endforeach
-                   </select>
+                  <label for="penggunaan_tanah_saat_ini"><b>Penggunaan Tanah Saat Ini</b></label>
+                  <input type="text" id="penggunaan_tanah_saat_ini" name="penggunaan_tanah_saat_ini" class="form-control" value="{{ old('penggunaan_tanah_saat_ini',$master_report->penggunaan_tanah_saat_ini) }}"/>
                 </div>
                 <div style="background-color: rgb(244, 241, 241);" class="p-3 rounded">
                   <label class="form-label">Sarana Pelengkap PAGAR - BUT MAPPI</label>
@@ -1388,15 +1372,6 @@ $configData = Helper::appClasses();
                     </i>
                   </small>
                   <input type="file" class="form-control" name="denah_tanah" id="imgDenah">
-                </div>
-                <div class="form-group">
-                  <label><b>Denah Bangunan</b></label><br>
-                  <small class="form-text text-muted">
-                    <i>
-                      Upload gambar denah bangunan
-                    </i>
-                  </small>
-                  <input type="file" class="form-control" name="denah_bangunan" id="imgDenah">
                 </div>
                 <div class="form-group">
                   <label><b>Peta Lokasi Obyek Penilaian dan Data Pembanding</b></label><br>
